@@ -30,6 +30,21 @@ dotnet build .\SEImageConverter.slnx
 dotnet test .\tests\ImageConversion.Core.Tests\ImageConversion.Core.Tests.csproj
 ```
 
+## Run
+
+```powershell
+dotnet run --project .\src\ImageConversion.App\ImageConversion.App.csproj
+```
+
+If you prefer to launch the built app directly:
+
+```powershell
+.\src\ImageConversion.App\bin\Debug\net10.0-windows10.0.19041.0\win-x64\ImageConversion.App.exe
+```
+
+The app is currently configured as an unpackaged, self-contained WinUI app so
+it can run locally without separately installing the Windows App Runtime.
+
 ## Space Engineers usage
 
 1. Open an image.

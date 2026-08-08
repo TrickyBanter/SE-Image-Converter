@@ -6,8 +6,8 @@ namespace ImageConversion.Core.Tests;
 
 public sealed class ImageToLcdConverterTests
 {
-    private static readonly PanelPreset TinySquare = new("Tiny square", 2, 2, 1);
-    private static readonly PanelPreset TinyWide = new("Tiny wide", 4, 2, 2);
+    private static readonly PanelPreset TinySquare = new("Tiny square", 2, 2, 1, "Test", "Vanilla");
+    private static readonly PanelPreset TinyWide = new("Tiny wide", 4, 2, 2, "Test", "Vanilla");
 
     [Fact]
     public void TransparentPixelsBecomeSpacesWhenTransparencyIsPreserved()
@@ -18,7 +18,7 @@ public sealed class ImageToLcdConverterTests
 
         ConversionResult result = Convert(bitmap, new ConversionOptions
         {
-            PanelPreset = new PanelPreset("One row", 2, 1, 2),
+            PanelPreset = new PanelPreset("One row", 2, 1, 2, "Test", "Vanilla"),
             DitheringMode = DitheringMode.None,
             PreserveTransparency = true,
             MaintainAspectRatio = false,
@@ -37,7 +37,7 @@ public sealed class ImageToLcdConverterTests
 
         ConversionResult result = Convert(bitmap, new ConversionOptions
         {
-            PanelPreset = new PanelPreset("Single", 1, 1, 1),
+            PanelPreset = new PanelPreset("Single", 1, 1, 1, "Test", "Vanilla"),
             DitheringMode = DitheringMode.None,
             PreserveTransparency = false,
             MaintainAspectRatio = false,

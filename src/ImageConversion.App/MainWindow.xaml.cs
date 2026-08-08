@@ -12,7 +12,7 @@ public sealed partial class MainWindow : Window
     public MainWindow()
     {
         InitializeComponent();
-        ExtendsContentIntoTitleBar = true;
+        ExtendsContentIntoTitleBar = false;
         Root.DataContext = ViewModel;
     }
 
