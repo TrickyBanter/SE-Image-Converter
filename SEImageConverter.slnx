@@ -1,0 +1,5 @@
+<Solution>
+  <Project Path="src/ImageConversion.Core/ImageConversion.Core.csproj" />
+  <Project Path="src/ImageConversion.App/ImageConversion.App.csproj" />
+  <Project Path="tests/ImageConversion.Core.Tests/ImageConversion.Core.Tests.csproj" />
+</Solution>
