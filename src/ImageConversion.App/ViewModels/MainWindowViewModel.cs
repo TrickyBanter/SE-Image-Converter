@@ -2,6 +2,7 @@ using System.Collections.ObjectModel;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using ImageConversion.Core;
+using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Media;
 using Microsoft.UI.Xaml.Media.Imaging;
@@ -28,10 +29,13 @@ public partial class MainWindowViewModel : ObservableObject
     public partial string ConvertedText { get; set; } = string.Empty;
 
     [ObservableProperty]
-    public partial string ResultSizeSummary { get; set; } = "Result: -";
+    public partial string ResultSizeSummary { get; set; } = "-";
 
     [ObservableProperty]
-    public partial string CharacterCountSummary { get; set; } = "Characters: -";
+    public partial string CharacterCountSummary { get; set; } = "0 characters";
+
+    [ObservableProperty]
+    public partial string LineCountSummary { get; set; } = "0 lines";
 
     [ObservableProperty]
     public partial PanelPreset SelectedPanelPreset { get; set; } = PanelPreset.Defaults[0];
@@ -57,6 +61,9 @@ public partial class MainWindowViewModel : ObservableObject
     [ObservableProperty]
     public partial InfoBarSeverity StatusSeverity { get; set; } = InfoBarSeverity.Informational;
 
+    [ObservableProperty]
+    public partial bool IsOutputStale { get; set; }
+
     public ObservableCollection<PanelPreset> PanelPresets { get; } = new(PanelPreset.Defaults);
 
     public ObservableCollection<ResizeMode> ResizeModes { get; } = new(Enum.GetValues<ResizeMode>());
@@ -67,6 +74,10 @@ public partial class MainWindowViewModel : ObservableObject
 
     public bool HasStatusMessage => !string.IsNullOrWhiteSpace(StatusTitle) || !string.IsNullOrWhiteSpace(StatusMessage);
 
+    public Visibility SourcePlaceholderVisibility => SourcePreview is null ? Visibility.Visible : Visibility.Collapsed;
+
+    public Visibility ConvertedPlaceholderVisibility => ConvertedPreview is null ? Visibility.Visible : Visibility.Collapsed;
+
     public async Task LoadImageAsync(string path)
     {
         try
@@ -76,8 +87,10 @@ public partial class MainWindowViewModel : ObservableObject
             SourceSummary = Path.GetFileName(path);
             ConvertedText = string.Empty;
             ConvertedPreview = null;
-            ResultSizeSummary = "Result: -";
-            CharacterCountSummary = "Characters: -";
+            ResultSizeSummary = "-";
+            CharacterCountSummary = "0 characters";
+            LineCountSummary = "0 lines";
+            IsOutputStale = false;
             SetStatus("Loaded", "Image ready to convert.", InfoBarSeverity.Success);
             OnPropertyChanged(nameof(HasImage));
             ConvertCommand.NotifyCanExecuteChanged();
@@ -105,8 +118,10 @@ public partial class MainWindowViewModel : ObservableObject
             ConversionResult result = await Task.Run(() => converter.Convert(sourceBytes, BuildOptions()));
             ConvertedText = result.Text;
             ConvertedPreview = await CreateImageSourceAsync(result.PreviewPng);
-            ResultSizeSummary = $"Result: {result.Width} x {result.Height}";
-            CharacterCountSummary = $"Characters: {result.EstimatedCharacterCount:N0}";
+            ResultSizeSummary = $"{result.Width} x {result.Height}";
+            CharacterCountSummary = $"{result.EstimatedCharacterCount:N0} characters";
+            LineCountSummary = $"{result.Height:N0} lines";
+            IsOutputStale = false;
             SetStatus("Converted", "The LCD string is ready to copy into Space Engineers.", InfoBarSeverity.Success);
         }
         catch (Exception ex)
@@ -138,7 +153,21 @@ public partial class MainWindowViewModel : ObservableObject
 
     partial void OnConvertedTextChanged(string value)
     {
+        CharacterCountSummary = $"{value.Length:N0} characters";
+        LineCountSummary = string.IsNullOrEmpty(value)
+            ? "0 lines"
+            : $"{value.Split(Environment.NewLine).Length:N0} lines";
         CopyCommand.NotifyCanExecuteChanged();
+    }
+
+    partial void OnSourcePreviewChanged(ImageSource? value)
+    {
+        OnPropertyChanged(nameof(SourcePlaceholderVisibility));
+    }
+
+    partial void OnConvertedPreviewChanged(ImageSource? value)
+    {
+        OnPropertyChanged(nameof(ConvertedPlaceholderVisibility));
     }
 
     partial void OnSelectedPanelPresetChanged(PanelPreset value) => QueueStaleConversionMessage();
@@ -168,7 +197,7 @@ public partial class MainWindowViewModel : ObservableObject
     {
         if (HasImage && HasConvertedText())
         {
-            SetStatus("Settings changed", "Convert again to refresh the output.", InfoBarSeverity.Warning);
+            IsOutputStale = true;
         }
     }
 
