@@ -6,6 +6,19 @@ paste-ready Space Engineers LCD/Text Panel Monospace text.
 
 <img width="1234" height="1001" alt="se_image_converter" src="https://github.com/user-attachments/assets/edb2b119-3fa3-4aaa-ac77-66902f5d4aec" />
 
+## Space Engineers usage
+
+1. Open an image.
+2. Choose the LCD/Text Panel type, resize mode, dithering mode, and transparency options.
+3. Convert and copy the generated string.
+4. In Space Engineers, set the LCD content to `Text and Images`.
+5. Paste the string, select `Monospace`, and start with font size `0.1`.
+
+## Release
+
+Download the latest installer or portable zip from the
+[latest GitHub release](https://github.com/TrickyBanter/SE-Image-Converter/releases/latest).
+
 ## Projects
 
 - `src/ImageConversion.Core` contains the deterministic conversion engine.
@@ -48,7 +61,7 @@ The app is currently configured as an unpackaged, framework-dependent WinUI app.
 Release builds require the .NET Desktop Runtime and Windows App Runtime to be
 installed on the target machine.
 
-## Release
+## Publishing a release
 
 GitHub Releases are the production distribution channel. Each release should
 include:
@@ -90,11 +103,3 @@ The app checks GitHub Releases on startup and from the in-app update controls.
 Release tags should be semantic versions such as `v1.2.3` or `1.2.3`. The
 in-app updater downloads the setup `.exe` asset; portable `.zip` assets are
 ignored by the updater and are intended for manual downloads.
-
-## Space Engineers usage
-
-1. Open an image.
-2. Choose the LCD/Text Panel type, resize mode, dithering mode, and transparency options.
-3. Convert and copy the generated string.
-4. In Space Engineers, set the LCD content to `Text and Images`.
-5. Paste the string, select `Monospace`, and start with font size `0.1`.
