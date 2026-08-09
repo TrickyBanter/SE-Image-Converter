@@ -47,9 +47,6 @@ public partial class MainWindowViewModel : ObservableObject
     public partial ResizeMode SelectedResizeMode { get; set; } = ResizeMode.Fit;
 
     [ObservableProperty]
-    public partial DitheringMode SelectedDitheringMode { get; set; } = DitheringMode.FloydSteinberg;
-
-    [ObservableProperty]
     public partial bool MaintainAspectRatio { get; set; } = true;
 
     [ObservableProperty]
@@ -102,9 +99,14 @@ public partial class MainWindowViewModel : ObservableObject
         new(DitheringMode.OrderedBayer8, "Ordered Bayer 8x8", "Finer ordered pattern with less visible grid texture than 2x2 or 4x4."),
     ];
 
+    [ObservableProperty]
+    public partial DitheringModeOption SelectedDitheringMode { get; set; }
+
     public bool HasImage => sourceBytes is not null;
 
     public bool HasStatusMessage => !string.IsNullOrWhiteSpace(StatusTitle) || !string.IsNullOrWhiteSpace(StatusMessage);
+
+    public bool CanExport => HasConvertedText();
 
     public string CurrentVersionSummary => $"Version {FormatVersion(GitHubReleaseUpdater.CurrentVersion)}";
 
@@ -119,6 +121,11 @@ public partial class MainWindowViewModel : ObservableObject
     public string InstallUpdateButtonText => availableUpdate is null
         ? "Download and install"
         : $"Download and install {availableUpdate.TagName}";
+
+    public MainWindowViewModel()
+    {
+        SelectedDitheringMode = DitheringModes[0];
+    }
 
     public async Task CheckForUpdatesOnStartupAsync()
     {
@@ -249,6 +256,7 @@ public partial class MainWindowViewModel : ObservableObject
             ? "0 lines"
             : $"{value.Split(Environment.NewLine).Length:N0} lines";
         CopyCommand.NotifyCanExecuteChanged();
+        OnPropertyChanged(nameof(CanExport));
     }
 
     partial void OnSourcePreviewChanged(ImageSource? value)
@@ -285,7 +293,7 @@ public partial class MainWindowViewModel : ObservableObject
 
     partial void OnSelectedResizeModeChanged(ResizeMode value) => QueueStaleConversionMessage();
 
-    partial void OnSelectedDitheringModeChanged(DitheringMode value) => QueueStaleConversionMessage();
+    partial void OnSelectedDitheringModeChanged(DitheringModeOption value) => QueueStaleConversionMessage();
 
     partial void OnMaintainAspectRatioChanged(bool value) => QueueStaleConversionMessage();
 
@@ -342,7 +350,7 @@ public partial class MainWindowViewModel : ObservableObject
     {
         PanelPreset = SelectedPanelPreset,
         ResizeMode = SelectedResizeMode,
-        DitheringMode = SelectedDitheringMode,
+        DitheringMode = SelectedDitheringMode.Mode,
         MaintainAspectRatio = MaintainAspectRatio,
         PreserveTransparency = PreserveTransparency,
     };
