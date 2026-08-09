@@ -1,4 +1,5 @@
 # SE Image Converter
+
 Image converter for use in Space Engineers.
 
 This is a modern WinUI 3 desktop app that converts ordinary image files into
@@ -6,7 +7,20 @@ paste-ready Space Engineers LCD/Text Panel Monospace text.
 
 <img width="1234" height="1001" alt="se_image_converter" src="https://github.com/user-attachments/assets/edb2b119-3fa3-4aaa-ac77-66902f5d4aec" />
 
-## Space Engineers usage
+## For users
+
+### Download
+
+Download the latest installer or portable zip from the
+[latest GitHub release](https://github.com/TrickyBanter/SE-Image-Converter/releases/latest).
+
+Use the setup `.exe` for a normal install. Use the portable `.zip` if you want
+to run the app without installing it.
+
+The setup executable is currently unsigned. Windows SmartScreen may warn until
+the app is signed and has reputation.
+
+### Space Engineers usage
 
 1. Open an image.
 2. Choose the LCD/Text Panel type, resize mode, dithering mode, and transparency options.
@@ -14,18 +28,21 @@ paste-ready Space Engineers LCD/Text Panel Monospace text.
 4. In Space Engineers, set the LCD content to `Text and Images`.
 5. Paste the string, select `Monospace`, and start with font size `0.1`.
 
-## Release
+### Updates
 
-Download the latest installer or portable zip from the
-[latest GitHub release](https://github.com/TrickyBanter/SE-Image-Converter/releases/latest).
+The app checks GitHub Releases on startup and from the in-app update controls.
+The in-app updater downloads installer `.exe` releases. Portable `.zip` releases
+are intended for manual downloads.
 
-## Projects
+## For developers
+
+### Projects
 
 - `src/ImageConversion.Core` contains the deterministic conversion engine.
 - `src/ImageConversion.App` contains the WinUI 3 desktop app.
 - `tests/ImageConversion.Core.Tests` contains focused conversion tests.
 
-## Requirements
+### Requirements
 
 - Windows 10 1809 or newer.
 - .NET 10 SDK.
@@ -37,7 +54,7 @@ Install the WinUI templates once after the SDK is installed:
 dotnet new install Microsoft.WindowsAppSDK.WinUI.CSharp.Templates
 ```
 
-## Build and test
+### Build and test
 
 ```powershell
 dotnet restore .\SEImageConverter.slnx
@@ -45,7 +62,7 @@ dotnet build .\SEImageConverter.slnx
 dotnet test .\SEImageConverter.slnx
 ```
 
-## Run
+### Run locally
 
 ```powershell
 dotnet run --project .\src\ImageConversion.App\ImageConversion.App.csproj
@@ -61,7 +78,7 @@ The app is currently configured as an unpackaged, framework-dependent WinUI app.
 Release builds require the .NET Desktop Runtime and Windows App Runtime to be
 installed on the target machine.
 
-## Publishing a release
+### Publishing a release
 
 GitHub Releases are the production distribution channel. Each release should
 include:
@@ -69,13 +86,10 @@ include:
 - `SEImageConverter-Setup-<version>.exe` for normal installation.
 - `SEImageConverter-Portable-<version>-win-x64.zip` for portable use.
 
-The setup executable is currently unsigned. Windows SmartScreen may warn users
-until the app is signed and has reputation.
-
 To build release artifacts:
 
 ```powershell
-.\build\Release.ps1 -Version 1.0.1
+.\build\Release.ps1 -Version 1.1.0
 ```
 
 The script runs the Release test suite, publishes a framework-dependent
@@ -84,22 +98,21 @@ Inno Setup 6 or newer. Install Inno Setup first, or pass its compiler path
 explicitly:
 
 ```powershell
-.\build\Release.ps1 -Version 1.0.1 -InnoSetupCompiler "C:\Program Files (x86)\Inno Setup 6\ISCC.exe"
+.\build\Release.ps1 -Version 1.1.0 -InnoSetupCompiler "C:\Program Files (x86)\Inno Setup 6\ISCC.exe"
 ```
 
 For a portable-only build:
 
 ```powershell
-.\build\Release.ps1 -Version 1.0.1 -SkipInstaller
+.\build\Release.ps1 -Version 1.1.0 -SkipInstaller
 ```
 
 Before publishing a release, update the app version metadata in
 `src/ImageConversion.App/ImageConversion.App.csproj`. Then create a GitHub
-release tag such as `v1.0.1` and upload both files from `artifacts/release`.
+release tag such as `v1.1.0` and upload both files from `artifacts/release`.
 
-## Updates
+### Update behavior
 
-The app checks GitHub Releases on startup and from the in-app update controls.
 Release tags should be semantic versions such as `v1.2.3` or `1.2.3`. The
 in-app updater downloads the setup `.exe` asset; portable `.zip` assets are
 ignored by the updater and are intended for manual downloads.

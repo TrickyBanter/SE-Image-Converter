@@ -115,8 +115,17 @@
                         <ComboBox
                             Header="Dithering mode"
                             ItemsSource="{Binding DitheringModes}"
-                            SelectedItem="{Binding SelectedDitheringMode, Mode=TwoWay}"
-                            HorizontalAlignment="Stretch" />
+                            SelectedValue="{Binding SelectedDitheringMode, Mode=TwoWay}"
+                            SelectedValuePath="Mode"
+                            HorizontalAlignment="Stretch">
+                            <ComboBox.ItemTemplate>
+                                <DataTemplate>
+                                    <Grid ToolTipService.ToolTip="{Binding Description}">
+                                        <TextBlock Text="{Binding Name}" />
+                                    </Grid>
+                                </DataTemplate>
+                            </ComboBox.ItemTemplate>
+                        </ComboBox>
 
                         <ToggleSwitch Header="Maintain aspect ratio" IsOn="{Binding MaintainAspectRatio, Mode=TwoWay}" />
                         <ToggleSwitch Header="Preserve transparency" IsOn="{Binding PreserveTransparency, Mode=TwoWay}" />

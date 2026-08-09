@@ -89,7 +89,18 @@ public partial class MainWindowViewModel : ObservableObject
 
     public ObservableCollection<ResizeMode> ResizeModes { get; } = new(Enum.GetValues<ResizeMode>());
 
-    public ObservableCollection<DitheringMode> DitheringModes { get; } = new(Enum.GetValues<DitheringMode>());
+    public ObservableCollection<DitheringModeOption> DitheringModes { get; } =
+    [
+        new(DitheringMode.None, "None", "Nearest color match with no dithering. Fast and crisp, but gradients can band."),
+        new(DitheringMode.FloydSteinberg, "Floyd-Steinberg", "Classic error diffusion with sharp detail and balanced grain. A strong general-purpose choice."),
+        new(DitheringMode.Atkinson, "Atkinson", "Apple-style error diffusion that preserves contrast and creates a lighter, more stylized texture."),
+        new(DitheringMode.SierraLite, "Sierra Lite", "Compact error diffusion that is quick, clean, and often works well on small LCD panels."),
+        new(DitheringMode.Stucki, "Stucki", "Wide error diffusion that smooths gradients and photos, especially on larger panels."),
+        new(DitheringMode.Burkes, "Burkes", "A sharper, cheaper cousin of Stucki that balances photo smoothness with good edge detail."),
+        new(DitheringMode.OrderedBayer2, "Ordered Bayer 2x2", "Very coarse ordered pattern. Useful for a chunky pixel-art look."),
+        new(DitheringMode.OrderedBayer4, "Ordered Bayer 4x4", "Predictable ordered pattern with moderate texture. Good for logos and UI images."),
+        new(DitheringMode.OrderedBayer8, "Ordered Bayer 8x8", "Finer ordered pattern with less visible grid texture than 2x2 or 4x4."),
+    ];
 
     public bool HasImage => sourceBytes is not null;
 
@@ -384,3 +395,5 @@ public partial class MainWindowViewModel : ObservableObject
         return image;
     }
 }
+
+public sealed record DitheringModeOption(DitheringMode Mode, string Name, string Description);
