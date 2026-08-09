@@ -4,10 +4,48 @@ param(
     [string]$RuntimeIdentifier = "win-x64",
     [string]$Configuration = "Release",
     [string]$InnoSetupCompiler,
+    [string]$DotNetDesktopRuntimeInstaller,
+    [string]$WindowsAppRuntimeInstaller,
+    [switch]$SkipPrerequisites,
     [switch]$SkipInstaller
 )
 
 $ErrorActionPreference = "Stop"
+
+function Invoke-NativeCommand {
+    param(
+        [Parameter(Mandatory = $true)]
+        [string]$FilePath,
+
+        [Parameter(Mandatory = $true)]
+        [string[]]$Arguments
+    )
+
+    & $FilePath @Arguments
+    if ($LASTEXITCODE -ne 0) {
+        throw "$FilePath failed with exit code $LASTEXITCODE."
+    }
+}
+
+function Write-ChecksumManifest {
+    param(
+        [Parameter(Mandatory = $true)]
+        [string[]]$ArtifactPaths,
+
+        [Parameter(Mandatory = $true)]
+        [string]$ManifestPath
+    )
+
+    $lines = $ArtifactPaths |
+        Where-Object { Test-Path $_ } |
+        ForEach-Object {
+            $item = Get-Item -LiteralPath $_
+            $hash = (Get-FileHash -Algorithm SHA256 -LiteralPath $item.FullName).Hash.ToLowerInvariant()
+            "$hash  $($item.Name)"
+        }
+
+    Set-Content -LiteralPath $ManifestPath -Value $lines -Encoding ascii
+}
 
 $repoRoot = Resolve-Path (Join-Path $PSScriptRoot "..")
 $appProject = Join-Path $repoRoot "src\ImageConversion.App\ImageConversion.App.csproj"
@@ -15,6 +53,16 @@ $solution = Join-Path $repoRoot "SEImageConverter.slnx"
 $publishRoot = Join-Path $repoRoot "artifacts\publish\SEImageConverter\$RuntimeIdentifier"
 $releaseRoot = Join-Path $repoRoot "artifacts\release"
 $installerScript = Join-Path $repoRoot "build\SEImageConverter.iss"
+$prerequisitesRoot = Join-Path $repoRoot "build\prerequisites"
+$checksumManifestPath = Join-Path $releaseRoot "SHA256SUMS.txt"
+
+if ([string]::IsNullOrWhiteSpace($DotNetDesktopRuntimeInstaller)) {
+    $DotNetDesktopRuntimeInstaller = Join-Path $prerequisitesRoot "windowsdesktop-runtime-win-x64.exe"
+}
+
+if ([string]::IsNullOrWhiteSpace($WindowsAppRuntimeInstaller)) {
+    $WindowsAppRuntimeInstaller = Join-Path $prerequisitesRoot "WindowsAppRuntimeInstall-x64.exe"
+}
 
 if ([string]::IsNullOrWhiteSpace($Version)) {
     [xml]$projectXml = Get-Content $appProject
@@ -23,6 +71,16 @@ if ([string]::IsNullOrWhiteSpace($Version)) {
 
 if ([string]::IsNullOrWhiteSpace($Version)) {
     throw "Could not determine the app version. Pass -Version or set Version in $appProject."
+}
+
+if (-not $SkipInstaller -and -not $SkipPrerequisites) {
+    if (-not (Test-Path $DotNetDesktopRuntimeInstaller)) {
+        throw "Missing .NET Desktop Runtime installer: $DotNetDesktopRuntimeInstaller. Download the x64 .NET Desktop Runtime installer and save it there, pass -DotNetDesktopRuntimeInstaller, or use -SkipPrerequisites."
+    }
+
+    if (-not (Test-Path $WindowsAppRuntimeInstaller)) {
+        throw "Missing Windows App Runtime installer: $WindowsAppRuntimeInstaller. Download WindowsAppRuntimeInstall-x64.exe and save it there, pass -WindowsAppRuntimeInstaller, or use -SkipPrerequisites."
+    }
 }
 
 $parsedVersion = [version]$Version
@@ -38,17 +96,28 @@ if (Test-Path $publishRoot) {
 
 New-Item -ItemType Directory -Force -Path $publishRoot, $releaseRoot | Out-Null
 
-dotnet test $solution --configuration $Configuration
+Invoke-NativeCommand "dotnet" @(
+    "test",
+    $solution,
+    "--configuration",
+    $Configuration
+)
 
-dotnet publish $appProject `
-    --configuration $Configuration `
-    --runtime $RuntimeIdentifier `
-    --self-contained false `
-    -p:Version=$Version `
-    -p:AssemblyVersion=$assemblyVersion `
-    -p:FileVersion=$assemblyVersion `
-    -p:PackageVersion=$Version `
-    -p:PublishDir="$publishRoot\"
+Invoke-NativeCommand "dotnet" @(
+    "publish",
+    $appProject,
+    "--configuration",
+    $Configuration,
+    "--runtime",
+    $RuntimeIdentifier,
+    "--self-contained",
+    "false",
+    "-p:Version=$Version",
+    "-p:AssemblyVersion=$assemblyVersion",
+    "-p:FileVersion=$assemblyVersion",
+    "-p:PackageVersion=$Version",
+    "-p:PublishDir=$publishRoot\"
+)
 
 $zipPath = Join-Path $releaseRoot "SEImageConverter-Portable-$Version-$RuntimeIdentifier.zip"
 if (Test-Path $zipPath) {
@@ -58,8 +127,11 @@ if (Test-Path $zipPath) {
 Compress-Archive -Path (Join-Path $publishRoot "*") -DestinationPath $zipPath -CompressionLevel Optimal
 
 if ($SkipInstaller) {
+    Write-ChecksumManifest @($zipPath) $checksumManifestPath
+
     Write-Host "Release artifacts:"
     Write-Host "  Portable:  $zipPath"
+    Write-Host "  Checksums: $checksumManifestPath"
     exit 0
 }
 
@@ -87,12 +159,27 @@ if ([string]::IsNullOrWhiteSpace($InnoSetupCompiler) -or -not (Test-Path $InnoSe
     throw "Inno Setup compiler was not found. Install Inno Setup 6 or newer, pass -InnoSetupCompiler C:\Path\To\ISCC.exe, or use -SkipInstaller for a portable-only build."
 }
 
-& $InnoSetupCompiler `
-    "/DAppVersion=$Version" `
-    "/DPublishDir=$publishRoot" `
-    "/DOutputDir=$releaseRoot" `
-    $installerScript
+$innoArguments = @(
+    "/DAppVersion=$Version",
+    "/DPublishDir=$publishRoot",
+    "/DOutputDir=$releaseRoot"
+)
+
+if ($SkipPrerequisites) {
+    $innoArguments += "/DSkipPrerequisites=true"
+} else {
+    $innoArguments += "/DDotNetDesktopRuntimeInstaller=$DotNetDesktopRuntimeInstaller"
+    $innoArguments += "/DWindowsAppRuntimeInstaller=$WindowsAppRuntimeInstaller"
+}
+
+$innoArguments += $installerScript
+
+Invoke-NativeCommand $InnoSetupCompiler $innoArguments
+
+$installerPath = Join-Path $releaseRoot "SEImageConverter-Setup-$Version.exe"
+Write-ChecksumManifest @($installerPath, $zipPath) $checksumManifestPath
 
 Write-Host "Release artifacts:"
-Write-Host "  Installer: $(Join-Path $releaseRoot "SEImageConverter-Setup-$Version.exe")"
+Write-Host "  Installer: $installerPath"
 Write-Host "  Portable:  $zipPath"
+Write-Host "  Checksums: $checksumManifestPath"

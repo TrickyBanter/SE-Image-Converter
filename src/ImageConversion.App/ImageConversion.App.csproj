@@ -15,10 +15,10 @@
     <AssemblyTitle>SE Image Converter</AssemblyTitle>
     <Product>SE Image Converter</Product>
     <RootNamespace>ImageConversion.App</RootNamespace>
-    <Version>1.0.0</Version>
-    <AssemblyVersion>1.0.0.0</AssemblyVersion>
-    <FileVersion>1.0.0.0</FileVersion>
-    <PackageVersion>1.0.0</PackageVersion>
+    <Version>1.0.1</Version>
+    <AssemblyVersion>1.0.1.0</AssemblyVersion>
+    <FileVersion>1.0.1.0</FileVersion>
+    <PackageVersion>1.0.1</PackageVersion>
   </PropertyGroup>
   <ItemGroup>
     <PackageReference Include="CommunityToolkit.Mvvm" Version="8.4.2" />

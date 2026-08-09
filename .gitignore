@@ -7,3 +7,5 @@ TestResults/
 *.suo
 *.nupkg
 artifacts/
+build/prerequisites/WindowsAppRuntimeInstall-x64.exe
+build/prerequisites/windowsdesktop-runtime-win-x64.exe

@@ -62,7 +62,7 @@ until the app is signed and has reputation.
 To build release artifacts:
 
 ```powershell
-.\build\Release.ps1 -Version 1.0.0
+.\build\Release.ps1 -Version 1.0.1
 ```
 
 The script runs the Release test suite, publishes a framework-dependent
@@ -71,18 +71,18 @@ Inno Setup 6 or newer. Install Inno Setup first, or pass its compiler path
 explicitly:
 
 ```powershell
-.\build\Release.ps1 -Version 1.0.0 -InnoSetupCompiler "C:\Program Files (x86)\Inno Setup 6\ISCC.exe"
+.\build\Release.ps1 -Version 1.0.1 -InnoSetupCompiler "C:\Program Files (x86)\Inno Setup 6\ISCC.exe"
 ```
 
 For a portable-only build:
 
 ```powershell
-.\build\Release.ps1 -Version 1.0.0 -SkipInstaller
+.\build\Release.ps1 -Version 1.0.1 -SkipInstaller
 ```
 
 Before publishing a release, update the app version metadata in
 `src/ImageConversion.App/ImageConversion.App.csproj`. Then create a GitHub
-release tag such as `v1.0.0` and upload both files from `artifacts/release`.
+release tag such as `v1.0.1` and upload both files from `artifacts/release`.
 
 ## Updates
 
