@@ -4,6 +4,8 @@ Image converter for use in Space Engineers.
 This is a modern WinUI 3 desktop app that converts ordinary image files into
 paste-ready Space Engineers LCD/Text Panel Monospace text.
 
+<img width="1234" height="1001" alt="se_image_converter" src="https://github.com/user-attachments/assets/edb2b119-3fa3-4aaa-ac77-66902f5d4aec" />
+
 ## Projects
 
 - `src/ImageConversion.Core` contains the deterministic conversion engine.
