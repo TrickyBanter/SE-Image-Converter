@@ -1,6 +1,7 @@
 using System.Collections.ObjectModel;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
+using ImageConversion.App.Services;
 using ImageConversion.Core;
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
@@ -14,7 +15,9 @@ namespace ImageConversion.App.ViewModels;
 public partial class MainWindowViewModel : ObservableObject
 {
     private readonly ImageToLcdConverter converter = new();
+    private readonly GitHubReleaseUpdater updater = new();
     private byte[]? sourceBytes;
+    private GitHubUpdate? availableUpdate;
 
     [ObservableProperty]
     public partial ImageSource? SourcePreview { get; set; }
@@ -64,6 +67,24 @@ public partial class MainWindowViewModel : ObservableObject
     [ObservableProperty]
     public partial bool IsOutputStale { get; set; }
 
+    [ObservableProperty]
+    public partial bool IsCheckingForUpdates { get; set; }
+
+    [ObservableProperty]
+    public partial bool IsDownloadingUpdate { get; set; }
+
+    [ObservableProperty]
+    public partial bool IsUpdateAvailable { get; set; }
+
+    [ObservableProperty]
+    public partial double UpdateDownloadProgress { get; set; }
+
+    [ObservableProperty]
+    public partial string AvailableUpdateSummary { get; set; } = string.Empty;
+
+    [ObservableProperty]
+    public partial string UpdateStatusMessage { get; set; } = "Checking GitHub Releases on startup.";
+
     public ObservableCollection<PanelPreset> PanelPresets { get; } = new(PanelPreset.Defaults);
 
     public ObservableCollection<ResizeMode> ResizeModes { get; } = new(Enum.GetValues<ResizeMode>());
@@ -74,9 +95,29 @@ public partial class MainWindowViewModel : ObservableObject
 
     public bool HasStatusMessage => !string.IsNullOrWhiteSpace(StatusTitle) || !string.IsNullOrWhiteSpace(StatusMessage);
 
+    public string CurrentVersionSummary => $"Version {FormatVersion(GitHubReleaseUpdater.CurrentVersion)}";
+
     public Visibility SourcePlaceholderVisibility => SourcePreview is null ? Visibility.Visible : Visibility.Collapsed;
 
     public Visibility ConvertedPlaceholderVisibility => ConvertedPreview is null ? Visibility.Visible : Visibility.Collapsed;
+
+    public Visibility UpdateAvailableVisibility => IsUpdateAvailable ? Visibility.Visible : Visibility.Collapsed;
+
+    public Visibility UpdateDownloadVisibility => IsDownloadingUpdate ? Visibility.Visible : Visibility.Collapsed;
+
+    public string InstallUpdateButtonText => availableUpdate is null
+        ? "Download and install"
+        : $"Download and install {availableUpdate.TagName}";
+
+    public async Task CheckForUpdatesOnStartupAsync()
+    {
+        await CheckForUpdatesAsync(showUpToDateMessage: false);
+    }
+
+    public async Task CheckForUpdatesManuallyAsync()
+    {
+        await CheckForUpdatesAsync(showUpToDateMessage: true);
+    }
 
     public async Task LoadImageAsync(string path)
     {
@@ -151,6 +192,45 @@ public partial class MainWindowViewModel : ObservableObject
         SetStatus("Exported", $"Saved {Path.GetFileName(path)}.", InfoBarSeverity.Success);
     }
 
+    [RelayCommand(CanExecute = nameof(CanCheckForUpdates))]
+    private async Task CheckForUpdatesAsync()
+    {
+        await CheckForUpdatesManuallyAsync();
+    }
+
+    [RelayCommand(CanExecute = nameof(CanInstallUpdate))]
+    private async Task InstallUpdateAsync()
+    {
+        if (availableUpdate is null)
+        {
+            return;
+        }
+
+        try
+        {
+            IsDownloadingUpdate = true;
+            UpdateDownloadProgress = 0;
+            UpdateStatusMessage = $"Downloading {availableUpdate.InstallerAsset.Name}...";
+            NotifyUpdateStateChanged();
+
+            Progress<double> progress = new(value => UpdateDownloadProgress = value);
+            string installerPath = await updater.DownloadInstallerAsync(availableUpdate, progress);
+
+            UpdateStatusMessage = "Opening the installer...";
+            updater.LaunchInstaller(installerPath);
+            Application.Current.Exit();
+        }
+        catch (Exception ex)
+        {
+            UpdateStatusMessage = $"Could not install update: {ex.Message}";
+        }
+        finally
+        {
+            IsDownloadingUpdate = false;
+            NotifyUpdateStateChanged();
+        }
+    }
+
     partial void OnConvertedTextChanged(string value)
     {
         CharacterCountSummary = $"{value.Length:N0} characters";
@@ -170,6 +250,26 @@ public partial class MainWindowViewModel : ObservableObject
         OnPropertyChanged(nameof(ConvertedPlaceholderVisibility));
     }
 
+    partial void OnIsUpdateAvailableChanged(bool value)
+    {
+        OnPropertyChanged(nameof(UpdateAvailableVisibility));
+        OnPropertyChanged(nameof(InstallUpdateButtonText));
+        InstallUpdateCommand.NotifyCanExecuteChanged();
+    }
+
+    partial void OnIsCheckingForUpdatesChanged(bool value)
+    {
+        CheckForUpdatesCommand.NotifyCanExecuteChanged();
+        InstallUpdateCommand.NotifyCanExecuteChanged();
+    }
+
+    partial void OnIsDownloadingUpdateChanged(bool value)
+    {
+        OnPropertyChanged(nameof(UpdateDownloadVisibility));
+        CheckForUpdatesCommand.NotifyCanExecuteChanged();
+        InstallUpdateCommand.NotifyCanExecuteChanged();
+    }
+
     partial void OnSelectedPanelPresetChanged(PanelPreset value) => QueueStaleConversionMessage();
 
     partial void OnSelectedResizeModeChanged(ResizeMode value) => QueueStaleConversionMessage();
@@ -183,6 +283,49 @@ public partial class MainWindowViewModel : ObservableObject
     private bool CanConvert() => sourceBytes is not null;
 
     private bool HasConvertedText() => !string.IsNullOrEmpty(ConvertedText);
+
+    private bool CanCheckForUpdates() => !IsCheckingForUpdates && !IsDownloadingUpdate;
+
+    private bool CanInstallUpdate() => availableUpdate is not null && !IsCheckingForUpdates && !IsDownloadingUpdate;
+
+    private async Task CheckForUpdatesAsync(bool showUpToDateMessage)
+    {
+        if (IsCheckingForUpdates || IsDownloadingUpdate)
+        {
+            return;
+        }
+
+        try
+        {
+            IsCheckingForUpdates = true;
+            UpdateStatusMessage = "Checking GitHub Releases...";
+
+            availableUpdate = await updater.CheckForUpdateAsync();
+            IsUpdateAvailable = availableUpdate is not null;
+
+            if (availableUpdate is not null)
+            {
+                AvailableUpdateSummary = $"{availableUpdate.TagName} is available.";
+                UpdateStatusMessage = $"Update {availableUpdate.TagName} is ready to download.";
+            }
+            else
+            {
+                AvailableUpdateSummary = string.Empty;
+                UpdateStatusMessage = showUpToDateMessage
+                    ? "You are running the latest version."
+                    : "No update available.";
+            }
+        }
+        catch (Exception ex)
+        {
+            UpdateStatusMessage = $"Could not check for updates: {ex.Message}";
+        }
+        finally
+        {
+            IsCheckingForUpdates = false;
+            NotifyUpdateStateChanged();
+        }
+    }
 
     private ConversionOptions BuildOptions() => new()
     {
@@ -207,6 +350,22 @@ public partial class MainWindowViewModel : ObservableObject
         StatusMessage = message;
         StatusSeverity = severity;
         OnPropertyChanged(nameof(HasStatusMessage));
+    }
+
+    private void NotifyUpdateStateChanged()
+    {
+        OnPropertyChanged(nameof(UpdateAvailableVisibility));
+        OnPropertyChanged(nameof(UpdateDownloadVisibility));
+        OnPropertyChanged(nameof(InstallUpdateButtonText));
+        CheckForUpdatesCommand.NotifyCanExecuteChanged();
+        InstallUpdateCommand.NotifyCanExecuteChanged();
+    }
+
+    private static string FormatVersion(Version version)
+    {
+        return version.Build >= 0
+            ? $"{version.Major}.{version.Minor}.{version.Build}"
+            : $"{version.Major}.{version.Minor}";
     }
 
     private static async Task<ImageSource> CreateImageSourceAsync(byte[] pngBytes)

@@ -7,15 +7,57 @@
     mc:Ignorable="d"
     Title="SE Image Converter">
 
-    <Grid x:Name="Root" Background="{ThemeResource ApplicationPageBackgroundThemeBrush}" Padding="24">
+    <Grid x:Name="Root" Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="340" />
             <ColumnDefinition Width="20" />
             <ColumnDefinition Width="*" />
         </Grid.ColumnDefinitions>
 
+        <MenuBar Grid.Row="0" Grid.ColumnSpan="3" Margin="24,0,24,8">
+            <MenuBarItem Title="File">
+                <MenuFlyoutItem Text="Export" Click="ExportButton_Click">
+                    <MenuFlyoutItem.Icon>
+                        <SymbolIcon Symbol="Save" />
+                    </MenuFlyoutItem.Icon>
+                </MenuFlyoutItem>
+                <MenuFlyoutSeparator />
+                <MenuFlyoutItem Text="Exit" Click="ExitMenuItem_Click">
+                    <MenuFlyoutItem.Icon>
+                        <SymbolIcon Symbol="ClosePane" />
+                    </MenuFlyoutItem.Icon>
+                </MenuFlyoutItem>
+            </MenuBarItem>
+
+            <MenuBarItem Title="Help">
+                <MenuFlyoutItem Text="About" Click="AboutMenuItem_Click">
+                    <MenuFlyoutItem.Icon>
+                        <SymbolIcon Symbol="Help" />
+                    </MenuFlyoutItem.Icon>
+                </MenuFlyoutItem>
+                <MenuFlyoutItem Text="Guide" Click="GuideMenuItem_Click">
+                    <MenuFlyoutItem.Icon>
+                        <SymbolIcon Symbol="Library" />
+                    </MenuFlyoutItem.Icon>
+                </MenuFlyoutItem>
+                <MenuFlyoutSeparator />
+                <MenuFlyoutItem Text="Check for Updates" Click="CheckForUpdatesMenuItem_Click">
+                    <MenuFlyoutItem.Icon>
+                        <SymbolIcon Symbol="Refresh" />
+                    </MenuFlyoutItem.Icon>
+                </MenuFlyoutItem>
+            </MenuBarItem>
+        </MenuBar>
+
         <Border
+            Grid.Row="1"
             Grid.Column="0"
+            Margin="24,0,0,24"
             Padding="22,20"
             BorderBrush="{ThemeResource CardStrokeColorDefaultBrush}"
             BorderThickness="1"
@@ -111,13 +153,13 @@
                             IsOpen="{Binding HasStatusMessage}"
                             Severity="{Binding StatusSeverity}"
                             Title="{Binding StatusTitle}"
-                            Message="" />
+                            Message="{Binding StatusMessage}" />
                     </StackPanel>
                 </StackPanel>
             </ScrollViewer>
         </Border>
 
-        <Grid Grid.Column="2" RowSpacing="20">
+        <Grid Grid.Row="1" Grid.Column="2" RowSpacing="20" Margin="0,0,24,24">
             <Grid.RowDefinitions>
                 <RowDefinition Height="360" />
                 <RowDefinition Height="*" />

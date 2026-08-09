@@ -45,6 +45,17 @@ If you prefer to launch the built app directly:
 The app is currently configured as an unpackaged, self-contained WinUI app so
 it can run locally without separately installing the Windows App Runtime.
 
+## Updates
+
+The app checks GitHub Releases on startup and from the in-app update controls.
+Release tags should be semantic versions such as `v1.2.3` or `1.2.3`, and each
+release should include one Windows installer asset. `.msixbundle` assets are
+preferred; `.msix` assets are used as a fallback.
+
+Before publishing a release, update the app version metadata in
+`src/ImageConversion.App/ImageConversion.App.csproj` and keep it aligned with
+`src/ImageConversion.App/Package.appxmanifest`.
+
 ## Space Engineers usage
 
 1. Open an image.
