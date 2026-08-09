@@ -27,7 +27,7 @@ dotnet new install Microsoft.WindowsAppSDK.WinUI.CSharp.Templates
 ```powershell
 dotnet restore .\SEImageConverter.slnx
 dotnet build .\SEImageConverter.slnx
-dotnet test .\tests\ImageConversion.Core.Tests\ImageConversion.Core.Tests.csproj
+dotnet test .\SEImageConverter.slnx
 ```
 
 ## Run
@@ -45,16 +45,47 @@ If you prefer to launch the built app directly:
 The app is currently configured as an unpackaged, self-contained WinUI app so
 it can run locally without separately installing the Windows App Runtime.
 
+## Release
+
+GitHub Releases are the production distribution channel. Each release should
+include:
+
+- `SEImageConverter-Setup-<version>.exe` for normal installation.
+- `SEImageConverter-Portable-<version>-win-x64.zip` for portable use.
+
+The setup executable is currently unsigned. Windows SmartScreen may warn users
+until the app is signed and has reputation.
+
+To build release artifacts:
+
+```powershell
+.\build\Release.ps1 -Version 1.0.0
+```
+
+The script runs the Release test suite, publishes a self-contained `win-x64`
+build, creates the portable zip, and builds the setup executable with Inno Setup
+6 or newer. Install Inno Setup first, or pass its compiler path explicitly:
+
+```powershell
+.\build\Release.ps1 -Version 1.0.0 -InnoSetupCompiler "C:\Program Files (x86)\Inno Setup 6\ISCC.exe"
+```
+
+For a portable-only build:
+
+```powershell
+.\build\Release.ps1 -Version 1.0.0 -SkipInstaller
+```
+
+Before publishing a release, update the app version metadata in
+`src/ImageConversion.App/ImageConversion.App.csproj`. Then create a GitHub
+release tag such as `v1.0.0` and upload both files from `artifacts/release`.
+
 ## Updates
 
 The app checks GitHub Releases on startup and from the in-app update controls.
-Release tags should be semantic versions such as `v1.2.3` or `1.2.3`, and each
-release should include one Windows installer asset. `.msixbundle` assets are
-preferred; `.msix` assets are used as a fallback.
-
-Before publishing a release, update the app version metadata in
-`src/ImageConversion.App/ImageConversion.App.csproj` and keep it aligned with
-`src/ImageConversion.App/Package.appxmanifest`.
+Release tags should be semantic versions such as `v1.2.3` or `1.2.3`. The
+in-app updater downloads the setup `.exe` asset; portable `.zip` assets are
+ignored by the updater and are intended for manual downloads.
 
 ## Space Engineers usage
 

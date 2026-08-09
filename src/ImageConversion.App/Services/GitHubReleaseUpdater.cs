@@ -226,14 +226,21 @@ public static class GitHubUpdateSelector
 
     private static int GetAssetPriority(string name)
     {
-        if (name.EndsWith(".msixbundle", StringComparison.OrdinalIgnoreCase))
+        if (name.EndsWith(".exe", StringComparison.OrdinalIgnoreCase) &&
+            name.Contains("setup", StringComparison.OrdinalIgnoreCase))
         {
             return 0;
         }
 
-        if (name.EndsWith(".msix", StringComparison.OrdinalIgnoreCase))
+        if (name.EndsWith(".exe", StringComparison.OrdinalIgnoreCase) &&
+            name.Contains("installer", StringComparison.OrdinalIgnoreCase))
         {
             return 1;
+        }
+
+        if (name.EndsWith(".exe", StringComparison.OrdinalIgnoreCase))
+        {
+            return 2;
         }
 
         return int.MaxValue;

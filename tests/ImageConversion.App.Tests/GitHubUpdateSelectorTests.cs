@@ -38,31 +38,31 @@ public sealed class GitHubUpdateSelectorTests
     }
 
     [Fact]
-    public void SelectsMsixBundleBeforeMsix()
+    public void SelectsSetupExeBeforeOtherExeAssets()
     {
         GitHubReleaseAssetResponse[] assets =
         [
-            Asset("SEImageConverter.msix", "https://example.com/app.msix"),
-            Asset("SEImageConverter.msixbundle", "https://example.com/app.msixbundle"),
+            Asset("SEImageConverter-portable-helper.exe", "https://example.com/helper.exe"),
+            Asset("SEImageConverter-Setup-1.2.3.exe", "https://example.com/setup.exe"),
         ];
 
         Assert.True(GitHubUpdateSelector.TrySelectInstallerAsset(assets, out GitHubReleaseAsset? installerAsset));
         Assert.NotNull(installerAsset);
-        Assert.Equal("SEImageConverter.msixbundle", installerAsset.Name);
+        Assert.Equal("SEImageConverter-Setup-1.2.3.exe", installerAsset.Name);
     }
 
     [Fact]
-    public void FallsBackToMsixInstaller()
+    public void FallsBackToAnyExeInstaller()
     {
         GitHubReleaseAssetResponse[] assets =
         [
             Asset("SEImageConverter.zip", "https://example.com/app.zip"),
-            Asset("SEImageConverter.msix", "https://example.com/app.msix"),
+            Asset("SEImageConverter-1.2.3.exe", "https://example.com/app.exe"),
         ];
 
         Assert.True(GitHubUpdateSelector.TrySelectInstallerAsset(assets, out GitHubReleaseAsset? installerAsset));
         Assert.NotNull(installerAsset);
-        Assert.Equal("SEImageConverter.msix", installerAsset.Name);
+        Assert.Equal("SEImageConverter-1.2.3.exe", installerAsset.Name);
     }
 
     [Fact]
@@ -72,6 +72,7 @@ public sealed class GitHubUpdateSelectorTests
         [
             Asset("SEImageConverter.zip", "https://example.com/app.zip"),
             Asset("checksums.txt", "https://example.com/checksums.txt"),
+            Asset("SEImageConverter.msixbundle", "https://example.com/app.msixbundle"),
         ];
 
         Assert.False(GitHubUpdateSelector.TrySelectInstallerAsset(assets, out GitHubReleaseAsset? installerAsset));
@@ -113,7 +114,7 @@ public sealed class GitHubUpdateSelectorTests
         Prerelease = prerelease,
         Assets =
         [
-            Asset("SEImageConverter.msixbundle", "https://example.com/app.msixbundle"),
+            Asset("SEImageConverter-Setup-1.2.0.exe", "https://example.com/setup.exe"),
         ],
     };
 
