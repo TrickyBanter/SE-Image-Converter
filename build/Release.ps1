@@ -43,7 +43,7 @@ dotnet test $solution --configuration $Configuration
 dotnet publish $appProject `
     --configuration $Configuration `
     --runtime $RuntimeIdentifier `
-    --self-contained true `
+    --self-contained false `
     -p:Version=$Version `
     -p:AssemblyVersion=$assemblyVersion `
     -p:FileVersion=$assemblyVersion `

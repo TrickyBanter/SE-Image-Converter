@@ -12,7 +12,7 @@
 
 #define AppName "SE Image Converter"
 #define AppPublisher "SE Image Converter"
-#define AppExeName "ImageConversion.App.exe"
+#define AppExeName "SE Image Converter.exe"
 #define AppId "{{4D747F7D-B8A6-48C5-8B9C-34E14C694B7E}"
 
 [Setup]

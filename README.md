@@ -39,11 +39,12 @@ dotnet run --project .\src\ImageConversion.App\ImageConversion.App.csproj
 If you prefer to launch the built app directly:
 
 ```powershell
-.\src\ImageConversion.App\bin\Debug\net10.0-windows10.0.19041.0\win-x64\ImageConversion.App.exe
+.\src\ImageConversion.App\bin\Debug\net10.0-windows10.0.19041.0\win-x64\SE Image Converter.exe
 ```
 
-The app is currently configured as an unpackaged, self-contained WinUI app so
-it can run locally without separately installing the Windows App Runtime.
+The app is currently configured as an unpackaged, framework-dependent WinUI app.
+Release builds require the .NET Desktop Runtime and Windows App Runtime to be
+installed on the target machine.
 
 ## Release
 
@@ -62,9 +63,10 @@ To build release artifacts:
 .\build\Release.ps1 -Version 1.0.0
 ```
 
-The script runs the Release test suite, publishes a self-contained `win-x64`
-build, creates the portable zip, and builds the setup executable with Inno Setup
-6 or newer. Install Inno Setup first, or pass its compiler path explicitly:
+The script runs the Release test suite, publishes a framework-dependent
+`win-x64` build, creates the portable zip, and builds the setup executable with
+Inno Setup 6 or newer. Install Inno Setup first, or pass its compiler path
+explicitly:
 
 ```powershell
 .\build\Release.ps1 -Version 1.0.0 -InnoSetupCompiler "C:\Program Files (x86)\Inno Setup 6\ISCC.exe"
