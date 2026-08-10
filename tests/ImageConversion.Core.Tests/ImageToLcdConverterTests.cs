@@ -91,8 +91,12 @@ public sealed class ImageToLcdConverterTests
     [InlineData(DitheringMode.None)]
     [InlineData(DitheringMode.FloydSteinberg)]
     [InlineData(DitheringMode.Atkinson)]
+    [InlineData(DitheringMode.SierraLite)]
+    [InlineData(DitheringMode.Stucki)]
+    [InlineData(DitheringMode.Burkes)]
     [InlineData(DitheringMode.OrderedBayer2)]
     [InlineData(DitheringMode.OrderedBayer4)]
+    [InlineData(DitheringMode.OrderedBayer8)]
     public void DitheringModesPreserveOutputDimensions(DitheringMode mode)
     {
         using SKBitmap bitmap = new(new SKImageInfo(4, 4, SKColorType.Rgba8888, SKAlphaType.Unpremul));

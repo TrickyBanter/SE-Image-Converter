@@ -47,9 +47,6 @@ public partial class MainWindowViewModel : ObservableObject
     public partial ResizeMode SelectedResizeMode { get; set; } = ResizeMode.Fit;
 
     [ObservableProperty]
-    public partial DitheringMode SelectedDitheringMode { get; set; } = DitheringMode.FloydSteinberg;
-
-    [ObservableProperty]
     public partial bool MaintainAspectRatio { get; set; } = true;
 
     [ObservableProperty]
@@ -89,11 +86,27 @@ public partial class MainWindowViewModel : ObservableObject
 
     public ObservableCollection<ResizeMode> ResizeModes { get; } = new(Enum.GetValues<ResizeMode>());
 
-    public ObservableCollection<DitheringMode> DitheringModes { get; } = new(Enum.GetValues<DitheringMode>());
+    public ObservableCollection<DitheringModeOption> DitheringModes { get; } =
+    [
+        new(DitheringMode.None, "None", "Nearest color match with no dithering. Fast and crisp, but gradients can band."),
+        new(DitheringMode.FloydSteinberg, "Floyd-Steinberg", "Classic error diffusion with sharp detail and balanced grain. A strong general-purpose choice."),
+        new(DitheringMode.Atkinson, "Atkinson", "Apple-style error diffusion that preserves contrast and creates a lighter, more stylized texture."),
+        new(DitheringMode.SierraLite, "Sierra Lite", "Compact error diffusion that is quick, clean, and often works well on small LCD panels."),
+        new(DitheringMode.Stucki, "Stucki", "Wide error diffusion that smooths gradients and photos, especially on larger panels."),
+        new(DitheringMode.Burkes, "Burkes", "A sharper, cheaper cousin of Stucki that balances photo smoothness with good edge detail."),
+        new(DitheringMode.OrderedBayer2, "Ordered Bayer 2x2", "Very coarse ordered pattern. Useful for a chunky pixel-art look."),
+        new(DitheringMode.OrderedBayer4, "Ordered Bayer 4x4", "Predictable ordered pattern with moderate texture. Good for logos and UI images."),
+        new(DitheringMode.OrderedBayer8, "Ordered Bayer 8x8", "Finer ordered pattern with less visible grid texture than 2x2 or 4x4."),
+    ];
+
+    [ObservableProperty]
+    public partial DitheringModeOption SelectedDitheringMode { get; set; }
 
     public bool HasImage => sourceBytes is not null;
 
     public bool HasStatusMessage => !string.IsNullOrWhiteSpace(StatusTitle) || !string.IsNullOrWhiteSpace(StatusMessage);
+
+    public bool CanExport => HasConvertedText();
 
     public string CurrentVersionSummary => $"Version {FormatVersion(GitHubReleaseUpdater.CurrentVersion)}";
 
@@ -108,6 +121,11 @@ public partial class MainWindowViewModel : ObservableObject
     public string InstallUpdateButtonText => availableUpdate is null
         ? "Download and install"
         : $"Download and install {availableUpdate.TagName}";
+
+    public MainWindowViewModel()
+    {
+        SelectedDitheringMode = DitheringModes[0];
+    }
 
     public async Task CheckForUpdatesOnStartupAsync()
     {
@@ -238,6 +256,7 @@ public partial class MainWindowViewModel : ObservableObject
             ? "0 lines"
             : $"{value.Split(Environment.NewLine).Length:N0} lines";
         CopyCommand.NotifyCanExecuteChanged();
+        OnPropertyChanged(nameof(CanExport));
     }
 
     partial void OnSourcePreviewChanged(ImageSource? value)
@@ -274,7 +293,7 @@ public partial class MainWindowViewModel : ObservableObject
 
     partial void OnSelectedResizeModeChanged(ResizeMode value) => QueueStaleConversionMessage();
 
-    partial void OnSelectedDitheringModeChanged(DitheringMode value) => QueueStaleConversionMessage();
+    partial void OnSelectedDitheringModeChanged(DitheringModeOption value) => QueueStaleConversionMessage();
 
     partial void OnMaintainAspectRatioChanged(bool value) => QueueStaleConversionMessage();
 
@@ -331,7 +350,7 @@ public partial class MainWindowViewModel : ObservableObject
     {
         PanelPreset = SelectedPanelPreset,
         ResizeMode = SelectedResizeMode,
-        DitheringMode = SelectedDitheringMode,
+        DitheringMode = SelectedDitheringMode.Mode,
         MaintainAspectRatio = MaintainAspectRatio,
         PreserveTransparency = PreserveTransparency,
     };
@@ -384,3 +403,5 @@ public partial class MainWindowViewModel : ObservableObject
         return image;
     }
 }
+
+public sealed record DitheringModeOption(DitheringMode Mode, string Name, string Description);

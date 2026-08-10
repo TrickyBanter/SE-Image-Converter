@@ -31,8 +31,12 @@ public sealed class ImageToLcdConverter
         {
             DitheringMode.FloydSteinberg => ConvertWithErrorDiffusion(buffer, ErrorDiffusionKernel.FloydSteinberg),
             DitheringMode.Atkinson => ConvertWithErrorDiffusion(buffer, ErrorDiffusionKernel.Atkinson),
+            DitheringMode.SierraLite => ConvertWithErrorDiffusion(buffer, ErrorDiffusionKernel.SierraLite),
+            DitheringMode.Stucki => ConvertWithErrorDiffusion(buffer, ErrorDiffusionKernel.Stucki),
+            DitheringMode.Burkes => ConvertWithErrorDiffusion(buffer, ErrorDiffusionKernel.Burkes),
             DitheringMode.OrderedBayer2 => ConvertWithOrderedDither(buffer, BayerMatrices.Size2),
             DitheringMode.OrderedBayer4 => ConvertWithOrderedDither(buffer, BayerMatrices.Size4),
+            DitheringMode.OrderedBayer8 => ConvertWithOrderedDither(buffer, BayerMatrices.Size8),
             _ => ConvertNearest(buffer),
         };
     }
@@ -327,6 +331,40 @@ internal sealed record ErrorDiffusionKernel(IReadOnlyList<ErrorDiffusionWeight> 
         new(1, 1, 1.0 / 8.0),
         new(0, 2, 1.0 / 8.0),
     ]);
+
+    public static ErrorDiffusionKernel SierraLite { get; } = new(
+    [
+        new(1, 0, 2.0 / 4.0),
+        new(-1, 1, 1.0 / 4.0),
+        new(0, 1, 1.0 / 4.0),
+    ]);
+
+    public static ErrorDiffusionKernel Stucki { get; } = new(
+    [
+        new(1, 0, 8.0 / 42.0),
+        new(2, 0, 4.0 / 42.0),
+        new(-2, 1, 2.0 / 42.0),
+        new(-1, 1, 4.0 / 42.0),
+        new(0, 1, 8.0 / 42.0),
+        new(1, 1, 4.0 / 42.0),
+        new(2, 1, 2.0 / 42.0),
+        new(-2, 2, 1.0 / 42.0),
+        new(-1, 2, 2.0 / 42.0),
+        new(0, 2, 4.0 / 42.0),
+        new(1, 2, 2.0 / 42.0),
+        new(2, 2, 1.0 / 42.0),
+    ]);
+
+    public static ErrorDiffusionKernel Burkes { get; } = new(
+    [
+        new(1, 0, 8.0 / 32.0),
+        new(2, 0, 4.0 / 32.0),
+        new(-2, 1, 2.0 / 32.0),
+        new(-1, 1, 4.0 / 32.0),
+        new(0, 1, 8.0 / 32.0),
+        new(1, 1, 4.0 / 32.0),
+        new(2, 1, 2.0 / 32.0),
+    ]);
 }
 
 internal sealed record ErrorDiffusionWeight(int OffsetX, int OffsetY, double Factor);
@@ -345,5 +383,17 @@ internal static class BayerMatrices
         { 12, 4, 14, 6 },
         { 3, 11, 1, 9 },
         { 15, 7, 13, 5 },
+    };
+
+    public static int[,] Size8 { get; } =
+    {
+        { 0, 32, 8, 40, 2, 34, 10, 42 },
+        { 48, 16, 56, 24, 50, 18, 58, 26 },
+        { 12, 44, 4, 36, 14, 46, 6, 38 },
+        { 60, 28, 52, 20, 62, 30, 54, 22 },
+        { 3, 35, 11, 43, 1, 33, 9, 41 },
+        { 51, 19, 59, 27, 49, 17, 57, 25 },
+        { 15, 47, 7, 39, 13, 45, 5, 37 },
+        { 63, 31, 55, 23, 61, 29, 53, 21 },
     };
 }
