@@ -135,6 +135,18 @@
                             Title="Settings changed"
                             Message="Convert again to refresh the output." />
 
+                        <InfoBar
+                            IsOpen="{Binding IsUpdateAvailable}"
+                            Severity="Informational"
+                            Title="Update available"
+                            Message="{Binding UpdateStatusMessage}">
+                            <InfoBar.ActionButton>
+                                <Button
+                                    Command="{Binding InstallUpdateCommand}"
+                                    Content="{Binding InstallUpdateButtonText}" />
+                            </InfoBar.ActionButton>
+                        </InfoBar>
+
                         <Button
                             Command="{Binding ConvertCommand}"
                             HorizontalAlignment="Stretch"
