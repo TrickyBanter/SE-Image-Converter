@@ -134,6 +134,7 @@ public sealed partial class MainWindow : Window
         ViewModel.CurrentFeature = tag switch
         {
             "JumpDriveCalculator" => MainFeature.JumpDriveCalculator,
+            "Settings" => MainFeature.Settings,
             _ => MainFeature.ImageConverter,
         };
     }

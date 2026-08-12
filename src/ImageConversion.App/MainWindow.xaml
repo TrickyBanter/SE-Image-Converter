@@ -67,10 +67,17 @@
                 </NavigationViewItem>
                 <NavigationViewItem Content="Jump Drive Calculator" Tag="JumpDriveCalculator">
                     <NavigationViewItem.Icon>
-                        <SymbolIcon Symbol="MapDrive" />
+                        <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph="&#xE800;" />
                     </NavigationViewItem.Icon>
                 </NavigationViewItem>
             </NavigationView.MenuItems>
+            <NavigationView.FooterMenuItems>
+                <NavigationViewItem Content="Settings" Tag="Settings">
+                    <NavigationViewItem.Icon>
+                        <SymbolIcon Symbol="Setting" />
+                    </NavigationViewItem.Icon>
+                </NavigationViewItem>
+            </NavigationView.FooterMenuItems>
 
             <Grid Margin="0,0,24,24">
                 <Grid Visibility="{Binding ImageConverterVisibility}">
@@ -482,6 +489,123 @@
                                         </ListView.ItemTemplate>
                                     </ListView>
                                 </Grid>
+                            </Border>
+                        </Grid>
+                    </Grid>
+                </ScrollViewer>
+
+                <ScrollViewer Visibility="{Binding SettingsVisibility}" VerticalScrollBarVisibility="Auto">
+                    <Grid RowSpacing="20">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                        </Grid.RowDefinitions>
+
+                        <Border
+                            Grid.Row="0"
+                            Padding="22,20"
+                            BorderBrush="{ThemeResource CardStrokeColorDefaultBrush}"
+                            BorderThickness="1"
+                            Background="{ThemeResource CardBackgroundFillColorDefaultBrush}"
+                            CornerRadius="8">
+                            <StackPanel Spacing="12">
+                                <TextBlock Text="Settings" FontSize="24" FontWeight="SemiBold" />
+                                <TextBlock Text="App preferences and update status." Foreground="{ThemeResource TextFillColorSecondaryBrush}" />
+                            </StackPanel>
+                        </Border>
+
+                        <Border
+                            Grid.Row="1"
+                            Padding="22,20"
+                            BorderBrush="{ThemeResource CardStrokeColorDefaultBrush}"
+                            BorderThickness="1"
+                            Background="{ThemeResource CardBackgroundFillColorDefaultBrush}"
+                            CornerRadius="8">
+                            <StackPanel Spacing="16">
+                                <TextBlock Text="Options" FontSize="20" FontWeight="SemiBold" />
+
+                                <ToggleSwitch Header="Remember last selected tool" IsOn="True" IsEnabled="False" />
+                                <ToggleSwitch Header="Check for updates on startup" IsOn="True" IsEnabled="False" />
+                                <ComboBox Header="Default app view" SelectedIndex="0" IsEnabled="False" HorizontalAlignment="Stretch">
+                                    <ComboBoxItem Content="Image Converter" />
+                                    <ComboBoxItem Content="Jump Drive Calculator" />
+                                </ComboBox>
+                                <ComboBox Header="Theme" SelectedIndex="0" IsEnabled="False" HorizontalAlignment="Stretch">
+                                    <ComboBoxItem Content="Use system setting" />
+                                    <ComboBoxItem Content="Light" />
+                                    <ComboBoxItem Content="Dark" />
+                                </ComboBox>
+                            </StackPanel>
+                        </Border>
+
+                        <Grid Grid.Row="2" ColumnSpacing="20">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="360" />
+                                <ColumnDefinition Width="*" />
+                            </Grid.ColumnDefinitions>
+
+                            <Border
+                                Grid.Column="0"
+                                Padding="22,20"
+                                BorderBrush="{ThemeResource CardStrokeColorDefaultBrush}"
+                                BorderThickness="1"
+                                Background="{ThemeResource CardBackgroundFillColorDefaultBrush}"
+                                CornerRadius="8">
+                                <StackPanel Spacing="14">
+                                    <TextBlock Text="About" FontSize="20" FontWeight="SemiBold" />
+                                    <Grid RowSpacing="12">
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="Auto" />
+                                            <RowDefinition Height="Auto" />
+                                        </Grid.RowDefinitions>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="*" />
+                                            <ColumnDefinition Width="Auto" />
+                                        </Grid.ColumnDefinitions>
+
+                                        <TextBlock Grid.Row="0" Text="Version" Foreground="{ThemeResource TextFillColorSecondaryBrush}" />
+                                        <TextBlock Grid.Row="0" Grid.Column="1" Text="{Binding CurrentVersionSummary}" FontWeight="SemiBold" />
+                                        <TextBlock Grid.Row="1" Text="App date" Foreground="{ThemeResource TextFillColorSecondaryBrush}" />
+                                        <TextBlock Grid.Row="1" Grid.Column="1" Text="{Binding AppDateSummary}" FontWeight="SemiBold" />
+                                    </Grid>
+                                </StackPanel>
+                            </Border>
+
+                            <Border
+                                Grid.Column="1"
+                                Padding="22,20"
+                                BorderBrush="{ThemeResource CardStrokeColorDefaultBrush}"
+                                BorderThickness="1"
+                                Background="{ThemeResource CardBackgroundFillColorDefaultBrush}"
+                                CornerRadius="8">
+                                <StackPanel Spacing="14">
+                                    <TextBlock Text="Check Updates" FontSize="20" FontWeight="SemiBold" />
+                                    <TextBlock Text="{Binding UpdateStatusMessage}" TextWrapping="Wrap" />
+                                    <TextBlock
+                                        Text="{Binding AvailableUpdateSummary}"
+                                        TextWrapping="Wrap"
+                                        Foreground="{ThemeResource AccentTextFillColorPrimaryBrush}"
+                                        Visibility="{Binding UpdateAvailableVisibility}" />
+                                    <ProgressBar
+                                        Minimum="0"
+                                        Maximum="100"
+                                        Value="{Binding UpdateDownloadProgress}"
+                                        Visibility="{Binding UpdateDownloadVisibility}" />
+                                    <StackPanel Orientation="Horizontal" Spacing="12">
+                                        <Button Command="{Binding CheckForUpdatesCommand}" Padding="14,8">
+                                            <StackPanel Orientation="Horizontal" Spacing="8">
+                                                <SymbolIcon Symbol="Refresh" />
+                                                <TextBlock Text="Check for Updates" />
+                                            </StackPanel>
+                                        </Button>
+                                        <Button
+                                            Command="{Binding InstallUpdateCommand}"
+                                            Content="{Binding InstallUpdateButtonText}"
+                                            Padding="14,8"
+                                            Visibility="{Binding UpdateAvailableVisibility}" />
+                                    </StackPanel>
+                                </StackPanel>
                             </Border>
                         </Grid>
                     </Grid>

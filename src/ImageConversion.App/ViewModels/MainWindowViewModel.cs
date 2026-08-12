@@ -1,5 +1,6 @@
 using System.Collections.ObjectModel;
 using System.Globalization;
+using System.Reflection;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using ImageConversion.App.Services;
@@ -171,9 +172,13 @@ public partial class MainWindowViewModel : ObservableObject
 
     public string CurrentVersionSummary => $"Version {FormatVersion(GitHubReleaseUpdater.CurrentVersion)}";
 
+    public string AppDateSummary => $"App date {GetAppDate():yyyy-MM-dd}";
+
     public Visibility ImageConverterVisibility => CurrentFeature == MainFeature.ImageConverter ? Visibility.Visible : Visibility.Collapsed;
 
     public Visibility JumpDriveCalculatorVisibility => CurrentFeature == MainFeature.JumpDriveCalculator ? Visibility.Visible : Visibility.Collapsed;
+
+    public Visibility SettingsVisibility => CurrentFeature == MainFeature.Settings ? Visibility.Visible : Visibility.Collapsed;
 
     public Visibility SourcePlaceholderVisibility => SourcePreview is null ? Visibility.Visible : Visibility.Collapsed;
 
@@ -386,6 +391,7 @@ public partial class MainWindowViewModel : ObservableObject
     {
         OnPropertyChanged(nameof(ImageConverterVisibility));
         OnPropertyChanged(nameof(JumpDriveCalculatorVisibility));
+        OnPropertyChanged(nameof(SettingsVisibility));
     }
 
     partial void OnJumpStatusTitleChanged(string value)
@@ -588,6 +594,15 @@ public partial class MainWindowViewModel : ObservableObject
             : $"{version.Major}.{version.Minor}";
     }
 
+    private static DateTime GetAppDate()
+    {
+        string assemblyPath = Assembly.GetExecutingAssembly().Location;
+
+        return string.IsNullOrWhiteSpace(assemblyPath)
+            ? DateTime.Today
+            : File.GetLastWriteTime(assemblyPath);
+    }
+
     private static string FormatDuration(TimeSpan duration)
     {
         if (duration.TotalHours >= 1)
@@ -626,6 +641,7 @@ public enum MainFeature
 {
     ImageConverter,
     JumpDriveCalculator,
+    Settings,
 }
 
 public sealed record JumpDriveLegViewModel(int Number, string Distance, string RechargeWait);
