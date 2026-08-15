@@ -52,4 +52,43 @@ public sealed class SpaceEngineersBlockCatalogTests
         Assert.Equal("Small Battery", block.DisplayName);
         Assert.Contains(block.Components, component => component is { ComponentName: "Power Cell", Count: 2 });
     }
+
+    [Theory]
+    [InlineData("AI Flight (Move)")]
+    [InlineData("AI Basic (Task)")]
+    [InlineData("AI Recorder (Task)")]
+    [InlineData("AI Defensive (Combat)")]
+    [InlineData("AI Offensive (Combat)")]
+    [InlineData("Event Controller")]
+    public void CatalogIncludesAutomatonsBlocksForBothGridSizes(string displayName)
+    {
+        Assert.Contains(SpaceEngineersBlockCatalog.DefaultBlocks, block =>
+            block.DisplayName == displayName && block.GridSize == "Large");
+        Assert.Contains(SpaceEngineersBlockCatalog.DefaultBlocks, block =>
+            block.DisplayName == displayName && block.GridSize == "Small");
+    }
+
+    [Fact]
+    public void CatalogIncludesExpectedAiBlockRecipe()
+    {
+        SpaceEngineersBlockDefinition block = Assert.Single(
+            SpaceEngineersBlockCatalog.DefaultBlocks,
+            block => block.Id.Equals("FlightMovementBlock/SmallBlockFlightMovementBlock/Small", StringComparison.OrdinalIgnoreCase));
+
+        Assert.Contains(block.Components, component => component is { ComponentName: "Detector Components", Count: 4 });
+        Assert.Contains(block.Components, component => component is { ComponentName: "Computer", Count: 10 });
+        Assert.Contains(block.Components, component => component is { ComponentName: "Steel Plate", Count: 2 });
+    }
+
+    [Fact]
+    public void CatalogIncludesExpectedEventControllerRecipe()
+    {
+        SpaceEngineersBlockDefinition block = Assert.Single(
+            SpaceEngineersBlockCatalog.DefaultBlocks,
+            block => block.Id.Equals("EventControllerBlock/LargeBlockEventControllerBlock/Large", StringComparison.OrdinalIgnoreCase));
+
+        Assert.Contains(block.Components, component => component is { ComponentName: "Interior Plate", Count: 10 });
+        Assert.Contains(block.Components, component => component is { ComponentName: "Display", Count: 4 });
+        Assert.Contains(block.Components, component => component is { ComponentName: "Construction Component", Count: 30 });
+    }
 }
