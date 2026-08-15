@@ -141,7 +141,7 @@ public partial class MainWindowViewModel : ObservableObject
     public partial JumpDriveTypeOption SelectedJumpDriveType { get; set; }
 
     [ObservableProperty]
-    public partial string ShipMassKg { get; set; } = "1,250,000.00";
+    public partial string ShipMassKg { get; set; } = string.Empty;
 
     [ObservableProperty]
     public partial string JumpStatusTitle { get; set; } = string.Empty;
