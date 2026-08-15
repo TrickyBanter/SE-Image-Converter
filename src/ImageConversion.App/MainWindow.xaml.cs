@@ -1,5 +1,6 @@
 using ImageConversion.App.ViewModels;
 using ImageConversion.App.Services;
+using ImageConversion.Core;
 using Microsoft.UI;
 using Microsoft.UI.Windowing;
 using Microsoft.UI.Xaml;
@@ -134,9 +135,37 @@ public sealed partial class MainWindow : Window
         ViewModel.CurrentFeature = tag switch
         {
             "JumpDriveCalculator" => MainFeature.JumpDriveCalculator,
+            "ResourceCalculator" => MainFeature.ResourceCalculator,
             "Settings" => MainFeature.Settings,
             _ => MainFeature.ImageConverter,
         };
+    }
+
+    private void ResourceBlockSearchBox_SuggestionChosen(AutoSuggestBox sender, AutoSuggestBoxSuggestionChosenEventArgs args)
+    {
+        if (args.SelectedItem is SpaceEngineersBlockDefinition block)
+        {
+            ViewModel.SelectResourceBlock(block);
+        }
+    }
+
+    private void ResourceBlockSearchBox_QuerySubmitted(AutoSuggestBox sender, AutoSuggestBoxQuerySubmittedEventArgs args)
+    {
+        if (args.ChosenSuggestion is SpaceEngineersBlockDefinition block)
+        {
+            ViewModel.SelectResourceBlock(block);
+            return;
+        }
+
+        ViewModel.SelectBestResourceBlockMatch();
+    }
+
+    private void RemoveResourceBuildRow_Click(object sender, RoutedEventArgs e)
+    {
+        if (sender is Button { Tag: ResourceBuildRowViewModel row })
+        {
+            ViewModel.RemoveResourceBuildRowCommand.Execute(row);
+        }
     }
 
     private void ShipMassTextBox_TextChanged(object sender, TextChangedEventArgs e)
@@ -408,7 +437,7 @@ public sealed partial class MainWindow : Window
                 {
                     new TextBlock
                     {
-                        Text = "Use the side menu to switch between the Image Converter and Jump Drive Calculator.",
+                        Text = "Use the side menu to switch between the Image Converter, Jump Drive Calculator, and Resource Calculator.",
                         TextWrapping = TextWrapping.Wrap,
                     },
                     new TextBlock
@@ -424,6 +453,11 @@ public sealed partial class MainWindow : Window
                     new TextBlock
                     {
                         Text = "Jump Drive Calculator: paste GPS coordinates or enter X/Y/Z values, then add jump drive count and ship mass.",
+                        TextWrapping = TextWrapping.Wrap,
+                    },
+                    new TextBlock
+                    {
+                        Text = "Resource Calculator: search for vanilla blocks, add quantities, and total the components needed to build them.",
                         TextWrapping = TextWrapping.Wrap,
                     },
                     new TextBlock

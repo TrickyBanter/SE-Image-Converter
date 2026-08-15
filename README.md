@@ -3,7 +3,8 @@
 Image converter for use in Space Engineers.
 
 This is a modern WinUI 3 desktop app that converts ordinary image files into
-paste-ready Space Engineers LCD/Text Panel Monospace text.
+paste-ready Space Engineers LCD/Text Panel Monospace text. It also includes
+Space Engineers calculators for jump drive routing and block build resources.
 
 <img width="1234" height="1001" alt="se_image_converter" src="https://github.com/user-attachments/assets/edb2b119-3fa3-4aaa-ac77-66902f5d4aec" />
 
@@ -33,6 +34,12 @@ the app is signed and has reputation.
 The app checks GitHub Releases on startup and from the in-app update controls.
 The in-app updater downloads installer `.exe` releases. Portable `.zip` releases
 are intended for manual downloads.
+
+### Resource calculator
+
+Use the Resource Calculator tab to search the bundled vanilla block catalog, add
+small-grid or large-grid block variants with quantities, and total the components
+needed to build them.
 
 ## For developers
 

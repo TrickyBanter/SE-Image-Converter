@@ -70,6 +70,11 @@
                         <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph="&#xE800;" />
                     </NavigationViewItem.Icon>
                 </NavigationViewItem>
+                <NavigationViewItem Content="Resource Calculator" Tag="ResourceCalculator">
+                    <NavigationViewItem.Icon>
+                        <SymbolIcon Symbol="Calculator" />
+                    </NavigationViewItem.Icon>
+                </NavigationViewItem>
             </NavigationView.MenuItems>
             <NavigationView.FooterMenuItems>
                 <NavigationViewItem Content="Settings" Tag="Settings">
@@ -494,6 +499,222 @@
                     </Grid>
                 </ScrollViewer>
 
+                <ScrollViewer Visibility="{Binding ResourceCalculatorVisibility}" VerticalScrollBarVisibility="Auto">
+                    <Grid RowSpacing="20">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="*" />
+                        </Grid.RowDefinitions>
+
+                        <Border
+                            Grid.Row="0"
+                            Padding="22,20"
+                            BorderBrush="{ThemeResource CardStrokeColorDefaultBrush}"
+                            BorderThickness="1"
+                            Background="{ThemeResource CardBackgroundFillColorDefaultBrush}"
+                            CornerRadius="8">
+                            <StackPanel Spacing="16">
+                                <StackPanel Spacing="6">
+                                    <TextBlock Text="Resource Calculator" FontSize="24" FontWeight="SemiBold" />
+                                    <TextBlock Text="Build a block list and total the required construction components." Foreground="{ThemeResource TextFillColorSecondaryBrush}" />
+                                </StackPanel>
+
+                                <Grid ColumnSpacing="14">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*" />
+                                        <ColumnDefinition Width="140" />
+                                        <ColumnDefinition Width="Auto" />
+                                        <ColumnDefinition Width="Auto" />
+                                    </Grid.ColumnDefinitions>
+
+                                    <AutoSuggestBox
+                                        Grid.Column="0"
+                                        Header="Block"
+                                        ItemsSource="{Binding FilteredResourceBlocks}"
+                                        PlaceholderText="Search blocks, variants, or grid size"
+                                        QueryIcon="Find"
+                                        QuerySubmitted="ResourceBlockSearchBox_QuerySubmitted"
+                                        SuggestionChosen="ResourceBlockSearchBox_SuggestionChosen"
+                                        Text="{Binding BlockSearchText, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                        TextMemberPath="DisplayLabel">
+                                        <AutoSuggestBox.ItemTemplate>
+                                            <DataTemplate>
+                                                <Grid RowSpacing="2" Padding="0,4">
+                                                    <Grid.RowDefinitions>
+                                                        <RowDefinition Height="Auto" />
+                                                        <RowDefinition Height="Auto" />
+                                                    </Grid.RowDefinitions>
+                                                    <TextBlock Text="{Binding DisplayLabel}" FontWeight="SemiBold" />
+                                                    <TextBlock
+                                                        Grid.Row="1"
+                                                        Text="{Binding BlockId}"
+                                                        Foreground="{ThemeResource TextFillColorSecondaryBrush}"
+                                                        FontSize="12" />
+                                                </Grid>
+                                            </DataTemplate>
+                                        </AutoSuggestBox.ItemTemplate>
+                                    </AutoSuggestBox>
+
+                                    <NumberBox
+                                        Grid.Column="1"
+                                        Header="Quantity"
+                                        Minimum="1"
+                                        SmallChange="1"
+                                        SpinButtonPlacementMode="Compact"
+                                        Value="{Binding SelectedResourceBlockQuantity, Mode=TwoWay}" />
+
+                                    <Button
+                                        Grid.Column="2"
+                                        Command="{Binding AddResourceBlockCommand}"
+                                        VerticalAlignment="Bottom"
+                                        Padding="16,8"
+                                        Background="{ThemeResource AccentFillColorDefaultBrush}"
+                                        Foreground="White">
+                                        <StackPanel Orientation="Horizontal" Spacing="8">
+                                            <SymbolIcon Symbol="Add" />
+                                            <TextBlock Text="Add" FontWeight="SemiBold" />
+                                        </StackPanel>
+                                    </Button>
+
+                                    <Button
+                                        Grid.Column="3"
+                                        Command="{Binding ClearResourceBuildRowsCommand}"
+                                        VerticalAlignment="Bottom"
+                                        Padding="16,8">
+                                        <StackPanel Orientation="Horizontal" Spacing="8">
+                                            <SymbolIcon Symbol="Delete" />
+                                            <TextBlock Text="Clear" />
+                                        </StackPanel>
+                                    </Button>
+                                </Grid>
+
+                                <InfoBar
+                                    IsOpen="{Binding HasResourceStatusMessage}"
+                                    Severity="{Binding ResourceStatusSeverity}"
+                                    Title="{Binding ResourceStatusTitle}"
+                                    Message="{Binding ResourceStatusMessage}" />
+                            </StackPanel>
+                        </Border>
+
+                        <Grid Grid.Row="1" ColumnSpacing="20">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="360" />
+                            </Grid.ColumnDefinitions>
+
+                            <Border
+                                Grid.Column="0"
+                                Padding="22,20"
+                                BorderBrush="{ThemeResource CardStrokeColorDefaultBrush}"
+                                BorderThickness="1"
+                                Background="{ThemeResource CardBackgroundFillColorDefaultBrush}"
+                                CornerRadius="8">
+                                <Grid RowSpacing="14">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="Auto" />
+                                        <RowDefinition Height="*" />
+                                    </Grid.RowDefinitions>
+
+                                    <Grid>
+                                        <TextBlock Text="Blocks To Build" FontSize="20" FontWeight="SemiBold" />
+                                        <Button
+                                            Command="{Binding RecalculateResourcesCommand}"
+                                            HorizontalAlignment="Right"
+                                            Padding="14,8">
+                                            <StackPanel Orientation="Horizontal" Spacing="8">
+                                                <SymbolIcon Symbol="Refresh" />
+                                                <TextBlock Text="Recalculate" />
+                                            </StackPanel>
+                                        </Button>
+                                    </Grid>
+
+                                    <ListView Grid.Row="1" ItemsSource="{Binding ResourceBuildRows}">
+                                        <ListView.ItemTemplate>
+                                            <DataTemplate>
+                                                <Grid ColumnSpacing="12" Padding="0,8">
+                                                    <Grid.ColumnDefinitions>
+                                                        <ColumnDefinition Width="*" />
+                                                        <ColumnDefinition Width="90" />
+                                                        <ColumnDefinition Width="42" />
+                                                    </Grid.ColumnDefinitions>
+
+                                                    <StackPanel Spacing="2">
+                                                        <TextBlock Text="{Binding DisplayName}" FontWeight="SemiBold" />
+                                                        <TextBlock Text="{Binding GridSize}" Foreground="{ThemeResource TextFillColorSecondaryBrush}" />
+                                                    </StackPanel>
+
+                                                    <TextBox
+                                                        Grid.Column="1"
+                                                        Header="Qty"
+                                                        Text="{Binding Quantity, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+
+                                                    <Button
+                                                        Grid.Column="2"
+                                                        Click="RemoveResourceBuildRow_Click"
+                                                        Tag="{Binding}"
+                                                        ToolTipService.ToolTip="Remove block"
+                                                        VerticalAlignment="Bottom"
+                                                        Padding="8">
+                                                        <SymbolIcon Symbol="Cancel" />
+                                                    </Button>
+                                                </Grid>
+                                            </DataTemplate>
+                                        </ListView.ItemTemplate>
+                                    </ListView>
+                                    <StackPanel
+                                        Grid.Row="1"
+                                        HorizontalAlignment="Center"
+                                        VerticalAlignment="Center"
+                                        Spacing="8"
+                                        Visibility="{Binding ResourceBuildEmptyVisibility}">
+                                        <FontIcon Glyph="&#xE71D;" FontSize="34" Foreground="{ThemeResource TextFillColorSecondaryBrush}" />
+                                        <TextBlock Text="No blocks added" Foreground="{ThemeResource TextFillColorSecondaryBrush}" HorizontalAlignment="Center" />
+                                    </StackPanel>
+                                </Grid>
+                            </Border>
+
+                            <Border
+                                Grid.Column="1"
+                                Padding="22,20"
+                                BorderBrush="{ThemeResource CardStrokeColorDefaultBrush}"
+                                BorderThickness="1"
+                                Background="{ThemeResource CardBackgroundFillColorDefaultBrush}"
+                                CornerRadius="8">
+                                <Grid RowSpacing="14">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="Auto" />
+                                        <RowDefinition Height="*" />
+                                    </Grid.RowDefinitions>
+
+                                    <TextBlock Text="Component Totals" FontSize="20" FontWeight="SemiBold" />
+
+                                    <ListView Grid.Row="1" ItemsSource="{Binding ResourceComponentTotals}">
+                                        <ListView.ItemTemplate>
+                                            <DataTemplate>
+                                                <Grid ColumnSpacing="16" Padding="0,7">
+                                                    <Grid.ColumnDefinitions>
+                                                        <ColumnDefinition Width="*" />
+                                                        <ColumnDefinition Width="Auto" />
+                                                    </Grid.ColumnDefinitions>
+                                                    <TextBlock Text="{Binding ComponentName}" />
+                                                    <TextBlock Grid.Column="1" Text="{Binding Count}" FontWeight="SemiBold" />
+                                                </Grid>
+                                            </DataTemplate>
+                                        </ListView.ItemTemplate>
+                                    </ListView>
+                                    <TextBlock
+                                        Grid.Row="1"
+                                        Text="Totals will appear here."
+                                        Foreground="{ThemeResource TextFillColorSecondaryBrush}"
+                                        HorizontalAlignment="Center"
+                                        VerticalAlignment="Center"
+                                        Visibility="{Binding ResourceTotalsEmptyVisibility}" />
+                                </Grid>
+                            </Border>
+                        </Grid>
+                    </Grid>
+                </ScrollViewer>
+
                 <ScrollViewer Visibility="{Binding SettingsVisibility}" VerticalScrollBarVisibility="Auto">
                     <Grid RowSpacing="20">
                         <Grid.RowDefinitions>
@@ -530,6 +751,7 @@
                                 <ComboBox Header="Default app view" SelectedIndex="0" IsEnabled="False" HorizontalAlignment="Stretch">
                                     <ComboBoxItem Content="Image Converter" />
                                     <ComboBoxItem Content="Jump Drive Calculator" />
+                                    <ComboBoxItem Content="Resource Calculator" />
                                 </ComboBox>
                                 <ComboBox Header="Theme" SelectedIndex="0" IsEnabled="False" HorizontalAlignment="Stretch">
                                     <ComboBoxItem Content="Use system setting" />

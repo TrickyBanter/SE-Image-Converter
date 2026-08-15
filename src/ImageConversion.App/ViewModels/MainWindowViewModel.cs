@@ -1,3 +1,4 @@
+using System.ComponentModel;
 using System.Collections.ObjectModel;
 using System.Globalization;
 using System.Reflection;
@@ -18,6 +19,7 @@ public partial class MainWindowViewModel : ObservableObject
 {
     private readonly ImageToLcdConverter converter = new();
     private readonly JumpDriveCalculator jumpDriveCalculator = new();
+    private readonly ResourceCalculator resourceCalculator = new(SpaceEngineersBlockCatalog.DefaultBlocks);
     private readonly GitHubReleaseUpdater updater = new();
     private byte[]? sourceBytes;
     private GitHubUpdate? availableUpdate;
@@ -162,11 +164,31 @@ public partial class MainWindowViewModel : ObservableObject
     [ObservableProperty]
     public partial string JumpTravelTimeSummary { get; set; } = "-";
 
+    [ObservableProperty]
+    public partial string BlockSearchText { get; set; } = string.Empty;
+
+    [ObservableProperty]
+    public partial SpaceEngineersBlockDefinition? SelectedResourceBlock { get; set; }
+
+    [ObservableProperty]
+    public partial int SelectedResourceBlockQuantity { get; set; } = 1;
+
+    [ObservableProperty]
+    public partial string ResourceStatusTitle { get; set; } = string.Empty;
+
+    [ObservableProperty]
+    public partial string ResourceStatusMessage { get; set; } = string.Empty;
+
+    [ObservableProperty]
+    public partial InfoBarSeverity ResourceStatusSeverity { get; set; } = InfoBarSeverity.Informational;
+
     public bool HasImage => sourceBytes is not null;
 
     public bool HasStatusMessage => !string.IsNullOrWhiteSpace(StatusTitle) || !string.IsNullOrWhiteSpace(StatusMessage);
 
     public bool HasJumpStatusMessage => !string.IsNullOrWhiteSpace(JumpStatusTitle) || !string.IsNullOrWhiteSpace(JumpStatusMessage);
+
+    public bool HasResourceStatusMessage => !string.IsNullOrWhiteSpace(ResourceStatusTitle) || !string.IsNullOrWhiteSpace(ResourceStatusMessage);
 
     public bool CanExport => HasConvertedText();
 
@@ -178,7 +200,13 @@ public partial class MainWindowViewModel : ObservableObject
 
     public Visibility JumpDriveCalculatorVisibility => CurrentFeature == MainFeature.JumpDriveCalculator ? Visibility.Visible : Visibility.Collapsed;
 
+    public Visibility ResourceCalculatorVisibility => CurrentFeature == MainFeature.ResourceCalculator ? Visibility.Visible : Visibility.Collapsed;
+
     public Visibility SettingsVisibility => CurrentFeature == MainFeature.Settings ? Visibility.Visible : Visibility.Collapsed;
+
+    public Visibility ResourceBuildEmptyVisibility => ResourceBuildRows.Count == 0 ? Visibility.Visible : Visibility.Collapsed;
+
+    public Visibility ResourceTotalsEmptyVisibility => ResourceComponentTotals.Count == 0 ? Visibility.Visible : Visibility.Collapsed;
 
     public Visibility SourcePlaceholderVisibility => SourcePreview is null ? Visibility.Visible : Visibility.Collapsed;
 
@@ -194,6 +222,12 @@ public partial class MainWindowViewModel : ObservableObject
 
     public ObservableCollection<JumpDriveLegViewModel> JumpLegs { get; } = [];
 
+    public ObservableCollection<SpaceEngineersBlockDefinition> FilteredResourceBlocks { get; } = [];
+
+    public ObservableCollection<ResourceBuildRowViewModel> ResourceBuildRows { get; } = [];
+
+    public ObservableCollection<ResourceComponentTotal> ResourceComponentTotals { get; } = [];
+
     public ObservableCollection<int> JumpDriveCounts { get; } = new(Enumerable.Range(1, 10));
 
     public ObservableCollection<JumpDriveTypeOption> JumpDriveTypes { get; } =
@@ -206,6 +240,7 @@ public partial class MainWindowViewModel : ObservableObject
     {
         SelectedDitheringMode = DitheringModes[0];
         SelectedJumpDriveType = JumpDriveTypes[0];
+        RefreshFilteredResourceBlocks();
     }
 
     public async Task CheckForUpdatesOnStartupAsync()
@@ -316,6 +351,84 @@ public partial class MainWindowViewModel : ObservableObject
         }
     }
 
+    [RelayCommand(CanExecute = nameof(CanAddResourceBlock))]
+    private void AddResourceBlock()
+    {
+        if (SelectedResourceBlock is null)
+        {
+            SetResourceStatus("Choose a block", "Search for a block before adding it.", InfoBarSeverity.Warning);
+            return;
+        }
+
+        if (SelectedResourceBlockQuantity <= 0)
+        {
+            SetResourceStatus("Check quantity", "Quantity must be greater than 0.", InfoBarSeverity.Warning);
+            return;
+        }
+
+        ResourceBuildRowViewModel? existingRow = ResourceBuildRows.FirstOrDefault(row => row.Block.Id == SelectedResourceBlock.Id);
+
+        if (existingRow is not null)
+        {
+            existingRow.Quantity = checked(existingRow.Quantity + SelectedResourceBlockQuantity);
+        }
+        else
+        {
+            ResourceBuildRowViewModel row = new(SelectedResourceBlock, SelectedResourceBlockQuantity);
+            row.PropertyChanged += ResourceBuildRow_PropertyChanged;
+            ResourceBuildRows.Add(row);
+        }
+
+        SelectedResourceBlockQuantity = 1;
+        RecalculateResourceTotals();
+        SetResourceStatus("Added", $"{SelectedResourceBlock.DisplayLabel} added to the build.", InfoBarSeverity.Success);
+    }
+
+    [RelayCommand]
+    private void RemoveResourceBuildRow(ResourceBuildRowViewModel row)
+    {
+        row.PropertyChanged -= ResourceBuildRow_PropertyChanged;
+        ResourceBuildRows.Remove(row);
+        RecalculateResourceTotals();
+        SetResourceStatus("Removed", $"{row.Block.DisplayLabel} removed from the build.", InfoBarSeverity.Informational);
+    }
+
+    [RelayCommand(CanExecute = nameof(HasResourceBuildRows))]
+    private void ClearResourceBuildRows()
+    {
+        foreach (ResourceBuildRowViewModel row in ResourceBuildRows)
+        {
+            row.PropertyChanged -= ResourceBuildRow_PropertyChanged;
+        }
+
+        ResourceBuildRows.Clear();
+        RecalculateResourceTotals();
+        SetResourceStatus("Cleared", "Resource build list cleared.", InfoBarSeverity.Informational);
+    }
+
+    [RelayCommand]
+    private void RecalculateResources()
+    {
+        RecalculateResourceTotals();
+        SetResourceStatus("Calculated", "Component totals are up to date.", InfoBarSeverity.Success);
+    }
+
+    public void SelectResourceBlock(SpaceEngineersBlockDefinition block)
+    {
+        SelectedResourceBlock = block;
+        BlockSearchText = block.DisplayLabel;
+    }
+
+    public void SelectBestResourceBlockMatch()
+    {
+        SpaceEngineersBlockDefinition? block = FilteredResourceBlocks.FirstOrDefault();
+
+        if (block is not null)
+        {
+            SelectResourceBlock(block);
+        }
+    }
+
     public async Task ExportTextAsync(string path)
     {
         if (!HasConvertedText())
@@ -391,6 +504,7 @@ public partial class MainWindowViewModel : ObservableObject
     {
         OnPropertyChanged(nameof(ImageConverterVisibility));
         OnPropertyChanged(nameof(JumpDriveCalculatorVisibility));
+        OnPropertyChanged(nameof(ResourceCalculatorVisibility));
         OnPropertyChanged(nameof(SettingsVisibility));
     }
 
@@ -402,6 +516,32 @@ public partial class MainWindowViewModel : ObservableObject
     partial void OnJumpStatusMessageChanged(string value)
     {
         OnPropertyChanged(nameof(HasJumpStatusMessage));
+    }
+
+    partial void OnBlockSearchTextChanged(string value)
+    {
+        RefreshFilteredResourceBlocks();
+        AddResourceBlockCommand.NotifyCanExecuteChanged();
+    }
+
+    partial void OnSelectedResourceBlockChanged(SpaceEngineersBlockDefinition? value)
+    {
+        AddResourceBlockCommand.NotifyCanExecuteChanged();
+    }
+
+    partial void OnSelectedResourceBlockQuantityChanged(int value)
+    {
+        AddResourceBlockCommand.NotifyCanExecuteChanged();
+    }
+
+    partial void OnResourceStatusTitleChanged(string value)
+    {
+        OnPropertyChanged(nameof(HasResourceStatusMessage));
+    }
+
+    partial void OnResourceStatusMessageChanged(string value)
+    {
+        OnPropertyChanged(nameof(HasResourceStatusMessage));
     }
 
     partial void OnIsUpdateAvailableChanged(bool value)
@@ -441,6 +581,68 @@ public partial class MainWindowViewModel : ObservableObject
     private bool CanCheckForUpdates() => !IsCheckingForUpdates && !IsDownloadingUpdate;
 
     private bool CanInstallUpdate() => availableUpdate is not null && !IsCheckingForUpdates && !IsDownloadingUpdate;
+
+    private bool CanAddResourceBlock() => SelectedResourceBlock is not null && SelectedResourceBlockQuantity > 0;
+
+    private bool HasResourceBuildRows() => ResourceBuildRows.Count > 0;
+
+    private void RefreshFilteredResourceBlocks()
+    {
+        string searchText = BlockSearchText.Trim();
+        IEnumerable<SpaceEngineersBlockDefinition> matches = SpaceEngineersBlockCatalog.DefaultBlocks;
+
+        if (!string.IsNullOrWhiteSpace(searchText))
+        {
+            matches = matches.Where(block => block.SearchText.Contains(searchText, StringComparison.OrdinalIgnoreCase));
+        }
+
+        FilteredResourceBlocks.Clear();
+        foreach (SpaceEngineersBlockDefinition block in matches.Take(60))
+        {
+            FilteredResourceBlocks.Add(block);
+        }
+
+        SelectedResourceBlock = FilteredResourceBlocks.FirstOrDefault(block =>
+            block.DisplayLabel.Equals(searchText, StringComparison.OrdinalIgnoreCase));
+    }
+
+    private void ResourceBuildRow_PropertyChanged(object? sender, PropertyChangedEventArgs e)
+    {
+        if (e.PropertyName == nameof(ResourceBuildRowViewModel.Quantity))
+        {
+            RecalculateResourceTotals();
+        }
+    }
+
+    private void RecalculateResourceTotals()
+    {
+        try
+        {
+            ResourceCalculationResult result = resourceCalculator.Calculate(new ResourceCalculationRequest(
+                ResourceBuildRows.Select(row => new SpaceEngineersBlockQuantity(row.Block.Id, row.Quantity)).ToList()));
+
+            ResourceComponentTotals.Clear();
+            foreach (ResourceComponentTotal total in result.ComponentTotals)
+            {
+                ResourceComponentTotals.Add(total);
+            }
+
+            NotifyResourceCollectionStateChanged();
+            ClearResourceBuildRowsCommand.NotifyCanExecuteChanged();
+        }
+        catch (Exception ex) when (ex is ArgumentOutOfRangeException or OverflowException or KeyNotFoundException)
+        {
+            ResourceComponentTotals.Clear();
+            NotifyResourceCollectionStateChanged();
+            SetResourceStatus("Cannot calculate", ex.Message, InfoBarSeverity.Warning);
+        }
+    }
+
+    private void NotifyResourceCollectionStateChanged()
+    {
+        OnPropertyChanged(nameof(ResourceBuildEmptyVisibility));
+        OnPropertyChanged(nameof(ResourceTotalsEmptyVisibility));
+    }
 
     private bool TryBuildJumpDriveRequest(out JumpDriveCalculationRequest? request)
     {
@@ -569,6 +771,14 @@ public partial class MainWindowViewModel : ObservableObject
         OnPropertyChanged(nameof(HasJumpStatusMessage));
     }
 
+    private void SetResourceStatus(string title, string message, InfoBarSeverity severity)
+    {
+        ResourceStatusTitle = title;
+        ResourceStatusMessage = message;
+        ResourceStatusSeverity = severity;
+        OnPropertyChanged(nameof(HasResourceStatusMessage));
+    }
+
     private void ClearJumpResult()
     {
         JumpDistanceSummary = "-";
@@ -641,9 +851,30 @@ public enum MainFeature
 {
     ImageConverter,
     JumpDriveCalculator,
+    ResourceCalculator,
     Settings,
 }
 
 public sealed record JumpDriveLegViewModel(int Number, string Distance, string RechargeWait);
 
 public sealed record JumpDriveTypeOption(JumpDriveType Type, string Name);
+
+public sealed partial class ResourceBuildRowViewModel : ObservableObject
+{
+    [ObservableProperty]
+    public partial int Quantity { get; set; }
+
+    public ResourceBuildRowViewModel(SpaceEngineersBlockDefinition block, int quantity)
+    {
+        Block = block;
+        Quantity = quantity;
+    }
+
+    public SpaceEngineersBlockDefinition Block { get; }
+
+    public string DisplayName => Block.DisplayName;
+
+    public string GridSize => Block.GridSize;
+
+    public string BlockId => Block.Id;
+}
