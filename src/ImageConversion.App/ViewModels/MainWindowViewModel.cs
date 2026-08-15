@@ -1,4 +1,6 @@
 using System.Collections.ObjectModel;
+using System.Globalization;
+using System.Reflection;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using ImageConversion.App.Services;
@@ -15,9 +17,13 @@ namespace ImageConversion.App.ViewModels;
 public partial class MainWindowViewModel : ObservableObject
 {
     private readonly ImageToLcdConverter converter = new();
+    private readonly JumpDriveCalculator jumpDriveCalculator = new();
     private readonly GitHubReleaseUpdater updater = new();
     private byte[]? sourceBytes;
     private GitHubUpdate? availableUpdate;
+
+    [ObservableProperty]
+    public partial MainFeature CurrentFeature { get; set; } = MainFeature.ImageConverter;
 
     [ObservableProperty]
     public partial ImageSource? SourcePreview { get; set; }
@@ -102,13 +108,77 @@ public partial class MainWindowViewModel : ObservableObject
     [ObservableProperty]
     public partial DitheringModeOption SelectedDitheringMode { get; set; }
 
+    [ObservableProperty]
+    public partial string StartGps { get; set; } = string.Empty;
+
+    [ObservableProperty]
+    public partial string StartX { get; set; } = string.Empty;
+
+    [ObservableProperty]
+    public partial string StartY { get; set; } = string.Empty;
+
+    [ObservableProperty]
+    public partial string StartZ { get; set; } = string.Empty;
+
+    [ObservableProperty]
+    public partial string DestinationGps { get; set; } = string.Empty;
+
+    [ObservableProperty]
+    public partial string DestinationX { get; set; } = string.Empty;
+
+    [ObservableProperty]
+    public partial string DestinationY { get; set; } = string.Empty;
+
+    [ObservableProperty]
+    public partial string DestinationZ { get; set; } = string.Empty;
+
+    [ObservableProperty]
+    public partial int SelectedJumpDriveCount { get; set; } = 1;
+
+    [ObservableProperty]
+    public partial JumpDriveTypeOption SelectedJumpDriveType { get; set; }
+
+    [ObservableProperty]
+    public partial string ShipMassKg { get; set; } = "1,250,000.00";
+
+    [ObservableProperty]
+    public partial string JumpStatusTitle { get; set; } = string.Empty;
+
+    [ObservableProperty]
+    public partial string JumpStatusMessage { get; set; } = string.Empty;
+
+    [ObservableProperty]
+    public partial InfoBarSeverity JumpStatusSeverity { get; set; } = InfoBarSeverity.Informational;
+
+    [ObservableProperty]
+    public partial string JumpDistanceSummary { get; set; } = "-";
+
+    [ObservableProperty]
+    public partial string JumpRangeSummary { get; set; } = "-";
+
+    [ObservableProperty]
+    public partial string JumpCountSummary { get; set; } = "-";
+
+    [ObservableProperty]
+    public partial string JumpTravelTimeSummary { get; set; } = "-";
+
     public bool HasImage => sourceBytes is not null;
 
     public bool HasStatusMessage => !string.IsNullOrWhiteSpace(StatusTitle) || !string.IsNullOrWhiteSpace(StatusMessage);
 
+    public bool HasJumpStatusMessage => !string.IsNullOrWhiteSpace(JumpStatusTitle) || !string.IsNullOrWhiteSpace(JumpStatusMessage);
+
     public bool CanExport => HasConvertedText();
 
     public string CurrentVersionSummary => $"Version {FormatVersion(GitHubReleaseUpdater.CurrentVersion)}";
+
+    public string AppDateSummary => $"App date {GetAppDate():yyyy-MM-dd}";
+
+    public Visibility ImageConverterVisibility => CurrentFeature == MainFeature.ImageConverter ? Visibility.Visible : Visibility.Collapsed;
+
+    public Visibility JumpDriveCalculatorVisibility => CurrentFeature == MainFeature.JumpDriveCalculator ? Visibility.Visible : Visibility.Collapsed;
+
+    public Visibility SettingsVisibility => CurrentFeature == MainFeature.Settings ? Visibility.Visible : Visibility.Collapsed;
 
     public Visibility SourcePlaceholderVisibility => SourcePreview is null ? Visibility.Visible : Visibility.Collapsed;
 
@@ -122,9 +192,20 @@ public partial class MainWindowViewModel : ObservableObject
         ? "Download and install"
         : $"Download and install {availableUpdate.TagName}";
 
+    public ObservableCollection<JumpDriveLegViewModel> JumpLegs { get; } = [];
+
+    public ObservableCollection<int> JumpDriveCounts { get; } = new(Enumerable.Range(1, 10));
+
+    public ObservableCollection<JumpDriveTypeOption> JumpDriveTypes { get; } =
+    [
+        new(JumpDriveType.Standard, JumpDriveProfile.Standard.Name),
+        new(JumpDriveType.Prototech, JumpDriveProfile.Prototech.Name),
+    ];
+
     public MainWindowViewModel()
     {
         SelectedDitheringMode = DitheringModes[0];
+        SelectedJumpDriveType = JumpDriveTypes[0];
     }
 
     public async Task CheckForUpdatesOnStartupAsync()
@@ -198,6 +279,43 @@ public partial class MainWindowViewModel : ObservableObject
         SetStatus("Copied", "Converted string copied to the clipboard.", InfoBarSeverity.Success);
     }
 
+    [RelayCommand]
+    private void CalculateJumpDrive()
+    {
+        if (!TryBuildJumpDriveRequest(out JumpDriveCalculationRequest? request))
+        {
+            return;
+        }
+
+        try
+        {
+            JumpDriveCalculationResult result = jumpDriveCalculator.Calculate(request!);
+
+            JumpDistanceSummary = $"{result.TotalDistanceKm:N1} km";
+            JumpRangeSummary = $"{result.EffectiveMaxRangeKm:N1} km";
+            JumpCountSummary = $"{result.JumpCount:N0} jump{(result.JumpCount == 1 ? string.Empty : "s")}";
+            JumpTravelTimeSummary = FormatDuration(result.TotalTravelTime);
+
+            JumpLegs.Clear();
+            foreach (JumpDriveLeg leg in result.Legs)
+            {
+                JumpLegs.Add(new JumpDriveLegViewModel(
+                    leg.Number,
+                    $"{leg.DistanceKm:N1} km",
+                    leg.RechargeWaitBeforeNextJump == TimeSpan.Zero
+                        ? "No recharge needed"
+                        : FormatDuration(leg.RechargeWaitBeforeNextJump)));
+            }
+
+            SetJumpStatus("Calculated", "Jump route ready.", InfoBarSeverity.Success);
+        }
+        catch (ArgumentOutOfRangeException ex)
+        {
+            ClearJumpResult();
+            SetJumpStatus("Cannot calculate route", ex.Message, InfoBarSeverity.Warning);
+        }
+    }
+
     public async Task ExportTextAsync(string path)
     {
         if (!HasConvertedText())
@@ -269,6 +387,23 @@ public partial class MainWindowViewModel : ObservableObject
         OnPropertyChanged(nameof(ConvertedPlaceholderVisibility));
     }
 
+    partial void OnCurrentFeatureChanged(MainFeature value)
+    {
+        OnPropertyChanged(nameof(ImageConverterVisibility));
+        OnPropertyChanged(nameof(JumpDriveCalculatorVisibility));
+        OnPropertyChanged(nameof(SettingsVisibility));
+    }
+
+    partial void OnJumpStatusTitleChanged(string value)
+    {
+        OnPropertyChanged(nameof(HasJumpStatusMessage));
+    }
+
+    partial void OnJumpStatusMessageChanged(string value)
+    {
+        OnPropertyChanged(nameof(HasJumpStatusMessage));
+    }
+
     partial void OnIsUpdateAvailableChanged(bool value)
     {
         OnPropertyChanged(nameof(UpdateAvailableVisibility));
@@ -306,6 +441,61 @@ public partial class MainWindowViewModel : ObservableObject
     private bool CanCheckForUpdates() => !IsCheckingForUpdates && !IsDownloadingUpdate;
 
     private bool CanInstallUpdate() => availableUpdate is not null && !IsCheckingForUpdates && !IsDownloadingUpdate;
+
+    private bool TryBuildJumpDriveRequest(out JumpDriveCalculationRequest? request)
+    {
+        request = null;
+
+        if (!TryParsePosition(StartGps, StartX, StartY, StartZ, "starting position", out JumpDriveVector start) ||
+            !TryParsePosition(DestinationGps, DestinationX, DestinationY, DestinationZ, "destination", out JumpDriveVector destination))
+        {
+            ClearJumpResult();
+            return false;
+        }
+
+        if (!double.TryParse(ShipMassKg, NumberStyles.Float | NumberStyles.AllowThousands, CultureInfo.InvariantCulture, out double shipMassKg) || shipMassKg <= 0)
+        {
+            ClearJumpResult();
+            SetJumpStatus("Check ship mass", "Ship mass must be greater than 0 kg.", InfoBarSeverity.Warning);
+            return false;
+        }
+
+        request = new JumpDriveCalculationRequest(start, destination, SelectedJumpDriveCount, shipMassKg, SelectedJumpDriveType.Type);
+        return true;
+    }
+
+    private bool TryParsePosition(
+        string gps,
+        string xText,
+        string yText,
+        string zText,
+        string label,
+        out JumpDriveVector vector)
+    {
+        if (!string.IsNullOrWhiteSpace(gps))
+        {
+            if (SpaceEngineersGpsParser.TryParse(gps, out vector))
+            {
+                return true;
+            }
+
+            SetJumpStatus("Check coordinates", $"The {label} GPS string is not valid.", InfoBarSeverity.Warning);
+            vector = default;
+            return false;
+        }
+
+        if (double.TryParse(xText, NumberStyles.Float | NumberStyles.AllowThousands, CultureInfo.CurrentCulture, out double x) &&
+            double.TryParse(yText, NumberStyles.Float | NumberStyles.AllowThousands, CultureInfo.CurrentCulture, out double y) &&
+            double.TryParse(zText, NumberStyles.Float | NumberStyles.AllowThousands, CultureInfo.CurrentCulture, out double z))
+        {
+            vector = new JumpDriveVector(x, y, z);
+            return true;
+        }
+
+        SetJumpStatus("Check coordinates", $"Enter a valid {label} GPS string or X/Y/Z coordinates.", InfoBarSeverity.Warning);
+        vector = default;
+        return false;
+    }
 
     private async Task CheckForUpdatesAsync(bool showUpToDateMessage)
     {
@@ -371,6 +561,23 @@ public partial class MainWindowViewModel : ObservableObject
         OnPropertyChanged(nameof(HasStatusMessage));
     }
 
+    private void SetJumpStatus(string title, string message, InfoBarSeverity severity)
+    {
+        JumpStatusTitle = title;
+        JumpStatusMessage = message;
+        JumpStatusSeverity = severity;
+        OnPropertyChanged(nameof(HasJumpStatusMessage));
+    }
+
+    private void ClearJumpResult()
+    {
+        JumpDistanceSummary = "-";
+        JumpRangeSummary = "-";
+        JumpCountSummary = "-";
+        JumpTravelTimeSummary = "-";
+        JumpLegs.Clear();
+    }
+
     private void NotifyUpdateStateChanged()
     {
         OnPropertyChanged(nameof(UpdateAvailableVisibility));
@@ -385,6 +592,30 @@ public partial class MainWindowViewModel : ObservableObject
         return version.Build >= 0
             ? $"{version.Major}.{version.Minor}.{version.Build}"
             : $"{version.Major}.{version.Minor}";
+    }
+
+    private static DateTime GetAppDate()
+    {
+        string assemblyPath = Assembly.GetExecutingAssembly().Location;
+
+        return string.IsNullOrWhiteSpace(assemblyPath)
+            ? DateTime.Today
+            : File.GetLastWriteTime(assemblyPath);
+    }
+
+    private static string FormatDuration(TimeSpan duration)
+    {
+        if (duration.TotalHours >= 1)
+        {
+            return $"{(int)duration.TotalHours:N0}h {duration.Minutes:N0}m {duration.Seconds:N0}s";
+        }
+
+        if (duration.TotalMinutes >= 1)
+        {
+            return $"{(int)duration.TotalMinutes:N0}m {duration.Seconds:N0}s";
+        }
+
+        return $"{duration.TotalSeconds:N1}s";
     }
 
     private static async Task<ImageSource> CreateImageSourceAsync(byte[] pngBytes)
@@ -405,3 +636,14 @@ public partial class MainWindowViewModel : ObservableObject
 }
 
 public sealed record DitheringModeOption(DitheringMode Mode, string Name, string Description);
+
+public enum MainFeature
+{
+    ImageConverter,
+    JumpDriveCalculator,
+    Settings,
+}
+
+public sealed record JumpDriveLegViewModel(int Number, string Distance, string RechargeWait);
+
+public sealed record JumpDriveTypeOption(JumpDriveType Type, string Name);
