@@ -20,6 +20,7 @@ public partial class MainWindowViewModel : ObservableObject
     private readonly ImageToLcdConverter converter = new();
     private readonly JumpDriveCalculator jumpDriveCalculator = new();
     private readonly ResourceCalculator resourceCalculator = new(SpaceEngineersBlockCatalog.DefaultBlocks);
+    private readonly ResourceRecipeStorageService resourceRecipeStorage;
     private readonly GitHubReleaseUpdater updater = new();
     private byte[]? sourceBytes;
     private GitHubUpdate? availableUpdate;
@@ -174,6 +175,12 @@ public partial class MainWindowViewModel : ObservableObject
     public partial int SelectedResourceBlockQuantity { get; set; } = 1;
 
     [ObservableProperty]
+    public partial ResourceRecipeViewModel? SelectedSavedResourceRecipe { get; set; }
+
+    [ObservableProperty]
+    public partial int SelectedResourceRecipeQuantity { get; set; } = 1;
+
+    [ObservableProperty]
     public partial string ResourceStatusTitle { get; set; } = string.Empty;
 
     [ObservableProperty]
@@ -206,6 +213,8 @@ public partial class MainWindowViewModel : ObservableObject
 
     public Visibility ResourceBuildEmptyVisibility => ResourceBuildRows.Count == 0 ? Visibility.Visible : Visibility.Collapsed;
 
+    public Visibility ResourceRecipeRowsEmptyVisibility => ResourceRecipeRows.Count == 0 ? Visibility.Visible : Visibility.Collapsed;
+
     public Visibility ResourceTotalsEmptyVisibility => ResourceComponentTotals.Count == 0 ? Visibility.Visible : Visibility.Collapsed;
 
     public Visibility SourcePlaceholderVisibility => SourcePreview is null ? Visibility.Visible : Visibility.Collapsed;
@@ -226,6 +235,10 @@ public partial class MainWindowViewModel : ObservableObject
 
     public ObservableCollection<ResourceBuildRowViewModel> ResourceBuildRows { get; } = [];
 
+    public ObservableCollection<ResourceRecipeViewModel> SavedResourceRecipes { get; } = [];
+
+    public ObservableCollection<ResourceRecipeRowViewModel> ResourceRecipeRows { get; } = [];
+
     public ObservableCollection<ResourceComponentTotal> ResourceComponentTotals { get; } = [];
 
     public ObservableCollection<int> JumpDriveCounts { get; } = new(Enumerable.Range(1, 10));
@@ -237,9 +250,16 @@ public partial class MainWindowViewModel : ObservableObject
     ];
 
     public MainWindowViewModel()
+        : this(new ResourceRecipeStorageService())
     {
+    }
+
+    public MainWindowViewModel(ResourceRecipeStorageService resourceRecipeStorage)
+    {
+        this.resourceRecipeStorage = resourceRecipeStorage;
         SelectedDitheringMode = DitheringModes[0];
         SelectedJumpDriveType = JumpDriveTypes[0];
+        LoadSavedResourceRecipes();
         RefreshFilteredResourceBlocks();
     }
 
@@ -406,6 +426,131 @@ public partial class MainWindowViewModel : ObservableObject
         SetResourceStatus("Cleared", "Resource build list cleared.", InfoBarSeverity.Informational);
     }
 
+    [RelayCommand(CanExecute = nameof(CanSaveCurrentResourceRecipe))]
+    public void SaveCurrentResourceRecipe(string name)
+    {
+        if (string.IsNullOrWhiteSpace(name))
+        {
+            SetResourceStatus("Name required", "Enter a recipe name before saving.", InfoBarSeverity.Warning);
+            return;
+        }
+
+        if (ResourceBuildRows.Count == 0)
+        {
+            SetResourceStatus("Nothing to save", "Add at least one block before saving a recipe.", InfoBarSeverity.Warning);
+            return;
+        }
+
+        ResourceRecipeViewModel? existingRecipe = FindSavedRecipeByName(name);
+        ResourceRecipe recipe = new(
+            existingRecipe?.Id ?? Guid.NewGuid().ToString("N"),
+            name.Trim(),
+            ResourceBuildRows.Select(row => new SpaceEngineersBlockQuantity(row.Block.Id, row.Quantity)).ToList());
+
+        try
+        {
+            IReadOnlyList<ResourceRecipe> updatedRecipes = resourceRecipeStorage.UpsertRecipe(
+                SavedResourceRecipes.Select(recipe => recipe.Recipe),
+                recipe);
+
+            ReplaceSavedRecipes(updatedRecipes);
+            SelectedSavedResourceRecipe = SavedResourceRecipes.FirstOrDefault(saved => saved.Id == recipe.Id);
+            SetResourceStatus("Saved", $"{recipe.Name} saved.", InfoBarSeverity.Success);
+        }
+        catch (Exception ex) when (ex is IOException or UnauthorizedAccessException)
+        {
+            SetResourceStatus("Could not save recipe", ex.Message, InfoBarSeverity.Error);
+        }
+    }
+
+    [RelayCommand(CanExecute = nameof(CanAddResourceRecipe))]
+    private void AddResourceRecipe()
+    {
+        if (SelectedSavedResourceRecipe is null)
+        {
+            SetResourceStatus("Choose a recipe", "Select a saved recipe before adding it.", InfoBarSeverity.Warning);
+            return;
+        }
+
+        if (SelectedResourceRecipeQuantity <= 0)
+        {
+            SetResourceStatus("Check quantity", "Recipe quantity must be greater than 0.", InfoBarSeverity.Warning);
+            return;
+        }
+
+        ResourceRecipeRowViewModel? existingRow = ResourceRecipeRows.FirstOrDefault(row => row.Recipe.Id == SelectedSavedResourceRecipe.Id);
+
+        if (existingRow is not null)
+        {
+            existingRow.Quantity = checked(existingRow.Quantity + SelectedResourceRecipeQuantity);
+        }
+        else
+        {
+            ResourceRecipeRowViewModel row = new(SelectedSavedResourceRecipe.Recipe, SelectedResourceRecipeQuantity);
+            row.PropertyChanged += ResourceRecipeRow_PropertyChanged;
+            ResourceRecipeRows.Add(row);
+        }
+
+        SelectedResourceRecipeQuantity = 1;
+        RecalculateResourceTotals();
+        SetResourceStatus("Added", $"{SelectedSavedResourceRecipe.Name} recipe added to the calculation.", InfoBarSeverity.Success);
+    }
+
+    [RelayCommand]
+    private void RemoveResourceRecipeRow(ResourceRecipeRowViewModel row)
+    {
+        row.PropertyChanged -= ResourceRecipeRow_PropertyChanged;
+        ResourceRecipeRows.Remove(row);
+        RecalculateResourceTotals();
+        SetResourceStatus("Removed", $"{row.Name} recipe removed from the calculation.", InfoBarSeverity.Informational);
+    }
+
+    [RelayCommand(CanExecute = nameof(HasSelectedSavedResourceRecipe))]
+    public void DeleteSelectedResourceRecipe()
+    {
+        if (SelectedSavedResourceRecipe is null)
+        {
+            return;
+        }
+
+        string deletedRecipeId = SelectedSavedResourceRecipe.Id;
+        string deletedRecipeName = SelectedSavedResourceRecipe.Name;
+        SavedResourceRecipes.Remove(SelectedSavedResourceRecipe);
+        SelectedSavedResourceRecipe = SavedResourceRecipes.FirstOrDefault();
+
+        foreach (ResourceRecipeRowViewModel row in ResourceRecipeRows.Where(row => row.Recipe.Id == deletedRecipeId).ToList())
+        {
+            row.PropertyChanged -= ResourceRecipeRow_PropertyChanged;
+            ResourceRecipeRows.Remove(row);
+        }
+
+        try
+        {
+            resourceRecipeStorage.Save(SavedResourceRecipes.Select(recipe => recipe.Recipe));
+            RecalculateResourceTotals();
+            NotifyResourceCollectionStateChanged();
+            NotifyResourceRecipeCommandsChanged();
+            SetResourceStatus("Deleted", $"{deletedRecipeName} deleted.", InfoBarSeverity.Informational);
+        }
+        catch (Exception ex) when (ex is IOException or UnauthorizedAccessException)
+        {
+            SetResourceStatus("Could not delete recipe", ex.Message, InfoBarSeverity.Error);
+        }
+    }
+
+    [RelayCommand(CanExecute = nameof(HasSelectedSavedResourceRecipe))]
+    public void LoadSelectedResourceRecipe()
+    {
+        if (SelectedSavedResourceRecipe is null)
+        {
+            return;
+        }
+
+        ReplaceResourceBuildRows(SelectedSavedResourceRecipe.Recipe.Blocks);
+        RecalculateResourceTotals();
+        SetResourceStatus("Loaded", $"{SelectedSavedResourceRecipe.Name} loaded into the block list.", InfoBarSeverity.Success);
+    }
+
     [RelayCommand]
     private void RecalculateResources()
     {
@@ -428,6 +573,10 @@ public partial class MainWindowViewModel : ObservableObject
             SelectResourceBlock(block);
         }
     }
+
+    public bool HasSavedResourceRecipeName(string name) => FindSavedRecipeByName(name) is not null;
+
+    public bool HasUnsavedResourceBuildRows() => ResourceBuildRows.Count > 0;
 
     public async Task ExportTextAsync(string path)
     {
@@ -534,6 +683,16 @@ public partial class MainWindowViewModel : ObservableObject
         AddResourceBlockCommand.NotifyCanExecuteChanged();
     }
 
+    partial void OnSelectedSavedResourceRecipeChanged(ResourceRecipeViewModel? value)
+    {
+        NotifyResourceRecipeCommandsChanged();
+    }
+
+    partial void OnSelectedResourceRecipeQuantityChanged(int value)
+    {
+        AddResourceRecipeCommand.NotifyCanExecuteChanged();
+    }
+
     partial void OnResourceStatusTitleChanged(string value)
     {
         OnPropertyChanged(nameof(HasResourceStatusMessage));
@@ -586,6 +745,12 @@ public partial class MainWindowViewModel : ObservableObject
 
     private bool HasResourceBuildRows() => ResourceBuildRows.Count > 0;
 
+    private bool CanSaveCurrentResourceRecipe(string name) => ResourceBuildRows.Count > 0 && !string.IsNullOrWhiteSpace(name);
+
+    private bool CanAddResourceRecipe() => SelectedSavedResourceRecipe is not null && SelectedResourceRecipeQuantity > 0;
+
+    private bool HasSelectedSavedResourceRecipe() => SelectedSavedResourceRecipe is not null;
+
     private void RefreshFilteredResourceBlocks()
     {
         string searchText = BlockSearchText.Trim();
@@ -614,12 +779,22 @@ public partial class MainWindowViewModel : ObservableObject
         }
     }
 
+    private void ResourceRecipeRow_PropertyChanged(object? sender, PropertyChangedEventArgs e)
+    {
+        if (e.PropertyName == nameof(ResourceRecipeRowViewModel.Quantity))
+        {
+            RecalculateResourceTotals();
+        }
+    }
+
     private void RecalculateResourceTotals()
     {
         try
         {
             ResourceCalculationResult result = resourceCalculator.Calculate(new ResourceCalculationRequest(
-                ResourceBuildRows.Select(row => new SpaceEngineersBlockQuantity(row.Block.Id, row.Quantity)).ToList()));
+                ResourceBuildRows.Select(row => new SpaceEngineersBlockQuantity(row.Block.Id, row.Quantity)).ToList(),
+                ResourceRecipeRows.Select(row => new ResourceRecipeQuantity(row.Recipe.Id, row.Quantity)).ToList(),
+                SavedResourceRecipes.Select(recipe => recipe.Recipe).ToList()));
 
             ResourceComponentTotals.Clear();
             foreach (ResourceComponentTotal total in result.ComponentTotals)
@@ -641,7 +816,87 @@ public partial class MainWindowViewModel : ObservableObject
     private void NotifyResourceCollectionStateChanged()
     {
         OnPropertyChanged(nameof(ResourceBuildEmptyVisibility));
+        OnPropertyChanged(nameof(ResourceRecipeRowsEmptyVisibility));
         OnPropertyChanged(nameof(ResourceTotalsEmptyVisibility));
+        SaveCurrentResourceRecipeCommand.NotifyCanExecuteChanged();
+    }
+
+    private void LoadSavedResourceRecipes()
+    {
+        ResourceRecipeStorageLoadResult loadResult = resourceRecipeStorage.Load();
+        ReplaceSavedRecipes(loadResult.Recipes);
+
+        if (!string.IsNullOrWhiteSpace(loadResult.WarningMessage))
+        {
+            SetResourceStatus("Saved recipes unavailable", loadResult.WarningMessage, InfoBarSeverity.Warning);
+        }
+    }
+
+    private void ReplaceSavedRecipes(IEnumerable<ResourceRecipe> recipes)
+    {
+        SavedResourceRecipes.Clear();
+        foreach (ResourceRecipe recipe in recipes)
+        {
+            SavedResourceRecipes.Add(new ResourceRecipeViewModel(recipe));
+        }
+
+        SelectedSavedResourceRecipe ??= SavedResourceRecipes.FirstOrDefault();
+        if (SelectedSavedResourceRecipe is not null && SavedResourceRecipes.All(recipe => recipe.Id != SelectedSavedResourceRecipe.Id))
+        {
+            SelectedSavedResourceRecipe = SavedResourceRecipes.FirstOrDefault();
+        }
+
+        foreach (ResourceRecipeRowViewModel row in ResourceRecipeRows)
+        {
+            ResourceRecipeViewModel? savedRecipe = SavedResourceRecipes.FirstOrDefault(recipe => recipe.Id == row.Recipe.Id);
+
+            if (savedRecipe is not null)
+            {
+                row.UpdateRecipe(savedRecipe.Recipe);
+            }
+        }
+
+        NotifyResourceRecipeCommandsChanged();
+    }
+
+    private void ReplaceResourceBuildRows(IEnumerable<SpaceEngineersBlockQuantity> blocks)
+    {
+        foreach (ResourceBuildRowViewModel row in ResourceBuildRows)
+        {
+            row.PropertyChanged -= ResourceBuildRow_PropertyChanged;
+        }
+
+        ResourceBuildRows.Clear();
+
+        foreach (SpaceEngineersBlockQuantity item in blocks)
+        {
+            SpaceEngineersBlockDefinition? block = SpaceEngineersBlockCatalog.DefaultBlocks.FirstOrDefault(block =>
+                block.Id.Equals(item.BlockId, StringComparison.OrdinalIgnoreCase));
+
+            if (block is null)
+            {
+                continue;
+            }
+
+            ResourceBuildRowViewModel row = new(block, item.Quantity);
+            row.PropertyChanged += ResourceBuildRow_PropertyChanged;
+            ResourceBuildRows.Add(row);
+        }
+
+        NotifyResourceCollectionStateChanged();
+        ClearResourceBuildRowsCommand.NotifyCanExecuteChanged();
+    }
+
+    private ResourceRecipeViewModel? FindSavedRecipeByName(string name)
+    {
+        return SavedResourceRecipes.FirstOrDefault(recipe => recipe.Name.Equals(name.Trim(), StringComparison.OrdinalIgnoreCase));
+    }
+
+    private void NotifyResourceRecipeCommandsChanged()
+    {
+        AddResourceRecipeCommand.NotifyCanExecuteChanged();
+        DeleteSelectedResourceRecipeCommand.NotifyCanExecuteChanged();
+        LoadSelectedResourceRecipeCommand.NotifyCanExecuteChanged();
     }
 
     private bool TryBuildJumpDriveRequest(out JumpDriveCalculationRequest? request)
@@ -877,4 +1132,50 @@ public sealed partial class ResourceBuildRowViewModel : ObservableObject
     public string GridSize => Block.GridSize;
 
     public string BlockId => Block.Id;
+}
+
+public sealed class ResourceRecipeViewModel
+{
+    public ResourceRecipeViewModel(ResourceRecipe recipe)
+    {
+        Recipe = recipe;
+    }
+
+    public ResourceRecipe Recipe { get; }
+
+    public string Id => Recipe.Id;
+
+    public string Name => Recipe.Name;
+
+    public int BlockCount => Recipe.Blocks.Sum(block => block.Quantity);
+
+    public string Summary => $"{Name} ({BlockCount:N0} block{(BlockCount == 1 ? string.Empty : "s")})";
+}
+
+public sealed partial class ResourceRecipeRowViewModel : ObservableObject
+{
+    [ObservableProperty]
+    public partial int Quantity { get; set; }
+
+    public ResourceRecipeRowViewModel(ResourceRecipe recipe, int quantity)
+    {
+        Recipe = recipe;
+        Quantity = quantity;
+    }
+
+    public ResourceRecipe Recipe { get; private set; }
+
+    public string Name => Recipe.Name;
+
+    public int BlockCount => Recipe.Blocks.Sum(block => block.Quantity);
+
+    public string Summary => $"{BlockCount:N0} block{(BlockCount == 1 ? string.Empty : "s")} per recipe";
+
+    public void UpdateRecipe(ResourceRecipe recipe)
+    {
+        Recipe = recipe;
+        OnPropertyChanged(nameof(Name));
+        OnPropertyChanged(nameof(BlockCount));
+        OnPropertyChanged(nameof(Summary));
+    }
 }

@@ -84,7 +84,7 @@
                 </NavigationViewItem>
             </NavigationView.FooterMenuItems>
 
-            <Grid Margin="0,0,24,24">
+            <Grid Margin="24,16,24,24">
                 <Grid Visibility="{Binding ImageConverterVisibility}">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="340" />
@@ -193,7 +193,7 @@
                         </ScrollViewer>
                     </Border>
 
-        <Grid Grid.Row="1" Grid.Column="2" RowSpacing="20" Margin="0,0,24,24">
+        <Grid Grid.Row="1" Grid.Column="2" RowSpacing="20">
             <Grid.RowDefinitions>
                 <RowDefinition Height="360" />
                 <RowDefinition Height="*" />
@@ -588,6 +588,78 @@
                                     </Button>
                                 </Grid>
 
+                                <Grid ColumnSpacing="14">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*" />
+                                        <ColumnDefinition Width="140" />
+                                        <ColumnDefinition Width="Auto" />
+                                        <ColumnDefinition Width="Auto" />
+                                        <ColumnDefinition Width="Auto" />
+                                        <ColumnDefinition Width="Auto" />
+                                    </Grid.ColumnDefinitions>
+
+                                    <ComboBox
+                                        Grid.Column="0"
+                                        Header="Saved recipe"
+                                        ItemsSource="{Binding SavedResourceRecipes}"
+                                        SelectedItem="{Binding SelectedSavedResourceRecipe, Mode=TwoWay}"
+                                        DisplayMemberPath="Summary"
+                                        PlaceholderText="No saved recipe selected"
+                                        HorizontalAlignment="Stretch" />
+
+                                    <NumberBox
+                                        Grid.Column="1"
+                                        Header="Recipe qty"
+                                        Minimum="1"
+                                        SmallChange="1"
+                                        SpinButtonPlacementMode="Compact"
+                                        Value="{Binding SelectedResourceRecipeQuantity, Mode=TwoWay}" />
+
+                                    <Button
+                                        Grid.Column="2"
+                                        Command="{Binding AddResourceRecipeCommand}"
+                                        VerticalAlignment="Bottom"
+                                        Padding="14,8">
+                                        <StackPanel Orientation="Horizontal" Spacing="8">
+                                            <SymbolIcon Symbol="Add" />
+                                            <TextBlock Text="Add Recipe" />
+                                        </StackPanel>
+                                    </Button>
+
+                                    <Button
+                                        Grid.Column="3"
+                                        Click="SaveResourceRecipe_Click"
+                                        VerticalAlignment="Bottom"
+                                        Padding="14,8">
+                                        <StackPanel Orientation="Horizontal" Spacing="8">
+                                            <SymbolIcon Symbol="Save" />
+                                            <TextBlock Text="Save" />
+                                        </StackPanel>
+                                    </Button>
+
+                                    <Button
+                                        Grid.Column="4"
+                                        Click="LoadResourceRecipe_Click"
+                                        VerticalAlignment="Bottom"
+                                        Padding="14,8">
+                                        <StackPanel Orientation="Horizontal" Spacing="8">
+                                            <SymbolIcon Symbol="OpenFile" />
+                                            <TextBlock Text="Load" />
+                                        </StackPanel>
+                                    </Button>
+
+                                    <Button
+                                        Grid.Column="5"
+                                        Click="DeleteResourceRecipe_Click"
+                                        VerticalAlignment="Bottom"
+                                        Padding="14,8">
+                                        <StackPanel Orientation="Horizontal" Spacing="8">
+                                            <SymbolIcon Symbol="Delete" />
+                                            <TextBlock Text="Delete" />
+                                        </StackPanel>
+                                    </Button>
+                                </Grid>
+
                                 <InfoBar
                                     IsOpen="{Binding HasResourceStatusMessage}"
                                     Severity="{Binding ResourceStatusSeverity}"
@@ -611,6 +683,8 @@
                                 CornerRadius="8">
                                 <Grid RowSpacing="14">
                                     <Grid.RowDefinitions>
+                                        <RowDefinition Height="Auto" />
+                                        <RowDefinition Height="*" />
                                         <RowDefinition Height="Auto" />
                                         <RowDefinition Height="*" />
                                     </Grid.RowDefinitions>
@@ -669,6 +743,55 @@
                                         Visibility="{Binding ResourceBuildEmptyVisibility}">
                                         <FontIcon Glyph="&#xE71D;" FontSize="34" Foreground="{ThemeResource TextFillColorSecondaryBrush}" />
                                         <TextBlock Text="No blocks added" Foreground="{ThemeResource TextFillColorSecondaryBrush}" HorizontalAlignment="Center" />
+                                    </StackPanel>
+
+                                    <TextBlock
+                                        Grid.Row="2"
+                                        Text="Active Recipes"
+                                        FontSize="20"
+                                        FontWeight="SemiBold" />
+
+                                    <ListView Grid.Row="3" ItemsSource="{Binding ResourceRecipeRows}">
+                                        <ListView.ItemTemplate>
+                                            <DataTemplate>
+                                                <Grid ColumnSpacing="12" Padding="0,8">
+                                                    <Grid.ColumnDefinitions>
+                                                        <ColumnDefinition Width="*" />
+                                                        <ColumnDefinition Width="90" />
+                                                        <ColumnDefinition Width="42" />
+                                                    </Grid.ColumnDefinitions>
+
+                                                    <StackPanel Spacing="2">
+                                                        <TextBlock Text="{Binding Name}" FontWeight="SemiBold" />
+                                                        <TextBlock Text="{Binding Summary}" Foreground="{ThemeResource TextFillColorSecondaryBrush}" />
+                                                    </StackPanel>
+
+                                                    <TextBox
+                                                        Grid.Column="1"
+                                                        Header="Qty"
+                                                        Text="{Binding Quantity, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+
+                                                    <Button
+                                                        Grid.Column="2"
+                                                        Click="RemoveResourceRecipeRow_Click"
+                                                        Tag="{Binding}"
+                                                        ToolTipService.ToolTip="Remove recipe"
+                                                        VerticalAlignment="Bottom"
+                                                        Padding="8">
+                                                        <SymbolIcon Symbol="Cancel" />
+                                                    </Button>
+                                                </Grid>
+                                            </DataTemplate>
+                                        </ListView.ItemTemplate>
+                                    </ListView>
+                                    <StackPanel
+                                        Grid.Row="3"
+                                        HorizontalAlignment="Center"
+                                        VerticalAlignment="Center"
+                                        Spacing="8"
+                                        Visibility="{Binding ResourceRecipeRowsEmptyVisibility}">
+                                        <FontIcon Glyph="&#xE8EC;" FontSize="34" Foreground="{ThemeResource TextFillColorSecondaryBrush}" />
+                                        <TextBlock Text="No active recipes" Foreground="{ThemeResource TextFillColorSecondaryBrush}" HorizontalAlignment="Center" />
                                     </StackPanel>
                                 </Grid>
                             </Border>

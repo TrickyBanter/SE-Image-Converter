@@ -168,6 +168,120 @@ public sealed partial class MainWindow : Window
         }
     }
 
+    private void RemoveResourceRecipeRow_Click(object sender, RoutedEventArgs e)
+    {
+        if (sender is Button { Tag: ResourceRecipeRowViewModel row })
+        {
+            ViewModel.RemoveResourceRecipeRowCommand.Execute(row);
+        }
+    }
+
+    private async void SaveResourceRecipe_Click(object sender, RoutedEventArgs e)
+    {
+        TextBox nameTextBox = new()
+        {
+            Header = "Recipe name",
+            PlaceholderText = "e.g. Missile",
+            MinWidth = 320,
+        };
+
+        ContentDialog dialog = new()
+        {
+            XamlRoot = Root.XamlRoot,
+            Title = "Save Recipe",
+            Content = nameTextBox,
+            PrimaryButtonText = "Save",
+            CloseButtonText = "Cancel",
+            DefaultButton = ContentDialogButton.Primary,
+        };
+
+        ContentDialogResult result = await dialog.ShowAsync();
+
+        if (result != ContentDialogResult.Primary)
+        {
+            return;
+        }
+
+        string recipeName = nameTextBox.Text.Trim();
+
+        if (ViewModel.HasSavedResourceRecipeName(recipeName))
+        {
+            ContentDialog confirmDialog = new()
+            {
+                XamlRoot = Root.XamlRoot,
+                Title = "Replace Recipe",
+                Content = $"Replace the saved recipe '{recipeName}' with the current block list?",
+                PrimaryButtonText = "Replace",
+                CloseButtonText = "Cancel",
+                DefaultButton = ContentDialogButton.Primary,
+            };
+
+            ContentDialogResult confirmResult = await confirmDialog.ShowAsync();
+
+            if (confirmResult != ContentDialogResult.Primary)
+            {
+                return;
+            }
+        }
+
+        ViewModel.SaveCurrentResourceRecipe(recipeName);
+    }
+
+    private async void LoadResourceRecipe_Click(object sender, RoutedEventArgs e)
+    {
+        if (ViewModel.SelectedSavedResourceRecipe is null)
+        {
+            return;
+        }
+
+        if (ViewModel.HasUnsavedResourceBuildRows())
+        {
+            ContentDialog confirmDialog = new()
+            {
+                XamlRoot = Root.XamlRoot,
+                Title = "Load Recipe",
+                Content = "Replace the current block list with the selected saved recipe?",
+                PrimaryButtonText = "Load",
+                CloseButtonText = "Cancel",
+                DefaultButton = ContentDialogButton.Primary,
+            };
+
+            ContentDialogResult confirmResult = await confirmDialog.ShowAsync();
+
+            if (confirmResult != ContentDialogResult.Primary)
+            {
+                return;
+            }
+        }
+
+        ViewModel.LoadSelectedResourceRecipe();
+    }
+
+    private async void DeleteResourceRecipe_Click(object sender, RoutedEventArgs e)
+    {
+        if (ViewModel.SelectedSavedResourceRecipe is null)
+        {
+            return;
+        }
+
+        ContentDialog confirmDialog = new()
+        {
+            XamlRoot = Root.XamlRoot,
+            Title = "Delete Recipe",
+            Content = $"Delete the saved recipe '{ViewModel.SelectedSavedResourceRecipe.Name}'?",
+            PrimaryButtonText = "Delete",
+            CloseButtonText = "Cancel",
+            DefaultButton = ContentDialogButton.Close,
+        };
+
+        ContentDialogResult confirmResult = await confirmDialog.ShowAsync();
+
+        if (confirmResult == ContentDialogResult.Primary)
+        {
+            ViewModel.DeleteSelectedResourceRecipe();
+        }
+    }
+
     private void ShipMassTextBox_TextChanged(object sender, TextChangedEventArgs e)
     {
         if (isFormattingShipMass || sender is not TextBox textBox)
