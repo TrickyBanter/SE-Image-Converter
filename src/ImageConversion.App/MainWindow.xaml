@@ -525,17 +525,20 @@
                             <StackPanel Spacing="16">
                                 <TextBlock Text="Options" FontSize="20" FontWeight="SemiBold" />
 
-                                <ToggleSwitch Header="Remember last selected tool" IsOn="True" IsEnabled="False" />
-                                <ToggleSwitch Header="Check for updates on startup" IsOn="True" IsEnabled="False" />
-                                <ComboBox Header="Default app view" SelectedIndex="0" IsEnabled="False" HorizontalAlignment="Stretch">
-                                    <ComboBoxItem Content="Image Converter" />
-                                    <ComboBoxItem Content="Jump Drive Calculator" />
-                                </ComboBox>
-                                <ComboBox Header="Theme" SelectedIndex="0" IsEnabled="False" HorizontalAlignment="Stretch">
-                                    <ComboBoxItem Content="Use system setting" />
-                                    <ComboBoxItem Content="Light" />
-                                    <ComboBoxItem Content="Dark" />
-                                </ComboBox>
+                                <ToggleSwitch Header="Remember last selected tool" IsOn="{Binding RememberLastSelectedTool, Mode=TwoWay}" />
+                                <ToggleSwitch Header="Check for updates on startup" IsOn="{Binding CheckForUpdatesOnStartup, Mode=TwoWay}" />
+                                <ComboBox
+                                    Header="Default app view"
+                                    ItemsSource="{Binding DefaultAppViews}"
+                                    SelectedItem="{Binding SelectedDefaultAppView, Mode=TwoWay}"
+                                    DisplayMemberPath="Name"
+                                    HorizontalAlignment="Stretch" />
+                                <ComboBox
+                                    Header="Theme"
+                                    ItemsSource="{Binding Themes}"
+                                    SelectedItem="{Binding SelectedTheme, Mode=TwoWay}"
+                                    DisplayMemberPath="Name"
+                                    HorizontalAlignment="Stretch" />
                             </StackPanel>
                         </Border>
 
