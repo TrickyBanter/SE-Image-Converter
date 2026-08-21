@@ -22,11 +22,23 @@ public partial class MainWindowViewModel : ObservableObject
     private readonly ResourceCalculator resourceCalculator = new(SpaceEngineersBlockCatalog.DefaultBlocks);
     private readonly ResourceRecipeStorageService resourceRecipeStorage;
     private readonly GitHubReleaseUpdater updater = new();
+    private readonly IAppSettingsStore settingsStore;
     private byte[]? sourceBytes;
     private GitHubUpdate? availableUpdate;
+    private AppSettings settings;
+    private bool isLoadingSettings;
 
     [ObservableProperty]
     public partial MainFeature CurrentFeature { get; set; } = MainFeature.ImageConverter;
+
+    [ObservableProperty]
+    public partial bool CheckForUpdatesOnStartup { get; set; }
+
+    [ObservableProperty]
+    public partial FeatureOption SelectedDefaultAppView { get; set; }
+
+    [ObservableProperty]
+    public partial ThemeOption SelectedTheme { get; set; }
 
     [ObservableProperty]
     public partial ImageSource? SourcePreview { get; set; }
@@ -199,9 +211,9 @@ public partial class MainWindowViewModel : ObservableObject
 
     public bool CanExport => HasConvertedText();
 
-    public string CurrentVersionSummary => $"Version {FormatVersion(GitHubReleaseUpdater.CurrentVersion)}";
+    public string CurrentVersionSummary => $"v{FormatVersion(GitHubReleaseUpdater.CurrentVersion)}";
 
-    public string AppDateSummary => $"App date {GetAppDate():yyyy-MM-dd}";
+    public string AppDateSummary => GetAppDate().ToString("dd-MM-yyyy", CultureInfo.InvariantCulture);
 
     public Visibility ImageConverterVisibility => CurrentFeature == MainFeature.ImageConverter ? Visibility.Visible : Visibility.Collapsed;
 
@@ -249,7 +261,35 @@ public partial class MainWindowViewModel : ObservableObject
         new(JumpDriveType.Prototech, JumpDriveProfile.Prototech.Name),
     ];
 
+    public ObservableCollection<FeatureOption> DefaultAppViews { get; } =
+    [
+        new(MainFeature.ImageConverter, "Image Converter"),
+        new(MainFeature.JumpDriveCalculator, "Jump Drive Calculator"),
+    ];
+
+    public ObservableCollection<ThemeOption> Themes { get; } =
+    [
+        new(AppTheme.System, "Use system setting"),
+        new(AppTheme.Light, "Light"),
+        new(AppTheme.Dark, "Dark"),
+    ];
+
     public MainWindowViewModel()
+        : this(new AppSettingsStore())
+    {
+    }
+
+    public MainWindowViewModel(IAppSettingsStore settingsStore)
+    {
+        this.settingsStore = settingsStore;
+        settings = settingsStore.Load();
+
+        isLoadingSettings = true;
+        CheckForUpdatesOnStartup = settings.CheckForUpdatesOnStartup;
+        SelectedDefaultAppView = FindFeatureOption(settings.DefaultAppView);
+        SelectedTheme = FindThemeOption(settings.Theme);
+        CurrentFeature = SelectedDefaultAppView.Feature;
+        isLoadingSettings = false;
         : this(new ResourceRecipeStorageService())
     {
     }
@@ -265,6 +305,12 @@ public partial class MainWindowViewModel : ObservableObject
 
     public async Task CheckForUpdatesOnStartupAsync()
     {
+        if (!CheckForUpdatesOnStartup)
+        {
+            UpdateStatusMessage = "Startup update checks are turned off.";
+            return;
+        }
+
         await CheckForUpdatesAsync(showUpToDateMessage: false);
     }
 
@@ -655,6 +701,39 @@ public partial class MainWindowViewModel : ObservableObject
         OnPropertyChanged(nameof(JumpDriveCalculatorVisibility));
         OnPropertyChanged(nameof(ResourceCalculatorVisibility));
         OnPropertyChanged(nameof(SettingsVisibility));
+    }
+
+    partial void OnCheckForUpdatesOnStartupChanged(bool value)
+    {
+        if (isLoadingSettings)
+        {
+            return;
+        }
+
+        settings = settings with { CheckForUpdatesOnStartup = value };
+        SaveSettings();
+    }
+
+    partial void OnSelectedDefaultAppViewChanged(FeatureOption value)
+    {
+        if (isLoadingSettings)
+        {
+            return;
+        }
+
+        settings = settings with { DefaultAppView = value.Feature };
+        SaveSettings();
+    }
+
+    partial void OnSelectedThemeChanged(ThemeOption value)
+    {
+        if (isLoadingSettings)
+        {
+            return;
+        }
+
+        settings = settings with { Theme = value.Theme };
+        SaveSettings();
     }
 
     partial void OnJumpStatusTitleChanged(string value)
@@ -1052,6 +1131,17 @@ public partial class MainWindowViewModel : ObservableObject
         InstallUpdateCommand.NotifyCanExecuteChanged();
     }
 
+    private FeatureOption FindFeatureOption(MainFeature feature) =>
+        DefaultAppViews.FirstOrDefault(option => option.Feature == feature) ?? DefaultAppViews[0];
+
+    private ThemeOption FindThemeOption(AppTheme theme) =>
+        Themes.FirstOrDefault(option => option.Theme == theme) ?? Themes[0];
+
+    private void SaveSettings()
+    {
+        settingsStore.Save(settings);
+    }
+
     private static string FormatVersion(Version version)
     {
         return version.Build >= 0
@@ -1114,6 +1204,9 @@ public sealed record JumpDriveLegViewModel(int Number, string Distance, string R
 
 public sealed record JumpDriveTypeOption(JumpDriveType Type, string Name);
 
+public sealed record FeatureOption(MainFeature Feature, string Name);
+
+public sealed record ThemeOption(AppTheme Theme, string Name);
 public sealed partial class ResourceBuildRowViewModel : ObservableObject
 {
     [ObservableProperty]

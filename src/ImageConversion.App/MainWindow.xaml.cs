@@ -7,6 +7,7 @@ using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Data;
 using Microsoft.UI.Xaml.Input;
+using System.ComponentModel;
 using System.Globalization;
 using System.Runtime.InteropServices;
 using System.Text;
@@ -37,7 +38,9 @@ public sealed partial class MainWindow : Window
         InitializeComponent();
         ExtendsContentIntoTitleBar = false;
         Root.DataContext = ViewModel;
-        FeatureNavigation.SelectedItem = ImageConverterNavigationItem;
+        ApplyTheme(ViewModel.SelectedTheme.Theme);
+        ViewModel.PropertyChanged += ViewModel_PropertyChanged;
+        SelectNavigationItem(ViewModel.CurrentFeature);
         ConfigureLaunchWindow();
         Root.Loaded += Root_Loaded;
         Closed += MainWindow_Closed;
@@ -79,6 +82,8 @@ public sealed partial class MainWindow : Window
 
     private void MainWindow_Closed(object sender, WindowEventArgs args)
     {
+        ViewModel.PropertyChanged -= ViewModel_PropertyChanged;
+
         if (smallIconHandle != IntPtr.Zero)
         {
             DestroyIcon(smallIconHandle);
@@ -141,6 +146,46 @@ public sealed partial class MainWindow : Window
         };
     }
 
+    private void ViewModel_PropertyChanged(object? sender, PropertyChangedEventArgs e)
+    {
+        if (e.PropertyName == nameof(ViewModel.SelectedTheme))
+        {
+            ApplyTheme(ViewModel.SelectedTheme.Theme);
+        }
+        else if (e.PropertyName == nameof(ViewModel.CurrentFeature))
+        {
+            SelectNavigationItem(ViewModel.CurrentFeature);
+        }
+    }
+
+    private void ApplyTheme(AppTheme theme)
+    {
+        Root.RequestedTheme = theme switch
+        {
+            AppTheme.Light => ElementTheme.Light,
+            AppTheme.Dark => ElementTheme.Dark,
+            _ => ElementTheme.Default,
+        };
+    }
+
+    private void SelectNavigationItem(MainFeature feature)
+    {
+        string tag = feature switch
+        {
+            MainFeature.JumpDriveCalculator => "JumpDriveCalculator",
+            MainFeature.Settings => "Settings",
+            _ => "ImageConverter",
+        };
+
+        FeatureNavigation.SelectedItem = FindNavigationItem(tag) ?? ImageConverterNavigationItem;
+    }
+
+    private NavigationViewItem? FindNavigationItem(string tag)
+    {
+        return FeatureNavigation.MenuItems
+            .Concat(FeatureNavigation.FooterMenuItems)
+            .OfType<NavigationViewItem>()
+            .FirstOrDefault(item => string.Equals(item.Tag as string, tag, StringComparison.Ordinal));
     private void ResourceBlockSearchBox_SuggestionChosen(AutoSuggestBox sender, AutoSuggestBoxSuggestionChosenEventArgs args)
     {
         if (args.SelectedItem is SpaceEngineersBlockDefinition block)
@@ -523,7 +568,7 @@ public sealed partial class MainWindow : Window
                     },
                     new TextBlock
                     {
-                        Text = $"Version {FormatVersion(GitHubReleaseUpdater.CurrentVersion)}",
+                        Text = ViewModel.CurrentVersionSummary,
                     },
                     new TextBlock
                     {
@@ -646,13 +691,6 @@ public sealed partial class MainWindow : Window
 
         _ = ViewModel.CheckForUpdatesManuallyAsync();
         await dialog.ShowAsync();
-    }
-
-    private static string FormatVersion(Version version)
-    {
-        return version.Build >= 0
-            ? $"{version.Major}.{version.Minor}.{version.Build}"
-            : $"{version.Major}.{version.Minor}";
     }
 
     [DllImport("user32.dll", CharSet = CharSet.Unicode, SetLastError = true)]
