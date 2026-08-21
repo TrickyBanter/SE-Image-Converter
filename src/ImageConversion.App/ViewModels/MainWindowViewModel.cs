@@ -29,9 +29,6 @@ public partial class MainWindowViewModel : ObservableObject
     public partial MainFeature CurrentFeature { get; set; } = MainFeature.ImageConverter;
 
     [ObservableProperty]
-    public partial bool RememberLastSelectedTool { get; set; }
-
-    [ObservableProperty]
     public partial bool CheckForUpdatesOnStartup { get; set; }
 
     [ObservableProperty]
@@ -221,7 +218,6 @@ public partial class MainWindowViewModel : ObservableObject
     [
         new(MainFeature.ImageConverter, "Image Converter"),
         new(MainFeature.JumpDriveCalculator, "Jump Drive Calculator"),
-        new(MainFeature.Settings, "Settings"),
     ];
 
     public ObservableCollection<ThemeOption> Themes { get; } =
@@ -242,13 +238,10 @@ public partial class MainWindowViewModel : ObservableObject
         settings = settingsStore.Load();
 
         isLoadingSettings = true;
-        RememberLastSelectedTool = settings.RememberLastSelectedTool;
         CheckForUpdatesOnStartup = settings.CheckForUpdatesOnStartup;
         SelectedDefaultAppView = FindFeatureOption(settings.DefaultAppView);
         SelectedTheme = FindThemeOption(settings.Theme);
-        CurrentFeature = settings.RememberLastSelectedTool
-            ? settings.LastSelectedTool
-            : settings.DefaultAppView;
+        CurrentFeature = SelectedDefaultAppView.Feature;
         isLoadingSettings = false;
         SelectedDitheringMode = DitheringModes[0];
         SelectedJumpDriveType = JumpDriveTypes[0];
@@ -444,27 +437,6 @@ public partial class MainWindowViewModel : ObservableObject
         OnPropertyChanged(nameof(ImageConverterVisibility));
         OnPropertyChanged(nameof(JumpDriveCalculatorVisibility));
         OnPropertyChanged(nameof(SettingsVisibility));
-
-        if (!isLoadingSettings && RememberLastSelectedTool)
-        {
-            settings = settings with { LastSelectedTool = value };
-            SaveSettings();
-        }
-    }
-
-    partial void OnRememberLastSelectedToolChanged(bool value)
-    {
-        if (isLoadingSettings)
-        {
-            return;
-        }
-
-        settings = settings with
-        {
-            RememberLastSelectedTool = value,
-            LastSelectedTool = CurrentFeature,
-        };
-        SaveSettings();
     }
 
     partial void OnCheckForUpdatesOnStartupChanged(bool value)
@@ -487,11 +459,6 @@ public partial class MainWindowViewModel : ObservableObject
 
         settings = settings with { DefaultAppView = value.Feature };
         SaveSettings();
-
-        if (!RememberLastSelectedTool)
-        {
-            CurrentFeature = value.Feature;
-        }
     }
 
     partial void OnSelectedThemeChanged(ThemeOption value)
