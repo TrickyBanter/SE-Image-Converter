@@ -525,7 +525,6 @@
                             <StackPanel Spacing="16">
                                 <TextBlock Text="Options" FontSize="20" FontWeight="SemiBold" />
 
-                                <ToggleSwitch Header="Remember last selected tool" IsOn="{Binding RememberLastSelectedTool, Mode=TwoWay}" />
                                 <ToggleSwitch Header="Check for updates on startup" IsOn="{Binding CheckForUpdatesOnStartup, Mode=TwoWay}" />
                                 <ComboBox
                                     Header="Default app view"

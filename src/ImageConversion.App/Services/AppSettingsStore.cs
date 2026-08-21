@@ -66,13 +66,9 @@ public sealed class AppSettingsStore : IAppSettingsStore
 
 public sealed record AppSettings
 {
-    public bool RememberLastSelectedTool { get; init; } = true;
-
     public bool CheckForUpdatesOnStartup { get; init; } = true;
 
     public MainFeature DefaultAppView { get; init; } = MainFeature.ImageConverter;
-
-    public MainFeature LastSelectedTool { get; init; } = MainFeature.ImageConverter;
 
     public AppTheme Theme { get; init; } = AppTheme.System;
 }
