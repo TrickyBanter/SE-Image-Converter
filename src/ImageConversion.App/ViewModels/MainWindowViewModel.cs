@@ -265,6 +265,7 @@ public partial class MainWindowViewModel : ObservableObject
     [
         new(MainFeature.ImageConverter, "Image Converter"),
         new(MainFeature.JumpDriveCalculator, "Jump Drive Calculator"),
+        new(MainFeature.ResourceCalculator, "Resource Calculator"),
     ];
 
     public ObservableCollection<ThemeOption> Themes { get; } =
@@ -275,13 +276,24 @@ public partial class MainWindowViewModel : ObservableObject
     ];
 
     public MainWindowViewModel()
-        : this(new AppSettingsStore())
+        : this(new AppSettingsStore(), new ResourceRecipeStorageService())
     {
     }
 
     public MainWindowViewModel(IAppSettingsStore settingsStore)
+        : this(settingsStore, new ResourceRecipeStorageService())
+    {
+    }
+
+    public MainWindowViewModel(ResourceRecipeStorageService resourceRecipeStorage)
+        : this(new AppSettingsStore(), resourceRecipeStorage)
+    {
+    }
+
+    public MainWindowViewModel(IAppSettingsStore settingsStore, ResourceRecipeStorageService resourceRecipeStorage)
     {
         this.settingsStore = settingsStore;
+        this.resourceRecipeStorage = resourceRecipeStorage;
         settings = settingsStore.Load();
 
         isLoadingSettings = true;
@@ -290,13 +302,6 @@ public partial class MainWindowViewModel : ObservableObject
         SelectedTheme = FindThemeOption(settings.Theme);
         CurrentFeature = SelectedDefaultAppView.Feature;
         isLoadingSettings = false;
-        : this(new ResourceRecipeStorageService())
-    {
-    }
-
-    public MainWindowViewModel(ResourceRecipeStorageService resourceRecipeStorage)
-    {
-        this.resourceRecipeStorage = resourceRecipeStorage;
         SelectedDitheringMode = DitheringModes[0];
         SelectedJumpDriveType = JumpDriveTypes[0];
         LoadSavedResourceRecipes();

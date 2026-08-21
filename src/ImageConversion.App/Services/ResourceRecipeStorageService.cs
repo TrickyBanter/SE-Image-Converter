@@ -17,7 +17,7 @@ public sealed class ResourceRecipeStorageService
     public ResourceRecipeStorageService()
         : this(Path.Combine(
             Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData),
-            "SE Image Converter",
+            "SE Toolkit",
             RecipeFileName))
     {
     }

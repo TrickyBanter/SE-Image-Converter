@@ -1,9 +1,9 @@
 #ifndef AppVersion
-#define AppVersion "1.3.0"
+#define AppVersion "2.0.0"
 #endif
 
 #ifndef PublishDir
-#define PublishDir "..\artifacts\publish\SEImageConverter\win-x64"
+#define PublishDir "..\artifacts\publish\SEToolkit\win-x64"
 #endif
 
 #ifndef OutputDir
@@ -22,9 +22,9 @@
 #define WindowsAppRuntimeInstaller "prerequisites\WindowsAppRuntimeInstall-x64.exe"
 #endif
 
-#define AppName "SE Image Converter"
-#define AppPublisher "SE Image Converter"
-#define AppExeName "SE Image Converter.exe"
+#define AppName "SE Toolkit"
+#define AppPublisher "SE Toolkit"
+#define AppExeName "SE Toolkit.exe"
 #define AppId "{{4D747F7D-B8A6-48C5-8B9C-34E14C694B7E}"
 #define MinDotNetDesktopRuntimeVersion "10.0.0"
 #define WindowsAppRuntimePackageName "MicrosoftCorporationII.WindowsAppRuntime.Main.2.3"
@@ -34,11 +34,11 @@ AppId={#AppId}
 AppName={#AppName}
 AppVersion={#AppVersion}
 AppPublisher={#AppPublisher}
-DefaultDirName={autopf}\SE Image Converter
+DefaultDirName={autopf}\SE Toolkit
 DefaultGroupName={#AppName}
 DisableProgramGroupPage=yes
 OutputDir={#OutputDir}
-OutputBaseFilename=SEImageConverter-Setup-{#AppVersion}
+OutputBaseFilename=SEToolkit-Setup-{#AppVersion}
 Compression=lzma2
 SolidCompression=yes
 WizardStyle=modern

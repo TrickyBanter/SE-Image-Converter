@@ -72,6 +72,6 @@ public sealed class ResourceRecipeStorageServiceTests
 
     private static string CreateTempFilePath()
     {
-        return Path.Combine(Path.GetTempPath(), "SEImageConverterTests", Guid.NewGuid().ToString("N"), "resource-recipes.json");
+        return Path.Combine(Path.GetTempPath(), "SEToolkitTests", Guid.NewGuid().ToString("N"), "resource-recipes.json");
     }
 }

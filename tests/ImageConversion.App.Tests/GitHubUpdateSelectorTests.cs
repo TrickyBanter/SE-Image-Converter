@@ -42,13 +42,13 @@ public sealed class GitHubUpdateSelectorTests
     {
         GitHubReleaseAssetResponse[] assets =
         [
-            Asset("SEImageConverter-portable-helper.exe", "https://example.com/helper.exe"),
-            Asset("SEImageConverter-Setup-1.2.3.exe", "https://example.com/setup.exe"),
+            Asset("SEToolkit-portable-helper.exe", "https://example.com/helper.exe"),
+            Asset("SEToolkit-Setup-1.2.3.exe", "https://example.com/setup.exe"),
         ];
 
         Assert.True(GitHubUpdateSelector.TrySelectInstallerAsset(assets, out GitHubReleaseAsset? installerAsset));
         Assert.NotNull(installerAsset);
-        Assert.Equal("SEImageConverter-Setup-1.2.3.exe", installerAsset.Name);
+        Assert.Equal("SEToolkit-Setup-1.2.3.exe", installerAsset.Name);
     }
 
     [Fact]
@@ -56,13 +56,13 @@ public sealed class GitHubUpdateSelectorTests
     {
         GitHubReleaseAssetResponse[] assets =
         [
-            Asset("SEImageConverter.zip", "https://example.com/app.zip"),
-            Asset("SEImageConverter-1.2.3.exe", "https://example.com/app.exe"),
+            Asset("SEToolkit.zip", "https://example.com/app.zip"),
+            Asset("SEToolkit-1.2.3.exe", "https://example.com/app.exe"),
         ];
 
         Assert.True(GitHubUpdateSelector.TrySelectInstallerAsset(assets, out GitHubReleaseAsset? installerAsset));
         Assert.NotNull(installerAsset);
-        Assert.Equal("SEImageConverter-1.2.3.exe", installerAsset.Name);
+        Assert.Equal("SEToolkit-1.2.3.exe", installerAsset.Name);
     }
 
     [Fact]
@@ -70,9 +70,9 @@ public sealed class GitHubUpdateSelectorTests
     {
         GitHubReleaseAssetResponse[] assets =
         [
-            Asset("SEImageConverter.zip", "https://example.com/app.zip"),
+            Asset("SEToolkit.zip", "https://example.com/app.zip"),
             Asset("checksums.txt", "https://example.com/checksums.txt"),
-            Asset("SEImageConverter.msixbundle", "https://example.com/app.msixbundle"),
+            Asset("SEToolkit.msixbundle", "https://example.com/app.msixbundle"),
         ];
 
         Assert.False(GitHubUpdateSelector.TrySelectInstallerAsset(assets, out GitHubReleaseAsset? installerAsset));
@@ -109,12 +109,12 @@ public sealed class GitHubUpdateSelectorTests
     private static GitHubReleaseResponse Release(string tagName, bool draft = false, bool prerelease = false) => new()
     {
         TagName = tagName,
-        HtmlUrl = "https://github.com/TrickyBanter/SE-Image-Converter/releases/tag/" + tagName,
+        HtmlUrl = "https://github.com/TrickyBanter/SE-Toolkit/releases/tag/" + tagName,
         Draft = draft,
         Prerelease = prerelease,
         Assets =
         [
-            Asset("SEImageConverter-Setup-1.2.0.exe", "https://example.com/setup.exe"),
+            Asset("SEToolkit-Setup-1.2.0.exe", "https://example.com/setup.exe"),
         ],
     };
 

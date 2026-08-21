@@ -49,10 +49,10 @@ function Write-ChecksumManifest {
 
 $repoRoot = Resolve-Path (Join-Path $PSScriptRoot "..")
 $appProject = Join-Path $repoRoot "src\ImageConversion.App\ImageConversion.App.csproj"
-$solution = Join-Path $repoRoot "SEImageConverter.slnx"
-$publishRoot = Join-Path $repoRoot "artifacts\publish\SEImageConverter\$RuntimeIdentifier"
+$solution = Join-Path $repoRoot "SEToolkit.slnx"
+$publishRoot = Join-Path $repoRoot "artifacts\publish\SEToolkit\$RuntimeIdentifier"
 $releaseRoot = Join-Path $repoRoot "artifacts\release"
-$installerScript = Join-Path $repoRoot "build\SEImageConverter.iss"
+$installerScript = Join-Path $repoRoot "build\SEToolkit.iss"
 $prerequisitesRoot = Join-Path $repoRoot "build\prerequisites"
 $checksumManifestPath = Join-Path $releaseRoot "SHA256SUMS.txt"
 
@@ -119,7 +119,7 @@ Invoke-NativeCommand "dotnet" @(
     "-p:PublishDir=$publishRoot\"
 )
 
-$zipPath = Join-Path $releaseRoot "SEImageConverter-Portable-$Version-$RuntimeIdentifier.zip"
+$zipPath = Join-Path $releaseRoot "SEToolkit-Portable-$Version-$RuntimeIdentifier.zip"
 if (Test-Path $zipPath) {
     Remove-Item -LiteralPath $zipPath -Force
 }
@@ -176,7 +176,7 @@ $innoArguments += $installerScript
 
 Invoke-NativeCommand $InnoSetupCompiler $innoArguments
 
-$installerPath = Join-Path $releaseRoot "SEImageConverter-Setup-$Version.exe"
+$installerPath = Join-Path $releaseRoot "SEToolkit-Setup-$Version.exe"
 Write-ChecksumManifest @($installerPath, $zipPath) $checksumManifestPath
 
 Write-Host "Release artifacts:"

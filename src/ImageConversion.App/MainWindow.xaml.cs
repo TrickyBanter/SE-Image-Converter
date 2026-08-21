@@ -173,6 +173,7 @@ public sealed partial class MainWindow : Window
         string tag = feature switch
         {
             MainFeature.JumpDriveCalculator => "JumpDriveCalculator",
+            MainFeature.ResourceCalculator => "ResourceCalculator",
             MainFeature.Settings => "Settings",
             _ => "ImageConverter",
         };
@@ -186,6 +187,8 @@ public sealed partial class MainWindow : Window
             .Concat(FeatureNavigation.FooterMenuItems)
             .OfType<NavigationViewItem>()
             .FirstOrDefault(item => string.Equals(item.Tag as string, tag, StringComparison.Ordinal));
+    }
+
     private void ResourceBlockSearchBox_SuggestionChosen(AutoSuggestBox sender, AutoSuggestBoxSuggestionChosenEventArgs args)
     {
         if (args.SelectedItem is SpaceEngineersBlockDefinition block)
@@ -554,7 +557,7 @@ public sealed partial class MainWindow : Window
         ContentDialog dialog = new()
         {
             XamlRoot = Root.XamlRoot,
-            Title = "About SE Image Converter",
+            Title = "About SE Toolkit",
             CloseButtonText = "Close",
             Content = new StackPanel
             {
@@ -563,7 +566,7 @@ public sealed partial class MainWindow : Window
                 {
                     new TextBlock
                     {
-                        Text = "SE Image Converter",
+                        Text = "SE Toolkit",
                         FontWeight = Microsoft.UI.Text.FontWeights.SemiBold,
                     },
                     new TextBlock
@@ -572,7 +575,7 @@ public sealed partial class MainWindow : Window
                     },
                     new TextBlock
                     {
-                        Text = "Converts images into paste-ready Space Engineers LCD/Text Panel Monospace text.",
+                        Text = "Space Engineers image conversion, jump routing, and resource planning tools.",
                         TextWrapping = TextWrapping.Wrap,
                     },
                 },

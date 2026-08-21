@@ -22,7 +22,7 @@ public sealed class AppSettingsStore : IAppSettingsStore
     public AppSettingsStore()
         : this(Path.Combine(
             Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData),
-            "SE Image Converter",
+            "SE Toolkit",
             "settings.json"))
     {
     }
