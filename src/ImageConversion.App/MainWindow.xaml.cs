@@ -1,5 +1,6 @@
 using ImageConversion.App.ViewModels;
 using ImageConversion.App.Services;
+using ImageConversion.Core;
 using Microsoft.UI;
 using Microsoft.UI.Windowing;
 using Microsoft.UI.Xaml;
@@ -139,6 +140,7 @@ public sealed partial class MainWindow : Window
         ViewModel.CurrentFeature = tag switch
         {
             "JumpDriveCalculator" => MainFeature.JumpDriveCalculator,
+            "ResourceCalculator" => MainFeature.ResourceCalculator,
             "Settings" => MainFeature.Settings,
             _ => MainFeature.ImageConverter,
         };
@@ -184,6 +186,145 @@ public sealed partial class MainWindow : Window
             .Concat(FeatureNavigation.FooterMenuItems)
             .OfType<NavigationViewItem>()
             .FirstOrDefault(item => string.Equals(item.Tag as string, tag, StringComparison.Ordinal));
+    private void ResourceBlockSearchBox_SuggestionChosen(AutoSuggestBox sender, AutoSuggestBoxSuggestionChosenEventArgs args)
+    {
+        if (args.SelectedItem is SpaceEngineersBlockDefinition block)
+        {
+            ViewModel.SelectResourceBlock(block);
+        }
+    }
+
+    private void ResourceBlockSearchBox_QuerySubmitted(AutoSuggestBox sender, AutoSuggestBoxQuerySubmittedEventArgs args)
+    {
+        if (args.ChosenSuggestion is SpaceEngineersBlockDefinition block)
+        {
+            ViewModel.SelectResourceBlock(block);
+            return;
+        }
+
+        ViewModel.SelectBestResourceBlockMatch();
+    }
+
+    private void RemoveResourceBuildRow_Click(object sender, RoutedEventArgs e)
+    {
+        if (sender is Button { Tag: ResourceBuildRowViewModel row })
+        {
+            ViewModel.RemoveResourceBuildRowCommand.Execute(row);
+        }
+    }
+
+    private void RemoveResourceRecipeRow_Click(object sender, RoutedEventArgs e)
+    {
+        if (sender is Button { Tag: ResourceRecipeRowViewModel row })
+        {
+            ViewModel.RemoveResourceRecipeRowCommand.Execute(row);
+        }
+    }
+
+    private async void SaveResourceRecipe_Click(object sender, RoutedEventArgs e)
+    {
+        TextBox nameTextBox = new()
+        {
+            Header = "Recipe name",
+            PlaceholderText = "e.g. Missile",
+            MinWidth = 320,
+        };
+
+        ContentDialog dialog = new()
+        {
+            XamlRoot = Root.XamlRoot,
+            Title = "Save Recipe",
+            Content = nameTextBox,
+            PrimaryButtonText = "Save",
+            CloseButtonText = "Cancel",
+            DefaultButton = ContentDialogButton.Primary,
+        };
+
+        ContentDialogResult result = await dialog.ShowAsync();
+
+        if (result != ContentDialogResult.Primary)
+        {
+            return;
+        }
+
+        string recipeName = nameTextBox.Text.Trim();
+
+        if (ViewModel.HasSavedResourceRecipeName(recipeName))
+        {
+            ContentDialog confirmDialog = new()
+            {
+                XamlRoot = Root.XamlRoot,
+                Title = "Replace Recipe",
+                Content = $"Replace the saved recipe '{recipeName}' with the current block list?",
+                PrimaryButtonText = "Replace",
+                CloseButtonText = "Cancel",
+                DefaultButton = ContentDialogButton.Primary,
+            };
+
+            ContentDialogResult confirmResult = await confirmDialog.ShowAsync();
+
+            if (confirmResult != ContentDialogResult.Primary)
+            {
+                return;
+            }
+        }
+
+        ViewModel.SaveCurrentResourceRecipe(recipeName);
+    }
+
+    private async void LoadResourceRecipe_Click(object sender, RoutedEventArgs e)
+    {
+        if (ViewModel.SelectedSavedResourceRecipe is null)
+        {
+            return;
+        }
+
+        if (ViewModel.HasUnsavedResourceBuildRows())
+        {
+            ContentDialog confirmDialog = new()
+            {
+                XamlRoot = Root.XamlRoot,
+                Title = "Load Recipe",
+                Content = "Replace the current block list with the selected saved recipe?",
+                PrimaryButtonText = "Load",
+                CloseButtonText = "Cancel",
+                DefaultButton = ContentDialogButton.Primary,
+            };
+
+            ContentDialogResult confirmResult = await confirmDialog.ShowAsync();
+
+            if (confirmResult != ContentDialogResult.Primary)
+            {
+                return;
+            }
+        }
+
+        ViewModel.LoadSelectedResourceRecipe();
+    }
+
+    private async void DeleteResourceRecipe_Click(object sender, RoutedEventArgs e)
+    {
+        if (ViewModel.SelectedSavedResourceRecipe is null)
+        {
+            return;
+        }
+
+        ContentDialog confirmDialog = new()
+        {
+            XamlRoot = Root.XamlRoot,
+            Title = "Delete Recipe",
+            Content = $"Delete the saved recipe '{ViewModel.SelectedSavedResourceRecipe.Name}'?",
+            PrimaryButtonText = "Delete",
+            CloseButtonText = "Cancel",
+            DefaultButton = ContentDialogButton.Close,
+        };
+
+        ContentDialogResult confirmResult = await confirmDialog.ShowAsync();
+
+        if (confirmResult == ContentDialogResult.Primary)
+        {
+            ViewModel.DeleteSelectedResourceRecipe();
+        }
     }
 
     private void ShipMassTextBox_TextChanged(object sender, TextChangedEventArgs e)
@@ -455,7 +596,7 @@ public sealed partial class MainWindow : Window
                 {
                     new TextBlock
                     {
-                        Text = "Use the side menu to switch between the Image Converter and Jump Drive Calculator.",
+                        Text = "Use the side menu to switch between the Image Converter, Jump Drive Calculator, and Resource Calculator.",
                         TextWrapping = TextWrapping.Wrap,
                     },
                     new TextBlock
@@ -471,6 +612,11 @@ public sealed partial class MainWindow : Window
                     new TextBlock
                     {
                         Text = "Jump Drive Calculator: paste GPS coordinates or enter X/Y/Z values, then add jump drive count and ship mass.",
+                        TextWrapping = TextWrapping.Wrap,
+                    },
+                    new TextBlock
+                    {
+                        Text = "Resource Calculator: search for vanilla blocks, add quantities, and total the components needed to build them.",
                         TextWrapping = TextWrapping.Wrap,
                     },
                     new TextBlock
