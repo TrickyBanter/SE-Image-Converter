@@ -10,7 +10,7 @@ namespace ImageConversion.App.Services;
 
 public sealed class GitHubReleaseUpdater
 {
-    public static readonly Uri LatestReleaseUri = new("https://api.github.com/repos/TrickyBanter/SE-Image-Converter/releases/latest");
+    public static readonly Uri LatestReleaseUri = new("https://api.github.com/repos/TrickyBanter/SE-Toolkit/releases/latest");
 
     private static readonly JsonSerializerOptions SerializerOptions = new(JsonSerializerDefaults.Web);
 
@@ -19,7 +19,7 @@ public sealed class GitHubReleaseUpdater
     public GitHubReleaseUpdater(HttpClient? httpClient = null)
     {
         this.httpClient = httpClient ?? new HttpClient();
-        this.httpClient.DefaultRequestHeaders.UserAgent.TryParseAdd("SE-Image-Converter-Updater");
+        this.httpClient.DefaultRequestHeaders.UserAgent.TryParseAdd("SE-Toolkit-Updater");
         this.httpClient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/vnd.github+json"));
     }
 
@@ -57,8 +57,8 @@ public sealed class GitHubReleaseUpdater
         response.EnsureSuccessStatusCode();
 
         string extension = Path.GetExtension(update.InstallerAsset.Name);
-        string fileName = $"SEImageConverter-{update.Version}{extension}";
-        string updateDirectory = Path.Combine(Path.GetTempPath(), "SEImageConverter", "Updates");
+        string fileName = $"SEToolkit-{update.Version}{extension}";
+        string updateDirectory = Path.Combine(Path.GetTempPath(), "SEToolkit", "Updates");
         Directory.CreateDirectory(updateDirectory);
         string installerPath = Path.Combine(updateDirectory, fileName);
 
