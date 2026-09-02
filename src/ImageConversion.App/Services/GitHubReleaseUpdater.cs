@@ -10,7 +10,7 @@ namespace ImageConversion.App.Services;
 
 public sealed class GitHubReleaseUpdater
 {
-    public static readonly Uri LatestReleaseUri = new("https://api.github.com/repos/TrickyBanter/SE-Toolkit/releases/latest");
+    public static readonly Uri LatestReleaseUri = new("https://api.github.com/repos/TrickyBanter/SE-Image-Converter/releases/latest");
 
     private static readonly JsonSerializerOptions SerializerOptions = new(JsonSerializerDefaults.Web);
 
