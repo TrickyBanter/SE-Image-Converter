@@ -14,7 +14,7 @@ resources, making the app a broader toolkit rather than only an image converter.
 ### Download
 
 Download the latest installer or portable zip from the
-[latest GitHub release](https://github.com/TrickyBanter/SE-Toolkit/releases/latest).
+[latest GitHub release](https://github.com/TrickyBanter/SE-Image-Converter/releases/latest).
 
 Use the setup `.exe` for a normal install. Use the portable `.zip` if you want
 to run the app without installing it.

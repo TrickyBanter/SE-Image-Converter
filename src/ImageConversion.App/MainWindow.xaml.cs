@@ -30,6 +30,7 @@ public sealed partial class MainWindow : Window
     private IntPtr bigIconHandle;
     private IntPtr smallIconHandle;
     private bool isFormattingShipMass;
+    private bool hasShownStartupUpdateDialog;
 
     public MainWindowViewModel ViewModel { get; } = new();
 
@@ -50,6 +51,11 @@ public sealed partial class MainWindow : Window
     {
         Root.Loaded -= Root_Loaded;
         await ViewModel.CheckForUpdatesOnStartupAsync();
+
+        if (ViewModel.IsUpdateAvailable)
+        {
+            await ShowUpdateAvailableDialogAsync();
+        }
     }
 
     private void ConfigureLaunchWindow()
@@ -694,6 +700,51 @@ public sealed partial class MainWindow : Window
 
         _ = ViewModel.CheckForUpdatesManuallyAsync();
         await dialog.ShowAsync();
+    }
+
+    private async Task ShowUpdateAvailableDialogAsync()
+    {
+        if (hasShownStartupUpdateDialog)
+        {
+            return;
+        }
+
+        hasShownStartupUpdateDialog = true;
+
+        ContentDialog dialog = new()
+        {
+            XamlRoot = Root.XamlRoot,
+            Title = "Update Available",
+            PrimaryButtonText = ViewModel.InstallUpdateButtonText,
+            CloseButtonText = "Later",
+            DefaultButton = ContentDialogButton.Primary,
+            Content = new StackPanel
+            {
+                Spacing = 8,
+                MinWidth = 360,
+                Children =
+                {
+                    new TextBlock
+                    {
+                        Text = ViewModel.AvailableUpdateSummary,
+                        FontWeight = Microsoft.UI.Text.FontWeights.SemiBold,
+                        TextWrapping = TextWrapping.Wrap,
+                    },
+                    new TextBlock
+                    {
+                        Text = "Download and run the installer now, or install it later from Settings.",
+                        TextWrapping = TextWrapping.Wrap,
+                    },
+                },
+            },
+        };
+
+        ContentDialogResult result = await dialog.ShowAsync();
+
+        if (result == ContentDialogResult.Primary && ViewModel.InstallUpdateCommand.CanExecute(null))
+        {
+            ViewModel.InstallUpdateCommand.Execute(null);
+        }
     }
 
     [DllImport("user32.dll", CharSet = CharSet.Unicode, SetLastError = true)]

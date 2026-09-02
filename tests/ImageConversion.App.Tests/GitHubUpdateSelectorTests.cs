@@ -7,6 +7,14 @@ namespace ImageConversion.App.Tests;
 public sealed class GitHubUpdateSelectorTests
 {
     [Fact]
+    public void UsesExistingRepositoryForLatestReleaseChecks()
+    {
+        Assert.Equal(
+            new Uri("https://api.github.com/repos/TrickyBanter/SE-Image-Converter/releases/latest"),
+            GitHubReleaseUpdater.LatestReleaseUri);
+    }
+
+    [Fact]
     public async Task CheckForUpdateShowsFriendlyMessageWhenNoReleaseExists()
     {
         HttpClient httpClient = new(new StubHttpMessageHandler(new HttpResponseMessage(HttpStatusCode.NotFound)));
@@ -109,7 +117,7 @@ public sealed class GitHubUpdateSelectorTests
     private static GitHubReleaseResponse Release(string tagName, bool draft = false, bool prerelease = false) => new()
     {
         TagName = tagName,
-        HtmlUrl = "https://github.com/TrickyBanter/SE-Toolkit/releases/tag/" + tagName,
+        HtmlUrl = "https://github.com/TrickyBanter/SE-Image-Converter/releases/tag/" + tagName,
         Draft = draft,
         Prerelease = prerelease,
         Assets =
