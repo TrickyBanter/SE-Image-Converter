@@ -26,6 +26,7 @@
 #define AppPublisher "SE Toolkit"
 #define AppExeName "SE Toolkit.exe"
 #define AppId "{{4D747F7D-B8A6-48C5-8B9C-34E14C694B7E}"
+#define LegacyAppName "SE Image Converter"
 #define MinDotNetDesktopRuntimeVersion "10.0.0"
 #define WindowsAppRuntimePackageName "MicrosoftCorporationII.WindowsAppRuntime.Main.2.3"
 
@@ -65,11 +66,165 @@ Source: "{#WindowsAppRuntimeInstaller}"; DestName: "WindowsAppRuntimeInstall-x64
 Name: "{group}\{#AppName}"; Filename: "{app}\{#AppExeName}"; WorkingDir: "{app}"
 Name: "{autodesktop}\{#AppName}"; Filename: "{app}\{#AppExeName}"; WorkingDir: "{app}"; Tasks: desktopicon
 
+[InstallDelete]
+Type: filesandordirs; Name: "{autoprograms}\{#LegacyAppName}"
+Type: files; Name: "{autodesktop}\{#LegacyAppName}.lnk"
+
 [Run]
 Filename: "{app}\{#AppExeName}"; Description: "{cm:LaunchProgram,{#StringChange(AppName, '&', '&&')}}"; Flags: nowait postinstall skipifsilent
 
-#if SkipPrerequisites != "true"
 [Code]
+const
+  UninstallRegistryPath = 'Software\Microsoft\Windows\CurrentVersion\Uninstall';
+
+function SplitCommandLine(CommandLine: String; var FileName: String; var Parameters: String): Boolean;
+var
+  QuoteEnd: Integer;
+  SpacePosition: Integer;
+begin
+  CommandLine := Trim(CommandLine);
+  FileName := '';
+  Parameters := '';
+
+  if CommandLine = '' then
+  begin
+    Result := False;
+    Exit;
+  end;
+
+  if Copy(CommandLine, 1, 1) = '"' then
+  begin
+    QuoteEnd := Pos('"', Copy(CommandLine, 2, Length(CommandLine) - 1));
+
+    if QuoteEnd = 0 then
+    begin
+      Result := False;
+      Exit;
+    end;
+
+    FileName := Copy(CommandLine, 2, QuoteEnd - 1);
+    Parameters := Trim(Copy(CommandLine, QuoteEnd + 2, Length(CommandLine)));
+  end
+    else
+  begin
+    SpacePosition := Pos(' ', CommandLine);
+
+    if SpacePosition = 0 then
+    begin
+      FileName := CommandLine;
+    end
+      else
+    begin
+      FileName := Copy(CommandLine, 1, SpacePosition - 1);
+      Parameters := Trim(Copy(CommandLine, SpacePosition + 1, Length(CommandLine)));
+    end;
+  end;
+
+  Result := FileName <> '';
+end;
+
+function ExecuteCommandLine(CommandLine: String; var ResultCode: Integer): Boolean;
+var
+  FileName: String;
+  Parameters: String;
+begin
+  if not SplitCommandLine(CommandLine, FileName, Parameters) then
+  begin
+    Result := False;
+    Exit;
+  end;
+
+  Result := Exec(
+    FileName,
+    Parameters,
+    '',
+    SW_HIDE,
+    ewWaitUntilTerminated,
+    ResultCode);
+end;
+
+function ReadUninstallCommand(RootKey: Integer; Subkey: String; var CommandLine: String): Boolean;
+var
+  EntryPath: String;
+begin
+  EntryPath := UninstallRegistryPath + '\' + Subkey;
+
+  if RegQueryStringValue(RootKey, EntryPath, 'QuietUninstallString', CommandLine) and
+    (CommandLine <> '') then
+  begin
+    Result := True;
+    Exit;
+  end;
+
+  Result := RegQueryStringValue(RootKey, EntryPath, 'UninstallString', CommandLine) and
+    (CommandLine <> '');
+
+  if Result then
+  begin
+    CommandLine := CommandLine + ' /VERYSILENT /SUPPRESSMSGBOXES /NORESTART';
+  end;
+end;
+
+function UninstallLegacyFromRoot(RootKey: Integer): String;
+var
+  CommandLine: String;
+  DisplayName: String;
+  I: Integer;
+  ResultCode: Integer;
+  Subkeys: TArrayOfString;
+begin
+  Result := '';
+
+  if not RegGetSubkeyNames(RootKey, UninstallRegistryPath, Subkeys) then
+  begin
+    Exit;
+  end;
+
+  for I := 0 to GetArrayLength(Subkeys) - 1 do
+  begin
+    if RegQueryStringValue(RootKey, UninstallRegistryPath + '\' + Subkeys[I], 'DisplayName', DisplayName) and
+      (CompareText(DisplayName, '{#LegacyAppName}') = 0) then
+    begin
+      if not ReadUninstallCommand(RootKey, Subkeys[I], CommandLine) then
+      begin
+        Result := 'Setup found an existing {#LegacyAppName} installation, but could not find its uninstaller.';
+        Exit;
+      end;
+
+      WizardForm.StatusLabel.Caption := 'Removing previous {#LegacyAppName} installation...';
+      WizardForm.ProgressGauge.Style := npbstMarquee;
+
+      if not ExecuteCommandLine(CommandLine, ResultCode) then
+      begin
+        Result := 'Setup could not start the previous {#LegacyAppName} uninstaller.';
+        Exit;
+      end;
+
+      if (ResultCode <> 0) and (ResultCode <> 3010) then
+      begin
+        Result := 'Previous {#LegacyAppName} uninstall failed with exit code ' + IntToStr(ResultCode) + '.';
+        Exit;
+      end;
+    end;
+  end;
+end;
+
+function RemoveLegacyInstallations(): String;
+begin
+  Result := UninstallLegacyFromRoot(HKCU);
+
+  if Result = '' then
+  begin
+    Result := UninstallLegacyFromRoot(HKLM32);
+  end;
+
+  if Result = '' then
+  begin
+    Result := UninstallLegacyFromRoot(HKLM64);
+  end;
+end;
+
+#if SkipPrerequisites != "true"
 function ReadVersionPart(var Version: String): Integer;
 var
   PartEnd: Integer;
@@ -194,7 +349,12 @@ function PrepareToInstall(var NeedsRestart: Boolean): String;
 var
   Prerequisite: String;
 begin
-  Result := '';
+  Result := RemoveLegacyInstallations();
+
+  if Result <> '' then
+  begin
+    Exit;
+  end;
 
   if not IsDotNetDesktopRuntimeInstalled() then
   begin
@@ -223,5 +383,10 @@ begin
       Exit;
     end;
   end;
+end;
+#else
+function PrepareToInstall(var NeedsRestart: Boolean): String;
+begin
+  Result := RemoveLegacyInstallations();
 end;
 #endif
