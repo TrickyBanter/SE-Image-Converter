@@ -6,9 +6,10 @@ public sealed record SpaceEngineersBlockDefinition(
     string GridSize,
     string TypeId,
     string SubtypeId,
-    IReadOnlyList<SpaceEngineersComponentRequirement> Components)
+    IReadOnlyList<SpaceEngineersComponentRequirement> Components,
+    string? DlcName = null)
 {
     public string DisplayLabel => $"{DisplayName} ({GridSize} Grid)";
 
-    public string SearchText => $"{DisplayName} {GridSize} {TypeId} {SubtypeId}";
+    public string SearchText => $"{DisplayName} {GridSize} {TypeId} {SubtypeId} {DlcName}";
 }

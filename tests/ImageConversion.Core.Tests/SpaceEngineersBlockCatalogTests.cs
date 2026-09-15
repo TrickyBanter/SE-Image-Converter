@@ -91,4 +91,36 @@ public sealed class SpaceEngineersBlockCatalogTests
         Assert.Contains(block.Components, component => component is { ComponentName: "Display", Count: 4 });
         Assert.Contains(block.Components, component => component is { ComponentName: "Construction Component", Count: 30 });
     }
+
+    [Fact]
+    public void CatalogIncludesAllSelectableDlcBlockDefinitions()
+    {
+        IReadOnlyList<SpaceEngineersBlockDefinition> dlcBlocks = SpaceEngineersBlockCatalog.DefaultBlocks
+            .Where(block => block.DlcName is not null)
+            .ToList();
+
+        Assert.Equal(297, dlcBlocks.Count);
+        Assert.Contains(dlcBlocks, block => block is
+        {
+            Id: "Door/LargeBlockSmallGate/Large",
+            DlcName: "Contact"
+        });
+        Assert.Contains(dlcBlocks, block => block is
+        {
+            Id: "LargeGatlingTurret/LargeGatlingTurretReskin/Large",
+            DlcName: "Contact"
+        });
+    }
+
+    [Fact]
+    public void CatalogIncludesOfficialPrototechBlockDefinition()
+    {
+        SpaceEngineersBlockDefinition block = Assert.Single(
+            SpaceEngineersBlockCatalog.DefaultBlocks,
+            block => block.Id.Equals("JumpDrive/LargePrototechJumpDrive/Large", StringComparison.OrdinalIgnoreCase));
+
+        Assert.Null(block.DlcName);
+        Assert.Contains(block.Components, component => component is { ComponentName: "Prototech Capacitor", Count: 30 });
+        Assert.Contains(block.Components, component => component is { ComponentName: "Superconductor", Count: 1400 });
+    }
 }

@@ -50,7 +50,7 @@ time, and leg-by-leg route details.
 
 ### Resource calculator
 
-Use the Resource Calculator tab to search the bundled vanilla block catalog, add
+Use the Resource Calculator tab to search the bundled vanilla and DLC block catalog, add
 small-grid or large-grid block variants with quantities, and total the components
 needed to build them. You can also save the current block list as a local recipe,
 then add that recipe to a calculation with a quantity such as five missiles.

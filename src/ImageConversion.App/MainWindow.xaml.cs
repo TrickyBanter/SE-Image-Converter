@@ -625,7 +625,7 @@ public sealed partial class MainWindow : Window
                     },
                     new TextBlock
                     {
-                        Text = "Resource Calculator: search for vanilla blocks, add quantities, and total the components needed to build them.",
+                        Text = "Resource Calculator: search for vanilla and DLC blocks, add quantities, and total the components needed to build them.",
                         TextWrapping = TextWrapping.Wrap,
                     },
                     new TextBlock

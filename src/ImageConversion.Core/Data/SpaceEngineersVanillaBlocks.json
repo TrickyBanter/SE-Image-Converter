@@ -6595,5 +6595,7771 @@
         "Count": 3
       }
     ]
+  },
+{
+    "Id": "ShipGrinder/LargeShipGrinderReskin/Large",
+    "DisplayName": "Grinder Type II",
+    "GridSize": "Large",
+    "TypeId": "ShipGrinder",
+    "SubtypeId": "LargeShipGrinderReskin",
+    "Components": [
+      {
+        "ComponentName": "Steel Plate",
+        "Count": 20
+      },
+      {
+        "ComponentName": "Construction Component",
+        "Count": 30
+      },
+      {
+        "ComponentName": "Large Steel Tube",
+        "Count": 1
+      },
+      {
+        "ComponentName": "Motor",
+        "Count": 4
+      },
+      {
+        "ComponentName": "Computer",
+        "Count": 2
+      }
+    ],
+    "DlcName": "ApexSurvival"
+  },
+  {
+    "Id": "InteriorLight/OffsetLight/Small",
+    "DisplayName": "Offset Light",
+    "GridSize": "Small",
+    "TypeId": "InteriorLight",
+    "SubtypeId": "OffsetLight",
+    "Components": [
+      {
+        "ComponentName": "Construction Component",
+        "Count": 2
+      }
+    ],
+    "DlcName": "ScrapRace"
+  },
+  {
+    "Id": "MotorSuspension/OffroadSmallShortSuspension2x2Mirrored/Small",
+    "DisplayName": "Offroad Short Wheel Suspension 2x2 Left",
+    "GridSize": "Small",
+    "TypeId": "MotorSuspension",
+    "SubtypeId": "OffroadSmallShortSuspension2x2Mirrored",
+    "Components": [
+      {
+        "ComponentName": "Steel Plate",
+        "Count": 5
+      },
+      {
+        "ComponentName": "Construction Component",
+        "Count": 5
+      },
+      {
+        "ComponentName": "Small Steel Tube",
+        "Count": 2
+      },
+      {
+        "ComponentName": "Motor",
+        "Count": 1
+      }
+    ],
+    "DlcName": "ScrapRace"
+  },
+  {
+    "Id": "MotorSuspension/OffroadShortSuspension2x2Mirrored/Large",
+    "DisplayName": "Offroad Short Wheel Suspension 2x2 Left",
+    "GridSize": "Large",
+    "TypeId": "MotorSuspension",
+    "SubtypeId": "OffroadShortSuspension2x2Mirrored",
+    "Components": [
+      {
+        "ComponentName": "Steel Plate",
+        "Count": 15
+      },
+      {
+        "ComponentName": "Construction Component",
+        "Count": 10
+      },
+      {
+        "ComponentName": "Large Steel Tube",
+        "Count": 6
+      },
+      {
+        "ComponentName": "Small Steel Tube",
+        "Count": 12
+      },
+      {
+        "ComponentName": "Motor",
+        "Count": 6
+      }
+    ],
+    "DlcName": "ScrapRace"
+  },
+  {
+    "Id": "MotorSuspension/OffroadShortSuspension3x3mirrored/Large",
+    "DisplayName": "Offroad Short Wheel Suspension 3x3 Left",
+    "GridSize": "Large",
+    "TypeId": "MotorSuspension",
+    "SubtypeId": "OffroadShortSuspension3x3mirrored",
+    "Components": [
+      {
+        "ComponentName": "Steel Plate",
+        "Count": 15
+      },
+      {
+        "ComponentName": "Construction Component",
+        "Count": 10
+      },
+      {
+        "ComponentName": "Large Steel Tube",
+        "Count": 6
+      },
+      {
+        "ComponentName": "Small Steel Tube",
+        "Count": 12
+      },
+      {
+        "ComponentName": "Motor",
+        "Count": 6
+      }
+    ],
+    "DlcName": "ScrapRace"
+  },
+  {
+    "Id": "MotorSuspension/OffroadSmallShortSuspension2x2/Small",
+    "DisplayName": "Offroad Short Wheel Suspension 2x2 Right",
+    "GridSize": "Small",
+    "TypeId": "MotorSuspension",
+    "SubtypeId": "OffroadSmallShortSuspension2x2",
+    "Components": [
+      {
+        "ComponentName": "Steel Plate",
+        "Count": 5
+      },
+      {
+        "ComponentName": "Construction Component",
+        "Count": 5
+      },
+      {
+        "ComponentName": "Small Steel Tube",
+        "Count": 2
+      },
+      {
+        "ComponentName": "Motor",
+        "Count": 1
+      }
+    ],
+    "DlcName": "ScrapRace"
+  },
+  {
+    "Id": "MotorSuspension/OffroadSmallShortSuspension3x3/Small",
+    "DisplayName": "Offroad Short Wheel Suspension 3x3 Right",
+    "GridSize": "Small",
+    "TypeId": "MotorSuspension",
+    "SubtypeId": "OffroadSmallShortSuspension3x3",
+    "Components": [
+      {
+        "ComponentName": "Steel Plate",
+        "Count": 5
+      },
+      {
+        "ComponentName": "Construction Component",
+        "Count": 5
+      },
+      {
+        "ComponentName": "Small Steel Tube",
+        "Count": 2
+      },
+      {
+        "ComponentName": "Motor",
+        "Count": 1
+      }
+    ],
+    "DlcName": "ScrapRace"
+  },
+  {
+    "Id": "MotorSuspension/OffroadShortSuspension2x2/Large",
+    "DisplayName": "Offroad Short Wheel Suspension 2x2 Right",
+    "GridSize": "Large",
+    "TypeId": "MotorSuspension",
+    "SubtypeId": "OffroadShortSuspension2x2",
+    "Components": [
+      {
+        "ComponentName": "Steel Plate",
+        "Count": 15
+      },
+      {
+        "ComponentName": "Construction Component",
+        "Count": 10
+      },
+      {
+        "ComponentName": "Large Steel Tube",
+        "Count": 6
+      },
+      {
+        "ComponentName": "Small Steel Tube",
+        "Count": 12
+      },
+      {
+        "ComponentName": "Motor",
+        "Count": 6
+      }
+    ],
+    "DlcName": "ScrapRace"
+  },
+  {
+    "Id": "MotorSuspension/OffroadShortSuspension3x3/Large",
+    "DisplayName": "Offroad Short Wheel Suspension 3x3 Right",
+    "GridSize": "Large",
+    "TypeId": "MotorSuspension",
+    "SubtypeId": "OffroadShortSuspension3x3",
+    "Components": [
+      {
+        "ComponentName": "Steel Plate",
+        "Count": 15
+      },
+      {
+        "ComponentName": "Construction Component",
+        "Count": 10
+      },
+      {
+        "ComponentName": "Large Steel Tube",
+        "Count": 6
+      },
+      {
+        "ComponentName": "Small Steel Tube",
+        "Count": 12
+      },
+      {
+        "ComponentName": "Motor",
+        "Count": 6
+      }
+    ],
+    "DlcName": "ScrapRace"
+  },
+  {
+    "Id": "Wheel/OffroadRealWheel2x2Mirrored/Large",
+    "DisplayName": "Offroad Wheel 2x2",
+    "GridSize": "Large",
+    "TypeId": "Wheel",
+    "SubtypeId": "OffroadRealWheel2x2Mirrored",
+    "Components": [
+      {
+        "ComponentName": "Steel Plate",
+        "Count": 50
+      },
+      {
+        "ComponentName": "Construction Component",
+        "Count": 40
+      },
+      {
+        "ComponentName": "Large Steel Tube",
+        "Count": 15
+      }
+    ],
+    "DlcName": "ScrapRace"
+  },
+  {
+    "Id": "Wheel/OffroadSmallRealWheel2x2Mirrored/Small",
+    "DisplayName": "Offroad Wheel 2x2",
+    "GridSize": "Small",
+    "TypeId": "Wheel",
+    "SubtypeId": "OffroadSmallRealWheel2x2Mirrored",
+    "Components": [
+      {
+        "ComponentName": "Steel Plate",
+        "Count": 8
+      },
+      {
+        "ComponentName": "Construction Component",
+        "Count": 15
+      },
+      {
+        "ComponentName": "Large Steel Tube",
+        "Count": 3
+      }
+    ],
+    "DlcName": "ScrapRace"
+  },
+  {
+    "Id": "Wheel/OffroadRealWheel2x2/Large",
+    "DisplayName": "Offroad Wheel 2x2",
+    "GridSize": "Large",
+    "TypeId": "Wheel",
+    "SubtypeId": "OffroadRealWheel2x2",
+    "Components": [
+      {
+        "ComponentName": "Steel Plate",
+        "Count": 50
+      },
+      {
+        "ComponentName": "Construction Component",
+        "Count": 40
+      },
+      {
+        "ComponentName": "Large Steel Tube",
+        "Count": 15
+      }
+    ],
+    "DlcName": "ScrapRace"
+  },
+  {
+    "Id": "Wheel/OffroadSmallRealWheel2x2/Small",
+    "DisplayName": "Offroad Wheel 2x2",
+    "GridSize": "Small",
+    "TypeId": "Wheel",
+    "SubtypeId": "OffroadSmallRealWheel2x2",
+    "Components": [
+      {
+        "ComponentName": "Steel Plate",
+        "Count": 8
+      },
+      {
+        "ComponentName": "Construction Component",
+        "Count": 15
+      },
+      {
+        "ComponentName": "Large Steel Tube",
+        "Count": 3
+      }
+    ],
+    "DlcName": "ScrapRace"
+  },
+  {
+    "Id": "MotorSuspension/OffroadSmallSuspension2x2Mirrored/Small",
+    "DisplayName": "Offroad Wheel Suspension 2x2 Left",
+    "GridSize": "Small",
+    "TypeId": "MotorSuspension",
+    "SubtypeId": "OffroadSmallSuspension2x2Mirrored",
+    "Components": [
+      {
+        "ComponentName": "Steel Plate",
+        "Count": 8
+      },
+      {
+        "ComponentName": "Construction Component",
+        "Count": 7
+      },
+      {
+        "ComponentName": "Small Steel Tube",
+        "Count": 2
+      },
+      {
+        "ComponentName": "Motor",
+        "Count": 1
+      }
+    ],
+    "DlcName": "ScrapRace"
+  },
+  {
+    "Id": "MotorSuspension/OffroadSuspension2x2Mirrored/Large",
+    "DisplayName": "Offroad Wheel Suspension 2x2 Left",
+    "GridSize": "Large",
+    "TypeId": "MotorSuspension",
+    "SubtypeId": "OffroadSuspension2x2Mirrored",
+    "Components": [
+      {
+        "ComponentName": "Steel Plate",
+        "Count": 25
+      },
+      {
+        "ComponentName": "Construction Component",
+        "Count": 15
+      },
+      {
+        "ComponentName": "Large Steel Tube",
+        "Count": 6
+      },
+      {
+        "ComponentName": "Small Steel Tube",
+        "Count": 12
+      },
+      {
+        "ComponentName": "Motor",
+        "Count": 6
+      }
+    ],
+    "DlcName": "ScrapRace"
+  },
+  {
+    "Id": "MotorSuspension/OffroadSmallSuspension2x2/Small",
+    "DisplayName": "Offroad Wheel Suspension 2x2 Right",
+    "GridSize": "Small",
+    "TypeId": "MotorSuspension",
+    "SubtypeId": "OffroadSmallSuspension2x2",
+    "Components": [
+      {
+        "ComponentName": "Steel Plate",
+        "Count": 8
+      },
+      {
+        "ComponentName": "Construction Component",
+        "Count": 7
+      },
+      {
+        "ComponentName": "Small Steel Tube",
+        "Count": 2
+      },
+      {
+        "ComponentName": "Motor",
+        "Count": 1
+      }
+    ],
+    "DlcName": "ScrapRace"
+  },
+  {
+    "Id": "CubeBlock/LargeBlockInsetWall/Large",
+    "DisplayName": "Inset Wall ",
+    "GridSize": "Large",
+    "TypeId": "CubeBlock",
+    "SubtypeId": "LargeBlockInsetWall",
+    "Components": [
+      {
+        "ComponentName": "Interior Plate",
+        "Count": 25
+      },
+      {
+        "ComponentName": "Construction Component",
+        "Count": 10
+      }
+    ],
+    "DlcName": "Signal"
+  },
+  {
+    "Id": "InteriorLight/LargeBlockInsetWallLight/Large",
+    "DisplayName": "Inset Wall Light",
+    "GridSize": "Large",
+    "TypeId": "InteriorLight",
+    "SubtypeId": "LargeBlockInsetWallLight",
+    "Components": [
+      {
+        "ComponentName": "Interior Plate",
+        "Count": 25
+      },
+      {
+        "ComponentName": "Construction Component",
+        "Count": 10
+      }
+    ],
+    "DlcName": "Signal"
+  },
+  {
+    "Id": "CubeBlock/LargeBlockInsetWallPillar/Large",
+    "DisplayName": "Inset Wall Pillar",
+    "GridSize": "Large",
+    "TypeId": "CubeBlock",
+    "SubtypeId": "LargeBlockInsetWallPillar",
+    "Components": [
+      {
+        "ComponentName": "Interior Plate",
+        "Count": 25
+      },
+      {
+        "ComponentName": "Construction Component",
+        "Count": 10
+      }
+    ],
+    "DlcName": "Signal"
+  },
+  {
+    "Id": "CubeBlock/LargeBlockInsetWallCorner/Large",
+    "DisplayName": "Inset Wall Corner",
+    "GridSize": "Large",
+    "TypeId": "CubeBlock",
+    "SubtypeId": "LargeBlockInsetWallCorner",
+    "Components": [
+      {
+        "ComponentName": "Interior Plate",
+        "Count": 25
+      },
+      {
+        "ComponentName": "Construction Component",
+        "Count": 10
+      }
+    ],
+    "DlcName": "Signal"
+  },
+  {
+    "Id": "CubeBlock/CorridorDoubleWindow/Large",
+    "DisplayName": "Corridor Double Windowed Sides",
+    "GridSize": "Large",
+    "TypeId": "CubeBlock",
+    "SubtypeId": "CorridorDoubleWindow",
+    "Components": [
+      {
+        "ComponentName": "Interior Plate",
+        "Count": 65
+      },
+      {
+        "ComponentName": "Construction Component",
+        "Count": 25
+      },
+      {
+        "ComponentName": "Bulletproof Glass",
+        "Count": 12
+      }
+    ],
+    "DlcName": "Signal"
+  },
+  {
+    "Id": "CubeBlock/CorridorWindow/Large",
+    "DisplayName": "Corridor Windowed Side",
+    "GridSize": "Large",
+    "TypeId": "CubeBlock",
+    "SubtypeId": "CorridorWindow",
+    "Components": [
+      {
+        "ComponentName": "Interior Plate",
+        "Count": 80
+      },
+      {
+        "ComponentName": "Construction Component",
+        "Count": 30
+      },
+      {
+        "ComponentName": "Bulletproof Glass",
+        "Count": 6
+      }
+    ],
+    "DlcName": "Signal"
+  },
+  {
+    "Id": "CubeBlock/CorridorX/Large",
+    "DisplayName": "Corridor X Intersection",
+    "GridSize": "Large",
+    "TypeId": "CubeBlock",
+    "SubtypeId": "CorridorX",
+    "Components": [
+      {
+        "ComponentName": "Interior Plate",
+        "Count": 40
+      },
+      {
+        "ComponentName": "Construction Component",
+        "Count": 20
+      }
+    ],
+    "DlcName": "Signal"
+  },
+  {
+    "Id": "CubeBlock/CorridorT/Large",
+    "DisplayName": "Corridor T Intersection",
+    "GridSize": "Large",
+    "TypeId": "CubeBlock",
+    "SubtypeId": "CorridorT",
+    "Components": [
+      {
+        "ComponentName": "Interior Plate",
+        "Count": 70
+      },
+      {
+        "ComponentName": "Construction Component",
+        "Count": 25
+      }
+    ],
+    "DlcName": "Signal"
+  },
+  {
+    "Id": "CubeBlock/CorridorCorner/Large",
+    "DisplayName": "Corridor Corner",
+    "GridSize": "Large",
+    "TypeId": "CubeBlock",
+    "SubtypeId": "CorridorCorner",
+    "Components": [
+      {
+        "ComponentName": "Interior Plate",
+        "Count": 100
+      },
+      {
+        "ComponentName": "Construction Component",
+        "Count": 30
+      }
+    ],
+    "DlcName": "Signal"
+  },
+  {
+    "Id": "InteriorLight/CorridorLight/Large",
+    "DisplayName": "Corridor Light",
+    "GridSize": "Large",
+    "TypeId": "InteriorLight",
+    "SubtypeId": "CorridorLight",
+    "Components": [
+      {
+        "ComponentName": "Interior Plate",
+        "Count": 100
+      },
+      {
+        "ComponentName": "Construction Component",
+        "Count": 30
+      }
+    ],
+    "DlcName": "Signal"
+  },
+  {
+    "Id": "CubeBlock/Corridor/Large",
+    "DisplayName": "Corridor",
+    "GridSize": "Large",
+    "TypeId": "CubeBlock",
+    "SubtypeId": "Corridor",
+    "Components": [
+      {
+        "ComponentName": "Interior Plate",
+        "Count": 100
+      },
+      {
+        "ComponentName": "Construction Component",
+        "Count": 30
+      }
+    ],
+    "DlcName": "Signal"
+  },
+  {
+    "Id": "MotorSuspension/OffroadSuspension2x2/Large",
+    "DisplayName": "Offroad Wheel Suspension 2x2 Right",
+    "GridSize": "Large",
+    "TypeId": "MotorSuspension",
+    "SubtypeId": "OffroadSuspension2x2",
+    "Components": [
+      {
+        "ComponentName": "Steel Plate",
+        "Count": 25
+      },
+      {
+        "ComponentName": "Construction Component",
+        "Count": 15
+      },
+      {
+        "ComponentName": "Large Steel Tube",
+        "Count": 6
+      },
+      {
+        "ComponentName": "Small Steel Tube",
+        "Count": 12
+      },
+      {
+        "ComponentName": "Motor",
+        "Count": 6
+      }
+    ],
+    "DlcName": "ScrapRace"
+  },
+  {
+    "Id": "ButtonPanel/SmallBlockConsoleModuleButtons/Small",
+    "DisplayName": "Console Module Buttons",
+    "GridSize": "Small",
+    "TypeId": "ButtonPanel",
+    "SubtypeId": "SmallBlockConsoleModuleButtons",
+    "Components": [
+      {
+        "ComponentName": "Interior Plate",
+        "Count": 6
+      },
+      {
+        "ComponentName": "Construction Component",
+        "Count": 6
+      },
+      {
+        "ComponentName": "Computer",
+        "Count": 2
+      }
+    ],
+    "DlcName": "Signal"
+  },
+  {
+    "Id": "CubeBlock/SmallBlockConsoleModuleCorner/Small",
+    "DisplayName": "Console Module Corner",
+    "GridSize": "Small",
+    "TypeId": "CubeBlock",
+    "SubtypeId": "SmallBlockConsoleModuleCorner",
+    "Components": [
+      {
+        "ComponentName": "Interior Plate",
+        "Count": 3
+      },
+      {
+        "ComponentName": "Construction Component",
+        "Count": 3
+      }
+    ],
+    "DlcName": "Signal"
+  },
+  {
+    "Id": "CubeBlock/SmallBlockConsoleModule/Small",
+    "DisplayName": "Console Module",
+    "GridSize": "Small",
+    "TypeId": "CubeBlock",
+    "SubtypeId": "SmallBlockConsoleModule",
+    "Components": [
+      {
+        "ComponentName": "Interior Plate",
+        "Count": 6
+      },
+      {
+        "ComponentName": "Construction Component",
+        "Count": 6
+      }
+    ],
+    "DlcName": "Signal"
+  },
+  {
+    "Id": "ButtonPanel/LargeBlockConsoleModuleButtons/Large",
+    "DisplayName": "Console Module Buttons",
+    "GridSize": "Large",
+    "TypeId": "ButtonPanel",
+    "SubtypeId": "LargeBlockConsoleModuleButtons",
+    "Components": [
+      {
+        "ComponentName": "Interior Plate",
+        "Count": 50
+      },
+      {
+        "ComponentName": "Construction Component",
+        "Count": 50
+      },
+      {
+        "ComponentName": "Display",
+        "Count": 6
+      },
+      {
+        "ComponentName": "Computer",
+        "Count": 10
+      }
+    ],
+    "DlcName": "Signal"
+  },
+  {
+    "Id": "CubeBlock/LargeBlockConsoleModuleCorner/Large",
+    "DisplayName": "Console Module Corner",
+    "GridSize": "Large",
+    "TypeId": "CubeBlock",
+    "SubtypeId": "LargeBlockConsoleModuleCorner",
+    "Components": [
+      {
+        "ComponentName": "Interior Plate",
+        "Count": 30
+      },
+      {
+        "ComponentName": "Construction Component",
+        "Count": 30
+      }
+    ],
+    "DlcName": "Signal"
+  },
+  {
+    "Id": "CubeBlock/LargeBlockConsoleModule/Large",
+    "DisplayName": "Console Module",
+    "GridSize": "Large",
+    "TypeId": "CubeBlock",
+    "SubtypeId": "LargeBlockConsoleModule",
+    "Components": [
+      {
+        "ComponentName": "Interior Plate",
+        "Count": 50
+      },
+      {
+        "ComponentName": "Construction Component",
+        "Count": 50
+      }
+    ],
+    "DlcName": "Signal"
+  },
+  {
+    "Id": "CubeBlock/LargeBlockInsetWallSlope/Large",
+    "DisplayName": "Inset Wall Diagonal",
+    "GridSize": "Large",
+    "TypeId": "CubeBlock",
+    "SubtypeId": "LargeBlockInsetWallSlope",
+    "Components": [
+      {
+        "ComponentName": "Interior Plate",
+        "Count": 19
+      },
+      {
+        "ComponentName": "Construction Component",
+        "Count": 7
+      }
+    ],
+    "DlcName": "Signal"
+  },
+  {
+    "Id": "CubeBlock/LargeBlockInsetWallCornerInverted/Large",
+    "DisplayName": "Inset Wall Corner Inv.",
+    "GridSize": "Large",
+    "TypeId": "CubeBlock",
+    "SubtypeId": "LargeBlockInsetWallCornerInverted",
+    "Components": [
+      {
+        "ComponentName": "Interior Plate",
+        "Count": 25
+      },
+      {
+        "ComponentName": "Construction Component",
+        "Count": 10
+      }
+    ],
+    "DlcName": "Signal"
+  },
+  {
+    "Id": "CubeBlock/SmallBlockConsoleModuleInvertedCorner/Small",
+    "DisplayName": "Console Module Corner Inv.",
+    "GridSize": "Small",
+    "TypeId": "CubeBlock",
+    "SubtypeId": "SmallBlockConsoleModuleInvertedCorner",
+    "Components": [
+      {
+        "ComponentName": "Interior Plate",
+        "Count": 3
+      },
+      {
+        "ComponentName": "Construction Component",
+        "Count": 3
+      }
+    ],
+    "DlcName": "Signal"
+  },
+  {
+    "Id": "CubeBlock/CorridorWindowRoof/Large",
+    "DisplayName": "Corridor Windowed Roof",
+    "GridSize": "Large",
+    "TypeId": "CubeBlock",
+    "SubtypeId": "CorridorWindowRoof",
+    "Components": [
+      {
+        "ComponentName": "Interior Plate",
+        "Count": 80
+      },
+      {
+        "ComponentName": "Construction Component",
+        "Count": 30
+      },
+      {
+        "ComponentName": "Bulletproof Glass",
+        "Count": 6
+      }
+    ],
+    "DlcName": "Signal"
+  },
+  {
+    "Id": "Cockpit/BuggyCockpit/Small",
+    "DisplayName": "Buggy Cockpit",
+    "GridSize": "Small",
+    "TypeId": "Cockpit",
+    "SubtypeId": "BuggyCockpit",
+    "Components": [
+      {
+        "ComponentName": "Interior Plate",
+        "Count": 30
+      },
+      {
+        "ComponentName": "Construction Component",
+        "Count": 25
+      },
+      {
+        "ComponentName": "Motor",
+        "Count": 2
+      },
+      {
+        "ComponentName": "Computer",
+        "Count": 20
+      },
+      {
+        "ComponentName": "Display",
+        "Count": 4
+      }
+    ],
+    "DlcName": "ScrapRace"
+  },
+  {
+    "Id": "HydrogenEngine/LargePrototechReactor/Large",
+    "DisplayName": "Prototech Fusion Reactor",
+    "GridSize": "Large",
+    "TypeId": "HydrogenEngine",
+    "SubtypeId": "LargePrototechReactor",
+    "Components": [
+      {
+        "ComponentName": "Prototech Frame",
+        "Count": 1
+      },
+      {
+        "ComponentName": "Prototech Panel",
+        "Count": 400
+      },
+      {
+        "ComponentName": "Construction Component",
+        "Count": 200
+      },
+      {
+        "ComponentName": "Prototech Capacitor",
+        "Count": 10
+      },
+      {
+        "ComponentName": "Prototech Cooling Unit",
+        "Count": 30
+      },
+      {
+        "ComponentName": "Superconductor",
+        "Count": 400
+      },
+      {
+        "ComponentName": "Reactor Component",
+        "Count": 1000
+      },
+      {
+        "ComponentName": "Computer",
+        "Count": 100
+      }
+    ],
+    "DlcName": null
+  },
+  {
+    "Id": "CubeBlock/LargeStairsSolidSideRailingL/Large",
+    "DisplayName": "Solid Stairs Railing Left",
+    "GridSize": "Large",
+    "TypeId": "CubeBlock",
+    "SubtypeId": "LargeStairsSolidSideRailingL",
+    "Components": [
+      {
+        "ComponentName": "Interior Plate",
+        "Count": 30
+      },
+      {
+        "ComponentName": "Construction Component",
+        "Count": 20
+      }
+    ],
+    "DlcName": "Prosperity"
+  },
+  {
+    "Id": "CubeBlock/LargeStairsSolidSideRailingR/Large",
+    "DisplayName": "Solid Stairs Railing Right",
+    "GridSize": "Large",
+    "TypeId": "CubeBlock",
+    "SubtypeId": "LargeStairsSolidSideRailingR",
+    "Components": [
+      {
+        "ComponentName": "Interior Plate",
+        "Count": 30
+      },
+      {
+        "ComponentName": "Construction Component",
+        "Count": 20
+      }
+    ],
+    "DlcName": "Prosperity"
+  },
+  {
+    "Id": "CubeBlock/LargeStairsSolidRailing/Large",
+    "DisplayName": "Solid Stairs Railing",
+    "GridSize": "Large",
+    "TypeId": "CubeBlock",
+    "SubtypeId": "LargeStairsSolidRailing",
+    "Components": [
+      {
+        "ComponentName": "Interior Plate",
+        "Count": 50
+      },
+      {
+        "ComponentName": "Construction Component",
+        "Count": 30
+      }
+    ],
+    "DlcName": "Prosperity"
+  },
+  {
+    "Id": "CubeBlock/LargeStairsSolidHalf/Large",
+    "DisplayName": "Solid Half Stairs",
+    "GridSize": "Large",
+    "TypeId": "CubeBlock",
+    "SubtypeId": "LargeStairsSolidHalf",
+    "Components": [
+      {
+        "ComponentName": "Interior Plate",
+        "Count": 20
+      },
+      {
+        "ComponentName": "Construction Component",
+        "Count": 10
+      }
+    ],
+    "DlcName": "Prosperity"
+  },
+  {
+    "Id": "CubeBlock/LargeStairsSolidSideL/Large",
+    "DisplayName": "Solid Stairs Left",
+    "GridSize": "Large",
+    "TypeId": "CubeBlock",
+    "SubtypeId": "LargeStairsSolidSideL",
+    "Components": [
+      {
+        "ComponentName": "Interior Plate",
+        "Count": 20
+      },
+      {
+        "ComponentName": "Construction Component",
+        "Count": 10
+      }
+    ],
+    "DlcName": "Prosperity"
+  },
+  {
+    "Id": "CubeBlock/LargeStairsSolidSideR/Large",
+    "DisplayName": "Solid Stairs Right",
+    "GridSize": "Large",
+    "TypeId": "CubeBlock",
+    "SubtypeId": "LargeStairsSolidSideR",
+    "Components": [
+      {
+        "ComponentName": "Interior Plate",
+        "Count": 20
+      },
+      {
+        "ComponentName": "Construction Component",
+        "Count": 10
+      }
+    ],
+    "DlcName": "Prosperity"
+  },
+  {
+    "Id": "CubeBlock/LargeStairsSolid/Large",
+    "DisplayName": "Solid Stairs",
+    "GridSize": "Large",
+    "TypeId": "CubeBlock",
+    "SubtypeId": "LargeStairsSolid",
+    "Components": [
+      {
+        "ComponentName": "Interior Plate",
+        "Count": 40
+      },
+      {
+        "ComponentName": "Construction Component",
+        "Count": 20
+      }
+    ],
+    "DlcName": "Prosperity"
+  },
+  {
+    "Id": "CubeBlock/LargeBlockCableRunCorner/Large",
+    "DisplayName": "Cable Run Corner",
+    "GridSize": "Large",
+    "TypeId": "CubeBlock",
+    "SubtypeId": "LargeBlockCableRunCorner",
+    "Components": [
+      {
+        "ComponentName": "Steel Plate",
+        "Count": 8
+      },
+      {
+        "ComponentName": "Construction Component",
+        "Count": 30
+      },
+      {
+        "ComponentName": "Interior Plate",
+        "Count": 30
+      }
+    ],
+    "DlcName": "Prosperity"
+  },
+  {
+    "Id": "CubeBlock/LargeBlockCableRunLongOffset/Large",
+    "DisplayName": "Cable Run 3 Offset",
+    "GridSize": "Large",
+    "TypeId": "CubeBlock",
+    "SubtypeId": "LargeBlockCableRunLongOffset",
+    "Components": [
+      {
+        "ComponentName": "Steel Plate",
+        "Count": 10
+      },
+      {
+        "ComponentName": "Construction Component",
+        "Count": 40
+      },
+      {
+        "ComponentName": "Interior Plate",
+        "Count": 40
+      }
+    ],
+    "DlcName": "Prosperity"
+  },
+  {
+    "Id": "CubeBlock/LargeBlockCableRunStyle2Offset/Large",
+    "DisplayName": "Cable Run 2 Offset",
+    "GridSize": "Large",
+    "TypeId": "CubeBlock",
+    "SubtypeId": "LargeBlockCableRunStyle2Offset",
+    "Components": [
+      {
+        "ComponentName": "Steel Plate",
+        "Count": 5
+      },
+      {
+        "ComponentName": "Construction Component",
+        "Count": 20
+      },
+      {
+        "ComponentName": "Interior Plate",
+        "Count": 20
+      }
+    ],
+    "DlcName": "Prosperity"
+  },
+  {
+    "Id": "CubeBlock/LargeBlockCableRunOffset/Large",
+    "DisplayName": "Cable Run 1 Offset",
+    "GridSize": "Large",
+    "TypeId": "CubeBlock",
+    "SubtypeId": "LargeBlockCableRunOffset",
+    "Components": [
+      {
+        "ComponentName": "Steel Plate",
+        "Count": 5
+      },
+      {
+        "ComponentName": "Construction Component",
+        "Count": 20
+      },
+      {
+        "ComponentName": "Interior Plate",
+        "Count": 20
+      }
+    ],
+    "DlcName": "Prosperity"
+  },
+  {
+    "Id": "CubeBlock/LargeBlockCableRunLong/Large",
+    "DisplayName": "Cable Run 3",
+    "GridSize": "Large",
+    "TypeId": "CubeBlock",
+    "SubtypeId": "LargeBlockCableRunLong",
+    "Components": [
+      {
+        "ComponentName": "Steel Plate",
+        "Count": 10
+      },
+      {
+        "ComponentName": "Construction Component",
+        "Count": 40
+      },
+      {
+        "ComponentName": "Interior Plate",
+        "Count": 40
+      }
+    ],
+    "DlcName": "Prosperity"
+  },
+  {
+    "Id": "CubeBlock/LargeBlockCableRunStyle2/Large",
+    "DisplayName": "Cable Run 2",
+    "GridSize": "Large",
+    "TypeId": "CubeBlock",
+    "SubtypeId": "LargeBlockCableRunStyle2",
+    "Components": [
+      {
+        "ComponentName": "Steel Plate",
+        "Count": 5
+      },
+      {
+        "ComponentName": "Construction Component",
+        "Count": 20
+      },
+      {
+        "ComponentName": "Interior Plate",
+        "Count": 20
+      }
+    ],
+    "DlcName": "Prosperity"
+  },
+  {
+    "Id": "CubeBlock/LargeBlockCableRun/Large",
+    "DisplayName": "Cable Run 1",
+    "GridSize": "Large",
+    "TypeId": "CubeBlock",
+    "SubtypeId": "LargeBlockCableRun",
+    "Components": [
+      {
+        "ComponentName": "Steel Plate",
+        "Count": 5
+      },
+      {
+        "ComponentName": "Construction Component",
+        "Count": 20
+      },
+      {
+        "ComponentName": "Interior Plate",
+        "Count": 20
+      }
+    ],
+    "DlcName": "Prosperity"
+  },
+  {
+    "Id": "CubeBlock/LargeBlockServerRack3/Large",
+    "DisplayName": "Server Rack C",
+    "GridSize": "Large",
+    "TypeId": "CubeBlock",
+    "SubtypeId": "LargeBlockServerRack3",
+    "Components": [
+      {
+        "ComponentName": "Interior Plate",
+        "Count": 30
+      },
+      {
+        "ComponentName": "Construction Component",
+        "Count": 20
+      }
+    ],
+    "DlcName": "Prosperity"
+  },
+  {
+    "Id": "CubeBlock/LargeStairsSolidHalfRailing/Large",
+    "DisplayName": "Solid Half Stairs Railing",
+    "GridSize": "Large",
+    "TypeId": "CubeBlock",
+    "SubtypeId": "LargeStairsSolidHalfRailing",
+    "Components": [
+      {
+        "ComponentName": "Interior Plate",
+        "Count": 30
+      },
+      {
+        "ComponentName": "Construction Component",
+        "Count": 20
+      }
+    ],
+    "DlcName": "Prosperity"
+  },
+  {
+    "Id": "BatteryBlock/LargeBlockBatteryReskin/Large",
+    "DisplayName": "Battery Bank",
+    "GridSize": "Large",
+    "TypeId": "BatteryBlock",
+    "SubtypeId": "LargeBlockBatteryReskin",
+    "Components": [
+      {
+        "ComponentName": "Steel Plate",
+        "Count": 40
+      },
+      {
+        "ComponentName": "Construction Component",
+        "Count": 20
+      },
+      {
+        "ComponentName": "Power Cell",
+        "Count": 40
+      },
+      {
+        "ComponentName": "Computer",
+        "Count": 15
+      }
+    ],
+    "DlcName": "Prosperity"
+  },
+  {
+    "Id": "BatteryBlock/LargeBlockBatteryReskinOffset/Large",
+    "DisplayName": "Battery Bank Offset",
+    "GridSize": "Large",
+    "TypeId": "BatteryBlock",
+    "SubtypeId": "LargeBlockBatteryReskinOffset",
+    "Components": [
+      {
+        "ComponentName": "Steel Plate",
+        "Count": 40
+      },
+      {
+        "ComponentName": "Construction Component",
+        "Count": 20
+      },
+      {
+        "ComponentName": "Power Cell",
+        "Count": 40
+      },
+      {
+        "ComponentName": "Computer",
+        "Count": 15
+      }
+    ],
+    "DlcName": "Prosperity"
+  },
+  {
+    "Id": "BatteryBlock/SmallBlockBatteryReskin/Small",
+    "DisplayName": "Battery Bank",
+    "GridSize": "Small",
+    "TypeId": "BatteryBlock",
+    "SubtypeId": "SmallBlockBatteryReskin",
+    "Components": [
+      {
+        "ComponentName": "Steel Plate",
+        "Count": 25
+      },
+      {
+        "ComponentName": "Construction Component",
+        "Count": 5
+      },
+      {
+        "ComponentName": "Power Cell",
+        "Count": 20
+      },
+      {
+        "ComponentName": "Computer",
+        "Count": 2
+      }
+    ],
+    "DlcName": "Prosperity"
+  },
+  {
+    "Id": "Drill/LargeBlockPrototechDrill/Large",
+    "DisplayName": "Prototech Drill",
+    "GridSize": "Large",
+    "TypeId": "Drill",
+    "SubtypeId": "LargeBlockPrototechDrill",
+    "Components": [
+      {
+        "ComponentName": "Prototech Frame",
+        "Count": 1
+      },
+      {
+        "ComponentName": "Construction Component",
+        "Count": 200
+      },
+      {
+        "ComponentName": "Large Steel Tube",
+        "Count": 120
+      },
+      {
+        "ComponentName": "Prototech Machinery",
+        "Count": 20
+      },
+      {
+        "ComponentName": "Prototech Cooling Unit",
+        "Count": 3
+      },
+      {
+        "ComponentName": "Metal Grid",
+        "Count": 80
+      },
+      {
+        "ComponentName": "Computer",
+        "Count": 20
+      },
+      {
+        "ComponentName": "Prototech Panel",
+        "Count": 200
+      }
+    ],
+    "DlcName": null
+  },
+  {
+    "Id": "BatteryBlock/SmallBlockPrototechBattery/Small",
+    "DisplayName": "Prototech Battery",
+    "GridSize": "Small",
+    "TypeId": "BatteryBlock",
+    "SubtypeId": "SmallBlockPrototechBattery",
+    "Components": [
+      {
+        "ComponentName": "Prototech Frame",
+        "Count": 1
+      },
+      {
+        "ComponentName": "Construction Component",
+        "Count": 5
+      },
+      {
+        "ComponentName": "Prototech Circuitry",
+        "Count": 1
+      },
+      {
+        "ComponentName": "Prototech Capacitor",
+        "Count": 6
+      },
+      {
+        "ComponentName": "Metal Grid",
+        "Count": 4
+      },
+      {
+        "ComponentName": "Computer",
+        "Count": 2
+      },
+      {
+        "ComponentName": "Prototech Panel",
+        "Count": 6
+      }
+    ],
+    "DlcName": null
+  },
+  {
+    "Id": "BatteryBlock/LargeBlockPrototechBattery/Large",
+    "DisplayName": "Prototech Battery",
+    "GridSize": "Large",
+    "TypeId": "BatteryBlock",
+    "SubtypeId": "LargeBlockPrototechBattery",
+    "Components": [
+      {
+        "ComponentName": "Prototech Frame",
+        "Count": 1
+      },
+      {
+        "ComponentName": "Construction Component",
+        "Count": 30
+      },
+      {
+        "ComponentName": "Prototech Circuitry",
+        "Count": 3
+      },
+      {
+        "ComponentName": "Prototech Capacitor",
+        "Count": 20
+      },
+      {
+        "ComponentName": "Metal Grid",
+        "Count": 16
+      },
+      {
+        "ComponentName": "Computer",
+        "Count": 25
+      },
+      {
+        "ComponentName": "Prototech Panel",
+        "Count": 60
+      }
+    ],
+    "DlcName": null
+  },
+  {
+    "Id": "Gyro/SmallBlockPrototechGyro/Small",
+    "DisplayName": "Prototech Gyroscope",
+    "GridSize": "Small",
+    "TypeId": "Gyro",
+    "SubtypeId": "SmallBlockPrototechGyro",
+    "Components": [
+      {
+        "ComponentName": "Prototech Frame",
+        "Count": 1
+      },
+      {
+        "ComponentName": "Prototech Panel",
+        "Count": 70
+      },
+      {
+        "ComponentName": "Construction Component",
+        "Count": 20
+      },
+      {
+        "ComponentName": "Prototech Circuitry",
+        "Count": 1
+      },
+      {
+        "ComponentName": "Prototech Machinery",
+        "Count": 2
+      },
+      {
+        "ComponentName": "Large Steel Tube",
+        "Count": 4
+      },
+      {
+        "ComponentName": "Metal Grid",
+        "Count": 5
+      },
+      {
+        "ComponentName": "Computer",
+        "Count": 3
+      }
+    ],
+    "DlcName": null
+  },
+  {
+    "Id": "Gyro/LargeBlockPrototechGyro/Large",
+    "DisplayName": "Prototech Gyroscope",
+    "GridSize": "Large",
+    "TypeId": "Gyro",
+    "SubtypeId": "LargeBlockPrototechGyro",
+    "Components": [
+      {
+        "ComponentName": "Prototech Frame",
+        "Count": 1
+      },
+      {
+        "ComponentName": "Prototech Panel",
+        "Count": 300
+      },
+      {
+        "ComponentName": "Construction Component",
+        "Count": 40
+      },
+      {
+        "ComponentName": "Prototech Circuitry",
+        "Count": 1
+      },
+      {
+        "ComponentName": "Prototech Machinery",
+        "Count": 2
+      },
+      {
+        "ComponentName": "Large Steel Tube",
+        "Count": 16
+      },
+      {
+        "ComponentName": "Metal Grid",
+        "Count": 50
+      },
+      {
+        "ComponentName": "Computer",
+        "Count": 5
+      }
+    ],
+    "DlcName": null
+  },
+  {
+    "Id": "Assembler/LargePrototechAssembler/Large",
+    "DisplayName": "Prototech Assembler",
+    "GridSize": "Large",
+    "TypeId": "Assembler",
+    "SubtypeId": "LargePrototechAssembler",
+    "Components": [
+      {
+        "ComponentName": "Prototech Frame",
+        "Count": 1
+      },
+      {
+        "ComponentName": "Prototech Panel",
+        "Count": 240
+      },
+      {
+        "ComponentName": "Construction Component",
+        "Count": 130
+      },
+      {
+        "ComponentName": "Prototech Machinery",
+        "Count": 20
+      },
+      {
+        "ComponentName": "Prototech Cooling Unit",
+        "Count": 2
+      },
+      {
+        "ComponentName": "Metal Grid",
+        "Count": 80
+      },
+      {
+        "ComponentName": "Computer",
+        "Count": 200
+      },
+      {
+        "ComponentName": "Display",
+        "Count": 10
+      }
+    ],
+    "DlcName": null
+  },
+  {
+    "Id": "Refinery/SmallPrototechRefinery/Small",
+    "DisplayName": "Prototech Refinery",
+    "GridSize": "Small",
+    "TypeId": "Refinery",
+    "SubtypeId": "SmallPrototechRefinery",
+    "Components": [
+      {
+        "ComponentName": "Prototech Frame",
+        "Count": 1
+      },
+      {
+        "ComponentName": "Prototech Panel",
+        "Count": 70
+      },
+      {
+        "ComponentName": "Construction Component",
+        "Count": 20
+      },
+      {
+        "ComponentName": "Prototech Machinery",
+        "Count": 3
+      },
+      {
+        "ComponentName": "Prototech Cooling Unit",
+        "Count": 2
+      },
+      {
+        "ComponentName": "Large Steel Tube",
+        "Count": 16
+      },
+      {
+        "ComponentName": "Metal Grid",
+        "Count": 20
+      },
+      {
+        "ComponentName": "Computer",
+        "Count": 20
+      }
+    ],
+    "DlcName": null
+  },
+  {
+    "Id": "OxygenGenerator/LargeBlockPrototechOxygenGenerator/Large",
+    "DisplayName": "Prototech O2/H2 Generator",
+    "GridSize": "Large",
+    "TypeId": "OxygenGenerator",
+    "SubtypeId": "LargeBlockPrototechOxygenGenerator",
+    "Components": [
+      {
+        "ComponentName": "Prototech Frame",
+        "Count": 1
+      },
+      {
+        "ComponentName": "Prototech Panel",
+        "Count": 150
+      },
+      {
+        "ComponentName": "Construction Component",
+        "Count": 40
+      },
+      {
+        "ComponentName": "Prototech Circuitry",
+        "Count": 10
+      },
+      {
+        "ComponentName": "Large Steel Tube",
+        "Count": 10
+      },
+      {
+        "ComponentName": "Prototech Machinery",
+        "Count": 10
+      },
+      {
+        "ComponentName": "Computer",
+        "Count": 20
+      }
+    ],
+    "DlcName": null
+  },
+  {
+    "Id": "Refinery/LargePrototechRefinery/Large",
+    "DisplayName": "Prototech Refinery",
+    "GridSize": "Large",
+    "TypeId": "Refinery",
+    "SubtypeId": "LargePrototechRefinery",
+    "Components": [
+      {
+        "ComponentName": "Prototech Frame",
+        "Count": 1
+      },
+      {
+        "ComponentName": "Prototech Panel",
+        "Count": 675
+      },
+      {
+        "ComponentName": "Construction Component",
+        "Count": 40
+      },
+      {
+        "ComponentName": "Prototech Machinery",
+        "Count": 10
+      },
+      {
+        "ComponentName": "Prototech Cooling Unit",
+        "Count": 5
+      },
+      {
+        "ComponentName": "Large Steel Tube",
+        "Count": 20
+      },
+      {
+        "ComponentName": "Metal Grid",
+        "Count": 20
+      },
+      {
+        "ComponentName": "Computer",
+        "Count": 20
+      }
+    ],
+    "DlcName": null
+  },
+  {
+    "Id": "Thrust/LargeBlockPrototechThruster/Large",
+    "DisplayName": "Prototech Thruster",
+    "GridSize": "Large",
+    "TypeId": "Thrust",
+    "SubtypeId": "LargeBlockPrototechThruster",
+    "Components": [
+      {
+        "ComponentName": "Prototech Frame",
+        "Count": 1
+      },
+      {
+        "ComponentName": "Prototech Panel",
+        "Count": 500
+      },
+      {
+        "ComponentName": "Construction Component",
+        "Count": 325
+      },
+      {
+        "ComponentName": "Prototech Cooling Unit",
+        "Count": 5
+      },
+      {
+        "ComponentName": "Prototech Propulsion Unit",
+        "Count": 60
+      },
+      {
+        "ComponentName": "Metal Grid",
+        "Count": 250
+      },
+      {
+        "ComponentName": "Large Steel Tube",
+        "Count": 160
+      }
+    ],
+    "DlcName": null
+  },
+  {
+    "Id": "JumpDrive/SmallPrototechJumpDrive/Small",
+    "DisplayName": "Prototech Jump Drive",
+    "GridSize": "Small",
+    "TypeId": "JumpDrive",
+    "SubtypeId": "SmallPrototechJumpDrive",
+    "Components": [
+      {
+        "ComponentName": "Prototech Frame",
+        "Count": 1
+      },
+      {
+        "ComponentName": "Gravity Component",
+        "Count": 4
+      },
+      {
+        "ComponentName": "Prototech Capacitor",
+        "Count": 8
+      },
+      {
+        "ComponentName": "Prototech Circuitry",
+        "Count": 4
+      },
+      {
+        "ComponentName": "Superconductor",
+        "Count": 100
+      },
+      {
+        "ComponentName": "Computer",
+        "Count": 20
+      },
+      {
+        "ComponentName": "Construction Component",
+        "Count": 20
+      },
+      {
+        "ComponentName": "Prototech Panel",
+        "Count": 15
+      }
+    ],
+    "DlcName": null
+  },
+  {
+    "Id": "JumpDrive/LargePrototechJumpDrive/Large",
+    "DisplayName": "Prototech Jump Drive",
+    "GridSize": "Large",
+    "TypeId": "JumpDrive",
+    "SubtypeId": "LargePrototechJumpDrive",
+    "Components": [
+      {
+        "ComponentName": "Prototech Frame",
+        "Count": 1
+      },
+      {
+        "ComponentName": "Gravity Component",
+        "Count": 30
+      },
+      {
+        "ComponentName": "Prototech Capacitor",
+        "Count": 30
+      },
+      {
+        "ComponentName": "Prototech Circuitry",
+        "Count": 20
+      },
+      {
+        "ComponentName": "Superconductor",
+        "Count": 1400
+      },
+      {
+        "ComponentName": "Computer",
+        "Count": 300
+      },
+      {
+        "ComponentName": "Construction Component",
+        "Count": 180
+      },
+      {
+        "ComponentName": "Prototech Panel",
+        "Count": 200
+      }
+    ],
+    "DlcName": null
+  },
+  {
+    "Id": "InteriorLight/SmallBlockLightSquare/Small",
+    "DisplayName": "Square Light",
+    "GridSize": "Small",
+    "TypeId": "InteriorLight",
+    "SubtypeId": "SmallBlockLightSquare",
+    "Components": [
+      {
+        "ComponentName": "Construction Component",
+        "Count": 2
+      }
+    ],
+    "DlcName": "Prosperity"
+  },
+  {
+    "Id": "InteriorLight/LargeBlockLightSquare/Large",
+    "DisplayName": "Square Light",
+    "GridSize": "Large",
+    "TypeId": "InteriorLight",
+    "SubtypeId": "LargeBlockLightSquare",
+    "Components": [
+      {
+        "ComponentName": "Construction Component",
+        "Count": 2
+      }
+    ],
+    "DlcName": "Prosperity"
+  },
+  {
+    "Id": "InteriorLight/SmallBlockLightRound/Small",
+    "DisplayName": "Round Light",
+    "GridSize": "Small",
+    "TypeId": "InteriorLight",
+    "SubtypeId": "SmallBlockLightRound",
+    "Components": [
+      {
+        "ComponentName": "Construction Component",
+        "Count": 2
+      }
+    ],
+    "DlcName": "Prosperity"
+  },
+  {
+    "Id": "InteriorLight/LargeBlockLightRound/Large",
+    "DisplayName": "Round Light",
+    "GridSize": "Large",
+    "TypeId": "InteriorLight",
+    "SubtypeId": "LargeBlockLightRound",
+    "Components": [
+      {
+        "ComponentName": "Construction Component",
+        "Count": 2
+      }
+    ],
+    "DlcName": "Prosperity"
+  },
+  {
+    "Id": "Thrust/SmallBlockPrototechThruster/Small",
+    "DisplayName": "Prototech Thruster",
+    "GridSize": "Small",
+    "TypeId": "Thrust",
+    "SubtypeId": "SmallBlockPrototechThruster",
+    "Components": [
+      {
+        "ComponentName": "Prototech Frame",
+        "Count": 1
+      },
+      {
+        "ComponentName": "Prototech Panel",
+        "Count": 10
+      },
+      {
+        "ComponentName": "Construction Component",
+        "Count": 12
+      },
+      {
+        "ComponentName": "Prototech Cooling Unit",
+        "Count": 1
+      },
+      {
+        "ComponentName": "Prototech Propulsion Unit",
+        "Count": 3
+      },
+      {
+        "ComponentName": "Metal Grid",
+        "Count": 5
+      },
+      {
+        "ComponentName": "Large Steel Tube",
+        "Count": 1
+      }
+    ],
+    "DlcName": null
+  },
+  {
+    "Id": "TerminalBlock/LargeBlockServerRack2/Large",
+    "DisplayName": "Server Rack B",
+    "GridSize": "Large",
+    "TypeId": "TerminalBlock",
+    "SubtypeId": "LargeBlockServerRack2",
+    "Components": [
+      {
+        "ComponentName": "Interior Plate",
+        "Count": 30
+      },
+      {
+        "ComponentName": "Construction Component",
+        "Count": 20
+      }
+    ],
+    "DlcName": "Prosperity"
+  },
+  {
+    "Id": "CubeBlock/CorridorNarrow/Large",
+    "DisplayName": "Corridor Narrow",
+    "GridSize": "Large",
+    "TypeId": "CubeBlock",
+    "SubtypeId": "CorridorNarrow",
+    "Components": [
+      {
+        "ComponentName": "Interior Plate",
+        "Count": 100
+      },
+      {
+        "ComponentName": "Construction Component",
+        "Count": 30
+      }
+    ],
+    "DlcName": "Signal"
+  },
+  {
+    "Id": "Door/LargeBlockNarrowDoorHalf/Large",
+    "DisplayName": "Narrow Door Half",
+    "GridSize": "Large",
+    "TypeId": "Door",
+    "SubtypeId": "LargeBlockNarrowDoorHalf",
+    "Components": [
+      {
+        "ComponentName": "Steel Plate",
+        "Count": 25
+      },
+      {
+        "ComponentName": "Construction Component",
+        "Count": 40
+      },
+      {
+        "ComponentName": "Small Steel Tube",
+        "Count": 10
+      },
+      {
+        "ComponentName": "Motor",
+        "Count": 4
+      },
+      {
+        "ComponentName": "Display",
+        "Count": 1
+      },
+      {
+        "ComponentName": "Computer",
+        "Count": 2
+      }
+    ],
+    "DlcName": "Signal"
+  },
+  {
+    "Id": "InteriorLight/PassageSciFiLight/Large",
+    "DisplayName": "Passage 3 Light",
+    "GridSize": "Large",
+    "TypeId": "InteriorLight",
+    "SubtypeId": "PassageSciFiLight",
+    "Components": [
+      {
+        "ComponentName": "Interior Plate",
+        "Count": 74
+      },
+      {
+        "ComponentName": "Construction Component",
+        "Count": 20
+      },
+      {
+        "ComponentName": "Small Steel Tube",
+        "Count": 48
+      }
+    ],
+    "DlcName": "Warfare1"
+  },
+  {
+    "Id": "CubeBlock/PassageSciFiGate/Large",
+    "DisplayName": "Passage 3 Frame",
+    "GridSize": "Large",
+    "TypeId": "CubeBlock",
+    "SubtypeId": "PassageSciFiGate",
+    "Components": [
+      {
+        "ComponentName": "Interior Plate",
+        "Count": 35
+      },
+      {
+        "ComponentName": "Construction Component",
+        "Count": 10
+      },
+      {
+        "ComponentName": "Small Steel Tube",
+        "Count": 25
+      }
+    ],
+    "DlcName": "Warfare1"
+  },
+  {
+    "Id": "CubeBlock/PassageSciFiIntersection/Large",
+    "DisplayName": "Passage 3 Cross",
+    "GridSize": "Large",
+    "TypeId": "CubeBlock",
+    "SubtypeId": "PassageSciFiIntersection",
+    "Components": [
+      {
+        "ComponentName": "Interior Plate",
+        "Count": 35
+      },
+      {
+        "ComponentName": "Construction Component",
+        "Count": 10
+      },
+      {
+        "ComponentName": "Small Steel Tube",
+        "Count": 25
+      }
+    ],
+    "DlcName": "Warfare1"
+  },
+  {
+    "Id": "CubeBlock/PassageSciFiWall/Large",
+    "DisplayName": "Passage 3 Wall",
+    "GridSize": "Large",
+    "TypeId": "CubeBlock",
+    "SubtypeId": "PassageSciFiWall",
+    "Components": [
+      {
+        "ComponentName": "Interior Plate",
+        "Count": 50
+      },
+      {
+        "ComponentName": "Construction Component",
+        "Count": 14
+      },
+      {
+        "ComponentName": "Small Steel Tube",
+        "Count": 32
+      }
+    ],
+    "DlcName": "Warfare1"
+  },
+  {
+    "Id": "CubeBlock/PassageSciFi/Large",
+    "DisplayName": "Passage 3",
+    "GridSize": "Large",
+    "TypeId": "CubeBlock",
+    "SubtypeId": "PassageSciFi",
+    "Components": [
+      {
+        "ComponentName": "Interior Plate",
+        "Count": 74
+      },
+      {
+        "ComponentName": "Construction Component",
+        "Count": 20
+      },
+      {
+        "ComponentName": "Small Steel Tube",
+        "Count": 48
+      }
+    ],
+    "DlcName": "Warfare1"
+  },
+  {
+    "Id": "CubeBlock/Embrasure/Large",
+    "DisplayName": "Embrasure",
+    "GridSize": "Large",
+    "TypeId": "CubeBlock",
+    "SubtypeId": "Embrasure",
+    "Components": [
+      {
+        "ComponentName": "Steel Plate",
+        "Count": 30
+      },
+      {
+        "ComponentName": "Construction Component",
+        "Count": 20
+      },
+      {
+        "ComponentName": "Metal Grid",
+        "Count": 10
+      }
+    ],
+    "DlcName": "Warfare1"
+  },
+  {
+    "Id": "CubeBlock/HalfWindowRound/Large",
+    "DisplayName": "Half Window Round",
+    "GridSize": "Large",
+    "TypeId": "CubeBlock",
+    "SubtypeId": "HalfWindowRound",
+    "Components": [
+      {
+        "ComponentName": "Girder",
+        "Count": 7
+      },
+      {
+        "ComponentName": "Steel Plate",
+        "Count": 16
+      },
+      {
+        "ComponentName": "Bulletproof Glass",
+        "Count": 18
+      }
+    ],
+    "DlcName": "Warfare1"
+  },
+  {
+    "Id": "CubeBlock/HalfWindowDiagonal/Large",
+    "DisplayName": "Half Window Diagonal",
+    "GridSize": "Large",
+    "TypeId": "CubeBlock",
+    "SubtypeId": "HalfWindowDiagonal",
+    "Components": [
+      {
+        "ComponentName": "Girder",
+        "Count": 6
+      },
+      {
+        "ComponentName": "Steel Plate",
+        "Count": 14
+      },
+      {
+        "ComponentName": "Bulletproof Glass",
+        "Count": 14
+      }
+    ],
+    "DlcName": "Warfare1"
+  },
+  {
+    "Id": "CubeBlock/HalfWindowCornerInv/Large",
+    "DisplayName": "Half Window Corner Inv.",
+    "GridSize": "Large",
+    "TypeId": "CubeBlock",
+    "SubtypeId": "HalfWindowCornerInv",
+    "Components": [
+      {
+        "ComponentName": "Girder",
+        "Count": 8
+      },
+      {
+        "ComponentName": "Steel Plate",
+        "Count": 20
+      },
+      {
+        "ComponentName": "Bulletproof Glass",
+        "Count": 20
+      }
+    ],
+    "DlcName": "Warfare1"
+  },
+  {
+    "Id": "CubeBlock/HalfWindowCorner/Large",
+    "DisplayName": "Half Window Corner",
+    "GridSize": "Large",
+    "TypeId": "CubeBlock",
+    "SubtypeId": "HalfWindowCorner",
+    "Components": [
+      {
+        "ComponentName": "Girder",
+        "Count": 8
+      },
+      {
+        "ComponentName": "Steel Plate",
+        "Count": 20
+      },
+      {
+        "ComponentName": "Bulletproof Glass",
+        "Count": 20
+      }
+    ],
+    "DlcName": "Warfare1"
+  },
+  {
+    "Id": "CubeBlock/HalfWindowInv/Large",
+    "DisplayName": "Half Window Inv.",
+    "GridSize": "Large",
+    "TypeId": "CubeBlock",
+    "SubtypeId": "HalfWindowInv",
+    "Components": [
+      {
+        "ComponentName": "Girder",
+        "Count": 4
+      },
+      {
+        "ComponentName": "Steel Plate",
+        "Count": 10
+      },
+      {
+        "ComponentName": "Bulletproof Glass",
+        "Count": 10
+      }
+    ],
+    "DlcName": "Warfare1"
+  },
+  {
+    "Id": "CubeBlock/HalfWindow/Large",
+    "DisplayName": "Half Window",
+    "GridSize": "Large",
+    "TypeId": "CubeBlock",
+    "SubtypeId": "HalfWindow",
+    "Components": [
+      {
+        "ComponentName": "Girder",
+        "Count": 4
+      },
+      {
+        "ComponentName": "Steel Plate",
+        "Count": 10
+      },
+      {
+        "ComponentName": "Bulletproof Glass",
+        "Count": 10
+      }
+    ],
+    "DlcName": "Warfare1"
+  },
+  {
+    "Id": "Thrust/SmallBlockLargeAtmosphericThrustSciFi/Small",
+    "DisplayName": "Sci-Fi Large Atmospheric Thruster",
+    "GridSize": "Small",
+    "TypeId": "Thrust",
+    "SubtypeId": "SmallBlockLargeAtmosphericThrustSciFi",
+    "Components": [
+      {
+        "ComponentName": "Steel Plate",
+        "Count": 20
+      },
+      {
+        "ComponentName": "Construction Component",
+        "Count": 30
+      },
+      {
+        "ComponentName": "Large Steel Tube",
+        "Count": 4
+      },
+      {
+        "ComponentName": "Metal Grid",
+        "Count": 8
+      },
+      {
+        "ComponentName": "Motor",
+        "Count": 90
+      }
+    ],
+    "DlcName": "SparksOfTheFuture"
+  },
+  {
+    "Id": "Thrust/LargeBlockLargeAtmosphericThrustSciFi/Large",
+    "DisplayName": "Sci-Fi Large Atmospheric Thruster",
+    "GridSize": "Large",
+    "TypeId": "Thrust",
+    "SubtypeId": "LargeBlockLargeAtmosphericThrustSciFi",
+    "Components": [
+      {
+        "ComponentName": "Steel Plate",
+        "Count": 230
+      },
+      {
+        "ComponentName": "Construction Component",
+        "Count": 60
+      },
+      {
+        "ComponentName": "Large Steel Tube",
+        "Count": 50
+      },
+      {
+        "ComponentName": "Metal Grid",
+        "Count": 40
+      },
+      {
+        "ComponentName": "Motor",
+        "Count": 1100
+      }
+    ],
+    "DlcName": "SparksOfTheFuture"
+  },
+  {
+    "Id": "Thrust/LargeBlockLargeThrustSciFi/Large",
+    "DisplayName": "Sci-Fi Large Ion Thruster",
+    "GridSize": "Large",
+    "TypeId": "Thrust",
+    "SubtypeId": "LargeBlockLargeThrustSciFi",
+    "Components": [
+      {
+        "ComponentName": "Steel Plate",
+        "Count": 150
+      },
+      {
+        "ComponentName": "Construction Component",
+        "Count": 100
+      },
+      {
+        "ComponentName": "Large Steel Tube",
+        "Count": 40
+      },
+      {
+        "ComponentName": "Thrust Components",
+        "Count": 960
+      }
+    ],
+    "DlcName": "SparksOfTheFuture"
+  },
+  {
+    "Id": "CubeBlock/PassageScifiCorner/Large",
+    "DisplayName": "Passage 3 Corner",
+    "GridSize": "Large",
+    "TypeId": "CubeBlock",
+    "SubtypeId": "PassageScifiCorner",
+    "Components": [
+      {
+        "ComponentName": "Interior Plate",
+        "Count": 74
+      },
+      {
+        "ComponentName": "Construction Component",
+        "Count": 20
+      },
+      {
+        "ComponentName": "Small Steel Tube",
+        "Count": 48
+      }
+    ],
+    "DlcName": "Warfare1"
+  },
+  {
+    "Id": "CubeBlock/PassageSciFiTjunction/Large",
+    "DisplayName": "Passage 3 T-junction",
+    "GridSize": "Large",
+    "TypeId": "CubeBlock",
+    "SubtypeId": "PassageSciFiTjunction",
+    "Components": [
+      {
+        "ComponentName": "Interior Plate",
+        "Count": 55
+      },
+      {
+        "ComponentName": "Construction Component",
+        "Count": 16
+      },
+      {
+        "ComponentName": "Small Steel Tube",
+        "Count": 38
+      }
+    ],
+    "DlcName": "Warfare1"
+  },
+  {
+    "Id": "CubeBlock/PassageSciFiWindow/Large",
+    "DisplayName": "Passage 3 Windowed",
+    "GridSize": "Large",
+    "TypeId": "CubeBlock",
+    "SubtypeId": "PassageSciFiWindow",
+    "Components": [
+      {
+        "ComponentName": "Interior Plate",
+        "Count": 60
+      },
+      {
+        "ComponentName": "Construction Component",
+        "Count": 16
+      },
+      {
+        "ComponentName": "Bulletproof Glass",
+        "Count": 16
+      },
+      {
+        "ComponentName": "Small Steel Tube",
+        "Count": 38
+      }
+    ],
+    "DlcName": "Warfare1"
+  },
+  {
+    "Id": "CubeBlock/BridgeWindow1x1Face/Large",
+    "DisplayName": "Bridge Window Face",
+    "GridSize": "Large",
+    "TypeId": "CubeBlock",
+    "SubtypeId": "BridgeWindow1x1Face",
+    "Components": [
+      {
+        "ComponentName": "Girder",
+        "Count": 8
+      },
+      {
+        "ComponentName": "Steel Plate",
+        "Count": 2
+      },
+      {
+        "ComponentName": "Interior Plate",
+        "Count": 4
+      },
+      {
+        "ComponentName": "Bulletproof Glass",
+        "Count": 18
+      }
+    ],
+    "DlcName": "Warfare2"
+  },
+  {
+    "Id": "HeatVentBlock/SmallHeatVentBlock/Small",
+    "DisplayName": "Heat Vent",
+    "GridSize": "Small",
+    "TypeId": "HeatVentBlock",
+    "SubtypeId": "SmallHeatVentBlock",
+    "Components": [
+      {
+        "ComponentName": "Steel Plate",
+        "Count": 2
+      },
+      {
+        "ComponentName": "Construction Component",
+        "Count": 1
+      },
+      {
+        "ComponentName": "Large Steel Tube",
+        "Count": 1
+      },
+      {
+        "ComponentName": "Motor",
+        "Count": 1
+      }
+    ],
+    "DlcName": "Warfare2"
+  },
+  {
+    "Id": "HeatVentBlock/LargeHeatVentBlock/Large",
+    "DisplayName": "Heat Vent",
+    "GridSize": "Large",
+    "TypeId": "HeatVentBlock",
+    "SubtypeId": "LargeHeatVentBlock",
+    "Components": [
+      {
+        "ComponentName": "Steel Plate",
+        "Count": 25
+      },
+      {
+        "ComponentName": "Construction Component",
+        "Count": 20
+      },
+      {
+        "ComponentName": "Large Steel Tube",
+        "Count": 10
+      },
+      {
+        "ComponentName": "Motor",
+        "Count": 5
+      }
+    ],
+    "DlcName": "Warfare2"
+  },
+  {
+    "Id": "Door/SlidingHatchDoorHalf/Large",
+    "DisplayName": "Half Sliding Hatch Door",
+    "GridSize": "Large",
+    "TypeId": "Door",
+    "SubtypeId": "SlidingHatchDoorHalf",
+    "Components": [
+      {
+        "ComponentName": "Steel Plate",
+        "Count": 30
+      },
+      {
+        "ComponentName": "Construction Component",
+        "Count": 50
+      },
+      {
+        "ComponentName": "Small Steel Tube",
+        "Count": 10
+      },
+      {
+        "ComponentName": "Motor",
+        "Count": 4
+      },
+      {
+        "ComponentName": "Display",
+        "Count": 2
+      },
+      {
+        "ComponentName": "Computer",
+        "Count": 2
+      },
+      {
+        "ComponentName": "Bulletproof Glass",
+        "Count": 10
+      }
+    ],
+    "DlcName": "Warfare2"
+  },
+  {
+    "Id": "Door/SlidingHatchDoor/Large",
+    "DisplayName": "Sliding Hatch Door",
+    "GridSize": "Large",
+    "TypeId": "Door",
+    "SubtypeId": "SlidingHatchDoor",
+    "Components": [
+      {
+        "ComponentName": "Steel Plate",
+        "Count": 40
+      },
+      {
+        "ComponentName": "Construction Component",
+        "Count": 50
+      },
+      {
+        "ComponentName": "Small Steel Tube",
+        "Count": 10
+      },
+      {
+        "ComponentName": "Motor",
+        "Count": 4
+      },
+      {
+        "ComponentName": "Display",
+        "Count": 2
+      },
+      {
+        "ComponentName": "Computer",
+        "Count": 2
+      },
+      {
+        "ComponentName": "Bulletproof Glass",
+        "Count": 10
+      }
+    ],
+    "DlcName": "Warfare2"
+  },
+  {
+    "Id": "BatteryBlock/SmallBlockBatteryBlockWarfare2/Small",
+    "DisplayName": "Warfare Battery",
+    "GridSize": "Small",
+    "TypeId": "BatteryBlock",
+    "SubtypeId": "SmallBlockBatteryBlockWarfare2",
+    "Components": [
+      {
+        "ComponentName": "Steel Plate",
+        "Count": 25
+      },
+      {
+        "ComponentName": "Construction Component",
+        "Count": 5
+      },
+      {
+        "ComponentName": "Power Cell",
+        "Count": 20
+      },
+      {
+        "ComponentName": "Computer",
+        "Count": 2
+      }
+    ],
+    "DlcName": "Warfare2"
+  },
+  {
+    "Id": "BatteryBlock/LargeBlockBatteryBlockWarfare2/Large",
+    "DisplayName": "Warfare Battery",
+    "GridSize": "Large",
+    "TypeId": "BatteryBlock",
+    "SubtypeId": "LargeBlockBatteryBlockWarfare2",
+    "Components": [
+      {
+        "ComponentName": "Steel Plate",
+        "Count": 80
+      },
+      {
+        "ComponentName": "Construction Component",
+        "Count": 30
+      },
+      {
+        "ComponentName": "Power Cell",
+        "Count": 80
+      },
+      {
+        "ComponentName": "Computer",
+        "Count": 25
+      }
+    ],
+    "DlcName": "Warfare2"
+  },
+  {
+    "Id": "SmallGatlingGun/SmallGatlingGunWarfare2/Small",
+    "DisplayName": "Warfare Gatling Gun",
+    "GridSize": "Small",
+    "TypeId": "SmallGatlingGun",
+    "SubtypeId": "SmallGatlingGunWarfare2",
+    "Components": [
+      {
+        "ComponentName": "Steel Plate",
+        "Count": 4
+      },
+      {
+        "ComponentName": "Construction Component",
+        "Count": 1
+      },
+      {
+        "ComponentName": "Metal Grid",
+        "Count": 2
+      },
+      {
+        "ComponentName": "Small Steel Tube",
+        "Count": 6
+      },
+      {
+        "ComponentName": "Motor",
+        "Count": 1
+      },
+      {
+        "ComponentName": "Computer",
+        "Count": 1
+      }
+    ],
+    "DlcName": "Warfare2"
+  },
+  {
+    "Id": "Thrust/SmallBlockLargeThrustSciFi/Small",
+    "DisplayName": "Sci-Fi Large Ion Thruster",
+    "GridSize": "Small",
+    "TypeId": "Thrust",
+    "SubtypeId": "SmallBlockLargeThrustSciFi",
+    "Components": [
+      {
+        "ComponentName": "Steel Plate",
+        "Count": 5
+      },
+      {
+        "ComponentName": "Construction Component",
+        "Count": 2
+      },
+      {
+        "ComponentName": "Large Steel Tube",
+        "Count": 5
+      },
+      {
+        "ComponentName": "Thrust Components",
+        "Count": 12
+      }
+    ],
+    "DlcName": "SparksOfTheFuture"
+  },
+  {
+    "Id": "AirtightHangarDoor/AirtightHangarDoorWarfare2C/Large",
+    "DisplayName": "Warfare Hangar Door 2",
+    "GridSize": "Large",
+    "TypeId": "AirtightHangarDoor",
+    "SubtypeId": "AirtightHangarDoorWarfare2C",
+    "Components": [
+      {
+        "ComponentName": "Steel Plate",
+        "Count": 350
+      },
+      {
+        "ComponentName": "Construction Component",
+        "Count": 40
+      },
+      {
+        "ComponentName": "Small Steel Tube",
+        "Count": 40
+      },
+      {
+        "ComponentName": "Motor",
+        "Count": 16
+      },
+      {
+        "ComponentName": "Computer",
+        "Count": 2
+      }
+    ],
+    "DlcName": "Warfare2"
+  },
+  {
+    "Id": "AirtightHangarDoor/AirtightHangarDoorWarfare2A/Large",
+    "DisplayName": "Warfare Hangar Door",
+    "GridSize": "Large",
+    "TypeId": "AirtightHangarDoor",
+    "SubtypeId": "AirtightHangarDoorWarfare2A",
+    "Components": [
+      {
+        "ComponentName": "Steel Plate",
+        "Count": 350
+      },
+      {
+        "ComponentName": "Construction Component",
+        "Count": 40
+      },
+      {
+        "ComponentName": "Small Steel Tube",
+        "Count": 40
+      },
+      {
+        "ComponentName": "Motor",
+        "Count": 16
+      },
+      {
+        "ComponentName": "Computer",
+        "Count": 2
+      }
+    ],
+    "DlcName": "Warfare2"
+  },
+  {
+    "Id": "Reactor/SmallBlockSmallGeneratorWarfare2/Small",
+    "DisplayName": "Small Warfare Reactor",
+    "GridSize": "Small",
+    "TypeId": "Reactor",
+    "SubtypeId": "SmallBlockSmallGeneratorWarfare2",
+    "Components": [
+      {
+        "ComponentName": "Steel Plate",
+        "Count": 3
+      },
+      {
+        "ComponentName": "Construction Component",
+        "Count": 10
+      },
+      {
+        "ComponentName": "Metal Grid",
+        "Count": 2
+      },
+      {
+        "ComponentName": "Large Steel Tube",
+        "Count": 1
+      },
+      {
+        "ComponentName": "Reactor Component",
+        "Count": 3
+      },
+      {
+        "ComponentName": "Motor",
+        "Count": 1
+      },
+      {
+        "ComponentName": "Computer",
+        "Count": 10
+      }
+    ],
+    "DlcName": "Warfare2"
+  },
+  {
+    "Id": "Reactor/LargeBlockSmallGeneratorWarfare2/Large",
+    "DisplayName": "Small Warfare Reactor",
+    "GridSize": "Large",
+    "TypeId": "Reactor",
+    "SubtypeId": "LargeBlockSmallGeneratorWarfare2",
+    "Components": [
+      {
+        "ComponentName": "Steel Plate",
+        "Count": 80
+      },
+      {
+        "ComponentName": "Construction Component",
+        "Count": 40
+      },
+      {
+        "ComponentName": "Metal Grid",
+        "Count": 4
+      },
+      {
+        "ComponentName": "Large Steel Tube",
+        "Count": 8
+      },
+      {
+        "ComponentName": "Reactor Component",
+        "Count": 100
+      },
+      {
+        "ComponentName": "Motor",
+        "Count": 6
+      },
+      {
+        "ComponentName": "Computer",
+        "Count": 25
+      }
+    ],
+    "DlcName": "Warfare2"
+  },
+  {
+    "Id": "InteriorLight/SmallLightPanel/Small",
+    "DisplayName": "Light Panel",
+    "GridSize": "Small",
+    "TypeId": "InteriorLight",
+    "SubtypeId": "SmallLightPanel",
+    "Components": [
+      {
+        "ComponentName": "Construction Component",
+        "Count": 2
+      },
+      {
+        "ComponentName": "Interior Plate",
+        "Count": 1
+      }
+    ],
+    "DlcName": "Warfare2"
+  },
+  {
+    "Id": "InteriorLight/LargeLightPanel/Large",
+    "DisplayName": "Light Panel",
+    "GridSize": "Large",
+    "TypeId": "InteriorLight",
+    "SubtypeId": "LargeLightPanel",
+    "Components": [
+      {
+        "ComponentName": "Construction Component",
+        "Count": 10
+      },
+      {
+        "ComponentName": "Interior Plate",
+        "Count": 5
+      }
+    ],
+    "DlcName": "Warfare2"
+  },
+  {
+    "Id": "Cockpit/PassengerBench/Small",
+    "DisplayName": "Passenger Bench",
+    "GridSize": "Small",
+    "TypeId": "Cockpit",
+    "SubtypeId": "PassengerBench",
+    "Components": [
+      {
+        "ComponentName": "Interior Plate",
+        "Count": 20
+      },
+      {
+        "ComponentName": "Construction Component",
+        "Count": 20
+      }
+    ],
+    "DlcName": "Warfare2"
+  },
+  {
+    "Id": "CubeBlock/BridgeWindow1x1FaceInverted/Large",
+    "DisplayName": "Bridge Window Face Inv.",
+    "GridSize": "Large",
+    "TypeId": "CubeBlock",
+    "SubtypeId": "BridgeWindow1x1FaceInverted",
+    "Components": [
+      {
+        "ComponentName": "Girder",
+        "Count": 5
+      },
+      {
+        "ComponentName": "Steel Plate",
+        "Count": 6
+      },
+      {
+        "ComponentName": "Interior Plate",
+        "Count": 12
+      },
+      {
+        "ComponentName": "Bulletproof Glass",
+        "Count": 12
+      }
+    ],
+    "DlcName": "Warfare2"
+  },
+  {
+    "Id": "AirtightHangarDoor/AirtightHangarDoorWarfare2B/Large",
+    "DisplayName": "Warfare Hangar Door Windowed",
+    "GridSize": "Large",
+    "TypeId": "AirtightHangarDoor",
+    "SubtypeId": "AirtightHangarDoorWarfare2B",
+    "Components": [
+      {
+        "ComponentName": "Steel Plate",
+        "Count": 350
+      },
+      {
+        "ComponentName": "Construction Component",
+        "Count": 40
+      },
+      {
+        "ComponentName": "Small Steel Tube",
+        "Count": 40
+      },
+      {
+        "ComponentName": "Motor",
+        "Count": 16
+      },
+      {
+        "ComponentName": "Computer",
+        "Count": 2
+      }
+    ],
+    "DlcName": "Warfare2"
+  },
+  {
+    "Id": "Door/LargeBlockNarrowDoor/Large",
+    "DisplayName": "Narrow Door",
+    "GridSize": "Large",
+    "TypeId": "Door",
+    "SubtypeId": "LargeBlockNarrowDoor",
+    "Components": [
+      {
+        "ComponentName": "Steel Plate",
+        "Count": 35
+      },
+      {
+        "ComponentName": "Construction Component",
+        "Count": 40
+      },
+      {
+        "ComponentName": "Small Steel Tube",
+        "Count": 10
+      },
+      {
+        "ComponentName": "Motor",
+        "Count": 4
+      },
+      {
+        "ComponentName": "Display",
+        "Count": 1
+      },
+      {
+        "ComponentName": "Computer",
+        "Count": 2
+      }
+    ],
+    "DlcName": "Signal"
+  },
+  {
+    "Id": "ButtonPanel/LargeSciFiButtonPanel/Large",
+    "DisplayName": "Sci-Fi Four-Button Panel",
+    "GridSize": "Large",
+    "TypeId": "ButtonPanel",
+    "SubtypeId": "LargeSciFiButtonPanel",
+    "Components": [
+      {
+        "ComponentName": "Interior Plate",
+        "Count": 10
+      },
+      {
+        "ComponentName": "Construction Component",
+        "Count": 20
+      },
+      {
+        "ComponentName": "Computer",
+        "Count": 20
+      },
+      {
+        "ComponentName": "Display",
+        "Count": 5
+      }
+    ],
+    "DlcName": "SparksOfTheFuture"
+  },
+  {
+    "Id": "ButtonPanel/LargeSciFiButtonTerminal/Large",
+    "DisplayName": "Sci-Fi One-Button Terminal",
+    "GridSize": "Large",
+    "TypeId": "ButtonPanel",
+    "SubtypeId": "LargeSciFiButtonTerminal",
+    "Components": [
+      {
+        "ComponentName": "Interior Plate",
+        "Count": 5
+      },
+      {
+        "ComponentName": "Construction Component",
+        "Count": 10
+      },
+      {
+        "ComponentName": "Computer",
+        "Count": 4
+      },
+      {
+        "ComponentName": "Display",
+        "Count": 4
+      }
+    ],
+    "DlcName": "SparksOfTheFuture"
+  },
+  {
+    "Id": "EmissiveBlock/LargeNeonTubesStraight2/Large",
+    "DisplayName": "Neon Tubes 2",
+    "GridSize": "Large",
+    "TypeId": "EmissiveBlock",
+    "SubtypeId": "LargeNeonTubesStraight2",
+    "Components": [
+      {
+        "ComponentName": "Interior Plate",
+        "Count": 6
+      },
+      {
+        "ComponentName": "Small Steel Tube",
+        "Count": 6
+      },
+      {
+        "ComponentName": "Construction Component",
+        "Count": 2
+      }
+    ],
+    "DlcName": "SparksOfTheFuture"
+  },
+  {
+    "Id": "EmissiveBlock/LargeNeonTubesStraight1/Large",
+    "DisplayName": "Neon Tubes 1",
+    "GridSize": "Large",
+    "TypeId": "EmissiveBlock",
+    "SubtypeId": "LargeNeonTubesStraight1",
+    "Components": [
+      {
+        "ComponentName": "Interior Plate",
+        "Count": 6
+      },
+      {
+        "ComponentName": "Small Steel Tube",
+        "Count": 6
+      },
+      {
+        "ComponentName": "Construction Component",
+        "Count": 2
+      }
+    ],
+    "DlcName": "SparksOfTheFuture"
+  },
+  {
+    "Id": "CubeBlock/LargeBlockSciFiWall/Large",
+    "DisplayName": "Sci-Fi Interior Wall",
+    "GridSize": "Large",
+    "TypeId": "CubeBlock",
+    "SubtypeId": "LargeBlockSciFiWall",
+    "Components": [
+      {
+        "ComponentName": "Interior Plate",
+        "Count": 25
+      },
+      {
+        "ComponentName": "Construction Component",
+        "Count": 10
+      }
+    ],
+    "DlcName": "SparksOfTheFuture"
+  },
+  {
+    "Id": "TextPanel/LargeLCDPanel3x3/Large",
+    "DisplayName": "Sci-Fi LCD Panel 3x3",
+    "GridSize": "Large",
+    "TypeId": "TextPanel",
+    "SubtypeId": "LargeLCDPanel3x3",
+    "Components": [
+      {
+        "ComponentName": "Interior Plate",
+        "Count": 10
+      },
+      {
+        "ComponentName": "Construction Component",
+        "Count": 50
+      },
+      {
+        "ComponentName": "Computer",
+        "Count": 10
+      },
+      {
+        "ComponentName": "Display",
+        "Count": 90
+      },
+      {
+        "ComponentName": "Bulletproof Glass",
+        "Count": 50
+      }
+    ],
+    "DlcName": "SparksOfTheFuture"
+  },
+  {
+    "Id": "TextPanel/LargeLCDPanel5x3/Large",
+    "DisplayName": "Sci-Fi LCD Panel 5x3",
+    "GridSize": "Large",
+    "TypeId": "TextPanel",
+    "SubtypeId": "LargeLCDPanel5x3",
+    "Components": [
+      {
+        "ComponentName": "Interior Plate",
+        "Count": 15
+      },
+      {
+        "ComponentName": "Construction Component",
+        "Count": 90
+      },
+      {
+        "ComponentName": "Computer",
+        "Count": 15
+      },
+      {
+        "ComponentName": "Display",
+        "Count": 150
+      },
+      {
+        "ComponentName": "Bulletproof Glass",
+        "Count": 90
+      }
+    ],
+    "DlcName": "SparksOfTheFuture"
+  },
+  {
+    "Id": "TextPanel/LargeLCDPanel5x5/Large",
+    "DisplayName": "Sci-Fi LCD Panel 5x5",
+    "GridSize": "Large",
+    "TypeId": "TextPanel",
+    "SubtypeId": "LargeLCDPanel5x5",
+    "Components": [
+      {
+        "ComponentName": "Interior Plate",
+        "Count": 25
+      },
+      {
+        "ComponentName": "Construction Component",
+        "Count": 150
+      },
+      {
+        "ComponentName": "Computer",
+        "Count": 25
+      },
+      {
+        "ComponentName": "Display",
+        "Count": 250
+      },
+      {
+        "ComponentName": "Bulletproof Glass",
+        "Count": 150
+      }
+    ],
+    "DlcName": "SparksOfTheFuture"
+  },
+  {
+    "Id": "Decoy/TrussPillarDecoy/Large",
+    "DisplayName": "Truss Decoy",
+    "GridSize": "Large",
+    "TypeId": "Decoy",
+    "SubtypeId": "TrussPillarDecoy",
+    "Components": [
+      {
+        "ComponentName": "Steel Plate",
+        "Count": 30
+      },
+      {
+        "ComponentName": "Construction Component",
+        "Count": 10
+      },
+      {
+        "ComponentName": "Computer",
+        "Count": 10
+      },
+      {
+        "ComponentName": "Radio Communication Components",
+        "Count": 1
+      },
+      {
+        "ComponentName": "Large Steel Tube",
+        "Count": 2
+      }
+    ],
+    "DlcName": "Signal"
+  },
+  {
+    "Id": "CubeBlock/TrussPillarOffset/Large",
+    "DisplayName": "Truss Pillar Offset",
+    "GridSize": "Large",
+    "TypeId": "CubeBlock",
+    "SubtypeId": "TrussPillarOffset",
+    "Components": [
+      {
+        "ComponentName": "Interior Plate",
+        "Count": 25
+      },
+      {
+        "ComponentName": "Construction Component",
+        "Count": 10
+      },
+      {
+        "ComponentName": "Small Steel Tube",
+        "Count": 4
+      }
+    ],
+    "DlcName": "Signal"
+  },
+  {
+    "Id": "CubeBlock/TrussPillarSmall/Small",
+    "DisplayName": "Truss Pillar",
+    "GridSize": "Small",
+    "TypeId": "CubeBlock",
+    "SubtypeId": "TrussPillarSmall",
+    "Components": [
+      {
+        "ComponentName": "Interior Plate",
+        "Count": 25
+      },
+      {
+        "ComponentName": "Construction Component",
+        "Count": 10
+      },
+      {
+        "ComponentName": "Small Steel Tube",
+        "Count": 4
+      }
+    ],
+    "DlcName": "Signal"
+  },
+  {
+    "Id": "CubeBlock/TrussPillarDiagonal/Large",
+    "DisplayName": "Truss Pillar Offset Corner",
+    "GridSize": "Large",
+    "TypeId": "CubeBlock",
+    "SubtypeId": "TrussPillarDiagonal",
+    "Components": [
+      {
+        "ComponentName": "Interior Plate",
+        "Count": 30
+      },
+      {
+        "ComponentName": "Construction Component",
+        "Count": 12
+      },
+      {
+        "ComponentName": "Small Steel Tube",
+        "Count": 6
+      }
+    ],
+    "DlcName": "Signal"
+  },
+  {
+    "Id": "CubeBlock/TrussPillarX/Large",
+    "DisplayName": "Truss Pillar X",
+    "GridSize": "Large",
+    "TypeId": "CubeBlock",
+    "SubtypeId": "TrussPillarX",
+    "Components": [
+      {
+        "ComponentName": "Interior Plate",
+        "Count": 35
+      },
+      {
+        "ComponentName": "Construction Component",
+        "Count": 15
+      },
+      {
+        "ComponentName": "Small Steel Tube",
+        "Count": 8
+      }
+    ],
+    "DlcName": "Signal"
+  },
+  {
+    "Id": "CubeBlock/TrussPillarT/Large",
+    "DisplayName": "Truss Pillar T",
+    "GridSize": "Large",
+    "TypeId": "CubeBlock",
+    "SubtypeId": "TrussPillarT",
+    "Components": [
+      {
+        "ComponentName": "Interior Plate",
+        "Count": 30
+      },
+      {
+        "ComponentName": "Construction Component",
+        "Count": 12
+      },
+      {
+        "ComponentName": "Small Steel Tube",
+        "Count": 6
+      }
+    ],
+    "DlcName": "Signal"
+  },
+  {
+    "Id": "CubeBlock/TrussPillarSlanted/Large",
+    "DisplayName": "Truss Pillar Slanted",
+    "GridSize": "Large",
+    "TypeId": "CubeBlock",
+    "SubtypeId": "TrussPillarSlanted",
+    "Components": [
+      {
+        "ComponentName": "Interior Plate",
+        "Count": 25
+      },
+      {
+        "ComponentName": "Construction Component",
+        "Count": 10
+      },
+      {
+        "ComponentName": "Small Steel Tube",
+        "Count": 4
+      }
+    ],
+    "DlcName": "Signal"
+  },
+  {
+    "Id": "CubeBlock/TrussPillarCorner/Large",
+    "DisplayName": "Truss Pillar Corner",
+    "GridSize": "Large",
+    "TypeId": "CubeBlock",
+    "SubtypeId": "TrussPillarCorner",
+    "Components": [
+      {
+        "ComponentName": "Interior Plate",
+        "Count": 25
+      },
+      {
+        "ComponentName": "Construction Component",
+        "Count": 10
+      },
+      {
+        "ComponentName": "Small Steel Tube",
+        "Count": 4
+      }
+    ],
+    "DlcName": "Signal"
+  },
+  {
+    "Id": "CubeBlock/TrussPillar/Large",
+    "DisplayName": "Truss Pillar",
+    "GridSize": "Large",
+    "TypeId": "CubeBlock",
+    "SubtypeId": "TrussPillar",
+    "Components": [
+      {
+        "ComponentName": "Interior Plate",
+        "Count": 25
+      },
+      {
+        "ComponentName": "Construction Component",
+        "Count": 10
+      },
+      {
+        "ComponentName": "Small Steel Tube",
+        "Count": 4
+      }
+    ],
+    "DlcName": "Signal"
+  },
+  {
+    "Id": "EmissiveBlock/LargeNeonTubesCorner/Large",
+    "DisplayName": "Neon Tubes Corner",
+    "GridSize": "Large",
+    "TypeId": "EmissiveBlock",
+    "SubtypeId": "LargeNeonTubesCorner",
+    "Components": [
+      {
+        "ComponentName": "Interior Plate",
+        "Count": 6
+      },
+      {
+        "ComponentName": "Small Steel Tube",
+        "Count": 6
+      },
+      {
+        "ComponentName": "Construction Component",
+        "Count": 2
+      }
+    ],
+    "DlcName": "SparksOfTheFuture"
+  },
+  {
+    "Id": "EmissiveBlock/LargeNeonTubesBendUp/Large",
+    "DisplayName": "Neon Tubes Up",
+    "GridSize": "Large",
+    "TypeId": "EmissiveBlock",
+    "SubtypeId": "LargeNeonTubesBendUp",
+    "Components": [
+      {
+        "ComponentName": "Interior Plate",
+        "Count": 12
+      },
+      {
+        "ComponentName": "Small Steel Tube",
+        "Count": 12
+      },
+      {
+        "ComponentName": "Construction Component",
+        "Count": 4
+      }
+    ],
+    "DlcName": "SparksOfTheFuture"
+  },
+  {
+    "Id": "EmissiveBlock/LargeNeonTubesBendDown/Large",
+    "DisplayName": "Neon Tubes Down",
+    "GridSize": "Large",
+    "TypeId": "EmissiveBlock",
+    "SubtypeId": "LargeNeonTubesBendDown",
+    "Components": [
+      {
+        "ComponentName": "Interior Plate",
+        "Count": 3
+      },
+      {
+        "ComponentName": "Small Steel Tube",
+        "Count": 3
+      },
+      {
+        "ComponentName": "Construction Component",
+        "Count": 1
+      }
+    ],
+    "DlcName": "SparksOfTheFuture"
+  },
+  {
+    "Id": "EmissiveBlock/LargeNeonTubesStraightEnd1/Large",
+    "DisplayName": "Neon Tubes End 1",
+    "GridSize": "Large",
+    "TypeId": "EmissiveBlock",
+    "SubtypeId": "LargeNeonTubesStraightEnd1",
+    "Components": [
+      {
+        "ComponentName": "Interior Plate",
+        "Count": 6
+      },
+      {
+        "ComponentName": "Small Steel Tube",
+        "Count": 6
+      },
+      {
+        "ComponentName": "Construction Component",
+        "Count": 2
+      }
+    ],
+    "DlcName": "SparksOfTheFuture"
+  },
+  {
+    "Id": "TerminalBlock/LargeBlockSciFiTerminal/Large",
+    "DisplayName": "Sci-Fi Control Panel",
+    "GridSize": "Large",
+    "TypeId": "TerminalBlock",
+    "SubtypeId": "LargeBlockSciFiTerminal",
+    "Components": [
+      {
+        "ComponentName": "Construction Component",
+        "Count": 4
+      },
+      {
+        "ComponentName": "Computer",
+        "Count": 2
+      },
+      {
+        "ComponentName": "Display",
+        "Count": 4
+      },
+      {
+        "ComponentName": "Interior Plate",
+        "Count": 2
+      }
+    ],
+    "DlcName": "SparksOfTheFuture"
+  },
+  {
+    "Id": "EmissiveBlock/SmallNeonTubesCircle/Small",
+    "DisplayName": "Neon Tubes Circle",
+    "GridSize": "Small",
+    "TypeId": "EmissiveBlock",
+    "SubtypeId": "SmallNeonTubesCircle",
+    "Components": [
+      {
+        "ComponentName": "Interior Plate",
+        "Count": 1
+      },
+      {
+        "ComponentName": "Small Steel Tube",
+        "Count": 1
+      },
+      {
+        "ComponentName": "Construction Component",
+        "Count": 1
+      }
+    ],
+    "DlcName": "SparksOfTheFuture"
+  },
+  {
+    "Id": "EmissiveBlock/SmallNeonTubesT/Small",
+    "DisplayName": "Neon Tubes T Shape",
+    "GridSize": "Small",
+    "TypeId": "EmissiveBlock",
+    "SubtypeId": "SmallNeonTubesT",
+    "Components": [
+      {
+        "ComponentName": "Interior Plate",
+        "Count": 1
+      },
+      {
+        "ComponentName": "Small Steel Tube",
+        "Count": 1
+      },
+      {
+        "ComponentName": "Construction Component",
+        "Count": 1
+      }
+    ],
+    "DlcName": "SparksOfTheFuture"
+  },
+  {
+    "Id": "EmissiveBlock/SmallNeonTubesU/Small",
+    "DisplayName": "Neon Tubes U Shape",
+    "GridSize": "Small",
+    "TypeId": "EmissiveBlock",
+    "SubtypeId": "SmallNeonTubesU",
+    "Components": [
+      {
+        "ComponentName": "Interior Plate",
+        "Count": 1
+      },
+      {
+        "ComponentName": "Small Steel Tube",
+        "Count": 1
+      },
+      {
+        "ComponentName": "Construction Component",
+        "Count": 1
+      }
+    ],
+    "DlcName": "SparksOfTheFuture"
+  },
+  {
+    "Id": "EmissiveBlock/SmallNeonTubesStraightEnd1/Small",
+    "DisplayName": "Neon Tubes End 1",
+    "GridSize": "Small",
+    "TypeId": "EmissiveBlock",
+    "SubtypeId": "SmallNeonTubesStraightEnd1",
+    "Components": [
+      {
+        "ComponentName": "Interior Plate",
+        "Count": 1
+      },
+      {
+        "ComponentName": "Small Steel Tube",
+        "Count": 1
+      },
+      {
+        "ComponentName": "Construction Component",
+        "Count": 1
+      }
+    ],
+    "DlcName": "SparksOfTheFuture"
+  },
+  {
+    "Id": "EmissiveBlock/SmallNeonTubesStraightDown/Small",
+    "DisplayName": "Neon Tubes Down 2",
+    "GridSize": "Small",
+    "TypeId": "EmissiveBlock",
+    "SubtypeId": "SmallNeonTubesStraightDown",
+    "Components": [
+      {
+        "ComponentName": "Interior Plate",
+        "Count": 1
+      },
+      {
+        "ComponentName": "Small Steel Tube",
+        "Count": 1
+      },
+      {
+        "ComponentName": "Construction Component",
+        "Count": 1
+      }
+    ],
+    "DlcName": "SparksOfTheFuture"
+  },
+  {
+    "Id": "EmissiveBlock/SmallNeonTubesBendDown/Small",
+    "DisplayName": "Neon Tubes Down",
+    "GridSize": "Small",
+    "TypeId": "EmissiveBlock",
+    "SubtypeId": "SmallNeonTubesBendDown",
+    "Components": [
+      {
+        "ComponentName": "Interior Plate",
+        "Count": 1
+      },
+      {
+        "ComponentName": "Small Steel Tube",
+        "Count": 1
+      },
+      {
+        "ComponentName": "Construction Component",
+        "Count": 1
+      }
+    ],
+    "DlcName": "SparksOfTheFuture"
+  },
+  {
+    "Id": "Door/SmallSideDoor/Small",
+    "DisplayName": "Sci-Fi Sliding Door",
+    "GridSize": "Small",
+    "TypeId": "Door",
+    "SubtypeId": "SmallSideDoor",
+    "Components": [
+      {
+        "ComponentName": "Interior Plate",
+        "Count": 10
+      },
+      {
+        "ComponentName": "Construction Component",
+        "Count": 26
+      },
+      {
+        "ComponentName": "Bulletproof Glass",
+        "Count": 4
+      },
+      {
+        "ComponentName": "Motor",
+        "Count": 2
+      },
+      {
+        "ComponentName": "Display",
+        "Count": 1
+      },
+      {
+        "ComponentName": "Computer",
+        "Count": 2
+      },
+      {
+        "ComponentName": "Steel Plate",
+        "Count": 8
+      }
+    ],
+    "DlcName": "SparksOfTheFuture"
+  },
+  {
+    "Id": "EmissiveBlock/SmallNeonTubesBendUp/Small",
+    "DisplayName": "Neon Tubes Up",
+    "GridSize": "Small",
+    "TypeId": "EmissiveBlock",
+    "SubtypeId": "SmallNeonTubesBendUp",
+    "Components": [
+      {
+        "ComponentName": "Interior Plate",
+        "Count": 1
+      },
+      {
+        "ComponentName": "Small Steel Tube",
+        "Count": 1
+      },
+      {
+        "ComponentName": "Construction Component",
+        "Count": 1
+      }
+    ],
+    "DlcName": "SparksOfTheFuture"
+  },
+  {
+    "Id": "EmissiveBlock/SmallNeonTubesStraight2/Small",
+    "DisplayName": "Neon Tubes 2",
+    "GridSize": "Small",
+    "TypeId": "EmissiveBlock",
+    "SubtypeId": "SmallNeonTubesStraight2",
+    "Components": [
+      {
+        "ComponentName": "Interior Plate",
+        "Count": 1
+      },
+      {
+        "ComponentName": "Small Steel Tube",
+        "Count": 1
+      },
+      {
+        "ComponentName": "Construction Component",
+        "Count": 1
+      }
+    ],
+    "DlcName": "SparksOfTheFuture"
+  },
+  {
+    "Id": "EmissiveBlock/SmallNeonTubesStraight1/Small",
+    "DisplayName": "Neon Tubes 1",
+    "GridSize": "Small",
+    "TypeId": "EmissiveBlock",
+    "SubtypeId": "SmallNeonTubesStraight1",
+    "Components": [
+      {
+        "ComponentName": "Interior Plate",
+        "Count": 1
+      },
+      {
+        "ComponentName": "Small Steel Tube",
+        "Count": 1
+      },
+      {
+        "ComponentName": "Construction Component",
+        "Count": 1
+      }
+    ],
+    "DlcName": "SparksOfTheFuture"
+  },
+  {
+    "Id": "EmissiveBlock/LargeNeonTubesCircle/Large",
+    "DisplayName": "Neon Tubes Circle",
+    "GridSize": "Large",
+    "TypeId": "EmissiveBlock",
+    "SubtypeId": "LargeNeonTubesCircle",
+    "Components": [
+      {
+        "ComponentName": "Interior Plate",
+        "Count": 12
+      },
+      {
+        "ComponentName": "Small Steel Tube",
+        "Count": 12
+      },
+      {
+        "ComponentName": "Construction Component",
+        "Count": 4
+      }
+    ],
+    "DlcName": "SparksOfTheFuture"
+  },
+  {
+    "Id": "EmissiveBlock/LargeNeonTubesT/Large",
+    "DisplayName": "Neon Tubes T Shape",
+    "GridSize": "Large",
+    "TypeId": "EmissiveBlock",
+    "SubtypeId": "LargeNeonTubesT",
+    "Components": [
+      {
+        "ComponentName": "Interior Plate",
+        "Count": 9
+      },
+      {
+        "ComponentName": "Small Steel Tube",
+        "Count": 9
+      },
+      {
+        "ComponentName": "Construction Component",
+        "Count": 3
+      }
+    ],
+    "DlcName": "SparksOfTheFuture"
+  },
+  {
+    "Id": "EmissiveBlock/LargeNeonTubesU/Large",
+    "DisplayName": "Neon Tubes U Shape",
+    "GridSize": "Large",
+    "TypeId": "EmissiveBlock",
+    "SubtypeId": "LargeNeonTubesU",
+    "Components": [
+      {
+        "ComponentName": "Interior Plate",
+        "Count": 18
+      },
+      {
+        "ComponentName": "Small Steel Tube",
+        "Count": 18
+      },
+      {
+        "ComponentName": "Construction Component",
+        "Count": 6
+      }
+    ],
+    "DlcName": "SparksOfTheFuture"
+  },
+  {
+    "Id": "EmissiveBlock/LargeNeonTubesStraightDown/Large",
+    "DisplayName": "Neon Tubes Down 2",
+    "GridSize": "Large",
+    "TypeId": "EmissiveBlock",
+    "SubtypeId": "LargeNeonTubesStraightDown",
+    "Components": [
+      {
+        "ComponentName": "Interior Plate",
+        "Count": 9
+      },
+      {
+        "ComponentName": "Small Steel Tube",
+        "Count": 9
+      },
+      {
+        "ComponentName": "Construction Component",
+        "Count": 3
+      }
+    ],
+    "DlcName": "SparksOfTheFuture"
+  },
+  {
+    "Id": "EmissiveBlock/LargeNeonTubesStraightEnd2/Large",
+    "DisplayName": "Neon Tubes End 2",
+    "GridSize": "Large",
+    "TypeId": "EmissiveBlock",
+    "SubtypeId": "LargeNeonTubesStraightEnd2",
+    "Components": [
+      {
+        "ComponentName": "Interior Plate",
+        "Count": 10
+      },
+      {
+        "ComponentName": "Small Steel Tube",
+        "Count": 6
+      },
+      {
+        "ComponentName": "Construction Component",
+        "Count": 4
+      }
+    ],
+    "DlcName": "SparksOfTheFuture"
+  },
+  {
+    "Id": "EmissiveBlock/SmallNeonTubesCorner/Small",
+    "DisplayName": "Neon Tubes Corner",
+    "GridSize": "Small",
+    "TypeId": "EmissiveBlock",
+    "SubtypeId": "SmallNeonTubesCorner",
+    "Components": [
+      {
+        "ComponentName": "Interior Plate",
+        "Count": 1
+      },
+      {
+        "ComponentName": "Small Steel Tube",
+        "Count": 1
+      },
+      {
+        "ComponentName": "Construction Component",
+        "Count": 1
+      }
+    ],
+    "DlcName": "SparksOfTheFuture"
+  },
+  {
+    "Id": "Thrust/SmallBlockLargeModularThruster/Small",
+    "DisplayName": "Large Warfare Ion Thruster",
+    "GridSize": "Small",
+    "TypeId": "Thrust",
+    "SubtypeId": "SmallBlockLargeModularThruster",
+    "Components": [
+      {
+        "ComponentName": "Steel Plate",
+        "Count": 5
+      },
+      {
+        "ComponentName": "Construction Component",
+        "Count": 2
+      },
+      {
+        "ComponentName": "Large Steel Tube",
+        "Count": 5
+      },
+      {
+        "ComponentName": "Thrust Components",
+        "Count": 12
+      }
+    ],
+    "DlcName": "Warfare2"
+  },
+  {
+    "Id": "CubeBlock/LargeBlockServerRack1/Large",
+    "DisplayName": "Server Rack A",
+    "GridSize": "Large",
+    "TypeId": "CubeBlock",
+    "SubtypeId": "LargeBlockServerRack1",
+    "Components": [
+      {
+        "ComponentName": "Interior Plate",
+        "Count": 30
+      },
+      {
+        "ComponentName": "Construction Component",
+        "Count": 20
+      }
+    ],
+    "DlcName": "Prosperity"
+  },
+  {
+    "Id": "Thrust/LargeBlockLargeHydrogenThrustIndustrial/Large",
+    "DisplayName": "Industrial Large Hydrogen Thruster",
+    "GridSize": "Large",
+    "TypeId": "Thrust",
+    "SubtypeId": "LargeBlockLargeHydrogenThrustIndustrial",
+    "Components": [
+      {
+        "ComponentName": "Steel Plate",
+        "Count": 150
+      },
+      {
+        "ComponentName": "Construction Component",
+        "Count": 180
+      },
+      {
+        "ComponentName": "Metal Grid",
+        "Count": 250
+      },
+      {
+        "ComponentName": "Large Steel Tube",
+        "Count": 40
+      }
+    ],
+    "DlcName": "HeavyIndustry"
+  },
+  {
+    "Id": "Door/LargeBlockHalfCentredDoorGlass/Large",
+    "DisplayName": "Centered Half Glass Door",
+    "GridSize": "Large",
+    "TypeId": "Door",
+    "SubtypeId": "LargeBlockHalfCentredDoorGlass",
+    "Components": [
+      {
+        "ComponentName": "Steel Plate",
+        "Count": 20
+      },
+      {
+        "ComponentName": "Construction Component",
+        "Count": 15
+      },
+      {
+        "ComponentName": "Motor",
+        "Count": 4
+      },
+      {
+        "ComponentName": "Display",
+        "Count": 1
+      },
+      {
+        "ComponentName": "Computer",
+        "Count": 2
+      },
+      {
+        "ComponentName": "Bulletproof Glass",
+        "Count": 10
+      }
+    ],
+    "DlcName": "CoreSystems"
+  },
+  {
+    "Id": "Door/LargeBlockHalfCentredDoor/Large",
+    "DisplayName": "Centered Half Door",
+    "GridSize": "Large",
+    "TypeId": "Door",
+    "SubtypeId": "LargeBlockHalfCentredDoor",
+    "Components": [
+      {
+        "ComponentName": "Steel Plate",
+        "Count": 20
+      },
+      {
+        "ComponentName": "Construction Component",
+        "Count": 40
+      },
+      {
+        "ComponentName": "Motor",
+        "Count": 4
+      },
+      {
+        "ComponentName": "Display",
+        "Count": 1
+      },
+      {
+        "ComponentName": "Computer",
+        "Count": 2
+      }
+    ],
+    "DlcName": "CoreSystems"
+  },
+  {
+    "Id": "Door/LargeBlockCentredDoorGlass/Large",
+    "DisplayName": "Centered Glass Door",
+    "GridSize": "Large",
+    "TypeId": "Door",
+    "SubtypeId": "LargeBlockCentredDoorGlass",
+    "Components": [
+      {
+        "ComponentName": "Steel Plate",
+        "Count": 30
+      },
+      {
+        "ComponentName": "Construction Component",
+        "Count": 15
+      },
+      {
+        "ComponentName": "Motor",
+        "Count": 4
+      },
+      {
+        "ComponentName": "Display",
+        "Count": 1
+      },
+      {
+        "ComponentName": "Computer",
+        "Count": 2
+      },
+      {
+        "ComponentName": "Bulletproof Glass",
+        "Count": 10
+      }
+    ],
+    "DlcName": "CoreSystems"
+  },
+  {
+    "Id": "Door/LargeBlockCentredDoor/Large",
+    "DisplayName": "Centered Door",
+    "GridSize": "Large",
+    "TypeId": "Door",
+    "SubtypeId": "LargeBlockCentredDoor",
+    "Components": [
+      {
+        "ComponentName": "Steel Plate",
+        "Count": 30
+      },
+      {
+        "ComponentName": "Construction Component",
+        "Count": 40
+      },
+      {
+        "ComponentName": "Motor",
+        "Count": 4
+      },
+      {
+        "ComponentName": "Display",
+        "Count": 1
+      },
+      {
+        "ComponentName": "Computer",
+        "Count": 2
+      }
+    ],
+    "DlcName": "CoreSystems"
+  },
+  {
+    "Id": "CubeBlock/SmallBlockRoundEdgeSlopeTip/Small",
+    "DisplayName": "Rounded 2x1 Slope Tip",
+    "GridSize": "Small",
+    "TypeId": "CubeBlock",
+    "SubtypeId": "SmallBlockRoundEdgeSlopeTip",
+    "Components": [
+      {
+        "ComponentName": "Interior Plate",
+        "Count": 2
+      },
+      {
+        "ComponentName": "Construction Component",
+        "Count": 2
+      }
+    ],
+    "DlcName": "CoreSystems"
+  },
+  {
+    "Id": "CubeBlock/SmallBlockRoundEdgeSlopeBase/Small",
+    "DisplayName": "Rounded 2x1 Slope Base",
+    "GridSize": "Small",
+    "TypeId": "CubeBlock",
+    "SubtypeId": "SmallBlockRoundEdgeSlopeBase",
+    "Components": [
+      {
+        "ComponentName": "Interior Plate",
+        "Count": 4
+      },
+      {
+        "ComponentName": "Construction Component",
+        "Count": 2
+      }
+    ],
+    "DlcName": "CoreSystems"
+  },
+  {
+    "Id": "CubeBlock/SmallBlockRoundHalfEdgeCornerInvB/Small",
+    "DisplayName": "Rounded Half Slope Inv.",
+    "GridSize": "Small",
+    "TypeId": "CubeBlock",
+    "SubtypeId": "SmallBlockRoundHalfEdgeCornerInvB",
+    "Components": [
+      {
+        "ComponentName": "Interior Plate",
+        "Count": 2
+      },
+      {
+        "ComponentName": "Construction Component",
+        "Count": 2
+      }
+    ],
+    "DlcName": "CoreSystems"
+  },
+  {
+    "Id": "CubeBlock/SmallBlockRoundHalfEdgeCornerInv/Small",
+    "DisplayName": "Rounded Half Corner Inv.",
+    "GridSize": "Small",
+    "TypeId": "CubeBlock",
+    "SubtypeId": "SmallBlockRoundHalfEdgeCornerInv",
+    "Components": [
+      {
+        "ComponentName": "Interior Plate",
+        "Count": 2
+      },
+      {
+        "ComponentName": "Construction Component",
+        "Count": 2
+      }
+    ],
+    "DlcName": "CoreSystems"
+  },
+  {
+    "Id": "CubeBlock/SmallBlockRoundHalfEdgeCornerB/Small",
+    "DisplayName": "Rounded Half Slope",
+    "GridSize": "Small",
+    "TypeId": "CubeBlock",
+    "SubtypeId": "SmallBlockRoundHalfEdgeCornerB",
+    "Components": [
+      {
+        "ComponentName": "Interior Plate",
+        "Count": 2
+      },
+      {
+        "ComponentName": "Construction Component",
+        "Count": 2
+      }
+    ],
+    "DlcName": "CoreSystems"
+  },
+  {
+    "Id": "CubeBlock/SmallBlockRoundHalfEdgeCorner/Small",
+    "DisplayName": "Rounded Half Corner",
+    "GridSize": "Small",
+    "TypeId": "CubeBlock",
+    "SubtypeId": "SmallBlockRoundHalfEdgeCorner",
+    "Components": [
+      {
+        "ComponentName": "Interior Plate",
+        "Count": 2
+      },
+      {
+        "ComponentName": "Construction Component",
+        "Count": 2
+      }
+    ],
+    "DlcName": "CoreSystems"
+  },
+  {
+    "Id": "CubeBlock/SmallBlockRoundHalfEdge/Small",
+    "DisplayName": "Rounded Half Edge",
+    "GridSize": "Small",
+    "TypeId": "CubeBlock",
+    "SubtypeId": "SmallBlockRoundHalfEdge",
+    "Components": [
+      {
+        "ComponentName": "Interior Plate",
+        "Count": 2
+      },
+      {
+        "ComponentName": "Construction Component",
+        "Count": 2
+      }
+    ],
+    "DlcName": "CoreSystems"
+  },
+  {
+    "Id": "CubeBlock/SmallBlockRoundEdgeCornerInvB/Small",
+    "DisplayName": "Rounded Slope Inv.",
+    "GridSize": "Small",
+    "TypeId": "CubeBlock",
+    "SubtypeId": "SmallBlockRoundEdgeCornerInvB",
+    "Components": [
+      {
+        "ComponentName": "Interior Plate",
+        "Count": 5
+      },
+      {
+        "ComponentName": "Construction Component",
+        "Count": 3
+      }
+    ],
+    "DlcName": "CoreSystems"
+  },
+  {
+    "Id": "CubeBlock/SmallBlockRoundEdgeCornerInv/Small",
+    "DisplayName": "Rounded Corner Inv.",
+    "GridSize": "Small",
+    "TypeId": "CubeBlock",
+    "SubtypeId": "SmallBlockRoundEdgeCornerInv",
+    "Components": [
+      {
+        "ComponentName": "Interior Plate",
+        "Count": 5
+      },
+      {
+        "ComponentName": "Construction Component",
+        "Count": 3
+      }
+    ],
+    "DlcName": "CoreSystems"
+  },
+  {
+    "Id": "CubeBlock/SmallBlockRoundEdgeCornerB/Small",
+    "DisplayName": "Rounded Slope",
+    "GridSize": "Small",
+    "TypeId": "CubeBlock",
+    "SubtypeId": "SmallBlockRoundEdgeCornerB",
+    "Components": [
+      {
+        "ComponentName": "Interior Plate",
+        "Count": 4
+      },
+      {
+        "ComponentName": "Construction Component",
+        "Count": 2
+      }
+    ],
+    "DlcName": "CoreSystems"
+  },
+  {
+    "Id": "CubeBlock/SmallBlockRoundEdgeCorner/Small",
+    "DisplayName": "Rounded Corner",
+    "GridSize": "Small",
+    "TypeId": "CubeBlock",
+    "SubtypeId": "SmallBlockRoundEdgeCorner",
+    "Components": [
+      {
+        "ComponentName": "Interior Plate",
+        "Count": 4
+      },
+      {
+        "ComponentName": "Construction Component",
+        "Count": 2
+      }
+    ],
+    "DlcName": "CoreSystems"
+  },
+  {
+    "Id": "Door/SmallBlockCentredDoor/Small",
+    "DisplayName": "Centered Door",
+    "GridSize": "Small",
+    "TypeId": "Door",
+    "SubtypeId": "SmallBlockCentredDoor",
+    "Components": [
+      {
+        "ComponentName": "Steel Plate",
+        "Count": 10
+      },
+      {
+        "ComponentName": "Construction Component",
+        "Count": 30
+      },
+      {
+        "ComponentName": "Motor",
+        "Count": 2
+      },
+      {
+        "ComponentName": "Display",
+        "Count": 1
+      },
+      {
+        "ComponentName": "Computer",
+        "Count": 2
+      }
+    ],
+    "DlcName": "CoreSystems"
+  },
+  {
+    "Id": "Door/SmallBlockCentredDoorGlass/Small",
+    "DisplayName": "Centered Glass Door",
+    "GridSize": "Small",
+    "TypeId": "Door",
+    "SubtypeId": "SmallBlockCentredDoorGlass",
+    "Components": [
+      {
+        "ComponentName": "Steel Plate",
+        "Count": 10
+      },
+      {
+        "ComponentName": "Construction Component",
+        "Count": 10
+      },
+      {
+        "ComponentName": "Motor",
+        "Count": 2
+      },
+      {
+        "ComponentName": "Display",
+        "Count": 1
+      },
+      {
+        "ComponentName": "Computer",
+        "Count": 2
+      },
+      {
+        "ComponentName": "Bulletproof Glass",
+        "Count": 10
+      }
+    ],
+    "DlcName": "CoreSystems"
+  },
+  {
+    "Id": "JumpDrive/LargeJumpDriveReskin/Large",
+    "DisplayName": "Jump Drive Type II",
+    "GridSize": "Large",
+    "TypeId": "JumpDrive",
+    "SubtypeId": "LargeJumpDriveReskin",
+    "Components": [
+      {
+        "ComponentName": "Steel Plate",
+        "Count": 60
+      },
+      {
+        "ComponentName": "Metal Grid",
+        "Count": 50
+      },
+      {
+        "ComponentName": "Gravity Component",
+        "Count": 20
+      },
+      {
+        "ComponentName": "Detector Components",
+        "Count": 20
+      },
+      {
+        "ComponentName": "Power Cell",
+        "Count": 120
+      },
+      {
+        "ComponentName": "Superconductor",
+        "Count": 1000
+      },
+      {
+        "ComponentName": "Computer",
+        "Count": 300
+      },
+      {
+        "ComponentName": "Construction Component",
+        "Count": 40
+      }
+    ],
+    "DlcName": "CoreSystems"
+  },
+  {
+    "Id": "Thrust/LargeBlockLargeHydrogenThrustReskin/Large",
+    "DisplayName": "Sci-Fi Large Hydrogen Thruster",
+    "GridSize": "Large",
+    "TypeId": "Thrust",
+    "SubtypeId": "LargeBlockLargeHydrogenThrustReskin",
+    "Components": [
+      {
+        "ComponentName": "Steel Plate",
+        "Count": 150
+      },
+      {
+        "ComponentName": "Construction Component",
+        "Count": 180
+      },
+      {
+        "ComponentName": "Metal Grid",
+        "Count": 250
+      },
+      {
+        "ComponentName": "Large Steel Tube",
+        "Count": 40
+      }
+    ],
+    "DlcName": "CoreSystems"
+  },
+  {
+    "Id": "SolarPanel/SmallBlockColorableSolarPanelCornerInverted/Small",
+    "DisplayName": "Colorable Solar Panel Slope Right",
+    "GridSize": "Small",
+    "TypeId": "SolarPanel",
+    "SubtypeId": "SmallBlockColorableSolarPanelCornerInverted",
+    "Components": [
+      {
+        "ComponentName": "Steel Plate",
+        "Count": 1
+      },
+      {
+        "ComponentName": "Construction Component",
+        "Count": 2
+      },
+      {
+        "ComponentName": "Girder",
+        "Count": 2
+      },
+      {
+        "ComponentName": "Computer",
+        "Count": 1
+      },
+      {
+        "ComponentName": "Solar Cell",
+        "Count": 4
+      },
+      {
+        "ComponentName": "Bulletproof Glass",
+        "Count": 1
+      }
+    ],
+    "DlcName": "DecorativeBlocks3"
+  },
+  {
+    "Id": "SolarPanel/SmallBlockColorableSolarPanelCorner/Small",
+    "DisplayName": "Colorable Solar Panel Slope Left",
+    "GridSize": "Small",
+    "TypeId": "SolarPanel",
+    "SubtypeId": "SmallBlockColorableSolarPanelCorner",
+    "Components": [
+      {
+        "ComponentName": "Steel Plate",
+        "Count": 1
+      },
+      {
+        "ComponentName": "Construction Component",
+        "Count": 2
+      },
+      {
+        "ComponentName": "Girder",
+        "Count": 2
+      },
+      {
+        "ComponentName": "Computer",
+        "Count": 1
+      },
+      {
+        "ComponentName": "Solar Cell",
+        "Count": 4
+      },
+      {
+        "ComponentName": "Bulletproof Glass",
+        "Count": 1
+      }
+    ],
+    "DlcName": "DecorativeBlocks3"
+  },
+  {
+    "Id": "SolarPanel/SmallBlockColorableSolarPanel/Small",
+    "DisplayName": "Colorable Solar Panel",
+    "GridSize": "Small",
+    "TypeId": "SolarPanel",
+    "SubtypeId": "SmallBlockColorableSolarPanel",
+    "Components": [
+      {
+        "ComponentName": "Steel Plate",
+        "Count": 2
+      },
+      {
+        "ComponentName": "Construction Component",
+        "Count": 2
+      },
+      {
+        "ComponentName": "Girder",
+        "Count": 4
+      },
+      {
+        "ComponentName": "Computer",
+        "Count": 1
+      },
+      {
+        "ComponentName": "Solar Cell",
+        "Count": 8
+      },
+      {
+        "ComponentName": "Bulletproof Glass",
+        "Count": 1
+      }
+    ],
+    "DlcName": "DecorativeBlocks3"
+  },
+  {
+    "Id": "SolarPanel/LargeBlockColorableSolarPanelCornerInverted/Large",
+    "DisplayName": "Colorable Solar Panel Slope Right",
+    "GridSize": "Large",
+    "TypeId": "SolarPanel",
+    "SubtypeId": "LargeBlockColorableSolarPanelCornerInverted",
+    "Components": [
+      {
+        "ComponentName": "Steel Plate",
+        "Count": 2
+      },
+      {
+        "ComponentName": "Construction Component",
+        "Count": 7
+      },
+      {
+        "ComponentName": "Girder",
+        "Count": 6
+      },
+      {
+        "ComponentName": "Computer",
+        "Count": 4
+      },
+      {
+        "ComponentName": "Solar Cell",
+        "Count": 16
+      },
+      {
+        "ComponentName": "Bulletproof Glass",
+        "Count": 2
+      }
+    ],
+    "DlcName": "DecorativeBlocks3"
+  },
+  {
+    "Id": "SolarPanel/LargeBlockColorableSolarPanelCorner/Large",
+    "DisplayName": "Colorable Solar Panel Slope Left",
+    "GridSize": "Large",
+    "TypeId": "SolarPanel",
+    "SubtypeId": "LargeBlockColorableSolarPanelCorner",
+    "Components": [
+      {
+        "ComponentName": "Steel Plate",
+        "Count": 2
+      },
+      {
+        "ComponentName": "Construction Component",
+        "Count": 7
+      },
+      {
+        "ComponentName": "Girder",
+        "Count": 6
+      },
+      {
+        "ComponentName": "Computer",
+        "Count": 4
+      },
+      {
+        "ComponentName": "Solar Cell",
+        "Count": 16
+      },
+      {
+        "ComponentName": "Bulletproof Glass",
+        "Count": 2
+      }
+    ],
+    "DlcName": "DecorativeBlocks3"
+  },
+  {
+    "Id": "SolarPanel/LargeBlockColorableSolarPanel/Large",
+    "DisplayName": "Colorable Solar Panel",
+    "GridSize": "Large",
+    "TypeId": "SolarPanel",
+    "SubtypeId": "LargeBlockColorableSolarPanel",
+    "Components": [
+      {
+        "ComponentName": "Steel Plate",
+        "Count": 4
+      },
+      {
+        "ComponentName": "Construction Component",
+        "Count": 14
+      },
+      {
+        "ComponentName": "Girder",
+        "Count": 12
+      },
+      {
+        "ComponentName": "Computer",
+        "Count": 4
+      },
+      {
+        "ComponentName": "Solar Cell",
+        "Count": 32
+      },
+      {
+        "ComponentName": "Bulletproof Glass",
+        "Count": 4
+      }
+    ],
+    "DlcName": "DecorativeBlocks3"
+  },
+  {
+    "Id": "VendingMachine/FoodDispenser/Large",
+    "DisplayName": "Dispenser",
+    "GridSize": "Large",
+    "TypeId": "VendingMachine",
+    "SubtypeId": "FoodDispenser",
+    "Components": [
+      {
+        "ComponentName": "Interior Plate",
+        "Count": 20
+      },
+      {
+        "ComponentName": "Construction Component",
+        "Count": 10
+      },
+      {
+        "ComponentName": "Motor",
+        "Count": 4
+      },
+      {
+        "ComponentName": "Display",
+        "Count": 10
+      },
+      {
+        "ComponentName": "Computer",
+        "Count": 10
+      }
+    ],
+    "DlcName": "DecorativeBlocks2"
+  },
+  {
+    "Id": "CubeBlock/SmallBlockRoundEdge/Small",
+    "DisplayName": "Rounded Edge A",
+    "GridSize": "Small",
+    "TypeId": "CubeBlock",
+    "SubtypeId": "SmallBlockRoundEdge",
+    "Components": [
+      {
+        "ComponentName": "Interior Plate",
+        "Count": 5
+      },
+      {
+        "ComponentName": "Construction Component",
+        "Count": 3
+      }
+    ],
+    "DlcName": "CoreSystems"
+  },
+  {
+    "Id": "Projector/LargeBlockConsole/Large",
+    "DisplayName": "Console Block",
+    "GridSize": "Large",
+    "TypeId": "Projector",
+    "SubtypeId": "LargeBlockConsole",
+    "Components": [
+      {
+        "ComponentName": "Interior Plate",
+        "Count": 20
+      },
+      {
+        "ComponentName": "Construction Component",
+        "Count": 30
+      },
+      {
+        "ComponentName": "Computer",
+        "Count": 8
+      },
+      {
+        "ComponentName": "Display",
+        "Count": 10
+      }
+    ],
+    "DlcName": "DecorativeBlocks"
+  },
+  {
+    "Id": "Kitchen/LargeBlockKitchen/Large",
+    "DisplayName": "Kitchen",
+    "GridSize": "Large",
+    "TypeId": "Kitchen",
+    "SubtypeId": "LargeBlockKitchen",
+    "Components": [
+      {
+        "ComponentName": "Interior Plate",
+        "Count": 20
+      },
+      {
+        "ComponentName": "Construction Component",
+        "Count": 30
+      },
+      {
+        "ComponentName": "Large Steel Tube",
+        "Count": 6
+      },
+      {
+        "ComponentName": "Motor",
+        "Count": 6
+      },
+      {
+        "ComponentName": "Bulletproof Glass",
+        "Count": 4
+      }
+    ],
+    "DlcName": "DecorativeBlocks"
+  },
+  {
+    "Id": "InteriorLight/LargeBlockHalfTrofferLightInv/Large",
+    "DisplayName": "Half Troffer Light Offset",
+    "GridSize": "Large",
+    "TypeId": "InteriorLight",
+    "SubtypeId": "LargeBlockHalfTrofferLightInv",
+    "Components": [
+      {
+        "ComponentName": "Steel Plate",
+        "Count": 5
+      },
+      {
+        "ComponentName": "Construction Component",
+        "Count": 10
+      },
+      {
+        "ComponentName": "Interior Plate",
+        "Count": 10
+      }
+    ],
+    "DlcName": "CoreSystems"
+  },
+  {
+    "Id": "InteriorLight/LargeBlockHalfTrofferLight/Large",
+    "DisplayName": "Half Troffer Light",
+    "GridSize": "Large",
+    "TypeId": "InteriorLight",
+    "SubtypeId": "LargeBlockHalfTrofferLight",
+    "Components": [
+      {
+        "ComponentName": "Steel Plate",
+        "Count": 5
+      },
+      {
+        "ComponentName": "Construction Component",
+        "Count": 10
+      },
+      {
+        "ComponentName": "Interior Plate",
+        "Count": 10
+      }
+    ],
+    "DlcName": "CoreSystems"
+  },
+  {
+    "Id": "InteriorLight/LargeBlockTrofferLight/Large",
+    "DisplayName": "Troffer Light",
+    "GridSize": "Large",
+    "TypeId": "InteriorLight",
+    "SubtypeId": "LargeBlockTrofferLight",
+    "Components": [
+      {
+        "ComponentName": "Steel Plate",
+        "Count": 10
+      },
+      {
+        "ComponentName": "Construction Component",
+        "Count": 10
+      },
+      {
+        "ComponentName": "Interior Plate",
+        "Count": 20
+      }
+    ],
+    "DlcName": "CoreSystems"
+  },
+  {
+    "Id": "LandingGear/SmallBlockLandingGearReskin/Small",
+    "DisplayName": "Landing Gear Type II",
+    "GridSize": "Small",
+    "TypeId": "LandingGear",
+    "SubtypeId": "SmallBlockLandingGearReskin",
+    "Components": [
+      {
+        "ComponentName": "Steel Plate",
+        "Count": 2
+      },
+      {
+        "ComponentName": "Construction Component",
+        "Count": 3
+      },
+      {
+        "ComponentName": "Motor",
+        "Count": 1
+      }
+    ],
+    "DlcName": "CoreSystems"
+  },
+  {
+    "Id": "LandingGear/LargeBlockLandingGearReskin/Large",
+    "DisplayName": "Landing Gear Type II",
+    "GridSize": "Large",
+    "TypeId": "LandingGear",
+    "SubtypeId": "LargeBlockLandingGearReskin",
+    "Components": [
+      {
+        "ComponentName": "Steel Plate",
+        "Count": 60
+      },
+      {
+        "ComponentName": "Construction Component",
+        "Count": 10
+      },
+      {
+        "ComponentName": "Motor",
+        "Count": 4
+      }
+    ],
+    "DlcName": "CoreSystems"
+  },
+  {
+    "Id": "Thrust/SmallBlockLargeHydrogenThrustReskin/Small",
+    "DisplayName": "Sci-Fi Large Hydrogen Thruster",
+    "GridSize": "Small",
+    "TypeId": "Thrust",
+    "SubtypeId": "SmallBlockLargeHydrogenThrustReskin",
+    "Components": [
+      {
+        "ComponentName": "Steel Plate",
+        "Count": 30
+      },
+      {
+        "ComponentName": "Construction Component",
+        "Count": 30
+      },
+      {
+        "ComponentName": "Metal Grid",
+        "Count": 22
+      },
+      {
+        "ComponentName": "Large Steel Tube",
+        "Count": 10
+      }
+    ],
+    "DlcName": "CoreSystems"
+  },
+  {
+    "Id": "CargoContainer/LargeBlockLockers/Large",
+    "DisplayName": "Lockers",
+    "GridSize": "Large",
+    "TypeId": "CargoContainer",
+    "SubtypeId": "LargeBlockLockers",
+    "Components": [
+      {
+        "ComponentName": "Interior Plate",
+        "Count": 20
+      },
+      {
+        "ComponentName": "Construction Component",
+        "Count": 20
+      },
+      {
+        "ComponentName": "Display",
+        "Count": 3
+      },
+      {
+        "ComponentName": "Computer",
+        "Count": 2
+      }
+    ],
+    "DlcName": "DecorativeBlocks"
+  },
+  {
+    "Id": "MedicalRoom/LargeMedicalRoomReskin/Large",
+    "DisplayName": "Corner Medical Room",
+    "GridSize": "Large",
+    "TypeId": "MedicalRoom",
+    "SubtypeId": "LargeMedicalRoomReskin",
+    "Components": [
+      {
+        "ComponentName": "Interior Plate",
+        "Count": 240
+      },
+      {
+        "ComponentName": "Construction Component",
+        "Count": 80
+      },
+      {
+        "ComponentName": "Metal Grid",
+        "Count": 60
+      },
+      {
+        "ComponentName": "Small Steel Tube",
+        "Count": 20
+      },
+      {
+        "ComponentName": "Large Steel Tube",
+        "Count": 5
+      },
+      {
+        "ComponentName": "Display",
+        "Count": 10
+      },
+      {
+        "ComponentName": "Computer",
+        "Count": 10
+      },
+      {
+        "ComponentName": "Medical Components",
+        "Count": 15
+      }
+    ],
+    "DlcName": "DecorativeBlocks3"
+  },
+  {
+    "Id": "CubeBlock/LargeBlockRoundEdgeSlopeTip/Large",
+    "DisplayName": "Rounded 2x1 Slope Tip",
+    "GridSize": "Large",
+    "TypeId": "CubeBlock",
+    "SubtypeId": "LargeBlockRoundEdgeSlopeTip",
+    "Components": [
+      {
+        "ComponentName": "Interior Plate",
+        "Count": 15
+      },
+      {
+        "ComponentName": "Construction Component",
+        "Count": 6
+      }
+    ],
+    "DlcName": "CoreSystems"
+  },
+  {
+    "Id": "CubeBlock/LargeBlockRoundHalfEdgeCornerInvB/Large",
+    "DisplayName": "Rounded Half Slope Inv.",
+    "GridSize": "Large",
+    "TypeId": "CubeBlock",
+    "SubtypeId": "LargeBlockRoundHalfEdgeCornerInvB",
+    "Components": [
+      {
+        "ComponentName": "Interior Plate",
+        "Count": 20
+      },
+      {
+        "ComponentName": "Construction Component",
+        "Count": 7
+      }
+    ],
+    "DlcName": "CoreSystems"
+  },
+  {
+    "Id": "Door/LargeBlockEvenWideDoor/Large",
+    "DisplayName": "Small Gate Wide",
+    "GridSize": "Large",
+    "TypeId": "Door",
+    "SubtypeId": "LargeBlockEvenWideDoor",
+    "Components": [
+      {
+        "ComponentName": "Steel Plate",
+        "Count": 300
+      },
+      {
+        "ComponentName": "Construction Component",
+        "Count": 70
+      },
+      {
+        "ComponentName": "Small Steel Tube",
+        "Count": 60
+      },
+      {
+        "ComponentName": "Motor",
+        "Count": 10
+      },
+      {
+        "ComponentName": "Computer",
+        "Count": 6
+      }
+    ],
+    "DlcName": "Contact"
+  },
+  {
+    "Id": "Door/LargeBlockSmallGate/Large",
+    "DisplayName": "Small Gate Tall",
+    "GridSize": "Large",
+    "TypeId": "Door",
+    "SubtypeId": "LargeBlockSmallGate",
+    "Components": [
+      {
+        "ComponentName": "Steel Plate",
+        "Count": 300
+      },
+      {
+        "ComponentName": "Construction Component",
+        "Count": 70
+      },
+      {
+        "ComponentName": "Small Steel Tube",
+        "Count": 60
+      },
+      {
+        "ComponentName": "Motor",
+        "Count": 10
+      },
+      {
+        "ComponentName": "Computer",
+        "Count": 6
+      }
+    ],
+    "DlcName": "Contact"
+  },
+  {
+    "Id": "PistonTop/SmallPistonTopReskin/Small",
+    "DisplayName": "Top Square Piston Part",
+    "GridSize": "Small",
+    "TypeId": "PistonTop",
+    "SubtypeId": "SmallPistonTopReskin",
+    "Components": [
+      {
+        "ComponentName": "Steel Plate",
+        "Count": 4
+      },
+      {
+        "ComponentName": "Large Steel Tube",
+        "Count": 2
+      }
+    ],
+    "DlcName": "Contact"
+  },
+  {
+    "Id": "PistonTop/LargePistonTopReskin/Large",
+    "DisplayName": "Top Square Piston Part",
+    "GridSize": "Large",
+    "TypeId": "PistonTop",
+    "SubtypeId": "LargePistonTopReskin",
+    "Components": [
+      {
+        "ComponentName": "Steel Plate",
+        "Count": 10
+      },
+      {
+        "ComponentName": "Large Steel Tube",
+        "Count": 8
+      }
+    ],
+    "DlcName": "Contact"
+  },
+  {
+    "Id": "ExtendedPistonBase/LargePistonBaseReskin/Large",
+    "DisplayName": "Square Piston",
+    "GridSize": "Large",
+    "TypeId": "ExtendedPistonBase",
+    "SubtypeId": "LargePistonBaseReskin",
+    "Components": [
+      {
+        "ComponentName": "Steel Plate",
+        "Count": 50
+      },
+      {
+        "ComponentName": "Construction Component",
+        "Count": 30
+      },
+      {
+        "ComponentName": "Large Steel Tube",
+        "Count": 10
+      },
+      {
+        "ComponentName": "Motor",
+        "Count": 10
+      },
+      {
+        "ComponentName": "Computer",
+        "Count": 5
+      }
+    ],
+    "DlcName": "Contact"
+  },
+  {
+    "Id": "OreDetector/SmallOreDetectorReskin/Small",
+    "DisplayName": "Ore Detector Type II",
+    "GridSize": "Small",
+    "TypeId": "OreDetector",
+    "SubtypeId": "SmallOreDetectorReskin",
+    "Components": [
+      {
+        "ComponentName": "Steel Plate",
+        "Count": 3
+      },
+      {
+        "ComponentName": "Construction Component",
+        "Count": 2
+      },
+      {
+        "ComponentName": "Motor",
+        "Count": 1
+      },
+      {
+        "ComponentName": "Computer",
+        "Count": 1
+      },
+      {
+        "ComponentName": "Detector Components",
+        "Count": 1
+      }
+    ],
+    "DlcName": "ApexSurvival"
+  },
+  {
+    "Id": "OreDetector/LargeOreDetectorReskin/Large",
+    "DisplayName": "Ore Detector Type II",
+    "GridSize": "Large",
+    "TypeId": "OreDetector",
+    "SubtypeId": "LargeOreDetectorReskin",
+    "Components": [
+      {
+        "ComponentName": "Steel Plate",
+        "Count": 50
+      },
+      {
+        "ComponentName": "Construction Component",
+        "Count": 40
+      },
+      {
+        "ComponentName": "Motor",
+        "Count": 5
+      },
+      {
+        "ComponentName": "Computer",
+        "Count": 25
+      },
+      {
+        "ComponentName": "Detector Components",
+        "Count": 20
+      }
+    ],
+    "DlcName": "ApexSurvival"
+  },
+  {
+    "Id": "InteriorLight/LargeBlockConduitLightInv/Large",
+    "DisplayName": "Conduit Light Inv.",
+    "GridSize": "Large",
+    "TypeId": "InteriorLight",
+    "SubtypeId": "LargeBlockConduitLightInv",
+    "Components": [
+      {
+        "ComponentName": "Construction Component",
+        "Count": 15
+      },
+      {
+        "ComponentName": "Small Steel Tube",
+        "Count": 20
+      }
+    ],
+    "DlcName": "ApexSurvival"
+  },
+  {
+    "Id": "InteriorLight/LargeBlockConduitLight/Large",
+    "DisplayName": "Conduit Light",
+    "GridSize": "Large",
+    "TypeId": "InteriorLight",
+    "SubtypeId": "LargeBlockConduitLight",
+    "Components": [
+      {
+        "ComponentName": "Construction Component",
+        "Count": 15
+      },
+      {
+        "ComponentName": "Small Steel Tube",
+        "Count": 20
+      }
+    ],
+    "DlcName": "ApexSurvival"
+  },
+  {
+    "Id": "InteriorLight/LargeInsetPlanter/Large",
+    "DisplayName": "Inset Planter",
+    "GridSize": "Large",
+    "TypeId": "InteriorLight",
+    "SubtypeId": "LargeInsetPlanter",
+    "Components": [
+      {
+        "ComponentName": "Interior Plate",
+        "Count": 30
+      },
+      {
+        "ComponentName": "Construction Component",
+        "Count": 30
+      },
+      {
+        "ComponentName": "Motor",
+        "Count": 2
+      },
+      {
+        "ComponentName": "Small Steel Tube",
+        "Count": 10
+      },
+      {
+        "ComponentName": "Bulletproof Glass",
+        "Count": 30
+      }
+    ],
+    "DlcName": "ApexSurvival"
+  },
+  {
+    "Id": "SurvivalKit/SurvivalKitSmallReskin/Small",
+    "DisplayName": "Survival Kit Type II",
+    "GridSize": "Small",
+    "TypeId": "SurvivalKit",
+    "SubtypeId": "SurvivalKitSmallReskin",
+    "Components": [
+      {
+        "ComponentName": "Steel Plate",
+        "Count": 6
+      },
+      {
+        "ComponentName": "Construction Component",
+        "Count": 2
+      },
+      {
+        "ComponentName": "Medical Components",
+        "Count": 3
+      },
+      {
+        "ComponentName": "Motor",
+        "Count": 4
+      },
+      {
+        "ComponentName": "Display",
+        "Count": 1
+      },
+      {
+        "ComponentName": "Computer",
+        "Count": 5
+      }
+    ],
+    "DlcName": "ApexSurvival"
+  },
+  {
+    "Id": "SurvivalKit/SurvivalKitLargeReskin/Large",
+    "DisplayName": "Survival Kit Type II",
+    "GridSize": "Large",
+    "TypeId": "SurvivalKit",
+    "SubtypeId": "SurvivalKitLargeReskin",
+    "Components": [
+      {
+        "ComponentName": "Steel Plate",
+        "Count": 30
+      },
+      {
+        "ComponentName": "Construction Component",
+        "Count": 2
+      },
+      {
+        "ComponentName": "Medical Components",
+        "Count": 3
+      },
+      {
+        "ComponentName": "Motor",
+        "Count": 4
+      },
+      {
+        "ComponentName": "Display",
+        "Count": 1
+      },
+      {
+        "ComponentName": "Computer",
+        "Count": 5
+      }
+    ],
+    "DlcName": "ApexSurvival"
+  },
+  {
+    "Id": "OxygenFarm/LargeBlockOxygenFarmReskin/Large",
+    "DisplayName": "Half Oxygen Farm",
+    "GridSize": "Large",
+    "TypeId": "OxygenFarm",
+    "SubtypeId": "LargeBlockOxygenFarmReskin",
+    "Components": [
+      {
+        "ComponentName": "Steel Plate",
+        "Count": 30
+      },
+      {
+        "ComponentName": "Bulletproof Glass",
+        "Count": 60
+      },
+      {
+        "ComponentName": "Small Steel Tube",
+        "Count": 30
+      },
+      {
+        "ComponentName": "Construction Component",
+        "Count": 30
+      },
+      {
+        "ComponentName": "Computer",
+        "Count": 10
+      }
+    ],
+    "DlcName": "ApexSurvival"
+  },
+  {
+    "Id": "FunctionalBlock/LargeBlockAlgaeFarmReskin/Large",
+    "DisplayName": "Half Algae Farm",
+    "GridSize": "Large",
+    "TypeId": "FunctionalBlock",
+    "SubtypeId": "LargeBlockAlgaeFarmReskin",
+    "Components": [
+      {
+        "ComponentName": "Steel Plate",
+        "Count": 30
+      },
+      {
+        "ComponentName": "Bulletproof Glass",
+        "Count": 60
+      },
+      {
+        "ComponentName": "Small Steel Tube",
+        "Count": 30
+      },
+      {
+        "ComponentName": "Construction Component",
+        "Count": 30
+      },
+      {
+        "ComponentName": "Computer",
+        "Count": 10
+      }
+    ],
+    "DlcName": "ApexSurvival"
+  },
+  {
+    "Id": "ShipGrinder/SmallShipGrinderReskin/Small",
+    "DisplayName": "Grinder Type II",
+    "GridSize": "Small",
+    "TypeId": "ShipGrinder",
+    "SubtypeId": "SmallShipGrinderReskin",
+    "Components": [
+      {
+        "ComponentName": "Steel Plate",
+        "Count": 12
+      },
+      {
+        "ComponentName": "Construction Component",
+        "Count": 17
+      },
+      {
+        "ComponentName": "Small Steel Tube",
+        "Count": 4
+      },
+      {
+        "ComponentName": "Motor",
+        "Count": 4
+      },
+      {
+        "ComponentName": "Computer",
+        "Count": 2
+      }
+    ],
+    "DlcName": "ApexSurvival"
+  },
+  {
+    "Id": "RadioAntenna/LargeBlockCompactRadioAntennaReskin/Large",
+    "DisplayName": "Parabolic Antenna",
+    "GridSize": "Large",
+    "TypeId": "RadioAntenna",
+    "SubtypeId": "LargeBlockCompactRadioAntennaReskin",
+    "Components": [
+      {
+        "ComponentName": "Steel Plate",
+        "Count": 40
+      },
+      {
+        "ComponentName": "Interior Plate",
+        "Count": 80
+      },
+      {
+        "ComponentName": "Small Steel Tube",
+        "Count": 30
+      },
+      {
+        "ComponentName": "Construction Component",
+        "Count": 20
+      },
+      {
+        "ComponentName": "Computer",
+        "Count": 8
+      },
+      {
+        "ComponentName": "Radio Communication Components",
+        "Count": 40
+      }
+    ],
+    "DlcName": "Contact"
+  },
+  {
+    "Id": "RadioAntenna/SmallBlockCompactRadioAntennaReskin/Small",
+    "DisplayName": "Parabolic Antenna",
+    "GridSize": "Small",
+    "TypeId": "RadioAntenna",
+    "SubtypeId": "SmallBlockCompactRadioAntennaReskin",
+    "Components": [
+      {
+        "ComponentName": "Steel Plate",
+        "Count": 2
+      },
+      {
+        "ComponentName": "Interior Plate",
+        "Count": 3
+      },
+      {
+        "ComponentName": "Small Steel Tube",
+        "Count": 1
+      },
+      {
+        "ComponentName": "Construction Component",
+        "Count": 1
+      },
+      {
+        "ComponentName": "Computer",
+        "Count": 1
+      },
+      {
+        "ComponentName": "Radio Communication Components",
+        "Count": 4
+      }
+    ],
+    "DlcName": "Contact"
+  },
+  {
+    "Id": "ButtonPanel/LargeBlockModularBridgeButtonPanel/Large",
+    "DisplayName": "Bridge Button Panel",
+    "GridSize": "Large",
+    "TypeId": "ButtonPanel",
+    "SubtypeId": "LargeBlockModularBridgeButtonPanel",
+    "Components": [
+      {
+        "ComponentName": "Girder",
+        "Count": 6
+      },
+      {
+        "ComponentName": "Steel Plate",
+        "Count": 10
+      },
+      {
+        "ComponentName": "Construction Component",
+        "Count": 5
+      },
+      {
+        "ComponentName": "Computer",
+        "Count": 5
+      },
+      {
+        "ComponentName": "Bulletproof Glass",
+        "Count": 30
+      }
+    ],
+    "DlcName": "Contact"
+  },
+  {
+    "Id": "LargeGatlingTurret/LargeGatlingTurretReskin/Large",
+    "DisplayName": "Gatling Turret Type II",
+    "GridSize": "Large",
+    "TypeId": "LargeGatlingTurret",
+    "SubtypeId": "LargeGatlingTurretReskin",
+    "Components": [
+      {
+        "ComponentName": "Steel Plate",
+        "Count": 40
+      },
+      {
+        "ComponentName": "Construction Component",
+        "Count": 40
+      },
+      {
+        "ComponentName": "Metal Grid",
+        "Count": 15
+      },
+      {
+        "ComponentName": "Small Steel Tube",
+        "Count": 6
+      },
+      {
+        "ComponentName": "Motor",
+        "Count": 8
+      },
+      {
+        "ComponentName": "Computer",
+        "Count": 10
+      }
+    ],
+    "DlcName": "Contact"
+  },
+  {
+    "Id": "CubeBlock/LargeBlockRoundHalfEdgeCornerInv/Large",
+    "DisplayName": "Rounded Half Corner Inv.",
+    "GridSize": "Large",
+    "TypeId": "CubeBlock",
+    "SubtypeId": "LargeBlockRoundHalfEdgeCornerInv",
+    "Components": [
+      {
+        "ComponentName": "Interior Plate",
+        "Count": 20
+      },
+      {
+        "ComponentName": "Construction Component",
+        "Count": 7
+      }
+    ],
+    "DlcName": "CoreSystems"
+  },
+  {
+    "Id": "CubeBlock/LargeBlockRoundHalfEdgeCornerB/Large",
+    "DisplayName": "Rounded Half Slope",
+    "GridSize": "Large",
+    "TypeId": "CubeBlock",
+    "SubtypeId": "LargeBlockRoundHalfEdgeCornerB",
+    "Components": [
+      {
+        "ComponentName": "Interior Plate",
+        "Count": 10
+      },
+      {
+        "ComponentName": "Construction Component",
+        "Count": 5
+      }
+    ],
+    "DlcName": "CoreSystems"
+  },
+  {
+    "Id": "CubeBlock/LargeBlockRoundHalfEdgeCorner/Large",
+    "DisplayName": "Rounded Half Corner",
+    "GridSize": "Large",
+    "TypeId": "CubeBlock",
+    "SubtypeId": "LargeBlockRoundHalfEdgeCorner",
+    "Components": [
+      {
+        "ComponentName": "Interior Plate",
+        "Count": 10
+      },
+      {
+        "ComponentName": "Construction Component",
+        "Count": 5
+      }
+    ],
+    "DlcName": "CoreSystems"
+  },
+  {
+    "Id": "CubeBlock/LargeBlockRoundHalfEdge/Large",
+    "DisplayName": "Rounded Half Edge",
+    "GridSize": "Large",
+    "TypeId": "CubeBlock",
+    "SubtypeId": "LargeBlockRoundHalfEdge",
+    "Components": [
+      {
+        "ComponentName": "Interior Plate",
+        "Count": 15
+      },
+      {
+        "ComponentName": "Construction Component",
+        "Count": 6
+      }
+    ],
+    "DlcName": "CoreSystems"
+  },
+  {
+    "Id": "CubeBlock/LargeBlockRoundEdgeCornerInvB/Large",
+    "DisplayName": "Rounded Slope Inv.",
+    "GridSize": "Large",
+    "TypeId": "CubeBlock",
+    "SubtypeId": "LargeBlockRoundEdgeCornerInvB",
+    "Components": [
+      {
+        "ComponentName": "Interior Plate",
+        "Count": 25
+      },
+      {
+        "ComponentName": "Construction Component",
+        "Count": 10
+      }
+    ],
+    "DlcName": "CoreSystems"
+  },
+  {
+    "Id": "CubeBlock/LargeBlockRoundEdgeCornerInv/Large",
+    "DisplayName": "Rounded Corner Inv.",
+    "GridSize": "Large",
+    "TypeId": "CubeBlock",
+    "SubtypeId": "LargeBlockRoundEdgeCornerInv",
+    "Components": [
+      {
+        "ComponentName": "Interior Plate",
+        "Count": 25
+      },
+      {
+        "ComponentName": "Construction Component",
+        "Count": 10
+      }
+    ],
+    "DlcName": "CoreSystems"
+  },
+  {
+    "Id": "CubeBlock/LargeBlockRoundEdgeCornerB/Large",
+    "DisplayName": "Rounded Slope",
+    "GridSize": "Large",
+    "TypeId": "CubeBlock",
+    "SubtypeId": "LargeBlockRoundEdgeCornerB",
+    "Components": [
+      {
+        "ComponentName": "Interior Plate",
+        "Count": 20
+      },
+      {
+        "ComponentName": "Construction Component",
+        "Count": 7
+      }
+    ],
+    "DlcName": "CoreSystems"
+  },
+  {
+    "Id": "CubeBlock/LargeBlockRoundEdgeSlopeBase/Large",
+    "DisplayName": "Rounded 2x1 Slope Base",
+    "GridSize": "Large",
+    "TypeId": "CubeBlock",
+    "SubtypeId": "LargeBlockRoundEdgeSlopeBase",
+    "Components": [
+      {
+        "ComponentName": "Interior Plate",
+        "Count": 20
+      },
+      {
+        "ComponentName": "Construction Component",
+        "Count": 7
+      }
+    ],
+    "DlcName": "CoreSystems"
+  },
+  {
+    "Id": "CubeBlock/LargeBlockRoundEdgeCorner/Large",
+    "DisplayName": "Rounded Corner",
+    "GridSize": "Large",
+    "TypeId": "CubeBlock",
+    "SubtypeId": "LargeBlockRoundEdgeCorner",
+    "Components": [
+      {
+        "ComponentName": "Interior Plate",
+        "Count": 20
+      },
+      {
+        "ComponentName": "Construction Component",
+        "Count": 7
+      }
+    ],
+    "DlcName": "CoreSystems"
+  },
+  {
+    "Id": "CubeBlock/LargeBlockRoundEdgeB/Large",
+    "DisplayName": "Rounded Edge B",
+    "GridSize": "Large",
+    "TypeId": "CubeBlock",
+    "SubtypeId": "LargeBlockRoundEdgeB",
+    "Components": [
+      {
+        "ComponentName": "Interior Plate",
+        "Count": 25
+      },
+      {
+        "ComponentName": "Construction Component",
+        "Count": 10
+      }
+    ],
+    "DlcName": "CoreSystems"
+  },
+  {
+    "Id": "CubeBlock/LargeBlockRoundEdge/Large",
+    "DisplayName": "Rounded Edge A",
+    "GridSize": "Large",
+    "TypeId": "CubeBlock",
+    "SubtypeId": "LargeBlockRoundEdge",
+    "Components": [
+      {
+        "ComponentName": "Interior Plate",
+        "Count": 25
+      },
+      {
+        "ComponentName": "Construction Component",
+        "Count": 10
+      }
+    ],
+    "DlcName": "CoreSystems"
+  },
+  {
+    "Id": "TerminalBlock/SmallBlockKitchenFridge/Small",
+    "DisplayName": "Fridge",
+    "GridSize": "Small",
+    "TypeId": "TerminalBlock",
+    "SubtypeId": "SmallBlockKitchenFridge",
+    "Components": [
+      {
+        "ComponentName": "Interior Plate",
+        "Count": 4
+      },
+      {
+        "ComponentName": "Construction Component",
+        "Count": 6
+      },
+      {
+        "ComponentName": "Motor",
+        "Count": 1
+      },
+      {
+        "ComponentName": "Bulletproof Glass",
+        "Count": 2
+      }
+    ],
+    "DlcName": "Contact"
+  },
+  {
+    "Id": "TerminalBlock/SmallBlockKitchenMicrowave/Small",
+    "DisplayName": "Microwave",
+    "GridSize": "Small",
+    "TypeId": "TerminalBlock",
+    "SubtypeId": "SmallBlockKitchenMicrowave",
+    "Components": [
+      {
+        "ComponentName": "Interior Plate",
+        "Count": 4
+      },
+      {
+        "ComponentName": "Construction Component",
+        "Count": 6
+      },
+      {
+        "ComponentName": "Motor",
+        "Count": 1
+      },
+      {
+        "ComponentName": "Bulletproof Glass",
+        "Count": 2
+      }
+    ],
+    "DlcName": "Contact"
+  },
+  {
+    "Id": "TerminalBlock/SmallBlockKitchenOven/Small",
+    "DisplayName": "Oven",
+    "GridSize": "Small",
+    "TypeId": "TerminalBlock",
+    "SubtypeId": "SmallBlockKitchenOven",
+    "Components": [
+      {
+        "ComponentName": "Interior Plate",
+        "Count": 8
+      },
+      {
+        "ComponentName": "Construction Component",
+        "Count": 12
+      },
+      {
+        "ComponentName": "Motor",
+        "Count": 1
+      },
+      {
+        "ComponentName": "Bulletproof Glass",
+        "Count": 4
+      }
+    ],
+    "DlcName": "Contact"
+  },
+  {
+    "Id": "TerminalBlock/SmallBlockFirstAidCabinet/Small",
+    "DisplayName": "First Aid Cabinet",
+    "GridSize": "Small",
+    "TypeId": "TerminalBlock",
+    "SubtypeId": "SmallBlockFirstAidCabinet",
+    "Components": [
+      {
+        "ComponentName": "Interior Plate",
+        "Count": 3
+      },
+      {
+        "ComponentName": "Construction Component",
+        "Count": 3
+      }
+    ],
+    "DlcName": "Contact"
+  },
+  {
+    "Id": "LargeGatlingTurret/SmallGatlingTurretReskin/Small",
+    "DisplayName": "Gatling Turret Type II",
+    "GridSize": "Small",
+    "TypeId": "LargeGatlingTurret",
+    "SubtypeId": "SmallGatlingTurretReskin",
+    "Components": [
+      {
+        "ComponentName": "Steel Plate",
+        "Count": 15
+      },
+      {
+        "ComponentName": "Construction Component",
+        "Count": 30
+      },
+      {
+        "ComponentName": "Metal Grid",
+        "Count": 5
+      },
+      {
+        "ComponentName": "Small Steel Tube",
+        "Count": 6
+      },
+      {
+        "ComponentName": "Motor",
+        "Count": 4
+      },
+      {
+        "ComponentName": "Computer",
+        "Count": 10
+      }
+    ],
+    "DlcName": "Contact"
+  },
+  {
+    "Id": "CubeBlock/LargeBlockRoundEdgeC/Large",
+    "DisplayName": "Rounded Edge C",
+    "GridSize": "Large",
+    "TypeId": "CubeBlock",
+    "SubtypeId": "LargeBlockRoundEdgeC",
+    "Components": [
+      {
+        "ComponentName": "Interior Plate",
+        "Count": 25
+      },
+      {
+        "ComponentName": "Construction Component",
+        "Count": 10
+      }
+    ],
+    "DlcName": "CoreSystems"
+  },
+  {
+    "Id": "Thrust/SmallBlockLargeHydrogenThrustIndustrial/Small",
+    "DisplayName": "Industrial Large Hydrogen Thruster",
+    "GridSize": "Small",
+    "TypeId": "Thrust",
+    "SubtypeId": "SmallBlockLargeHydrogenThrustIndustrial",
+    "Components": [
+      {
+        "ComponentName": "Steel Plate",
+        "Count": 30
+      },
+      {
+        "ComponentName": "Construction Component",
+        "Count": 30
+      },
+      {
+        "ComponentName": "Metal Grid",
+        "Count": 22
+      },
+      {
+        "ComponentName": "Large Steel Tube",
+        "Count": 10
+      }
+    ],
+    "DlcName": "HeavyIndustry"
+  },
+  {
+    "Id": "CubeBlock/Truss/Large",
+    "DisplayName": "Scaffold Block",
+    "GridSize": "Large",
+    "TypeId": "CubeBlock",
+    "SubtypeId": "Truss",
+    "Components": [
+      {
+        "ComponentName": "Girder",
+        "Count": 20
+      },
+      {
+        "ComponentName": "Small Steel Tube",
+        "Count": 10
+      }
+    ],
+    "DlcName": "DecorativeBlocks3"
+  },
+  {
+    "Id": "CubeBlock/TrussFrame/Large",
+    "DisplayName": "Scaffold Frame",
+    "GridSize": "Large",
+    "TypeId": "CubeBlock",
+    "SubtypeId": "TrussFrame",
+    "Components": [
+      {
+        "ComponentName": "Girder",
+        "Count": 10
+      },
+      {
+        "ComponentName": "Small Steel Tube",
+        "Count": 5
+      }
+    ],
+    "DlcName": "DecorativeBlocks3"
+  },
+  {
+    "Id": "TerminalBlock/LargeBlockAccessPanel1/Large",
+    "DisplayName": "Access Panel A",
+    "GridSize": "Large",
+    "TypeId": "TerminalBlock",
+    "SubtypeId": "LargeBlockAccessPanel1",
+    "Components": [
+      {
+        "ComponentName": "Construction Component",
+        "Count": 15
+      },
+      {
+        "ComponentName": "Computer",
+        "Count": 5
+      },
+      {
+        "ComponentName": "Interior Plate",
+        "Count": 5
+      }
+    ],
+    "DlcName": "Automatons"
+  },
+  {
+    "Id": "InteriorLight/SmallBlockInsetLight/Small",
+    "DisplayName": "Inset Light",
+    "GridSize": "Small",
+    "TypeId": "InteriorLight",
+    "SubtypeId": "SmallBlockInsetLight",
+    "Components": [
+      {
+        "ComponentName": "Steel Plate",
+        "Count": 1
+      },
+      {
+        "ComponentName": "Construction Component",
+        "Count": 2
+      },
+      {
+        "ComponentName": "Interior Plate",
+        "Count": 1
+      }
+    ],
+    "DlcName": "Automatons"
+  },
+  {
+    "Id": "InteriorLight/LargeBlockInsetLight/Large",
+    "DisplayName": "Inset Light",
+    "GridSize": "Large",
+    "TypeId": "InteriorLight",
+    "SubtypeId": "LargeBlockInsetLight",
+    "Components": [
+      {
+        "ComponentName": "Steel Plate",
+        "Count": 10
+      },
+      {
+        "ComponentName": "Construction Component",
+        "Count": 10
+      },
+      {
+        "ComponentName": "Interior Plate",
+        "Count": 20
+      }
+    ],
+    "DlcName": "Automatons"
+  },
+  {
+    "Id": "Door/LargeBlockOffsetDoor/Large",
+    "DisplayName": "Offset Door",
+    "GridSize": "Large",
+    "TypeId": "Door",
+    "SubtypeId": "LargeBlockOffsetDoor",
+    "Components": [
+      {
+        "ComponentName": "Steel Plate",
+        "Count": 25
+      },
+      {
+        "ComponentName": "Construction Component",
+        "Count": 35
+      },
+      {
+        "ComponentName": "Small Steel Tube",
+        "Count": 4
+      },
+      {
+        "ComponentName": "Motor",
+        "Count": 4
+      },
+      {
+        "ComponentName": "Display",
+        "Count": 1
+      },
+      {
+        "ComponentName": "Computer",
+        "Count": 2
+      },
+      {
+        "ComponentName": "Bulletproof Glass",
+        "Count": 6
+      }
+    ],
+    "DlcName": "Frostbite"
+  },
+  {
+    "Id": "Door/LargeBlockGate/Large",
+    "DisplayName": "Gate",
+    "GridSize": "Large",
+    "TypeId": "Door",
+    "SubtypeId": "LargeBlockGate",
+    "Components": [
+      {
+        "ComponentName": "Steel Plate",
+        "Count": 800
+      },
+      {
+        "ComponentName": "Construction Component",
+        "Count": 100
+      },
+      {
+        "ComponentName": "Small Steel Tube",
+        "Count": 100
+      },
+      {
+        "ComponentName": "Motor",
+        "Count": 20
+      },
+      {
+        "ComponentName": "Computer",
+        "Count": 10
+      }
+    ],
+    "DlcName": "Frostbite"
+  },
+  {
+    "Id": "RadioAntenna/LargeBlockRadioAntennaDish/Large",
+    "DisplayName": "Antenna Dish",
+    "GridSize": "Large",
+    "TypeId": "RadioAntenna",
+    "SubtypeId": "LargeBlockRadioAntennaDish",
+    "Components": [
+      {
+        "ComponentName": "Construction Component",
+        "Count": 40
+      },
+      {
+        "ComponentName": "Girder",
+        "Count": 120
+      },
+      {
+        "ComponentName": "Steel Plate",
+        "Count": 80
+      },
+      {
+        "ComponentName": "Computer",
+        "Count": 8
+      },
+      {
+        "ComponentName": "Radio Communication Components",
+        "Count": 40
+      }
+    ],
+    "DlcName": "Frostbite"
+  },
+  {
+    "Id": "CubeBlock/LargeBlockPipesCornerInner/Large",
+    "DisplayName": "Pipes Up",
+    "GridSize": "Large",
+    "TypeId": "CubeBlock",
+    "SubtypeId": "LargeBlockPipesCornerInner",
+    "Components": [
+      {
+        "ComponentName": "Steel Plate",
+        "Count": 10
+      },
+      {
+        "ComponentName": "Construction Component",
+        "Count": 30
+      },
+      {
+        "ComponentName": "Large Steel Tube",
+        "Count": 18
+      }
+    ],
+    "DlcName": "Fieldwork"
+  },
+  {
+    "Id": "CubeBlock/LargeBlockPipesCorner/Large",
+    "DisplayName": "Pipes Corner",
+    "GridSize": "Large",
+    "TypeId": "CubeBlock",
+    "SubtypeId": "LargeBlockPipesCorner",
+    "Components": [
+      {
+        "ComponentName": "Steel Plate",
+        "Count": 5
+      },
+      {
+        "ComponentName": "Construction Component",
+        "Count": 20
+      },
+      {
+        "ComponentName": "Large Steel Tube",
+        "Count": 12
+      }
+    ],
+    "DlcName": "Fieldwork"
+  },
+  {
+    "Id": "CubeBlock/LargeBlockPipesCornerOuter/Large",
+    "DisplayName": "Pipes Down",
+    "GridSize": "Large",
+    "TypeId": "CubeBlock",
+    "SubtypeId": "LargeBlockPipesCornerOuter",
+    "Components": [
+      {
+        "ComponentName": "Steel Plate",
+        "Count": 1
+      },
+      {
+        "ComponentName": "Construction Component",
+        "Count": 10
+      },
+      {
+        "ComponentName": "Large Steel Tube",
+        "Count": 6
+      }
+    ],
+    "DlcName": "Fieldwork"
+  },
+  {
+    "Id": "CubeBlock/LargeBlockPipesJunction/Large",
+    "DisplayName": "Pipes Junction",
+    "GridSize": "Large",
+    "TypeId": "CubeBlock",
+    "SubtypeId": "LargeBlockPipesJunction",
+    "Components": [
+      {
+        "ComponentName": "Steel Plate",
+        "Count": 10
+      },
+      {
+        "ComponentName": "Construction Component",
+        "Count": 30
+      },
+      {
+        "ComponentName": "Large Steel Tube",
+        "Count": 14
+      }
+    ],
+    "DlcName": "Fieldwork"
+  },
+  {
+    "Id": "CubeBlock/LargeBlockPipesEnd/Large",
+    "DisplayName": "Pipes End",
+    "GridSize": "Large",
+    "TypeId": "CubeBlock",
+    "SubtypeId": "LargeBlockPipesEnd",
+    "Components": [
+      {
+        "ComponentName": "Steel Plate",
+        "Count": 5
+      },
+      {
+        "ComponentName": "Construction Component",
+        "Count": 20
+      },
+      {
+        "ComponentName": "Large Steel Tube",
+        "Count": 12
+      }
+    ],
+    "DlcName": "Fieldwork"
+  },
+  {
+    "Id": "CubeBlock/LargeBlockPipesStraight2/Large",
+    "DisplayName": "Pipes Straight 2",
+    "GridSize": "Large",
+    "TypeId": "CubeBlock",
+    "SubtypeId": "LargeBlockPipesStraight2",
+    "Components": [
+      {
+        "ComponentName": "Steel Plate",
+        "Count": 10
+      },
+      {
+        "ComponentName": "Construction Component",
+        "Count": 20
+      },
+      {
+        "ComponentName": "Large Steel Tube",
+        "Count": 12
+      }
+    ],
+    "DlcName": "Fieldwork"
+  },
+  {
+    "Id": "CubeBlock/LargeBlockPipesStraight1/Large",
+    "DisplayName": "Pipes Straight 1",
+    "GridSize": "Large",
+    "TypeId": "CubeBlock",
+    "SubtypeId": "LargeBlockPipesStraight1",
+    "Components": [
+      {
+        "ComponentName": "Steel Plate",
+        "Count": 5
+      },
+      {
+        "ComponentName": "Construction Component",
+        "Count": 20
+      },
+      {
+        "ComponentName": "Large Steel Tube",
+        "Count": 12
+      }
+    ],
+    "DlcName": "Fieldwork"
+  },
+  {
+    "Id": "CargoContainer/LargeBlockLabCabinet/Large",
+    "DisplayName": "Lab Cabinet",
+    "GridSize": "Large",
+    "TypeId": "CargoContainer",
+    "SubtypeId": "LargeBlockLabCabinet",
+    "Components": [
+      {
+        "ComponentName": "Interior Plate",
+        "Count": 20
+      },
+      {
+        "ComponentName": "Construction Component",
+        "Count": 30
+      },
+      {
+        "ComponentName": "Small Steel Tube",
+        "Count": 8
+      },
+      {
+        "ComponentName": "Motor",
+        "Count": 4
+      },
+      {
+        "ComponentName": "Display",
+        "Count": 1
+      },
+      {
+        "ComponentName": "Bulletproof Glass",
+        "Count": 2
+      }
+    ],
+    "DlcName": "Fieldwork"
+  },
+  {
+    "Id": "CubeBlock/LargeBlockLabSink/Large",
+    "DisplayName": "Lab Sink",
+    "GridSize": "Large",
+    "TypeId": "CubeBlock",
+    "SubtypeId": "LargeBlockLabSink",
+    "Components": [
+      {
+        "ComponentName": "Interior Plate",
+        "Count": 30
+      },
+      {
+        "ComponentName": "Construction Component",
+        "Count": 30
+      },
+      {
+        "ComponentName": "Motor",
+        "Count": 2
+      }
+    ],
+    "DlcName": "Fieldwork"
+  },
+  {
+    "Id": "ButtonPanel/LargeBlockAccessPanel3/Large",
+    "DisplayName": "Access Panel C",
+    "GridSize": "Large",
+    "TypeId": "ButtonPanel",
+    "SubtypeId": "LargeBlockAccessPanel3",
+    "Components": [
+      {
+        "ComponentName": "Construction Component",
+        "Count": 8
+      },
+      {
+        "ComponentName": "Computer",
+        "Count": 3
+      },
+      {
+        "ComponentName": "Interior Plate",
+        "Count": 3
+      }
+    ],
+    "DlcName": "Automatons"
+  },
+  {
+    "Id": "TerminalBlock/SmallBlockAccessPanel1/Small",
+    "DisplayName": "Access Panel A",
+    "GridSize": "Small",
+    "TypeId": "TerminalBlock",
+    "SubtypeId": "SmallBlockAccessPanel1",
+    "Components": [
+      {
+        "ComponentName": "Construction Component",
+        "Count": 8
+      },
+      {
+        "ComponentName": "Small Steel Tube",
+        "Count": 2
+      },
+      {
+        "ComponentName": "Interior Plate",
+        "Count": 2
+      }
+    ],
+    "DlcName": "Automatons"
+  },
+  {
+    "Id": "TerminalBlock/SmallBlockAccessPanel3/Small",
+    "DisplayName": "Access Panel C",
+    "GridSize": "Small",
+    "TypeId": "TerminalBlock",
+    "SubtypeId": "SmallBlockAccessPanel3",
+    "Components": [
+      {
+        "ComponentName": "Construction Component",
+        "Count": 4
+      },
+      {
+        "ComponentName": "Small Steel Tube",
+        "Count": 1
+      },
+      {
+        "ComponentName": "Interior Plate",
+        "Count": 1
+      }
+    ],
+    "DlcName": "Automatons"
+  },
+  {
+    "Id": "AirVent/AirVentFan/Large",
+    "DisplayName": "Air Vent Fan",
+    "GridSize": "Large",
+    "TypeId": "AirVent",
+    "SubtypeId": "AirVentFan",
+    "Components": [
+      {
+        "ComponentName": "Steel Plate",
+        "Count": 30
+      },
+      {
+        "ComponentName": "Construction Component",
+        "Count": 20
+      },
+      {
+        "ComponentName": "Motor",
+        "Count": 10
+      },
+      {
+        "ComponentName": "Computer",
+        "Count": 5
+      }
+    ],
+    "DlcName": "Automatons"
+  },
+  {
+    "Id": "CubeBlock/SmallBlockCylindricalColumn/Small",
+    "DisplayName": "Cylindrical Column",
+    "GridSize": "Small",
+    "TypeId": "CubeBlock",
+    "SubtypeId": "SmallBlockCylindricalColumn",
+    "Components": [
+      {
+        "ComponentName": "Interior Plate",
+        "Count": 5
+      },
+      {
+        "ComponentName": "Construction Component",
+        "Count": 3
+      }
+    ],
+    "DlcName": "HeavyIndustry"
+  },
+  {
+    "Id": "CubeBlock/LargeBlockCylindricalColumn/Large",
+    "DisplayName": "Cylindrical Column",
+    "GridSize": "Large",
+    "TypeId": "CubeBlock",
+    "SubtypeId": "LargeBlockCylindricalColumn",
+    "Components": [
+      {
+        "ComponentName": "Interior Plate",
+        "Count": 25
+      },
+      {
+        "ComponentName": "Construction Component",
+        "Count": 10
+      }
+    ],
+    "DlcName": "HeavyIndustry"
+  },
+  {
+    "Id": "Refinery/LargeRefineryIndustrial/Large",
+    "DisplayName": "Industrial Refinery",
+    "GridSize": "Large",
+    "TypeId": "Refinery",
+    "SubtypeId": "LargeRefineryIndustrial",
+    "Components": [
+      {
+        "ComponentName": "Steel Plate",
+        "Count": 1200
+      },
+      {
+        "ComponentName": "Construction Component",
+        "Count": 40
+      },
+      {
+        "ComponentName": "Large Steel Tube",
+        "Count": 20
+      },
+      {
+        "ComponentName": "Motor",
+        "Count": 16
+      },
+      {
+        "ComponentName": "Metal Grid",
+        "Count": 20
+      },
+      {
+        "ComponentName": "Computer",
+        "Count": 20
+      }
+    ],
+    "DlcName": "HeavyIndustry"
+  },
+  {
+    "Id": "ButtonPanel/VerticalButtonPanelSmall/Small",
+    "DisplayName": "Vertical Button Panel",
+    "GridSize": "Small",
+    "TypeId": "ButtonPanel",
+    "SubtypeId": "VerticalButtonPanelSmall",
+    "Components": [
+      {
+        "ComponentName": "Interior Plate",
+        "Count": 5
+      },
+      {
+        "ComponentName": "Construction Component",
+        "Count": 10
+      },
+      {
+        "ComponentName": "Computer",
+        "Count": 5
+      }
+    ],
+    "DlcName": "HeavyIndustry"
+  },
+  {
+    "Id": "ButtonPanel/VerticalButtonPanelLarge/Large",
+    "DisplayName": "Vertical Button Panel",
+    "GridSize": "Large",
+    "TypeId": "ButtonPanel",
+    "SubtypeId": "VerticalButtonPanelLarge",
+    "Components": [
+      {
+        "ComponentName": "Interior Plate",
+        "Count": 5
+      },
+      {
+        "ComponentName": "Construction Component",
+        "Count": 10
+      },
+      {
+        "ComponentName": "Computer",
+        "Count": 5
+      }
+    ],
+    "DlcName": "HeavyIndustry"
+  },
+  {
+    "Id": "LandingGear/SmallBlockMagneticPlate/Small",
+    "DisplayName": "Large Magnetic Plate",
+    "GridSize": "Small",
+    "TypeId": "LandingGear",
+    "SubtypeId": "SmallBlockMagneticPlate",
+    "Components": [
+      {
+        "ComponentName": "Steel Plate",
+        "Count": 6
+      },
+      {
+        "ComponentName": "Construction Component",
+        "Count": 15
+      },
+      {
+        "ComponentName": "Motor",
+        "Count": 3
+      }
+    ],
+    "DlcName": "HeavyIndustry"
+  },
+  {
+    "Id": "LandingGear/LargeBlockMagneticPlate/Large",
+    "DisplayName": "Large Magnetic Plate",
+    "GridSize": "Large",
+    "TypeId": "LandingGear",
+    "SubtypeId": "LargeBlockMagneticPlate",
+    "Components": [
+      {
+        "ComponentName": "Steel Plate",
+        "Count": 450
+      },
+      {
+        "ComponentName": "Construction Component",
+        "Count": 60
+      },
+      {
+        "ComponentName": "Motor",
+        "Count": 20
+      }
+    ],
+    "DlcName": "HeavyIndustry"
+  },
+  {
+    "Id": "CubeBlock/LargeBlockLabDesk/Large",
+    "DisplayName": "Chairless Lab Desk",
+    "GridSize": "Large",
+    "TypeId": "CubeBlock",
+    "SubtypeId": "LargeBlockLabDesk",
+    "Components": [
+      {
+        "ComponentName": "Interior Plate",
+        "Count": 30
+      },
+      {
+        "ComponentName": "Construction Component",
+        "Count": 30
+      },
+      {
+        "ComponentName": "Motor",
+        "Count": 2
+      },
+      {
+        "ComponentName": "Detector Components",
+        "Count": 4
+      }
+    ],
+    "DlcName": "Fieldwork"
+  },
+  {
+    "Id": "EmotionControllerBlock/EmotionControllerSmall/Small",
+    "DisplayName": "Emotion Controller",
+    "GridSize": "Small",
+    "TypeId": "EmotionControllerBlock",
+    "SubtypeId": "EmotionControllerSmall",
+    "Components": [
+      {
+        "ComponentName": "Interior Plate",
+        "Count": 1
+      },
+      {
+        "ComponentName": "Construction Component",
+        "Count": 3
+      },
+      {
+        "ComponentName": "Computer",
+        "Count": 5
+      },
+      {
+        "ComponentName": "Display",
+        "Count": 1
+      },
+      {
+        "ComponentName": "Bulletproof Glass",
+        "Count": 1
+      }
+    ],
+    "DlcName": "Automatons"
+  },
+  {
+    "Id": "MyProgrammableBlock/SmallProgrammableBlockReskin/Small",
+    "DisplayName": "Automaton Programmable Block",
+    "GridSize": "Small",
+    "TypeId": "MyProgrammableBlock",
+    "SubtypeId": "SmallProgrammableBlockReskin",
+    "Components": [
+      {
+        "ComponentName": "Steel Plate",
+        "Count": 2
+      },
+      {
+        "ComponentName": "Construction Component",
+        "Count": 2
+      },
+      {
+        "ComponentName": "Large Steel Tube",
+        "Count": 2
+      },
+      {
+        "ComponentName": "Motor",
+        "Count": 1
+      },
+      {
+        "ComponentName": "Display",
+        "Count": 1
+      },
+      {
+        "ComponentName": "Computer",
+        "Count": 2
+      }
+    ],
+    "DlcName": "Automatons"
+  },
+  {
+    "Id": "MyProgrammableBlock/LargeProgrammableBlockReskin/Large",
+    "DisplayName": "Automaton Programmable Block",
+    "GridSize": "Large",
+    "TypeId": "MyProgrammableBlock",
+    "SubtypeId": "LargeProgrammableBlockReskin",
+    "Components": [
+      {
+        "ComponentName": "Steel Plate",
+        "Count": 21
+      },
+      {
+        "ComponentName": "Construction Component",
+        "Count": 4
+      },
+      {
+        "ComponentName": "Large Steel Tube",
+        "Count": 2
+      },
+      {
+        "ComponentName": "Motor",
+        "Count": 1
+      },
+      {
+        "ComponentName": "Display",
+        "Count": 1
+      },
+      {
+        "ComponentName": "Computer",
+        "Count": 2
+      }
+    ],
+    "DlcName": "Automatons"
+  },
+  {
+    "Id": "CameraBlock/SmallCameraTopMounted/Small",
+    "DisplayName": "Top Mounted Camera",
+    "GridSize": "Small",
+    "TypeId": "CameraBlock",
+    "SubtypeId": "SmallCameraTopMounted",
+    "Components": [
+      {
+        "ComponentName": "Steel Plate",
+        "Count": 2
+      },
+      {
+        "ComponentName": "Computer",
+        "Count": 3
+      }
+    ],
+    "DlcName": "Automatons"
+  },
+  {
+    "Id": "CameraBlock/LargeCameraTopMounted/Large",
+    "DisplayName": "Top Mounted Camera",
+    "GridSize": "Large",
+    "TypeId": "CameraBlock",
+    "SubtypeId": "LargeCameraTopMounted",
+    "Components": [
+      {
+        "ComponentName": "Steel Plate",
+        "Count": 2
+      },
+      {
+        "ComponentName": "Computer",
+        "Count": 3
+      }
+    ],
+    "DlcName": "Automatons"
+  },
+  {
+    "Id": "AirVent/SmallAirVentFanFull/Small",
+    "DisplayName": "Air Vent Fan Full",
+    "GridSize": "Small",
+    "TypeId": "AirVent",
+    "SubtypeId": "SmallAirVentFanFull",
+    "Components": [
+      {
+        "ComponentName": "Steel Plate",
+        "Count": 5
+      },
+      {
+        "ComponentName": "Construction Component",
+        "Count": 15
+      },
+      {
+        "ComponentName": "Motor",
+        "Count": 2
+      },
+      {
+        "ComponentName": "Computer",
+        "Count": 5
+      }
+    ],
+    "DlcName": "Automatons"
+  },
+  {
+    "Id": "AirVent/SmallAirVentFan/Small",
+    "DisplayName": "Air Vent Fan",
+    "GridSize": "Small",
+    "TypeId": "AirVent",
+    "SubtypeId": "SmallAirVentFan",
+    "Components": [
+      {
+        "ComponentName": "Steel Plate",
+        "Count": 3
+      },
+      {
+        "ComponentName": "Construction Component",
+        "Count": 10
+      },
+      {
+        "ComponentName": "Motor",
+        "Count": 2
+      },
+      {
+        "ComponentName": "Computer",
+        "Count": 5
+      }
+    ],
+    "DlcName": "Automatons"
+  },
+  {
+    "Id": "AirVent/AirVentFanFull/Large",
+    "DisplayName": "Air Vent Fan Full",
+    "GridSize": "Large",
+    "TypeId": "AirVent",
+    "SubtypeId": "AirVentFanFull",
+    "Components": [
+      {
+        "ComponentName": "Steel Plate",
+        "Count": 45
+      },
+      {
+        "ComponentName": "Construction Component",
+        "Count": 30
+      },
+      {
+        "ComponentName": "Motor",
+        "Count": 10
+      },
+      {
+        "ComponentName": "Computer",
+        "Count": 5
+      }
+    ],
+    "DlcName": "Automatons"
+  },
+  {
+    "Id": "EmotionControllerBlock/EmotionControllerLarge/Large",
+    "DisplayName": "Emotion Controller",
+    "GridSize": "Large",
+    "TypeId": "EmotionControllerBlock",
+    "SubtypeId": "EmotionControllerLarge",
+    "Components": [
+      {
+        "ComponentName": "Interior Plate",
+        "Count": 10
+      },
+      {
+        "ComponentName": "Construction Component",
+        "Count": 30
+      },
+      {
+        "ComponentName": "Computer",
+        "Count": 20
+      },
+      {
+        "ComponentName": "Display",
+        "Count": 12
+      },
+      {
+        "ComponentName": "Bulletproof Glass",
+        "Count": 6
+      }
+    ],
+    "DlcName": "Automatons"
+  },
+  {
+    "Id": "CubeBlock/TrussSmall/Small",
+    "DisplayName": "Scaffold Block",
+    "GridSize": "Small",
+    "TypeId": "CubeBlock",
+    "SubtypeId": "TrussSmall",
+    "Components": [
+      {
+        "ComponentName": "Girder",
+        "Count": 2
+      },
+      {
+        "ComponentName": "Small Steel Tube",
+        "Count": 1
+      }
+    ],
+    "DlcName": "DecorativeBlocks3"
+  },
+  {
+    "Id": "OxygenGenerator/SmallBlockOxygenGeneratorLab/Small",
+    "DisplayName": "Lab O2/H2 Generator",
+    "GridSize": "Small",
+    "TypeId": "OxygenGenerator",
+    "SubtypeId": "SmallBlockOxygenGeneratorLab",
+    "Components": [
+      {
+        "ComponentName": "Steel Plate",
+        "Count": 6
+      },
+      {
+        "ComponentName": "Construction Component",
+        "Count": 8
+      },
+      {
+        "ComponentName": "Large Steel Tube",
+        "Count": 2
+      },
+      {
+        "ComponentName": "Motor",
+        "Count": 1
+      },
+      {
+        "ComponentName": "Computer",
+        "Count": 3
+      },
+      {
+        "ComponentName": "Bulletproof Glass",
+        "Count": 3
+      }
+    ],
+    "DlcName": "Fieldwork"
+  },
+  {
+    "Id": "Door/LargeBlockLabDoorInv/Large",
+    "DisplayName": "Lab Door Inv.",
+    "GridSize": "Large",
+    "TypeId": "Door",
+    "SubtypeId": "LargeBlockLabDoorInv",
+    "Components": [
+      {
+        "ComponentName": "Girder",
+        "Count": 10
+      },
+      {
+        "ComponentName": "Bulletproof Glass",
+        "Count": 20
+      },
+      {
+        "ComponentName": "Construction Component",
+        "Count": 20
+      },
+      {
+        "ComponentName": "Motor",
+        "Count": 2
+      },
+      {
+        "ComponentName": "Display",
+        "Count": 2
+      },
+      {
+        "ComponentName": "Computer",
+        "Count": 2
+      }
+    ],
+    "DlcName": "Fieldwork"
+  },
+  {
+    "Id": "Warhead/SmallExplosiveBarrel/Small",
+    "DisplayName": "Explosive Barrel",
+    "GridSize": "Small",
+    "TypeId": "Warhead",
+    "SubtypeId": "SmallExplosiveBarrel",
+    "Components": [
+      {
+        "ComponentName": "Steel Plate",
+        "Count": 5
+      },
+      {
+        "ComponentName": "Large Steel Tube",
+        "Count": 1
+      },
+      {
+        "ComponentName": "Construction Component",
+        "Count": 6
+      },
+      {
+        "ComponentName": "Small Steel Tube",
+        "Count": 2
+      },
+      {
+        "ComponentName": "Computer",
+        "Count": 1
+      },
+      {
+        "ComponentName": "Explosives",
+        "Count": 2
+      }
+    ],
+    "DlcName": "DecorativeBlocks3"
+  },
+  {
+    "Id": "Warhead/LargeExplosiveBarrel/Large",
+    "DisplayName": "Explosive Barrel",
+    "GridSize": "Large",
+    "TypeId": "Warhead",
+    "SubtypeId": "LargeExplosiveBarrel",
+    "Components": [
+      {
+        "ComponentName": "Steel Plate",
+        "Count": 5
+      },
+      {
+        "ComponentName": "Large Steel Tube",
+        "Count": 1
+      },
+      {
+        "ComponentName": "Construction Component",
+        "Count": 6
+      },
+      {
+        "ComponentName": "Small Steel Tube",
+        "Count": 2
+      },
+      {
+        "ComponentName": "Computer",
+        "Count": 1
+      },
+      {
+        "ComponentName": "Explosives",
+        "Count": 2
+      }
+    ],
+    "DlcName": "DecorativeBlocks3"
+  },
+  {
+    "Id": "CubeBlock/TrussFloorHalf/Large",
+    "DisplayName": "Walkable Half Scaffold Block",
+    "GridSize": "Large",
+    "TypeId": "CubeBlock",
+    "SubtypeId": "TrussFloorHalf",
+    "Components": [
+      {
+        "ComponentName": "Girder",
+        "Count": 12
+      },
+      {
+        "ComponentName": "Construction Component",
+        "Count": 14
+      },
+      {
+        "ComponentName": "Small Steel Tube",
+        "Count": 20
+      }
+    ],
+    "DlcName": "DecorativeBlocks3"
+  },
+  {
+    "Id": "CubeBlock/TrussFloorAngledInverted/Large",
+    "DisplayName": "Walkable Scaffold Block Corner Inv.",
+    "GridSize": "Large",
+    "TypeId": "CubeBlock",
+    "SubtypeId": "TrussFloorAngledInverted",
+    "Components": [
+      {
+        "ComponentName": "Girder",
+        "Count": 24
+      },
+      {
+        "ComponentName": "Construction Component",
+        "Count": 16
+      },
+      {
+        "ComponentName": "Small Steel Tube",
+        "Count": 30
+      }
+    ],
+    "DlcName": "DecorativeBlocks3"
+  },
+  {
+    "Id": "CubeBlock/TrussFloorAngled/Large",
+    "DisplayName": "Walkable Scaffold Block Corner",
+    "GridSize": "Large",
+    "TypeId": "CubeBlock",
+    "SubtypeId": "TrussFloorAngled",
+    "Components": [
+      {
+        "ComponentName": "Girder",
+        "Count": 24
+      },
+      {
+        "ComponentName": "Construction Component",
+        "Count": 16
+      },
+      {
+        "ComponentName": "Small Steel Tube",
+        "Count": 30
+      }
+    ],
+    "DlcName": "DecorativeBlocks3"
+  },
+  {
+    "Id": "CubeBlock/TrussFloorX/Large",
+    "DisplayName": "Walkable Scaffold Block X",
+    "GridSize": "Large",
+    "TypeId": "CubeBlock",
+    "SubtypeId": "TrussFloorX",
+    "Components": [
+      {
+        "ComponentName": "Girder",
+        "Count": 20
+      },
+      {
+        "ComponentName": "Construction Component",
+        "Count": 16
+      },
+      {
+        "ComponentName": "Small Steel Tube",
+        "Count": 30
+      }
+    ],
+    "DlcName": "DecorativeBlocks3"
+  },
+  {
+    "Id": "CubeBlock/TrussFloorT/Large",
+    "DisplayName": "Walkable Scaffold Block T",
+    "GridSize": "Large",
+    "TypeId": "CubeBlock",
+    "SubtypeId": "TrussFloorT",
+    "Components": [
+      {
+        "ComponentName": "Girder",
+        "Count": 22
+      },
+      {
+        "ComponentName": "Construction Component",
+        "Count": 16
+      },
+      {
+        "ComponentName": "Small Steel Tube",
+        "Count": 30
+      }
+    ],
+    "DlcName": "DecorativeBlocks3"
+  },
+  {
+    "Id": "CubeBlock/TrussFloor/Large",
+    "DisplayName": "Walkable Scaffold Block",
+    "GridSize": "Large",
+    "TypeId": "CubeBlock",
+    "SubtypeId": "TrussFloor",
+    "Components": [
+      {
+        "ComponentName": "Girder",
+        "Count": 24
+      },
+      {
+        "ComponentName": "Construction Component",
+        "Count": 16
+      },
+      {
+        "ComponentName": "Small Steel Tube",
+        "Count": 30
+      }
+    ],
+    "DlcName": "DecorativeBlocks3"
+  },
+  {
+    "Id": "CubeBlock/TrussHalfSmall/Small",
+    "DisplayName": "Half Scaffold Block",
+    "GridSize": "Small",
+    "TypeId": "CubeBlock",
+    "SubtypeId": "TrussHalfSmall",
+    "Components": [
+      {
+        "ComponentName": "Girder",
+        "Count": 1
+      },
+      {
+        "ComponentName": "Small Steel Tube",
+        "Count": 1
+      }
+    ],
+    "DlcName": "DecorativeBlocks3"
+  },
+  {
+    "Id": "CubeBlock/TrussHalf/Large",
+    "DisplayName": "Half Scaffold Block",
+    "GridSize": "Large",
+    "TypeId": "CubeBlock",
+    "SubtypeId": "TrussHalf",
+    "Components": [
+      {
+        "ComponentName": "Girder",
+        "Count": 10
+      },
+      {
+        "ComponentName": "Small Steel Tube",
+        "Count": 5
+      }
+    ],
+    "DlcName": "DecorativeBlocks3"
+  },
+  {
+    "Id": "CubeBlock/TrussAngledSmall/Small",
+    "DisplayName": "Scaffold Block Corner",
+    "GridSize": "Small",
+    "TypeId": "CubeBlock",
+    "SubtypeId": "TrussAngledSmall",
+    "Components": [
+      {
+        "ComponentName": "Girder",
+        "Count": 2
+      },
+      {
+        "ComponentName": "Small Steel Tube",
+        "Count": 1
+      }
+    ],
+    "DlcName": "DecorativeBlocks3"
+  },
+  {
+    "Id": "CubeBlock/TrussAngled/Large",
+    "DisplayName": "Scaffold Block Corner",
+    "GridSize": "Large",
+    "TypeId": "CubeBlock",
+    "SubtypeId": "TrussAngled",
+    "Components": [
+      {
+        "ComponentName": "Girder",
+        "Count": 20
+      },
+      {
+        "ComponentName": "Small Steel Tube",
+        "Count": 10
+      }
+    ],
+    "DlcName": "DecorativeBlocks3"
+  },
+  {
+    "Id": "CubeBlock/TrussSlopedSmall/Small",
+    "DisplayName": "Scaffold Block Slope",
+    "GridSize": "Small",
+    "TypeId": "CubeBlock",
+    "SubtypeId": "TrussSlopedSmall",
+    "Components": [
+      {
+        "ComponentName": "Girder",
+        "Count": 1
+      },
+      {
+        "ComponentName": "Small Steel Tube",
+        "Count": 1
+      }
+    ],
+    "DlcName": "DecorativeBlocks3"
+  },
+  {
+    "Id": "CubeBlock/TrussSloped/Large",
+    "DisplayName": "Scaffold Block Slope",
+    "GridSize": "Large",
+    "TypeId": "CubeBlock",
+    "SubtypeId": "TrussSloped",
+    "Components": [
+      {
+        "ComponentName": "Girder",
+        "Count": 10
+      },
+      {
+        "ComponentName": "Small Steel Tube",
+        "Count": 5
+      }
+    ],
+    "DlcName": "DecorativeBlocks3"
+  },
+  {
+    "Id": "CubeBlock/TrussSlopedFrame/Large",
+    "DisplayName": "Scaffold Sloped Frame",
+    "GridSize": "Large",
+    "TypeId": "CubeBlock",
+    "SubtypeId": "TrussSlopedFrame",
+    "Components": [
+      {
+        "ComponentName": "Girder",
+        "Count": 6
+      },
+      {
+        "ComponentName": "Small Steel Tube",
+        "Count": 3
+      }
+    ],
+    "DlcName": "DecorativeBlocks3"
+  },
+  {
+    "Id": "ButtonPanel/LargeBlockInsetButtonPanel/Large",
+    "DisplayName": "Inset Button Panel",
+    "GridSize": "Large",
+    "TypeId": "ButtonPanel",
+    "SubtypeId": "LargeBlockInsetButtonPanel",
+    "Components": [
+      {
+        "ComponentName": "Interior Plate",
+        "Count": 20
+      },
+      {
+        "ComponentName": "Construction Component",
+        "Count": 20
+      },
+      {
+        "ComponentName": "Computer",
+        "Count": 20
+      },
+      {
+        "ComponentName": "Display",
+        "Count": 10
+      }
+    ],
+    "DlcName": "DecorativeBlocks3"
+  },
+  {
+    "Id": "InteriorLight/LargeBlockInsetKitchen/Large",
+    "DisplayName": "Inset Kitchen",
+    "GridSize": "Large",
+    "TypeId": "InteriorLight",
+    "SubtypeId": "LargeBlockInsetKitchen",
+    "Components": [
+      {
+        "ComponentName": "Interior Plate",
+        "Count": 30
+      },
+      {
+        "ComponentName": "Construction Component",
+        "Count": 30
+      },
+      {
+        "ComponentName": "Large Steel Tube",
+        "Count": 8
+      },
+      {
+        "ComponentName": "Motor",
+        "Count": 6
+      },
+      {
+        "ComponentName": "Bulletproof Glass",
+        "Count": 6
+      }
+    ],
+    "DlcName": "DecorativeBlocks3"
+  },
+  {
+    "Id": "SafeZoneBlock/SafeZoneBlockReskin/Large",
+    "DisplayName": "Safe Zone Type II",
+    "GridSize": "Large",
+    "TypeId": "SafeZoneBlock",
+    "SubtypeId": "SafeZoneBlockReskin",
+    "Components": [
+      {
+        "ComponentName": "Steel Plate",
+        "Count": 800
+      },
+      {
+        "ComponentName": "Construction Component",
+        "Count": 180
+      },
+      {
+        "ComponentName": "Gravity Component",
+        "Count": 10
+      },
+      {
+        "ComponentName": "Zone Chip",
+        "Count": 5
+      },
+      {
+        "ComponentName": "Metal Grid",
+        "Count": 80
+      },
+      {
+        "ComponentName": "Computer",
+        "Count": 120
+      }
+    ],
+    "DlcName": "Economy2"
+  },
+  {
+    "Id": "Door/LargeBlockAngledDoorA/Large",
+    "DisplayName": "Angled Door A",
+    "GridSize": "Large",
+    "TypeId": "Door",
+    "SubtypeId": "LargeBlockAngledDoorA",
+    "Components": [
+      {
+        "ComponentName": "Steel Plate",
+        "Count": 30
+      },
+      {
+        "ComponentName": "Construction Component",
+        "Count": 40
+      },
+      {
+        "ComponentName": "Motor",
+        "Count": 4
+      },
+      {
+        "ComponentName": "Display",
+        "Count": 1
+      },
+      {
+        "ComponentName": "Computer",
+        "Count": 2
+      }
+    ],
+    "DlcName": "Economy2"
+  },
+  {
+    "Id": "Door/LargeBlockLabDoor/Large",
+    "DisplayName": "Lab Door",
+    "GridSize": "Large",
+    "TypeId": "Door",
+    "SubtypeId": "LargeBlockLabDoor",
+    "Components": [
+      {
+        "ComponentName": "Girder",
+        "Count": 10
+      },
+      {
+        "ComponentName": "Bulletproof Glass",
+        "Count": 20
+      },
+      {
+        "ComponentName": "Construction Component",
+        "Count": 20
+      },
+      {
+        "ComponentName": "Motor",
+        "Count": 2
+      },
+      {
+        "ComponentName": "Display",
+        "Count": 2
+      },
+      {
+        "ComponentName": "Computer",
+        "Count": 2
+      }
+    ],
+    "DlcName": "Fieldwork"
+  },
+  {
+    "Id": "CargoContainer/LargeBlockCargoTerminalHalf/Large",
+    "DisplayName": "Cargo Terminal Half",
+    "GridSize": "Large",
+    "TypeId": "CargoContainer",
+    "SubtypeId": "LargeBlockCargoTerminalHalf",
+    "Components": [
+      {
+        "ComponentName": "Interior Plate",
+        "Count": 30
+      },
+      {
+        "ComponentName": "Construction Component",
+        "Count": 30
+      },
+      {
+        "ComponentName": "Metal Grid",
+        "Count": 2
+      },
+      {
+        "ComponentName": "Small Steel Tube",
+        "Count": 10
+      },
+      {
+        "ComponentName": "Motor",
+        "Count": 4
+      },
+      {
+        "ComponentName": "Display",
+        "Count": 1
+      },
+      {
+        "ComponentName": "Computer",
+        "Count": 2
+      }
+    ],
+    "DlcName": "Fieldwork"
+  },
+  {
+    "Id": "CargoContainer/LargeBlockCargoTerminal/Large",
+    "DisplayName": "Cargo Terminal",
+    "GridSize": "Large",
+    "TypeId": "CargoContainer",
+    "SubtypeId": "LargeBlockCargoTerminal",
+    "Components": [
+      {
+        "ComponentName": "Interior Plate",
+        "Count": 40
+      },
+      {
+        "ComponentName": "Construction Component",
+        "Count": 40
+      },
+      {
+        "ComponentName": "Metal Grid",
+        "Count": 4
+      },
+      {
+        "ComponentName": "Small Steel Tube",
+        "Count": 20
+      },
+      {
+        "ComponentName": "Motor",
+        "Count": 4
+      },
+      {
+        "ComponentName": "Display",
+        "Count": 1
+      },
+      {
+        "ComponentName": "Computer",
+        "Count": 2
+      }
+    ],
+    "DlcName": "Fieldwork"
+  },
+  {
+    "Id": "OxygenTank/LargeBlockOxygenTankLab/Large",
+    "DisplayName": "Lab Small Oxygen Tank",
+    "GridSize": "Large",
+    "TypeId": "OxygenTank",
+    "SubtypeId": "LargeBlockOxygenTankLab",
+    "Components": [
+      {
+        "ComponentName": "Steel Plate",
+        "Count": 80
+      },
+      {
+        "ComponentName": "Large Steel Tube",
+        "Count": 40
+      },
+      {
+        "ComponentName": "Small Steel Tube",
+        "Count": 60
+      },
+      {
+        "ComponentName": "Computer",
+        "Count": 8
+      },
+      {
+        "ComponentName": "Construction Component",
+        "Count": 40
+      }
+    ],
+    "DlcName": "Fieldwork"
+  },
+  {
+    "Id": "Door/CorridorRoundDoorInv/Large",
+    "DisplayName": "Corridor Round Door Inv.",
+    "GridSize": "Large",
+    "TypeId": "Door",
+    "SubtypeId": "CorridorRoundDoorInv",
+    "Components": [
+      {
+        "ComponentName": "Steel Plate",
+        "Count": 45
+      },
+      {
+        "ComponentName": "Construction Component",
+        "Count": 50
+      },
+      {
+        "ComponentName": "Small Steel Tube",
+        "Count": 10
+      },
+      {
+        "ComponentName": "Motor",
+        "Count": 4
+      },
+      {
+        "ComponentName": "Display",
+        "Count": 2
+      },
+      {
+        "ComponentName": "Computer",
+        "Count": 2
+      }
+    ],
+    "DlcName": "Fieldwork"
+  },
+  {
+    "Id": "Door/CorridorRoundDoor/Large",
+    "DisplayName": "Corridor Round Door",
+    "GridSize": "Large",
+    "TypeId": "Door",
+    "SubtypeId": "CorridorRoundDoor",
+    "Components": [
+      {
+        "ComponentName": "Steel Plate",
+        "Count": 45
+      },
+      {
+        "ComponentName": "Construction Component",
+        "Count": 50
+      },
+      {
+        "ComponentName": "Small Steel Tube",
+        "Count": 10
+      },
+      {
+        "ComponentName": "Motor",
+        "Count": 4
+      },
+      {
+        "ComponentName": "Display",
+        "Count": 2
+      },
+      {
+        "ComponentName": "Computer",
+        "Count": 2
+      }
+    ],
+    "DlcName": "Fieldwork"
+  },
+  {
+    "Id": "CubeBlock/CorridorRoundTransition/Large",
+    "DisplayName": "Corridor Round Transition",
+    "GridSize": "Large",
+    "TypeId": "CubeBlock",
+    "SubtypeId": "CorridorRoundTransition",
+    "Components": [
+      {
+        "ComponentName": "Interior Plate",
+        "Count": 100
+      },
+      {
+        "ComponentName": "Construction Component",
+        "Count": 30
+      }
+    ],
+    "DlcName": "Fieldwork"
+  },
+  {
+    "Id": "OxygenGenerator/LargeBlockOxygenGeneratorLab/Large",
+    "DisplayName": "Lab O2/H2 Generator",
+    "GridSize": "Large",
+    "TypeId": "OxygenGenerator",
+    "SubtypeId": "LargeBlockOxygenGeneratorLab",
+    "Components": [
+      {
+        "ComponentName": "Steel Plate",
+        "Count": 160
+      },
+      {
+        "ComponentName": "Construction Component",
+        "Count": 20
+      },
+      {
+        "ComponentName": "Large Steel Tube",
+        "Count": 4
+      },
+      {
+        "ComponentName": "Motor",
+        "Count": 4
+      },
+      {
+        "ComponentName": "Computer",
+        "Count": 5
+      },
+      {
+        "ComponentName": "Bulletproof Glass",
+        "Count": 40
+      }
+    ],
+    "DlcName": "Fieldwork"
+  },
+  {
+    "Id": "CubeBlock/CorridorRoundX/Large",
+    "DisplayName": "Corridor Round X",
+    "GridSize": "Large",
+    "TypeId": "CubeBlock",
+    "SubtypeId": "CorridorRoundX",
+    "Components": [
+      {
+        "ComponentName": "Interior Plate",
+        "Count": 40
+      },
+      {
+        "ComponentName": "Construction Component",
+        "Count": 20
+      }
+    ],
+    "DlcName": "Fieldwork"
+  },
+  {
+    "Id": "CubeBlock/CorridorRoundCorner/Large",
+    "DisplayName": "Corridor Round Corner",
+    "GridSize": "Large",
+    "TypeId": "CubeBlock",
+    "SubtypeId": "CorridorRoundCorner",
+    "Components": [
+      {
+        "ComponentName": "Interior Plate",
+        "Count": 100
+      },
+      {
+        "ComponentName": "Construction Component",
+        "Count": 30
+      }
+    ],
+    "DlcName": "Fieldwork"
+  },
+  {
+    "Id": "InteriorLight/CorridorRoundLight/Large",
+    "DisplayName": "Corridor Round Light",
+    "GridSize": "Large",
+    "TypeId": "InteriorLight",
+    "SubtypeId": "CorridorRoundLight",
+    "Components": [
+      {
+        "ComponentName": "Interior Plate",
+        "Count": 100
+      },
+      {
+        "ComponentName": "Construction Component",
+        "Count": 30
+      }
+    ],
+    "DlcName": "Fieldwork"
+  },
+  {
+    "Id": "CubeBlock/CorridorRound/Large",
+    "DisplayName": "Corridor Round",
+    "GridSize": "Large",
+    "TypeId": "CubeBlock",
+    "SubtypeId": "CorridorRound",
+    "Components": [
+      {
+        "ComponentName": "Interior Plate",
+        "Count": 100
+      },
+      {
+        "ComponentName": "Construction Component",
+        "Count": 30
+      }
+    ],
+    "DlcName": "Fieldwork"
+  },
+  {
+    "Id": "StoreBlock/AtmBlock/Large",
+    "DisplayName": "ATM",
+    "GridSize": "Large",
+    "TypeId": "StoreBlock",
+    "SubtypeId": "AtmBlock",
+    "Components": [
+      {
+        "ComponentName": "Steel Plate",
+        "Count": 20
+      },
+      {
+        "ComponentName": "Construction Component",
+        "Count": 20
+      },
+      {
+        "ComponentName": "Motor",
+        "Count": 2
+      },
+      {
+        "ComponentName": "Computer",
+        "Count": 10
+      },
+      {
+        "ComponentName": "Display",
+        "Count": 4
+      }
+    ],
+    "DlcName": "Economy"
+  },
+  {
+    "Id": "VendingMachine/VendingMachine/Large",
+    "DisplayName": "Vending Machine",
+    "GridSize": "Large",
+    "TypeId": "VendingMachine",
+    "SubtypeId": "VendingMachine",
+    "Components": [
+      {
+        "ComponentName": "Interior Plate",
+        "Count": 20
+      },
+      {
+        "ComponentName": "Construction Component",
+        "Count": 10
+      },
+      {
+        "ComponentName": "Motor",
+        "Count": 4
+      },
+      {
+        "ComponentName": "Display",
+        "Count": 4
+      },
+      {
+        "ComponentName": "Computer",
+        "Count": 10
+      }
+    ],
+    "DlcName": "Economy"
+  },
+  {
+    "Id": "Door/SmallBlockAngledDoorA/Small",
+    "DisplayName": "Angled Door A",
+    "GridSize": "Small",
+    "TypeId": "Door",
+    "SubtypeId": "SmallBlockAngledDoorA",
+    "Components": [
+      {
+        "ComponentName": "Steel Plate",
+        "Count": 20
+      },
+      {
+        "ComponentName": "Construction Component",
+        "Count": 40
+      },
+      {
+        "ComponentName": "Motor",
+        "Count": 2
+      },
+      {
+        "ComponentName": "Display",
+        "Count": 1
+      },
+      {
+        "ComponentName": "Computer",
+        "Count": 2
+      }
+    ],
+    "DlcName": "Economy2"
+  },
+  {
+    "Id": "Door/LargeBlockAngledDoorB/Large",
+    "DisplayName": "Angled Door B",
+    "GridSize": "Large",
+    "TypeId": "Door",
+    "SubtypeId": "LargeBlockAngledDoorB",
+    "Components": [
+      {
+        "ComponentName": "Steel Plate",
+        "Count": 30
+      },
+      {
+        "ComponentName": "Construction Component",
+        "Count": 40
+      },
+      {
+        "ComponentName": "Motor",
+        "Count": 4
+      },
+      {
+        "ComponentName": "Display",
+        "Count": 1
+      },
+      {
+        "ComponentName": "Computer",
+        "Count": 2
+      }
+    ],
+    "DlcName": "Economy2"
+  },
+  {
+    "Id": "CubeBlock/CorridorRoundT/Large",
+    "DisplayName": "Corridor Round T",
+    "GridSize": "Large",
+    "TypeId": "CubeBlock",
+    "SubtypeId": "CorridorRoundT",
+    "Components": [
+      {
+        "ComponentName": "Interior Plate",
+        "Count": 70
+      },
+      {
+        "ComponentName": "Construction Component",
+        "Count": 25
+      }
+    ],
+    "DlcName": "Fieldwork"
+  },
+  {
+    "Id": "Thrust/LargeBlockLargeModularThruster/Large",
+    "DisplayName": "Large Warfare Ion Thruster",
+    "GridSize": "Large",
+    "TypeId": "Thrust",
+    "SubtypeId": "LargeBlockLargeModularThruster",
+    "Components": [
+      {
+        "ComponentName": "Steel Plate",
+        "Count": 150
+      },
+      {
+        "ComponentName": "Construction Component",
+        "Count": 100
+      },
+      {
+        "ComponentName": "Large Steel Tube",
+        "Count": 40
+      },
+      {
+        "ComponentName": "Thrust Components",
+        "Count": 960
+      }
+    ],
+    "DlcName": "Warfare2"
   }
 ]
