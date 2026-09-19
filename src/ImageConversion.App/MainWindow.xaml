@@ -102,12 +102,7 @@
                         <ScrollViewer VerticalScrollBarVisibility="Auto">
                             <StackPanel Spacing="18">
                                 <StackPanel Spacing="14">
-                                    <StackPanel Orientation="Horizontal" Spacing="12">
-                                        <Border Width="28" Height="28" CornerRadius="14" Background="{ThemeResource AccentFillColorDefaultBrush}">
-                                            <TextBlock Text="1" Foreground="White" FontWeight="SemiBold" HorizontalAlignment="Center" VerticalAlignment="Center" />
-                                        </Border>
-                                        <TextBlock Text="Source Image" FontSize="17" FontWeight="SemiBold" VerticalAlignment="Center" />
-                                    </StackPanel>
+                                    <TextBlock Text="Source Image" FontSize="17" FontWeight="SemiBold" />
 
                                     <Border
                                         AllowDrop="True"
@@ -129,12 +124,7 @@
                                 </StackPanel>
 
                                 <StackPanel Spacing="14">
-                                    <StackPanel Orientation="Horizontal" Spacing="12">
-                                        <Border Width="28" Height="28" CornerRadius="14" Background="{ThemeResource AccentFillColorDefaultBrush}">
-                                            <TextBlock Text="2" Foreground="White" FontWeight="SemiBold" HorizontalAlignment="Center" VerticalAlignment="Center" />
-                                        </Border>
-                                        <TextBlock Text="Conversion Settings" FontSize="17" FontWeight="SemiBold" VerticalAlignment="Center" />
-                                    </StackPanel>
+                                    <TextBlock Text="Conversion Settings" FontSize="17" FontWeight="SemiBold" />
 
                                     <ComboBox
                                         Header="LCD/Text Panel type"
