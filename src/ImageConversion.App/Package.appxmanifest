@@ -7,7 +7,7 @@
   <Identity
     Name="SEToolkit.SpaceEngineers"
     Publisher="CN=SEToolkit"
-    Version="2.1.0.0" />
+    Version="2.2.0.0" />
   <Properties>
     <DisplayName>SE Toolkit</DisplayName>
     <PublisherDisplayName>SE Toolkit</PublisherDisplayName>
