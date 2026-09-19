@@ -148,6 +148,21 @@ public partial class MainWindowViewModel : ObservableObject
     public partial string DestinationZ { get; set; } = string.Empty;
 
     [ObservableProperty]
+    public partial string MapGps { get; set; } = string.Empty;
+
+    [ObservableProperty]
+    public partial string MapPositionSummary { get; set; } = "Your position will appear when the companion plugin connects.";
+
+    [ObservableProperty]
+    public partial string MapExtentSummary { get; set; } = string.Empty;
+
+    [ObservableProperty]
+    public partial bool IsLiveTrackingEnabled { get; set; }
+
+    [ObservableProperty]
+    public partial string LiveTrackingStatus { get; set; } = "Live tracking is off. Enter a GPS coordinate manually or connect the companion plugin.";
+
+    [ObservableProperty]
     public partial int SelectedJumpDriveCount { get; set; } = 1;
 
     [ObservableProperty]
@@ -219,6 +234,8 @@ public partial class MainWindowViewModel : ObservableObject
 
     public Visibility JumpDriveCalculatorVisibility => CurrentFeature == MainFeature.JumpDriveCalculator ? Visibility.Visible : Visibility.Collapsed;
 
+    public Visibility SolarSystemMapVisibility => CurrentFeature == MainFeature.SolarSystemMap ? Visibility.Visible : Visibility.Collapsed;
+
     public Visibility ResourceCalculatorVisibility => CurrentFeature == MainFeature.ResourceCalculator ? Visibility.Visible : Visibility.Collapsed;
 
     public Visibility SettingsVisibility => CurrentFeature == MainFeature.Settings ? Visibility.Visible : Visibility.Collapsed;
@@ -243,6 +260,8 @@ public partial class MainWindowViewModel : ObservableObject
 
     public ObservableCollection<JumpDriveLegViewModel> JumpLegs { get; } = [];
 
+    public ObservableCollection<SolarSystemMapMarkerViewModel> SolarSystemMapMarkers { get; } = [];
+
     public ObservableCollection<SpaceEngineersBlockDefinition> FilteredResourceBlocks { get; } = [];
 
     public ObservableCollection<ResourceBuildRowViewModel> ResourceBuildRows { get; } = [];
@@ -265,6 +284,7 @@ public partial class MainWindowViewModel : ObservableObject
     [
         new(MainFeature.ImageConverter, "Image Converter"),
         new(MainFeature.JumpDriveCalculator, "Jump Drive Calculator"),
+        new(MainFeature.SolarSystemMap, "Solar System Map"),
         new(MainFeature.ResourceCalculator, "Resource Calculator"),
     ];
 
@@ -304,6 +324,7 @@ public partial class MainWindowViewModel : ObservableObject
         isLoadingSettings = false;
         SelectedDitheringMode = DitheringModes[0];
         SelectedJumpDriveType = JumpDriveTypes[0];
+        UpdateSolarSystemMap();
         LoadSavedResourceRecipes();
         RefreshFilteredResourceBlocks();
     }
@@ -704,6 +725,7 @@ public partial class MainWindowViewModel : ObservableObject
     {
         OnPropertyChanged(nameof(ImageConverterVisibility));
         OnPropertyChanged(nameof(JumpDriveCalculatorVisibility));
+        OnPropertyChanged(nameof(SolarSystemMapVisibility));
         OnPropertyChanged(nameof(ResourceCalculatorVisibility));
         OnPropertyChanged(nameof(SettingsVisibility));
     }
@@ -750,6 +772,112 @@ public partial class MainWindowViewModel : ObservableObject
     {
         OnPropertyChanged(nameof(HasJumpStatusMessage));
     }
+
+    partial void OnMapGpsChanged(string value) => UpdateSolarSystemMap();
+
+    partial void OnIsLiveTrackingEnabledChanged(bool value)
+    {
+        if (!value)
+        {
+            LiveTrackingStatus = "Live tracking is off. Enter a GPS coordinate manually or connect the companion plugin.";
+        }
+    }
+
+    public void ApplyLiveLocation(double x, double y, double z)
+    {
+        MapGps = $"GPS:Live location:{x.ToString("R", CultureInfo.InvariantCulture)}:{y.ToString("R", CultureInfo.InvariantCulture)}:{z.ToString("R", CultureInfo.InvariantCulture)}:#FFFF6347:";
+        LiveTrackingStatus = $"Connected · last update {DateTime.Now:t} · local Space Engineers client";
+    }
+
+    public void SetLiveTrackingError(string message)
+    {
+        IsLiveTrackingEnabled = false;
+        LiveTrackingStatus = message;
+    }
+
+    private void UpdateSolarSystemMap()
+    {
+        bool hasPosition = TryGetMapPosition(out JumpDriveVector position);
+        IReadOnlyList<StarSystemBody> bodies = StarSystemMap.VanillaBodies;
+
+        double maximumAbsoluteX = bodies.Max(body => Math.Abs(body.Position.X));
+        double maximumAbsoluteZ = bodies.Max(body => Math.Abs(body.Position.Z));
+
+        if (hasPosition)
+        {
+            maximumAbsoluteX = Math.Max(maximumAbsoluteX, Math.Abs(position.X));
+            maximumAbsoluteZ = Math.Max(maximumAbsoluteZ, Math.Abs(position.Z));
+            MapPositionSummary = $"Current position: X {position.X:N0}, Y {position.Y:N0}, Z {position.Z:N0}";
+        }
+        else
+        {
+            MapPositionSummary = "Your position will appear when the companion plugin connects.";
+        }
+
+        double minimumX = -maximumAbsoluteX;
+        double maximumX = maximumAbsoluteX;
+        double minimumZ = -maximumAbsoluteZ;
+        double maximumZ = maximumAbsoluteZ;
+
+        const double mapWidth = 900;
+        const double mapHeight = 540;
+        const double padding = 64;
+        double spanX = Math.Max(maximumX - minimumX, 1);
+        double spanZ = Math.Max(maximumZ - minimumZ, 1);
+        double availableWidth = mapWidth - (2 * padding);
+        double availableHeight = mapHeight - (2 * padding);
+        double scale = Math.Min(availableWidth / spanX, availableHeight / spanZ);
+        double mapLeft = padding + ((availableWidth - (spanX * scale)) / 2);
+        double mapTop = padding + ((availableHeight - (spanZ * scale)) / 2);
+
+        SolarSystemMapMarkers.Clear();
+        foreach (StarSystemBody body in bodies)
+        {
+            double size = body.Kind == StarSystemBodyKind.Planet ? 18 : 12;
+            SolarSystemMapMarkers.Add(CreateMapMarker(body.Name, body.Position, minimumX, maximumZ, mapLeft, mapTop, scale, size, GetBodyBrush(body.Kind), false));
+        }
+
+        if (hasPosition)
+        {
+            SolarSystemMapMarkers.Add(CreateMapMarker("You", position, minimumX, maximumZ, mapLeft, mapTop, scale, 16, new SolidColorBrush(Windows.UI.Color.FromArgb(255, 255, 99, 71)), true));
+        }
+
+        MapExtentSummary = $"Top-down X/Z view · {Math.Max(spanX, spanZ) / 1_000:N0} km across · Y is shown in the position readout.";
+    }
+
+    private bool TryGetMapPosition(out JumpDriveVector position)
+    {
+        if (!string.IsNullOrWhiteSpace(MapGps))
+        {
+            return SpaceEngineersGpsParser.TryParse(MapGps, out position);
+        }
+
+        position = default;
+        return false;
+    }
+
+    private static SolarSystemMapMarkerViewModel CreateMapMarker(
+        string name,
+        JumpDriveVector position,
+        double minimumX,
+        double maximumZ,
+        double mapLeft,
+        double mapTop,
+        double scale,
+        double size,
+        Brush brush,
+        bool isCurrentPosition)
+    {
+        double left = mapLeft + ((position.X - minimumX) * scale) - (size / 2);
+        double top = mapTop + ((maximumZ - position.Z) * scale) - (size / 2);
+        return new SolarSystemMapMarkerViewModel(name, left - 75, top, size, brush, isCurrentPosition, $"X {position.X:N0}, Y {position.Y:N0}, Z {position.Z:N0}");
+    }
+
+    private static Brush GetBodyBrush(StarSystemBodyKind kind) => kind switch
+    {
+        StarSystemBodyKind.Moon => new SolidColorBrush(Windows.UI.Color.FromArgb(255, 142, 170, 204)),
+        _ => new SolidColorBrush(Windows.UI.Color.FromArgb(255, 87, 185, 128)),
+    };
 
     partial void OnBlockSearchTextChanged(string value)
     {
@@ -1201,6 +1329,7 @@ public enum MainFeature
 {
     ImageConverter,
     JumpDriveCalculator,
+    SolarSystemMap,
     ResourceCalculator,
     Settings,
 }
@@ -1212,6 +1341,15 @@ public sealed record JumpDriveTypeOption(JumpDriveType Type, string Name);
 public sealed record FeatureOption(MainFeature Feature, string Name);
 
 public sealed record ThemeOption(AppTheme Theme, string Name);
+
+public sealed record SolarSystemMapMarkerViewModel(
+    string Name,
+    double Left,
+    double Top,
+    double Size,
+    Brush Brush,
+    bool IsCurrentPosition,
+    string Coordinates);
 public sealed partial class ResourceBuildRowViewModel : ObservableObject
 {
     [ObservableProperty]

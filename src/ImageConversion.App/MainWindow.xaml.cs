@@ -8,6 +8,7 @@ using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Data;
 using Microsoft.UI.Xaml.Input;
 using System.ComponentModel;
+using System.Collections.Specialized;
 using System.Globalization;
 using System.Runtime.InteropServices;
 using System.Text;
@@ -31,6 +32,12 @@ public sealed partial class MainWindow : Window
     private IntPtr smallIconHandle;
     private bool isFormattingShipMass;
     private bool hasShownStartupUpdateDialog;
+    private readonly LiveLocationReceiver liveLocationReceiver = new();
+    private readonly DispatcherTimer liveLocationFileTimer = new()
+    {
+        Interval = TimeSpan.FromMilliseconds(250),
+    };
+    private LiveLocationPacket? lastLiveLocationFilePacket;
 
     public MainWindowViewModel ViewModel { get; } = new();
 
@@ -41,6 +48,10 @@ public sealed partial class MainWindow : Window
         Root.DataContext = ViewModel;
         ApplyTheme(ViewModel.SelectedTheme.Theme);
         ViewModel.PropertyChanged += ViewModel_PropertyChanged;
+        liveLocationReceiver.LocationReceived += LiveLocationReceiver_LocationReceived;
+        ViewModel.SolarSystemMapMarkers.CollectionChanged += SolarSystemMapMarkers_CollectionChanged;
+        liveLocationFileTimer.Tick += LiveLocationFileTimer_Tick;
+        RenderSolarSystemMapMarkers();
         SelectNavigationItem(ViewModel.CurrentFeature);
         ConfigureLaunchWindow();
         Root.Loaded += Root_Loaded;
@@ -89,6 +100,11 @@ public sealed partial class MainWindow : Window
     private void MainWindow_Closed(object sender, WindowEventArgs args)
     {
         ViewModel.PropertyChanged -= ViewModel_PropertyChanged;
+        liveLocationReceiver.LocationReceived -= LiveLocationReceiver_LocationReceived;
+        liveLocationReceiver.Dispose();
+        ViewModel.SolarSystemMapMarkers.CollectionChanged -= SolarSystemMapMarkers_CollectionChanged;
+        liveLocationFileTimer.Stop();
+        liveLocationFileTimer.Tick -= LiveLocationFileTimer_Tick;
 
         if (smallIconHandle != IntPtr.Zero)
         {
@@ -100,6 +116,50 @@ public sealed partial class MainWindow : Window
         {
             DestroyIcon(bigIconHandle);
             bigIconHandle = IntPtr.Zero;
+        }
+    }
+
+    private void SolarSystemMapMarkers_CollectionChanged(object? sender, NotifyCollectionChangedEventArgs e)
+    {
+        RenderSolarSystemMapMarkers();
+    }
+
+    private void RenderSolarSystemMapMarkers()
+    {
+        SolarSystemMapCanvas.Children.Clear();
+
+        foreach (SolarSystemMapMarkerViewModel marker in ViewModel.SolarSystemMapMarkers)
+        {
+            Grid markerContainer = new()
+            {
+                Width = 150,
+                Height = 54,
+            };
+
+            Border markerDot = new()
+            {
+                Width = marker.Size,
+                Height = marker.Size,
+                Background = marker.Brush,
+                CornerRadius = new CornerRadius(marker.Size / 2),
+                HorizontalAlignment = HorizontalAlignment.Center,
+            };
+            markerContainer.Children.Add(markerDot);
+
+            TextBlock markerLabel = new()
+            {
+                Text = marker.Name,
+                Margin = new Thickness(0, 22, 0, 0),
+                HorizontalAlignment = HorizontalAlignment.Center,
+                FontSize = 12,
+                FontWeight = Microsoft.UI.Text.FontWeights.SemiBold,
+            };
+            markerContainer.Children.Add(markerLabel);
+
+            ToolTipService.SetToolTip(markerContainer, marker.Coordinates);
+            Canvas.SetLeft(markerContainer, marker.Left);
+            Canvas.SetTop(markerContainer, marker.Top);
+            SolarSystemMapCanvas.Children.Add(markerContainer);
         }
     }
 
@@ -146,6 +206,7 @@ public sealed partial class MainWindow : Window
         ViewModel.CurrentFeature = tag switch
         {
             "JumpDriveCalculator" => MainFeature.JumpDriveCalculator,
+            "SolarSystemMap" => MainFeature.SolarSystemMap,
             "ResourceCalculator" => MainFeature.ResourceCalculator,
             "Settings" => MainFeature.Settings,
             _ => MainFeature.ImageConverter,
@@ -162,6 +223,58 @@ public sealed partial class MainWindow : Window
         {
             SelectNavigationItem(ViewModel.CurrentFeature);
         }
+        else if (e.PropertyName == nameof(ViewModel.IsLiveTrackingEnabled))
+        {
+            UpdateLiveLocationReceiver();
+        }
+    }
+
+    private void UpdateLiveLocationReceiver()
+    {
+        try
+        {
+            if (ViewModel.IsLiveTrackingEnabled)
+            {
+                liveLocationReceiver.Start();
+                lastLiveLocationFilePacket = null;
+                liveLocationFileTimer.Start();
+                ViewModel.LiveTrackingStatus = "Waiting for the local Space Engineers companion plugin…";
+            }
+            else
+            {
+                liveLocationReceiver.Stop();
+                liveLocationFileTimer.Stop();
+            }
+        }
+        catch (Exception ex)
+        {
+            ViewModel.SetLiveTrackingError($"Could not start live tracking: {ex.Message}");
+        }
+    }
+
+    private void LiveLocationReceiver_LocationReceived(object? sender, LiveLocationReceivedEventArgs e)
+    {
+        DispatcherQueue.TryEnqueue(() =>
+        {
+            if (ViewModel.IsLiveTrackingEnabled)
+            {
+                ViewModel.ApplyLiveLocation(e.X, e.Y, e.Z);
+            }
+        });
+    }
+
+    private void LiveLocationFileTimer_Tick(object? sender, object e)
+    {
+        if (!ViewModel.IsLiveTrackingEnabled ||
+            !LiveLocationFileReader.TryRead(out LiveLocationPacket? packet) ||
+            packet is null ||
+            packet == lastLiveLocationFilePacket)
+        {
+            return;
+        }
+
+        lastLiveLocationFilePacket = packet;
+        ViewModel.ApplyLiveLocation(packet.X, packet.Y, packet.Z);
     }
 
     private void ApplyTheme(AppTheme theme)
@@ -179,6 +292,7 @@ public sealed partial class MainWindow : Window
         string tag = feature switch
         {
             MainFeature.JumpDriveCalculator => "JumpDriveCalculator",
+            MainFeature.SolarSystemMap => "SolarSystemMap",
             MainFeature.ResourceCalculator => "ResourceCalculator",
             MainFeature.Settings => "Settings",
             _ => "ImageConverter",

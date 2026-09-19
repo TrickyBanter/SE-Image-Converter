@@ -25,7 +25,7 @@ the app is signed and has reputation.
 ### Space Engineers usage
 
 Use the side menu to switch between the Image Converter, Jump Drive Calculator,
-Resource Calculator, and Settings.
+Solar System Map, Resource Calculator, and Settings.
 
 ### Image converter
 
@@ -54,6 +54,32 @@ Use the Resource Calculator tab to search the bundled vanilla and DLC block cata
 small-grid or large-grid block variants with quantities, and total the components
 needed to build them. You can also save the current block list as a local recipe,
 then add that recipe to a calculation with a quantity such as five missiles.
+
+### Solar System map
+
+Use the Solar System Map with the optional live-location companion plugin. It plots
+your position on a top-down X/Z view of the vanilla Star System, alongside its planets
+and moons. The map remains centred on the GPS origin and expands symmetrically if you
+travel beyond the standard system; the precise Y value remains visible in the position
+readout.
+
+### Live location companion plugin
+
+The optional `SpaceEngineers.LiveLocationPlugin` is a client-side, read-only Space
+Engineers companion. It sends the locally controlled player's position to the toolkit
+over loopback UDP (`127.0.0.1:38023`) about five times per second. It never listens on
+or sends data to the network.
+
+Build it against a local Space Engineers installation by supplying its `Bin64` path:
+
+```powershell
+dotnet build .\src\SpaceEngineers.LiveLocationPlugin\SpaceEngineers.LiveLocationPlugin.csproj -p:SpaceEngineersBin64="D:\SteamLibrary\steamapps\common\SpaceEngineers\Bin64"
+```
+
+Load the resulting `SEToolkit.LiveLocation.dll` using a maintained client plugin loader,
+then turn on **Live tracking** in Solar System Map. The plugin project is intentionally
+separate from the main solution because its references must match the installed game
+version.
 
 ## For developers
 
