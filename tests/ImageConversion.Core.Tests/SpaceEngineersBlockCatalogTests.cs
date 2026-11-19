@@ -73,7 +73,7 @@ public sealed class SpaceEngineersBlockCatalogTests
     {
         SpaceEngineersBlockDefinition block = Assert.Single(
             SpaceEngineersBlockCatalog.DefaultBlocks,
-            block => block.Id.Equals("FlightMovementBlock/SmallBlockFlightMovementBlock/Small", StringComparison.OrdinalIgnoreCase));
+            block => block.Id.Equals("FlightMovementBlock/SmallFlightMovement/Small", StringComparison.OrdinalIgnoreCase));
 
         Assert.Contains(block.Components, component => component is { ComponentName: "Detector Components", Count: 4 });
         Assert.Contains(block.Components, component => component is { ComponentName: "Computer", Count: 10 });
@@ -85,7 +85,7 @@ public sealed class SpaceEngineersBlockCatalogTests
     {
         SpaceEngineersBlockDefinition block = Assert.Single(
             SpaceEngineersBlockCatalog.DefaultBlocks,
-            block => block.Id.Equals("EventControllerBlock/LargeBlockEventControllerBlock/Large", StringComparison.OrdinalIgnoreCase));
+            block => block.Id.Equals("EventControllerBlock/EventControllerLarge/Large", StringComparison.OrdinalIgnoreCase));
 
         Assert.Contains(block.Components, component => component is { ComponentName: "Interior Plate", Count: 10 });
         Assert.Contains(block.Components, component => component is { ComponentName: "Display", Count: 4 });
@@ -99,7 +99,7 @@ public sealed class SpaceEngineersBlockCatalogTests
             .Where(block => block.DlcName is not null)
             .ToList();
 
-        Assert.Equal(297, dlcBlocks.Count);
+        Assert.Equal(762, dlcBlocks.Count);
         Assert.Contains(dlcBlocks, block => block is
         {
             Id: "Door/LargeBlockSmallGate/Large",
@@ -122,5 +122,47 @@ public sealed class SpaceEngineersBlockCatalogTests
         Assert.Null(block.DlcName);
         Assert.Contains(block.Components, component => component is { ComponentName: "Prototech Capacitor", Count: 30 });
         Assert.Contains(block.Components, component => component is { ComponentName: "Superconductor", Count: 1400 });
+    }
+
+    [Theory]
+    [InlineData("CubeBlock/LargeArmorPanelLight/Large")]
+    [InlineData("CubeBlock/LargeSymbolA/Large")]
+    [InlineData("MotorAdvancedStator/LargeHinge/Large")]
+    [InlineData("HydrogenEngine/LargeHydrogenEngine/Large")]
+    [InlineData("WindTurbine/LargeBlockWindTurbine/Large")]
+    [InlineData("SurvivalKit/SurvivalKitLarge/Large")]
+    [InlineData("Wheel/RealWheel/Large")]
+    public void CatalogIncludesBlocksPreviouslyMissing(string id)
+    {
+        Assert.Contains(SpaceEngineersBlockCatalog.DefaultBlocks, block => block.Id.Equals(id, StringComparison.OrdinalIgnoreCase));
+    }
+
+    [Fact]
+    public void CatalogUsesGameRecipeForLargeAdvancedRotor()
+    {
+        SpaceEngineersBlockDefinition block = Assert.Single(
+            SpaceEngineersBlockCatalog.DefaultBlocks,
+            block => block.Id.Equals("MotorAdvancedStator/LargeAdvancedStator/Large", StringComparison.OrdinalIgnoreCase));
+
+        Assert.Contains(block.Components, component => component is { ComponentName: "Steel Plate", Count: 30 });
+        Assert.Equal(65, block.Components.Sum(component => component.Count));
+    }
+
+    [Fact]
+    public void EveryDisplayLabelIsUnique()
+    {
+        IReadOnlyList<string> labels = SpaceEngineersBlockCatalog.DefaultBlocks.Select(block => block.DisplayLabel).ToList();
+
+        Assert.Equal(labels.Count, labels.Distinct(StringComparer.OrdinalIgnoreCase).Count());
+    }
+
+    [Theory]
+    [InlineData("EventControllerBlock/LargeBlockEventControllerBlock/Large", "EventControllerBlock/EventControllerLarge/Large")]
+    [InlineData("MyObjectBuilder_Projector/SmallProjector/Small", "Projector/SmallProjector/Small")]
+    [InlineData("Cockpit/PassengerSeatSmall/Small", "Cockpit/PassengerSeatSmallNew/Small")]
+    public void LegacyBlockIdsResolveToCurrentCatalogEntries(string legacyId, string currentId)
+    {
+        Assert.Equal(currentId, SpaceEngineersBlockCatalog.ResolveBlockId(legacyId));
+        Assert.Contains(SpaceEngineersBlockCatalog.DefaultBlocks, block => block.Id == currentId);
     }
 }

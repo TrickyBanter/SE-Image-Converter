@@ -174,4 +174,17 @@ public sealed class ResourceCalculatorTests
             [new ResourceRecipeQuantity(recipe.Id, 1)],
             [recipe])));
     }
+
+    [Fact]
+    public void ResolvesLegacyBlockIdsSavedByOlderCatalogs()
+    {
+        ResourceCalculator catalogCalculator = new(SpaceEngineersBlockCatalog.DefaultBlocks);
+
+        ResourceCalculationResult legacy = catalogCalculator.Calculate(new ResourceCalculationRequest(
+            [new SpaceEngineersBlockQuantity("EventControllerBlock/LargeBlockEventControllerBlock/Large", 1)]));
+        ResourceCalculationResult current = catalogCalculator.Calculate(new ResourceCalculationRequest(
+            [new SpaceEngineersBlockQuantity("EventControllerBlock/EventControllerLarge/Large", 1)]));
+
+        Assert.Equal(current.ComponentTotals, legacy.ComponentTotals);
+    }
 }
