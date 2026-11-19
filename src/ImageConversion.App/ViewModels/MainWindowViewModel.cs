@@ -846,7 +846,7 @@ public partial class MainWindowViewModel : ObservableObject
         }
 
         FilteredResourceBlocks.Clear();
-        foreach (SpaceEngineersBlockDefinition block in matches.Take(60))
+        foreach (SpaceEngineersBlockDefinition block in matches)
         {
             FilteredResourceBlocks.Add(block);
         }
@@ -954,8 +954,9 @@ public partial class MainWindowViewModel : ObservableObject
 
         foreach (SpaceEngineersBlockQuantity item in blocks)
         {
+            string blockId = SpaceEngineersBlockCatalog.ResolveBlockId(item.BlockId);
             SpaceEngineersBlockDefinition? block = SpaceEngineersBlockCatalog.DefaultBlocks.FirstOrDefault(block =>
-                block.Id.Equals(item.BlockId, StringComparison.OrdinalIgnoreCase));
+                block.Id.Equals(blockId, StringComparison.OrdinalIgnoreCase));
 
             if (block is null)
             {

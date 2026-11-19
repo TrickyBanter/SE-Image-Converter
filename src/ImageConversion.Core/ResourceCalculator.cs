@@ -53,7 +53,8 @@ public sealed class ResourceCalculator
             throw new ArgumentOutOfRangeException(nameof(quantity), "Block quantities must be greater than 0.");
         }
 
-        if (!blocksById.TryGetValue(blockId, out SpaceEngineersBlockDefinition? block))
+        if (!blocksById.TryGetValue(blockId, out SpaceEngineersBlockDefinition? block)
+            && !blocksById.TryGetValue(SpaceEngineersBlockCatalog.ResolveBlockId(blockId), out block))
         {
             throw new KeyNotFoundException($"Block '{blockId}' is not in the resource catalog.");
         }

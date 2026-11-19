@@ -63,11 +63,42 @@ then add that recipe to a calculation with a quantity such as five missiles.
 - `src/ImageConversion.App` contains the WinUI 3 desktop app.
 - `tests/ImageConversion.Core.Tests` contains focused conversion tests.
 
+### Refreshing the block catalog
+
+The Resource Calculator's block list (`src/ImageConversion.Core/Data/SpaceEngineersVanillaBlocks.json`)
+is generated from the game's own block definitions. After a game update, regenerate it with
+Python 3.9+, passing your Space Engineers install folder:
+
+```powershell
+python tools/GenerateBlockCatalog.py "C:\Program Files (x86)\Steam\steamapps\common\SpaceEngineers"
+```
+
+If the game renames a block ID, add the old ID to `LegacyBlockIds` in
+`SpaceEngineersBlockCatalog.cs` so saved recipes keep resolving.
+
 ### Requirements
 
 - Windows 10 1809 or newer.
-- .NET 10 SDK.
+- .NET 10 SDK (the runtime alone is not enough to build).
 - WinUI 3 templates / Windows App SDK tooling.
+- Inno Setup 6 or newer, only needed to build the setup executable for releases.
+- Python 3.9 or newer, only needed to refresh the block catalog.
+
+Install the .NET 10 SDK and Inno Setup with winget:
+
+```powershell
+winget install Microsoft.DotNet.SDK.10
+```
+
+```powershell
+winget install JRSoftware.InnoSetup
+```
+
+Open a new terminal afterwards and check that a `10.0.x` SDK is listed:
+
+```powershell
+dotnet --list-sdks
+```
 
 Install the WinUI templates once after the SDK is installed:
 
@@ -115,12 +146,19 @@ To build release artifacts:
 
 The script runs the Release test suite, publishes a framework-dependent
 `win-x64` build, creates the portable zip, and builds the setup executable with
-Inno Setup 6 or newer. Install Inno Setup first, or pass its compiler path
+Inno Setup 6 or newer (see Requirements above). The script looks for `ISCC.exe`
+in the standard Inno Setup 6 and 7 install folders under Program Files and
+`%LOCALAPPDATA%\Programs`. If it is installed elsewhere, pass its compiler path
 explicitly:
 
 ```powershell
 .\build\Release.ps1 -Version 2.0.0 -InnoSetupCompiler "C:\Program Files (x86)\Inno Setup 6\ISCC.exe"
 ```
+
+By default the setup executable bundles the .NET Desktop Runtime and Windows App
+Runtime installers, which must be saved in `build\prerequisites\` (see
+[build/prerequisites/README.md](build/prerequisites/README.md)). Pass
+`-SkipPrerequisites` to build an installer without them.
 
 For a portable-only build:
 
